@@ -50,9 +50,10 @@ $("#IngresarSolicitante").submit();
 }
 </script>
 
+
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR SOLICITANTE</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR DATOS PERSONALES</h3>
   </div>
   <br>
   <div class="panel-body">
@@ -116,6 +117,21 @@ $("#IngresarSolicitante").submit();
         <div class="col-lg-4">
           <div class="form-group">
             <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text" name="telefono2" placeholder="Telefono n°2"/>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select class="form-control" name="organismo_id" required/>
+              <?php
+              use App\Ente;
+              $entes = Ente::all();
+              ?>
+              <option value="">ORGANISMOS  </option>
+              <option value="">-----------------</option>
+              <?php foreach ($entes as $en): ?>
+              <option value="<?php echo $en->id ?>"><?php echo $en->nombre ?></option>
+              <?php endforeach ?>
+            </select>
           </div>
         </div>
         <div class="col-lg-4">

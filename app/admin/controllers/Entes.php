@@ -1,11 +1,11 @@
 <?php
-namespace App\operador\controllers;
+namespace App\admin\controllers;
 
-class Principal
+class Entes
 {
     function __construct()
     {
-        Role('operador');
+        Role('admin');
     }
 
     public function index()

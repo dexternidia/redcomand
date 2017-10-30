@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="col s12 m3">
 		<div class="card-panel darken-2 z-depth-2">
-			<h5 class="red-text"><i class="fa fa-file-text-o"></i> Requerimientos por Tipo de Solicitud</h5>
+			<h5 class="red-text"><i class="fa fa-file-text-o"></i> Registro de Entes</h5>
 			<br>
 			<form action="<?php echo baseUrl ?>home/principal/solicitud" method="POST" class="col s12">
 				<?php echo Token::field() ?>
@@ -9,7 +9,7 @@
 					<?php
 					$tipos = App\Tipo::all();
 					?>
-					<option value="">Tipo de solicitud</option>
+					<option value="">Tipo de Ente</option>
 					<?php foreach ($tipos as $key => $t): ?>
 					<option value="<?php echo $t->id ?>"><?php echo $t->nombre ?></option>
 					<?php endforeach ?>

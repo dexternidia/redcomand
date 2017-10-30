@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/pickadate/lib/themes/default.date.css">
     <link rel="stylesheet" href="<?php echo baseUrl ?>assets/bower/pickadate/lib/themes/default.time.css">
     <script src="<?php echo baseUrl ?>assets/bower/bootstrap-table/dist/bootstrap-table.min.js"></script>
-    <script src="<?php echo baseUrl ?>assets/bower/jquery/dist/jquery.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
     <script src="<?php echo baseUrl ?>assets/bower/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/jasny-bootstrap/dist/js/jasny-bootstrap.min.js"></script>
     <script src="<?php echo baseUrl ?>assets/bower/inputmask/dist/jquery.inputmask.bundle.js"></script>
@@ -78,7 +81,7 @@
                 <span class="icon-bar"></span>
                 </button>
                 <a style="color:#fff;height: 73px;" class="navbar-brand text-white" href="#">
-                  <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> --><i class="fa fa fa-users fa-2x"></i> Soberano</a>
+                  <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> --><i class="fa fa fa-users fa-2x"></i> Municipales</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
