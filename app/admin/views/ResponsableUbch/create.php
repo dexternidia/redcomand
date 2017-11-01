@@ -34,8 +34,9 @@ $("#MesasSelect").html(data);
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrl ?>admin/RegistroUbch" method="POST">
+    <form action="<?php echo baseUrl ?>admin/ResponsableUbch" method="POST">
       <?php echo Token::field() ?>
+      <input type="hidden" name="id_ubch" value="<?php echo $id_ubch ?>">
       <div class="row">
         <div class="col-lg-1">
           <div class="form-group">
@@ -47,12 +48,27 @@ $("#MesasSelect").html(data);
         </div>
         <div class="col-lg-4">
           <div class="form-group">
-            <input class="form-control" type="number" placeholder="CEDULA">
+            <input class="form-control" type="number" name="cedula" placeholder="CEDULA">
           </div>
         </div>
         <div class="col-lg-7">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="NOMBRE Y APELLIDO">
+            <input class="form-control" type="text" name="nombre_apellido" placeholder="NOMBRE Y APELLIDO">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="EMAIL">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono1" placeholder="Telefono n°1" required/>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text" name="telefono2" placeholder="Telefono n°2"/>
           </div>
         </div>
         <div class="col-lg-4">
@@ -86,10 +102,39 @@ $("#MesasSelect").html(data);
             </select>
           </div>
         </div>
-        
         <div class="col-lg-8">
           <div class="form-group">
-            <input class="form-control" type="text" placeholder="DIRECCIÓN">
+            <input class="form-control" name="direccion" type="text" placeholder="DIRECCIÓN">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select id="municipioSelect" class="form-control" name="id_institucion" required/>
+              <option value="">INSTITUCIÓN</option>
+              <?php foreach ($instituciones as $key => $i): ?>
+              <option value="<?php echo $i->id_instituciones ?>"><?php echo $i->nombre ?></option>
+              <?php endforeach ?>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select id="municipioSelect" class="form-control" name="id_partido" required/>
+              <option value="">PARTIDOS</option>
+              <?php foreach ($partidos as $key => $p): ?>
+              <option value="<?php echo $p->id_partidos ?>"><?php echo $p->nombre ?></option>
+              <?php endforeach ?>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select id="municipioSelect" class="form-control" name="id_estructura" required/>
+              <option value="">ESTRUCTURA</option>
+              <?php foreach ($estructura as $key => $e): ?>
+              <option value="<?php echo $e->id_estructura ?>"><?php echo $e->nombre ?></option>
+              <?php endforeach ?>
+            </select>
           </div>
         </div>
         

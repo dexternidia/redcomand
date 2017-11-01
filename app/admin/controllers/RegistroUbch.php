@@ -101,14 +101,12 @@ class RegistroUbch
 
     public function store()
     {
-        //Arr($_POST);
         extract($_POST);
         extract($_GET);
 
         $mesa = MesasCne::where('id_mesas_cne',$id_mesa)->first();
         $nombre_ubch = $mesa->nombre;
         $direccion_ubch = $mesa->direccion;
-        //Arr($_POST);
         $fecha_hora_registro = Carbon::now();
         list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
         $ubch = new Ubch;
@@ -134,8 +132,10 @@ class RegistroUbch
 
     public function show($id)
     {
-        $ubch = Solicitante::find($id);
-        View(compact('ubch'));
+        $ubch = Ubch::find($id);
+        $responsable = $ubch->responsable;
+        //Arr($ubch);
+        View(compact('ubch','responsable'));
     }
 
     public function edit($id)

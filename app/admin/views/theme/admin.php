@@ -73,7 +73,10 @@
     background: grey;
     color: #fff;
     }
-
+    th {
+    color: red;
+    box-shadow: 0px 0px 1px #CECECE;
+    }
     
     </style>
   </head>

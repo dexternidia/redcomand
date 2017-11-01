@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2017 a las 16:53:38
--- Versión del servidor: 5.6.24
--- Versión de PHP: 5.6.8
+-- Host: localhost
+-- Generation Time: Nov 01, 2017 at 03:56 PM
+-- Server version: 5.7.19-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,19 +14,19 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `elections_mayor`
+-- Database: `elections_mayor`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `1x10`
+-- Table structure for table `1x10`
 --
 
-CREATE TABLE IF NOT EXISTS `1x10` (
+CREATE TABLE `1x10` (
   `cedula` varchar(8) NOT NULL,
   `nombre_y_apellidos` varchar(60) NOT NULL,
   `edad` varchar(60) NOT NULL,
@@ -38,17 +38,17 @@ CREATE TABLE IF NOT EXISTS `1x10` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `estructura`
+-- Table structure for table `estructura`
 --
 
-CREATE TABLE IF NOT EXISTS `estructura` (
+CREATE TABLE `estructura` (
   `id_estructura` int(11) NOT NULL,
   `nombre` varchar(60) NOT NULL,
   `eliminar` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `estructura`
+-- Dumping data for table `estructura`
 --
 
 INSERT INTO `estructura` (`id_estructura`, `nombre`, `eliminar`) VALUES
@@ -62,17 +62,17 @@ INSERT INTO `estructura` (`id_estructura`, `nombre`, `eliminar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `instituciones`
+-- Table structure for table `instituciones`
 --
 
-CREATE TABLE IF NOT EXISTS `instituciones` (
+CREATE TABLE `instituciones` (
   `id_instituciones` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `eliminar` int(2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `instituciones`
+-- Dumping data for table `instituciones`
 --
 
 INSERT INTO `instituciones` (`id_instituciones`, `nombre`, `eliminar`) VALUES
@@ -133,10 +133,10 @@ INSERT INTO `instituciones` (`id_instituciones`, `nombre`, `eliminar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mesas_cne`
+-- Table structure for table `mesas_cne`
 --
 
-CREATE TABLE IF NOT EXISTS `mesas_cne` (
+CREATE TABLE `mesas_cne` (
   `id_mesas_cne` int(11) NOT NULL,
   `cod_estado` int(11) NOT NULL,
   `nom_estado` varchar(100) NOT NULL,
@@ -153,10 +153,10 @@ CREATE TABLE IF NOT EXISTS `mesas_cne` (
   `hasta` int(11) NOT NULL,
   `cant_electores` int(11) NOT NULL,
   `tecnologia` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1032 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `mesas_cne`
+-- Dumping data for table `mesas_cne`
 --
 
 INSERT INTO `mesas_cne` (`id_mesas_cne`, `cod_estado`, `nom_estado`, `id_municipio`, `nom_municipio`, `id_parroquia`, `nom_parroquia`, `codigo_cne`, `nombre`, `direccion`, `mesa`, `tomo`, `desde`, `hasta`, `cant_electores`, `tecnologia`) VALUES
@@ -1200,18 +1200,18 @@ INSERT INTO `mesas_cne` (`id_mesas_cne`, `cod_estado`, `nom_estado`, `id_municip
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `municipios`
+-- Table structure for table `municipios`
 --
 
-CREATE TABLE IF NOT EXISTS `municipios` (
+CREATE TABLE `municipios` (
   `id_municipio` int(11) NOT NULL,
   `nombre` varchar(250) NOT NULL,
   `poblacion` int(11) NOT NULL,
   `abrebiar` varchar(20) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `municipios`
+-- Dumping data for table `municipios`
 --
 
 INSERT INTO `municipios` (`id_municipio`, `nombre`, `poblacion`, `abrebiar`) VALUES
@@ -1231,16 +1231,16 @@ INSERT INTO `municipios` (`id_municipio`, `nombre`, `poblacion`, `abrebiar`) VAL
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `municipio_cne`
+-- Table structure for table `municipio_cne`
 --
 
-CREATE TABLE IF NOT EXISTS `municipio_cne` (
+CREATE TABLE `municipio_cne` (
   `id_municipio` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `municipio_cne`
+-- Dumping data for table `municipio_cne`
 --
 
 INSERT INTO `municipio_cne` (`id_municipio`, `nombre`) VALUES
@@ -1260,18 +1260,18 @@ INSERT INTO `municipio_cne` (`id_municipio`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `parroquias`
+-- Table structure for table `parroquias`
 --
 
-CREATE TABLE IF NOT EXISTS `parroquias` (
+CREATE TABLE `parroquias` (
   `id_parroquia` int(11) NOT NULL,
   `nombre` varchar(250) COLLATE latin1_general_ci NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `poblacion` int(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
--- Volcado de datos para la tabla `parroquias`
+-- Dumping data for table `parroquias`
 --
 
 INSERT INTO `parroquias` (`id_parroquia`, `nombre`, `id_municipio`, `poblacion`) VALUES
@@ -1331,18 +1331,18 @@ INSERT INTO `parroquias` (`id_parroquia`, `nombre`, `id_municipio`, `poblacion`)
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `parroquia_cne`
+-- Table structure for table `parroquia_cne`
 --
 
-CREATE TABLE IF NOT EXISTS `parroquia_cne` (
+CREATE TABLE `parroquia_cne` (
   `id` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `parroquia_cne`
+-- Dumping data for table `parroquia_cne`
 --
 
 INSERT INTO `parroquia_cne` (`id`, `id_municipio`, `id_parroquia`, `nombre`) VALUES
@@ -1404,17 +1404,17 @@ INSERT INTO `parroquia_cne` (`id`, `id_municipio`, `id_parroquia`, `nombre`) VAL
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `partidos`
+-- Table structure for table `partidos`
 --
 
-CREATE TABLE IF NOT EXISTS `partidos` (
+CREATE TABLE `partidos` (
   `id_partidos` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `eliminar` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `partidos`
+-- Dumping data for table `partidos`
 --
 
 INSERT INTO `partidos` (`id_partidos`, `nombre`, `eliminar`) VALUES
@@ -1435,10 +1435,10 @@ INSERT INTO `partidos` (`id_partidos`, `nombre`, `eliminar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registro_clp`
+-- Table structure for table `registro_clp`
 --
 
-CREATE TABLE IF NOT EXISTS `registro_clp` (
+CREATE TABLE `registro_clp` (
   `id_clp` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
@@ -1449,10 +1449,10 @@ CREATE TABLE IF NOT EXISTS `registro_clp` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registro_maestro`
+-- Table structure for table `registro_maestro`
 --
 
-CREATE TABLE IF NOT EXISTS `registro_maestro` (
+CREATE TABLE `registro_maestro` (
   `tipo` int(11) NOT NULL,
   `cedula` int(11) NOT NULL,
   `nombre_apellido` varchar(100) NOT NULL,
@@ -1482,39 +1482,40 @@ CREATE TABLE IF NOT EXISTS `registro_maestro` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `registro_ubch`
+-- Table structure for table `registro_ubch`
 --
 
-CREATE TABLE IF NOT EXISTS `registro_ubch` (
+CREATE TABLE `registro_ubch` (
   `id_ubch` int(11) NOT NULL,
-  `nombre_ubch` int(11) NOT NULL,
+  `nombre_ubch` varchar(100) NOT NULL,
+  `direccion_ubch` varchar(200) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
-  `sector` int(11) NOT NULL,
   `estatus` int(11) NOT NULL COMMENT 'Activa= 1 o Inactiva= 2',
   `id_clp` int(11) NOT NULL,
-  `cod_centro_cne` int(11) NOT NULL,
-  `cod_mesa_cne` int(11) NOT NULL,
-  `cantidad_mesa_cne` int(11) NOT NULL,
   `fecha_registro` varchar(30) NOT NULL,
   `hora_registro` varchar(30) NOT NULL,
   `eliminar` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `registro_ubch`
+-- Dumping data for table `registro_ubch`
 --
 
-INSERT INTO `registro_ubch` (`id_ubch`, `nombre_ubch`, `id_municipio`, `id_parroquia`, `sector`, `estatus`, `id_clp`, `cod_centro_cne`, `cod_mesa_cne`, `cantidad_mesa_cne`, `fecha_registro`, `hora_registro`, `eliminar`) VALUES
-(1, 0, 2, 3, 2, 1, 1, 1, 1, 1, '', '', 0);
+INSERT INTO `registro_ubch` (`id_ubch`, `nombre_ubch`, `direccion_ubch`, `id_municipio`, `id_parroquia`, `estatus`, `id_clp`, `fecha_registro`, `hora_registro`, `eliminar`) VALUES
+(5, 'UNIDAD BASICA HERMINIO LEON COLMENARES', 'URBANIZACION DOMINGA ORITZ DE PAEZ DERECHA CALLE 1 IZQUIERDA CALLE 27 FRENTE CALLE 17 AVENIDA DOMING', 2, 10, 0, 0, '2017-11-01', '19:07:53', 0),
+(6, 'ESCUELA BASICA SANTA LUCIA', 'BARRIO JOSE OLIVAR FRENTE AVENIDA JUAN SANTIAGO TORRES DERECHA CALLE NEGRA MATEA IZQUIERDA CALLE ZAM', 2, 5, 0, 0, '2017-11-01', '11:23:45', 0),
+(7, 'UNIDAD EDUCATIVA DOMINGA ORTIZ DE PAEZ', 'CASER?O CASCO CENTRAL DERECHA CALLE 4 IZQUIERDA CALLE 3 FRENTE CALLE SIMON RODRIGUEZ A 100 METROS DE', 2, 1, 0, 0, '2017-11-01', '12:09:12', 0),
+(8, 'UNIDAD EDUCATIVA NACIONAL BOLIVARIANA MARCELO RAMI', 'SECTOR GUADARRAMA CENTRO DERECHA CALLE PISTA DE ATERRIZAJE IZQUIERDA CALLE LAS FLORES FRENTE CALLE P', 2, 2, 0, 0, '2017-11-01', '12:14:20', 0),
+(9, 'ESCUELA BASICA DON MARIANO PICON SALAS', 'URBANIZACION EZEQUIEL ZAMORA FRENTE AVENIDA C DERECHA CALLE 9 IZQUIERDA CALLE 8 DETRAS DE LA ESCUELA', 2, 7, 0, 0, '2017-11-01', '15:48:04', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `responsable_clp`
+-- Table structure for table `responsable_clp`
 --
 
-CREATE TABLE IF NOT EXISTS `responsable_clp` (
+CREATE TABLE `responsable_clp` (
   `id_responsable_clp` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
@@ -1528,20 +1529,21 @@ CREATE TABLE IF NOT EXISTS `responsable_clp` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `responsable_ubch`
+-- Table structure for table `responsable_ubch`
 --
 
-CREATE TABLE IF NOT EXISTS `responsable_ubch` (
+CREATE TABLE `responsable_ubch` (
   `id_responsable_ubch` int(11) NOT NULL,
+  `id_ubch` int(11) NOT NULL,
   `id_municipio` int(11) NOT NULL,
   `id_parroquia` int(11) NOT NULL,
-  `sector` int(11) NOT NULL,
+  `direccion` varchar(300) NOT NULL,
   `nacionalidad` varchar(1) NOT NULL,
   `cedula` int(11) NOT NULL,
   `nombre_apellido` varchar(60) NOT NULL,
-  `email` int(11) NOT NULL,
-  `telefono_1` int(11) NOT NULL,
-  `telefono_2` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefono_1` varchar(100) NOT NULL,
+  `telefono_2` varchar(100) NOT NULL,
   `vehiculo` int(11) NOT NULL,
   `id_instituciones` int(11) NOT NULL,
   `id_partidos` int(11) NOT NULL,
@@ -1549,201 +1551,207 @@ CREATE TABLE IF NOT EXISTS `responsable_ubch` (
   `fecha_registro` varchar(30) NOT NULL,
   `hora_registro` varchar(30) NOT NULL,
   `eliminar` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `responsable_ubch`
+-- Dumping data for table `responsable_ubch`
 --
 
-INSERT INTO `responsable_ubch` (`id_responsable_ubch`, `id_municipio`, `id_parroquia`, `sector`, `nacionalidad`, `cedula`, `nombre_apellido`, `email`, `telefono_1`, `telefono_2`, `vehiculo`, `id_instituciones`, `id_partidos`, `id_estructura`, `fecha_registro`, `hora_registro`, `eliminar`) VALUES
-(1, 2, 3, 2, 'v', 17997299, 'ajajajajajajaja', 1, 2147483647, 2147483647, 1, 1, 1, 1, '', '', 0);
+INSERT INTO `responsable_ubch` (`id_responsable_ubch`, `id_ubch`, `id_municipio`, `id_parroquia`, `direccion`, `nacionalidad`, `cedula`, `nombre_apellido`, `email`, `telefono_1`, `telefono_2`, `vehiculo`, `id_instituciones`, `id_partidos`, `id_estructura`, `fecha_registro`, `hora_registro`, `eliminar`) VALUES
+(8, 7, 2, 2, 'dominga oritz de paez', 'V', 19881315, 'carlos silva', 'elmorochez@gmail.com', '(0412) 762-4857', '', 1, 1, 1, 2, '2017-11-01', '13:35:22', 0),
+(9, 7, 2, 2, 'dominga oritz de paez', 'V', 19881315, 'carlos silva', 'elmorochez@gmail.com', '(0412) 762-4857', '', 1, 1, 1, 2, '2017-11-01', '13:35:37', 0),
+(10, 7, 2, 2, 'dominga oritz de paez', 'V', 19881315, 'carlos silva', 'elmorochez@gmail.com', '(0412) 762-4857', '', 1, 1, 1, 2, '2017-11-01', '13:36:24', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios` (
+CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `role` varchar(100) NOT NULL,
-  `organismo_id` int(11) NOT NULL,
+  `id_instituciones` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `name`, `password`, `email`, `role`, `organismo_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `usuarios` (`id`, `name`, `password`, `email`, `role`, `id_instituciones`, `created_at`, `updated_at`) VALUES
 (9, 'carlos silva', '$2y$10$hC1orwKyRe0y.Qr2eNzRxOu9UN2GLj2bZ6Q0ajto37WdJEpDi0csK', 'admin', 'admin', 1, '2017-08-02 11:09:10', '2017-08-02 11:09:10');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `estructura`
+-- Indexes for table `estructura`
 --
 ALTER TABLE `estructura`
   ADD PRIMARY KEY (`id_estructura`);
 
 --
--- Indices de la tabla `instituciones`
+-- Indexes for table `instituciones`
 --
 ALTER TABLE `instituciones`
   ADD PRIMARY KEY (`id_instituciones`);
 
 --
--- Indices de la tabla `mesas_cne`
+-- Indexes for table `mesas_cne`
 --
 ALTER TABLE `mesas_cne`
   ADD PRIMARY KEY (`id_mesas_cne`);
 
 --
--- Indices de la tabla `municipios`
+-- Indexes for table `municipios`
 --
 ALTER TABLE `municipios`
-  ADD PRIMARY KEY (`id_municipio`), ADD KEY `id_municipio` (`id_municipio`,`nombre`,`poblacion`,`abrebiar`);
+  ADD PRIMARY KEY (`id_municipio`),
+  ADD KEY `id_municipio` (`id_municipio`,`nombre`,`poblacion`,`abrebiar`);
 
 --
--- Indices de la tabla `municipio_cne`
+-- Indexes for table `municipio_cne`
 --
 ALTER TABLE `municipio_cne`
   ADD PRIMARY KEY (`id_municipio`);
 
 --
--- Indices de la tabla `parroquias`
+-- Indexes for table `parroquias`
 --
 ALTER TABLE `parroquias`
-  ADD PRIMARY KEY (`id_parroquia`), ADD KEY `id_parrouia` (`id_parroquia`,`nombre`,`id_municipio`,`poblacion`);
+  ADD PRIMARY KEY (`id_parroquia`),
+  ADD KEY `id_parrouia` (`id_parroquia`,`nombre`,`id_municipio`,`poblacion`);
 
 --
--- Indices de la tabla `parroquia_cne`
+-- Indexes for table `parroquia_cne`
 --
 ALTER TABLE `parroquia_cne`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `partidos`
+-- Indexes for table `partidos`
 --
 ALTER TABLE `partidos`
   ADD PRIMARY KEY (`id_partidos`);
 
 --
--- Indices de la tabla `registro_clp`
+-- Indexes for table `registro_clp`
 --
 ALTER TABLE `registro_clp`
   ADD PRIMARY KEY (`id_clp`);
 
 --
--- Indices de la tabla `registro_maestro`
+-- Indexes for table `registro_maestro`
 --
 ALTER TABLE `registro_maestro`
-  ADD PRIMARY KEY (`cedula`), ADD UNIQUE KEY `cedula` (`cedula`), ADD UNIQUE KEY `tipo` (`tipo`);
+  ADD PRIMARY KEY (`cedula`),
+  ADD UNIQUE KEY `cedula` (`cedula`),
+  ADD UNIQUE KEY `tipo` (`tipo`);
 
 --
--- Indices de la tabla `registro_ubch`
+-- Indexes for table `registro_ubch`
 --
 ALTER TABLE `registro_ubch`
-  ADD PRIMARY KEY (`id_ubch`), ADD UNIQUE KEY `sector` (`sector`);
+  ADD PRIMARY KEY (`id_ubch`);
 
 --
--- Indices de la tabla `responsable_clp`
+-- Indexes for table `responsable_clp`
 --
 ALTER TABLE `responsable_clp`
   ADD PRIMARY KEY (`id_responsable_clp`);
 
 --
--- Indices de la tabla `responsable_ubch`
+-- Indexes for table `responsable_ubch`
 --
 ALTER TABLE `responsable_ubch`
-  ADD PRIMARY KEY (`id_responsable_ubch`), ADD UNIQUE KEY `sector` (`sector`);
+  ADD PRIMARY KEY (`id_responsable_ubch`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `estructura`
+-- AUTO_INCREMENT for table `estructura`
 --
 ALTER TABLE `estructura`
-  MODIFY `id_estructura` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_estructura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT de la tabla `instituciones`
+-- AUTO_INCREMENT for table `instituciones`
 --
 ALTER TABLE `instituciones`
-  MODIFY `id_instituciones` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
+  MODIFY `id_instituciones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
--- AUTO_INCREMENT de la tabla `mesas_cne`
+-- AUTO_INCREMENT for table `mesas_cne`
 --
 ALTER TABLE `mesas_cne`
-  MODIFY `id_mesas_cne` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1032;
+  MODIFY `id_mesas_cne` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1032;
 --
--- AUTO_INCREMENT de la tabla `municipios`
+-- AUTO_INCREMENT for table `municipios`
 --
 ALTER TABLE `municipios`
-  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT de la tabla `municipio_cne`
+-- AUTO_INCREMENT for table `municipio_cne`
 --
 ALTER TABLE `municipio_cne`
-  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id_municipio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
--- AUTO_INCREMENT de la tabla `parroquias`
+-- AUTO_INCREMENT for table `parroquias`
 --
 ALTER TABLE `parroquias`
-  MODIFY `id_parroquia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+  MODIFY `id_parroquia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 --
--- AUTO_INCREMENT de la tabla `parroquia_cne`
+-- AUTO_INCREMENT for table `parroquia_cne`
 --
 ALTER TABLE `parroquia_cne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 --
--- AUTO_INCREMENT de la tabla `partidos`
+-- AUTO_INCREMENT for table `partidos`
 --
 ALTER TABLE `partidos`
-  MODIFY `id_partidos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id_partidos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- AUTO_INCREMENT de la tabla `registro_clp`
+-- AUTO_INCREMENT for table `registro_clp`
 --
 ALTER TABLE `registro_clp`
   MODIFY `id_clp` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `registro_maestro`
+-- AUTO_INCREMENT for table `registro_maestro`
 --
 ALTER TABLE `registro_maestro`
   MODIFY `tipo` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `registro_ubch`
+-- AUTO_INCREMENT for table `registro_ubch`
 --
 ALTER TABLE `registro_ubch`
-  MODIFY `id_ubch` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_ubch` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT de la tabla `responsable_clp`
+-- AUTO_INCREMENT for table `responsable_clp`
 --
 ALTER TABLE `responsable_clp`
   MODIFY `id_responsable_clp` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `responsable_ubch`
+-- AUTO_INCREMENT for table `responsable_ubch`
 --
 ALTER TABLE `responsable_ubch`
-  MODIFY `id_responsable_ubch` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_responsable_ubch` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

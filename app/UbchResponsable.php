@@ -4,10 +4,10 @@ use App\MunicipioCne;
 use App\ParroquiaCne;
 use \Illuminate\Database\Eloquent\Model;
  
-class Ubch extends Model {
-    protected $table = 'registro_ubch';
+class UbchResponsable extends Model {
+    protected $table = 'responsable_ubch';
 	public $timestamps = false;
-	protected $primaryKey='id_ubch';
+	protected $primaryKey='id_responsable_ubch';
     //Ejemplo de definir campos
     //protected $fillable = ['username','email','password'];
 	public function municipio()
@@ -18,10 +18,5 @@ class Ubch extends Model {
 	public function parroquia()
 	{
 		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
-	}
-
-	public function responsable()
-	{
-		return $this->hasOne(UbchResponsable::class, 'id_ubch','id_ubch');
 	}
 }

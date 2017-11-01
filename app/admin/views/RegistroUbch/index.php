@@ -5,7 +5,7 @@
   </div>
   <div class="panel-body">
     <div class="col-md-12 table-responsive">
-      <table style="box-shadow: -1px 0px 4px #444;" class="table table-striped table-bordered table-condensed animated fadeIn" data-striped="true">
+      <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
         <thead>
           <tr class="">
             <th width="" class="text-uppercase">Nombre UBCH</th>

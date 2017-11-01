@@ -1,11 +1,11 @@
 <div id="panel" class="panel panel-danger">
   <div class="panel-heading">
     <h3 class="panel-title text-muted"><i class="fa fa-file fa-2x"></i> INDEX DEL MODULO admin<b></b>
-    <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/cuentas/create"><i class="fa fa-plus-square text-primary"></i><i style="color:#777;"> Agregar Usuario</i></a>    </h3>
+    <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/cuentas/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar Usuario</i></a>    </h3>
   </div>
   <div class="panel-body">
     <div class="col-md-12 table-responsive">
-      <table style="box-shadow: -1px 0px 4px #444;" class="table table-striped table-bordered table-condensed animated fadeIn" data-striped="true">
+      <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
         <thead>
           <tr class="">
             <th>ID</th>
