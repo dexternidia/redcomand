@@ -21,12 +21,12 @@ class RegistroUbch
 
     public function index()
     {
-        //$ubch = Ubch::all();
-        //View(compact('ubch'));
+        $ubch = Ubch::all();
+        View(compact('ubch'));
         //$municipios = MunicipioCne::all();
         //$parroquias = ParroquiaCne::all();
-        $mesas = MesasCne::all();
-        Arr($mesas);
+       // $mesas = MesasCne::all();
+        //Arr($mesas);
     }
 
     public function parroquias()
