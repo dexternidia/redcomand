@@ -124,11 +124,11 @@ class RegistroUbch
 
         if($ubch->save())
         {
-            Success('RegistroUbch/'.$ubch->id,'El registro fue guardado.');
+            Success('ResponsableUbch/create/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
         }
         else
         {
-            Error('solicitantes/','Error al ingresar ubch.');
+            Error('RegistroUbch/','Error al ingresar ubch.');
         }
     }
 

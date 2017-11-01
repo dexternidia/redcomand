@@ -6,7 +6,7 @@ $("#municipioSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idMunicipio = $(this).val();
 //alert(idMunicipio);
-$.get("<?php echo baseUrl ?>admin/RegistroUbch/parroquias", { idMunicipio:idMunicipio }, function(data){
+$.get("<?php echo baseUrl ?>admin/RegistroUbch/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
 $("#ParroquiaSelect").html(data);
 });
 });
@@ -15,36 +15,21 @@ $("#ParroquiaSelect").html(data);
 </script>
 <script language="javascript">
 $(document).ready(function(){
-var inputEmail = $("#inputEmail").val();
-//alert(tipo_id);
-$.get("<?php echo baseUrl ?>admin/RegistroUbch/parroquias", { idMunicipio:idMunicipio }, function(data){
-$("#ParroquiaSelect").html(data);
+$("#ParroquiaSelect").change(function () {
+$("#ParroquiaSelect option:selected").each(function () {
+//organismo_id = $(this).val();
+//id1 = $(this).val();
+var idParroquia = $(this).val();
+//alert(idParroquia);
+$.get("<?php echo baseUrl ?>admin/RegistroUbch/mesasCne", { idParroquia:idParroquia }, function(data){
+$("#MesasSelect").html(data);
 });
 });
-$('#IngresarSolicitante').click(function () {
-$(":input").each(function(){
-this.value = this.value.toUpperCase();
+})
 });
-});
-function enviar(argument) {
-var email = $("#inputEmail").val();
-//alert(inputEmail);
-$.get("<?php echo baseUrl ?>admin/solicitantes/verificar_email", { email:email }, function(existe){
-if(existe == true) {
-swal(
-'Error...',
-'El email ya esta registrado por solicitante.',
-'error'
-)
-}
-else {
-$("#IngresarSolicitante").submit();
-}
-});
-}
 </script>
 <div id="panel" class="panel panel-primary">
-  <div class="panel-heading">
+  <div class="panel-heading" style="background-color: red">
     <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR RESPONSABLE UBCH</h3>
   </div>
   <br>
@@ -52,74 +37,43 @@ $("#IngresarSolicitante").submit();
     <form action="<?php echo baseUrl ?>admin/RegistroUbch" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" type="text" name="nombre_ubch" placeholder="Nombre de la UBCH" required/>
-          </div>
-        </div>
         <div class="col-lg-1">
           <div class="form-group">
-            <?php if (isset($ubch->nacionalidad)): ?>
-            <select class="form-control" name="nacionalidad" required readonly/>
-              <option value="<?php echo $ubch->nacionalidad ?>"><?php echo $ubch->nacionalidad ?></option>
-            </select>
-            <?php else: ?>
-            <select class="form-control" name="nacionalidad" required/>
-              <option value="">Nacionalidad</option>
-              <option value=""></option>
+            <select class="form-control" name="nacionalidad" id="">
               <option value="V">V</option>
               <option value="E">E</option>
             </select>
-            <?php endif ?>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="form-group">
-            <?php if (isset($ubch->cedula)): ?>
-            <input class="form-control" type="text" name="cedula" placeholder="Cédula" value="<?php echo $ubch->cedula ?>" required readonly>
-            <?php else: ?>
-            <input class="form-control" type="text" name="cedula" placeholder="Cédula" required/>
-            <?php endif ?>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="form-group">
-            <?php if (isset($ubch->nombre_apellido)): ?>
-            <input class="form-control text-uppercase" type="text" name="nombre_apellido" placeholder="Nombre y Apellido" value="<?php echo $ubch->nombre_apellido ?>" required readonly/>
-            <?php else: ?>
-            <input class="form-control" type="text" name="nombre_apellido" placeholder="Nombre y Apellido" required/>
-            <?php endif ?>
+            <input class="form-control" type="number" placeholder="CEDULA">
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="form-group">
+            <input class="form-control" type="text" placeholder="NOMBRE Y APELLIDO">
           </div>
         </div>
         <div class="col-lg-4">
           <div class="form-group">
-            <input id="inputEmail" class="form-control" type="email" name="email" placeholder="Email"/>
+            <select id="" class="form-control" name="vehiculo" required/>
+              <option value="">VEHICULO</option>
+              <option value="1">SI</option>
+              <option value="0">NO</option>
+            </select>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono_1" placeholder="Telefono n°1" required/>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text" name="telefono_2" placeholder="Telefono n°2"/>
-          </div>
-        </div>
+        
         <div class="col-lg-4">
           <div class="form-group">
             <select id="municipioSelect" class="form-control" name="id_municipio" required/>
               <?php
-              use App\Municipio;
-              $municipios = Municipio::all();
+              use App\MunicipioCne;
+              $municipios = MunicipioCne::all();
               ?>
-              <?php if(isset($ubch->id_municipio)): ?>
-              <?php $municipio_solicitante = Municipio::find($ubch->id_municipio); ?>
-              <option value="<?php echo $municipio_solicitante->id_municipio ?>"><?php echo $municipio_solicitante->nombre ?></option>
-              <?php else: ?>
-              <option value="">MUNICIPIOS</option>
-              <?php endif ?>
-              <option value="">-----------------</option>
+              <option>MUNICIPIOS</option>
+              <option></option>
               <?php foreach ($municipios as $municipio): ?>
               <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
               <?php endforeach ?>
@@ -129,67 +83,21 @@ $("#IngresarSolicitante").submit();
         <div class="col-lg-4">
           <div class="form-group">
             <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
-              <?php
-              use App\Parroquia;
-              $parroquias = Parroquia::all();
-              ?>
-              <?php if (isset($ubch->id_parroquia)): ?>
-              <?php $parroquia_solicitante = Parroquia::find($ubch->id_parroquia); ?>
-              <option value="<?php echo $parroquia_solicitante->id_parroquia ?>"><?php echo $municipio_solicitante->nombre ?></option>
-              <?php else: ?>
-              <option value="">PARROQUIAS</option>
-              <?php endif ?>
-              <option value="">-----------------</option>
-              <?php foreach ($parroquias as $parroquia): ?>
-              <option value="<?php echo $parroquia->id_parroquia ?>"><?php echo $parroquia->nombre ?></option>
-              <?php endforeach ?>
             </select>
           </div>
         </div>
-        <div class="col-lg-4">
+        
+        <div class="col-lg-8">
           <div class="form-group">
-            <?php if (isset($ubch->sector)): ?>
-            <input class="form-control" type="text" name="sector" placeholder="Urbanización/Barrio/Sector" value="<?php echo $ubch->sector ?>" required/>
-            <?php else: ?>
-            <input class="form-control" type="text" name="sector" placeholder="Urbanización/Barrio/Sector" required/>
-            <?php endif ?>
+            <input class="form-control" type="text" placeholder="DIRECCIÓN">
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <select style="width: 100%" name="id_instituciones" required/>
-              <option value="">INSTITUCIONES</option>
-              <option value="">-----------------</option>
-              <?php foreach ($instituciones as $i): ?>
-              <option value="<?php echo $i->id_instituciones ?>"><?php echo $i->nombre ?></option>
-              <?php endforeach ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <select style="width: 100%" name="id_partidos" required/>
-              <option value="">PARTIDOS</option>
-              <option value="">-----------------</option>
-              <?php foreach ($partidos as $p): ?>
-              <option value="<?php echo $p->id_partidos ?>"><?php echo $p->nombre ?></option>
-              <?php endforeach ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <select style="width: 100%" name="id_estructura" required/>
-              <option value="">ESTRUCTURA</option>
-              <option value="">-----------------</option>
-              <?php foreach ($estructura as $e): ?>
-              <option value="<?php echo $e->id_estructura ?>"><?php echo $e->nombre ?></option>
-              <?php endforeach ?>
-            </select>
-          </div>
+        
+        <div class="col-lg-12">
+          <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
         </div>
       </div>
-      <br>
-      <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-primary pull-right"><i class="fa fa-save fa-2x"></i></button>
-    </form>
-  </div>
+    </div>
+    <br>
+  </form>
+</div>

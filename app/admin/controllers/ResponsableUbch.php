@@ -1,4 +1,4 @@
- <?php
+<?php
 namespace App\admin\controllers;
 use App\Municipio;
 use App\Parroquia;

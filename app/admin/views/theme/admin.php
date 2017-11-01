@@ -73,6 +73,8 @@
     background: grey;
     color: #fff;
     }
+
+    
     </style>
   </head>
   <body>
@@ -100,7 +102,8 @@
                       ?>
                     </a>
                     <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
-                      <li><a href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
+                      <li><a class="text-danger" href="<?php echo baseUrl ?>admin/cuentas"><i class="fa fa-users"></i> Cuentas</a></li>
+                      <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -110,19 +113,19 @@
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="#" id="" data-toggle="collapse" data-target="#consultasMenu" aria-expanded="false"><i class="fa fa-clipboard"></i> CONSULTAS</a>
                   <ul class="nav collapse" id="consultasMenu" role="menu" aria-labelledby="btn-1">
-                    <li><a href="<?php echo baseUrl ?>admin/consultas/solicitante"><i class="fa fa-user"></i> SOLICITANTE</a></li>
-                    <li><a href="<?php echo baseUrl ?>admin/consultas/solicitud"><i class="fa fa-clipboard"></i> SOLICITUD</a></li>
+                    <li><a class="text-danger" href="<?php echo baseUrl ?>admin/consultas/solicitante"><i class="fa fa-user"></i> SOLICITANTE</a></li>
+                    <li><a class="text-danger"  href="<?php echo baseUrl ?>admin/consultas/solicitud"><i class="fa fa-clipboard"></i> SOLICITUD</a></li>
                   </ul>
                 </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#" id="" data-toggle="collapse" data-target="#solicitudesMenu" aria-expanded="false"><i class="fa fa-clipboard"></i> SOLICITUDES</a>
                 <ul class="nav collapse" id="solicitudesMenu" role="menu" aria-labelledby="btn-1">
-                  <li><a href="<?php echo baseUrl ?>admin/solicitudes"><i class="fa fa-unlock"></i> ABIERTAS</a></li>
-                  <li><a href="<?php echo baseUrl ?>admin/consultas/cerradas"><i class="fa fa-lock"></i> CERRADAS</a></li>
-                  <li><a href="<?php echo baseUrl ?>admin/consultas/aprobadas"><i class="fa fa-check-square"></i> APROBADAS</a></li>
-                  <li><a href="<?php echo baseUrl ?>admin/consultas/rechazadas"><i class="fa fa-window-close"></i> RECHAZADAS</a></li>
-                  <li><a href="<?php echo baseUrl ?>admin/consultas/entregadas"><i class="fa fa-window-close"></i> ENTREGADAS</a></li>
+                  <li><a class="text-danger"  href="<?php echo baseUrl ?>admin/solicitudes"><i class="fa fa-unlock"></i> ABIERTAS</a></li>
+                  <li><a class="text-danger"  href="<?php echo baseUrl ?>admin/consultas/cerradas"><i class="fa fa-lock"></i> CERRADAS</a></li>
+                  <li><a class="text-danger"  href="<?php echo baseUrl ?>admin/consultas/aprobadas"><i class="fa fa-check-square"></i> APROBADAS</a></li>
+                  <li><a class="text-danger"  href="<?php echo baseUrl ?>admin/consultas/rechazadas"><i class="fa fa-window-close"></i> RECHAZADAS</a></li>
+                  <li><a class="text-danger"  href="<?php echo baseUrl ?>admin/consultas/entregadas"><i class="fa fa-window-close"></i> ENTREGADAS</a></li>
                 </ul>
               </li>
             </ul>

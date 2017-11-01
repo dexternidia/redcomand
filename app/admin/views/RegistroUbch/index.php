@@ -5,13 +5,13 @@
   </div>
   <div class="panel-body">
     <div class="col-md-12 table-responsive">
-      <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
+      <table style="box-shadow: -1px 0px 4px #444;" class="table table-striped table-bordered table-condensed animated fadeIn" data-striped="true">
         <thead>
-          <tr style="background-color: red" class="bg-primary text-white">
+          <tr class="">
             <th width="" class="text-uppercase">Nombre UBCH</th>
             <th width="" class="text-uppercase">Municipio</th>
             <th width="" class="text-uppercase">Parroquia</th>
-            <th width="" class="text-uppercase">Direcciòn</th>
+            <th width="40%" class="text-uppercase">Direcciòn</th>
             <th width="" class="text-uppercase">Estatus</th>
             <th class="text-uppercase">Ver</th>
           </tr>
@@ -24,7 +24,7 @@
             <td><?php echo $u->parroquia->nombre ?></td>
             <td><?php echo $u->direccion_ubch ?></td>
             <td><?php echo $u->parroquia->estatus ?></td>
-            <td><a class="btn btn-danger fa fa-search" href="<?php echo baseUrl ?>admin/RegistroUbch/<?php echo $u->id_ubch ?>"></a></td>
+            <td><a class="text-danger fa fa-search fa-2x" href="<?php echo baseUrl ?>admin/RegistroUbch/<?php echo $u->id_ubch ?>"></a></td>
           </tr>
           <?php endforeach ?>
         </tbody>

@@ -2,6 +2,7 @@
 namespace App;
 
 use App\BancoPersonal;
+use App\Institucion;
 use App\LaboratorioPersonal;
 use \Illuminate\Database\Eloquent\Model;
  
@@ -18,6 +19,11 @@ class Usuario extends Model {
 	public function laboratorio_personal()
 	{
 		return $this->hasOne(LaboratorioPersonal::class, 'usuario_id','id');
+	}
+
+	public function instituciones()
+	{
+		return $this->belongsTo(Institucion::class, 'id_instituciones','id_instituciones');
 	}
 }
 

@@ -1,6 +1,6 @@
 <?php
 namespace App\admin\controllers;
-use App\Organismo;
+use App\Instituciones;
 use App\Usuario;
 use Carbon\Carbon;
 
