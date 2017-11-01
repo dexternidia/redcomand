@@ -11,8 +11,9 @@
             <th width="" class="text-uppercase">Nombre UBCH</th>
             <th width="" class="text-uppercase">Municipio</th>
             <th width="" class="text-uppercase">Parroquia</th>
-            <th width="" class="text-uppercase">Sector</th>
-            <th width="" class="text-uppercase">Opciones</th>
+            <th width="" class="text-uppercase">Direcciòn</th>
+            <th width="" class="text-uppercase">Estatus</th>
+            <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,8 @@
             <td><?php echo $u->nombre_ubch ?></td>
             <td><?php echo $u->municipio->nombre ?></td>
             <td><?php echo $u->parroquia->nombre ?></td>
+            <td><?php echo $u->direccion_ubch ?></td>
+            <td><?php echo $u->parroquia->estatus ?></td>
             <td><?php ?></td>
           </tr>
           <?php endforeach ?>

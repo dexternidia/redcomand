@@ -23,8 +23,6 @@ class RegistroUbch
     {
         $ubch = Ubch::all();
         View(compact('ubch'));
-        //$municipios = MunicipioCne::all();
-        //$parroquias = ParroquiaCne::all();
        // $mesas = MesasCne::all();
         //Arr($mesas);
     }
@@ -56,12 +54,12 @@ class RegistroUbch
     public function mesasCne()
     {
         extract($_GET);
-        $parroquias = MesasCne::where('id_parroquia',$idParroquia)->get();
-        //var_dump($parroquias);
+        $mesas = MesasCne::where('id_parroquia',$idParroquia)->get();
+        //var_dump($mesas);
         echo "<option value=''>MESAS</option>";
         echo "<option value=''></option>";
-        foreach ($parroquias as $key => $parroquia) {
-            echo '<option value="'.$parroquia->id_mesas_cne.'">'.$parroquia->nombre.'</option>';
+        foreach ($mesas as $key => $m) {
+            echo '<option value="'.$m->id_mesas_cne.'">'.$m->nombre.' Mesa Nª'.$m->mesa.'</option>';
         } 
     }
 
@@ -107,6 +105,9 @@ class RegistroUbch
         extract($_POST);
         extract($_GET);
 
+        $mesa = MesasCne::where('id_mesas_cne',$id_mesa)->first();
+        $nombre_ubch = $mesa->nombre;
+        $direccion_ubch = $mesa->direccion;
         //Arr($_POST);
         $fecha_hora_registro = Carbon::now();
         list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
@@ -114,19 +115,16 @@ class RegistroUbch
         $ubch->nombre_ubch = $nombre_ubch;
         $ubch->id_municipio = $id_municipio;
         $ubch->id_parroquia = $id_parroquia;
-        $ubch->sector = $sector;
-        $ubch->estatus = $estatus;
-        $ubch->id_clp = $id_clp;
-        $ubch->cod_centro_cne = $cod_centro_cne;
-        $ubch->cod_mesa_cne = $cod_mesa_cne;
-        $ubch->cantidad_mesa_cne = $cantidad_mesa_cne;
+        $ubch->direccion_ubch = $direccion_ubch;
+        $ubch->estatus = 0;
+        $ubch->id_clp = 0;
         $ubch->fecha_registro = $fecha_registro;
         $ubch->hora_registro = $hora_registro;  
         $ubch->eliminar = 0;
 
         if($ubch->save())
         {
-            Success('solicitantes/'.$ubch->id,'El registro fue guardado.');
+            Success('RegistroUbch/'.$ubch->id,'El registro fue guardado.');
         }
         else
         {

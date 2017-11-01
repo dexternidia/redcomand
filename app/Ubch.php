@@ -1,7 +1,7 @@
 <?php 
 namespace App;
-use App\Municipio;
-use App\Parroquia;
+use App\MunicipioCne;
+use App\ParroquiaCne;
 use \Illuminate\Database\Eloquent\Model;
  
 class Ubch extends Model {
@@ -12,11 +12,11 @@ class Ubch extends Model {
     //protected $fillable = ['username','email','password'];
 	public function municipio()
 	{
-		return $this->hasOne(Municipio::class, 'id_municipio','id_municipio');
+		return $this->hasOne(MunicipioCne::class, 'id_municipio','id_municipio');
 	}
 
 	public function parroquia()
 	{
-		return $this->hasOne(Parroquia::class, 'id_parroquia','id_parroquia');
+		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
 	}
 }
