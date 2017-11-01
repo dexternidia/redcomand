@@ -5,7 +5,7 @@ use App\Parroquia;
 use \Illuminate\Database\Eloquent\Model;
  
 class Ubch extends Model {
-    protected $table = 'ubch';
+    protected $table = 'registro_ubch';
 	public $timestamps = false;
 	protected $primaryKey='id_ubch';
     //Ejemplo de definir campos

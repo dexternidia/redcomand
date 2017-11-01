@@ -1,4 +1,4 @@
-<?php
+ <?php
 namespace App\admin\controllers;
 use App\Municipio;
 use App\Parroquia;
@@ -7,12 +7,9 @@ use Carbon\Carbon;
 use App\Institucion;
 use App\Partido;
 use App\Estructura;
-use App\MunicipioCne;
-use App\ParroquiaCne;
-use App\MesasCne;
 use System\tools\rounting\Redirect;
 
-class RegistroUbch
+class ResponsableUbch
 {
     function __construct()
     {
@@ -21,12 +18,8 @@ class RegistroUbch
 
     public function index()
     {
-        //$ubch = Ubch::all();
-        //View(compact('ubch'));
-        //$municipios = MunicipioCne::all();
-        //$parroquias = ParroquiaCne::all();
-        $mesas = MesasCne::all();
-        Arr($mesas);
+        $ubch = Ubch::all();
+        View(compact('ubch'));
     }
 
     public function parroquias()
@@ -38,30 +31,6 @@ class RegistroUbch
         echo "<option value=''></option>";
         foreach ($parroquias as $key => $parroquia) {
             echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->nombre.'</option>';
-        } 
-    }
-
-    public function parroquiasCne()
-    {
-        extract($_GET);
-        $parroquias = ParroquiaCne::where('id_municipio',$idMunicipio)->get();
-        //var_dump($parroquias);
-        echo "<option value=''>PARROQUIA</option>";
-        echo "<option value=''></option>";
-        foreach ($parroquias as $key => $parroquia) {
-            echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->nombre.'</option>';
-        } 
-    }
-
-    public function mesasCne()
-    {
-        extract($_GET);
-        $parroquias = MesasCne::where('id_parroquia',$idParroquia)->get();
-        //var_dump($parroquias);
-        echo "<option value=''>MESAS</option>";
-        echo "<option value=''></option>";
-        foreach ($parroquias as $key => $parroquia) {
-            echo '<option value="'.$parroquia->id_mesas_cne.'">'.$parroquia->nombre.'</option>';
         } 
     }
 
@@ -111,17 +80,16 @@ class RegistroUbch
         $fecha_hora_registro = Carbon::now();
         list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
         $ubch = new Ubch;
-        $ubch->nombre_ubch = $nombre_ubch;
-        $ubch->id_municipio = $id_municipio;
-        $ubch->id_parroquia = $id_parroquia;
-        $ubch->sector = $sector;
-        $ubch->estatus = $estatus;
-        $ubch->id_clp = $id_clp;
-        $ubch->cod_centro_cne = $cod_centro_cne;
-        $ubch->cod_mesa_cne = $cod_mesa_cne;
-        $ubch->cantidad_mesa_cne = $cantidad_mesa_cne;
-        $ubch->fecha_registro = $fecha_registro;
-        $ubch->hora_registro = $hora_registro;  
+        $ubch->nacionalidad = $nacionalidad;
+        $ubch->cedula = $cedula;
+        $ubch->nombre_apellido = $nombre_apellido;
+        $ubch->email = $email;
+        $ubch->telefono_1 = $telefono_1;
+        $ubch->telefono_2 = $telefono_2;
+        $ubch->vehiculo = $vehiculo;
+        $ubch->id_instituciones = $id_instituciones;
+        $ubch->id_partidos = $id_partidos;
+        $ubch->id_estructura = $id_estructura; 
         $ubch->eliminar = 0;
 
         if($ubch->save())
