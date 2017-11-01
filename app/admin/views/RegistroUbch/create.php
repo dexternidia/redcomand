@@ -62,7 +62,7 @@ $("#MesasSelect").html(data);
         
         <div class="col-lg-4">
           <div class="form-group">
-            <select name="id_mesa" id="MesasSelect" style="width:280px;height:34px">
+            <select class="form-control" name="id_mesa" id="MesasSelect">
             </select>
           </div>
         </div>
