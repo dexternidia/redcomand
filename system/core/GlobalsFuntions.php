@@ -85,6 +85,11 @@ function Uri($num)
 	return \System\tools\url\Url::uri($num);
 }
 
+function Token()
+{
+    return Token::field();
+}
+
 function variable_name( &$var, $scope=false, $prefix='UNIQUE', $suffix='VARIABLE' ){
     if($scope) {
         $vals = $scope;
@@ -107,7 +112,7 @@ function baseUrlRole()
     
     if($test->isExpired() == TRUE)
     {
-        \System\tools\rounting\Redirect::sendController($url,'info','Sesión ya expiro, porfavor vuelva a loguearse.');
+        \System\tools\rounting\Redirect::sendController('','info','Sesión ya expiro, porfavor vuelva a loguearse.');
     }
     else
     {
@@ -122,3 +127,4 @@ function UsuarioRole()
     $usuario = (object) \System\tools\session\Session::get('current_user');
     return $usuario->role;
 }
+
