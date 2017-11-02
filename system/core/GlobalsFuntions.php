@@ -100,3 +100,25 @@ function variable_name( &$var, $scope=false, $prefix='UNIQUE', $suffix='VARIABLE
     $var = $old;
     return $vname;
 }
+
+function baseUrlRole()
+{
+    $test = new System\tools\session\Session;
+    
+    if($test->isExpired() == TRUE)
+    {
+        \System\tools\rounting\Redirect::sendController($url,'info','Sesión ya expiro, porfavor vuelva a loguearse.');
+    }
+    else
+    {
+        $usuario = (object) \System\tools\session\Session::get('current_user');
+        $baseUrlRole = baseUrl.''.$usuario->role;
+        return $baseUrlRole;
+    }
+}
+
+function UsuarioRole()
+{
+    $usuario = (object) \System\tools\session\Session::get('current_user');
+    return $usuario->role;
+}

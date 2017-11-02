@@ -35,7 +35,7 @@ $("#MesasSelect").html(data);
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrl ?>admin/RegistroUbch" method="POST">
+    <form action="<?php echo baseUrlRole() ?>/RegistroUbch" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
         <div class="col-lg-4">

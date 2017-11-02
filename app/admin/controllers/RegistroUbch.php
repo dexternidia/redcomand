@@ -54,12 +54,12 @@ class RegistroUbch
     public function mesasCne()
     {
         extract($_GET);
-        $mesas = MesasCne::where('id_parroquia',$idParroquia)->get();
+        $mesas = MesasCne::where('id_parroquia',$idParroquia)->where('mesa',1)->get();
         //var_dump($mesas);
         echo "<option value=''>MESAS</option>";
         echo "<option value=''></option>";
         foreach ($mesas as $key => $m) {
-            echo '<option value="'.$m->id_mesas_cne.'">'.$m->nombre.' Mesa Nª'.$m->mesa.'</option>';
+            echo '<option value="'.$m->id_mesas_cne.'">'.$m->nombre.'</option>';
         } 
     }
 
@@ -105,28 +105,41 @@ class RegistroUbch
         extract($_GET);
 
         $mesa = MesasCne::where('id_mesas_cne',$id_mesa)->first();
-        $nombre_ubch = $mesa->nombre;
-        $direccion_ubch = $mesa->direccion;
-        $fecha_hora_registro = Carbon::now();
-        list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
-        $ubch = new Ubch;
-        $ubch->nombre_ubch = $nombre_ubch;
-        $ubch->id_municipio = $id_municipio;
-        $ubch->id_parroquia = $id_parroquia;
-        $ubch->direccion_ubch = $direccion_ubch;
-        $ubch->estatus = 0;
-        $ubch->id_clp = 0;
-        $ubch->fecha_registro = $fecha_registro;
-        $ubch->hora_registro = $hora_registro;  
-        $ubch->eliminar = 0;
 
-        if($ubch->save())
+        $existeUbch = Ubch::where('nombre_ubch',$mesa->nombre)
+        ->where('id_municipio',$mesa->id_municipio)
+        ->where('id_parroquia',$mesa->id_parroquia)
+        ->first();
+
+        if(!$existeUbch)
         {
-            Success('ResponsableUbch/create/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
+            $nombre_ubch = $mesa->nombre;
+            $direccion_ubch = $mesa->direccion;
+            $fecha_hora_registro = Carbon::now();
+            list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
+            $ubch = new Ubch;
+            $ubch->nombre_ubch = $nombre_ubch;
+            $ubch->id_municipio = $id_municipio;
+            $ubch->id_parroquia = $id_parroquia;
+            $ubch->direccion_ubch = $direccion_ubch;
+            $ubch->estatus = 0;
+            $ubch->id_clp = 0;
+            $ubch->fecha_registro = $fecha_registro;
+            $ubch->hora_registro = $hora_registro;  
+            $ubch->eliminar = 0;
+
+            if($ubch->save())
+            {
+                Success('ResponsableUbch/create/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
+            }
+            else
+            {
+                Error('RegistroUbch/','Error al ingresar ubch.');
+            }
         }
         else
         {
-            Error('RegistroUbch/','Error al ingresar ubch.');
+            Error('RegistroUbch/','El UBCH ya existe.');
         }
     }
 
