@@ -1,7 +1,7 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-building-o fa-2x"></i> partidos<b></b>
-    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>/partidos/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar PARTIDO</i></a>    </h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-handshake-o fa-2x"></i> PARTIDOS<b></b>
+    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>partidos/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar PARTIDO</i></a>    </h3>
   </div>
   <div class="panel-body">
     <div class="col-md-12 table-responsive">
@@ -17,9 +17,9 @@
           <tr>
             <td><?php echo $u->nombre ?></td>
             <td width="5%">
-              <form action="<?php echo baseUrlRole() ?>/partidos/<?php echo $u->id_partidos ?>/delete" method="POST">
+              <form action="<?php echo baseUrlRole() ?>partidos/<?php echo $u->id_partidos ?>/delete" method="POST">
                 <?php echo Token() ?>
-                <a class="text-primary fa fa-pencil fa-2x" href="<?php echo baseUrlRole() ?>/partidos/<?php echo $u->id_partidos ?>/edit"></a>
+                <a class="text-primary fa fa-pencil fa-2x" href="<?php echo baseUrlRole() ?>partidos/<?php echo $u->id_partidos ?>/edit"></a>
                 <a class="text-danger fa fa-times fa-2x" href="#" onclick="this.parentNode.submit(); return false;"></a>
               </form>
             </td>

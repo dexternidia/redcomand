@@ -1,6 +1,6 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-file fa-2x"></i> Registro Ubch<b></b>
+    <h3 class="panel-title text-muted"><i class="fa fa-university fa-2x"></i> Registro Ubch<b></b>
     <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/RegistroUbch/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar UBCH</i></a>    </h3>
   </div>
   <div class="panel-body">

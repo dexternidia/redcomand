@@ -1,6 +1,6 @@
 <div id="panel" class="panel panel-danger">
   <div class="panel-heading">
-    <h3 class="panel-title text-muted"><i class="fa fa-user fa-2x"></i> UBCH<b> <?php echo strtoupper($ubch->nombre_ubch) ?></b>
+    <h3 class="panel-title text-muted"><i class="fa fa-university fa-2x"></i> UBCH<b> <?php echo strtoupper($ubch->nombre_ubch) ?></b>
     </h3>
   </div>
   <div class="panel-body">

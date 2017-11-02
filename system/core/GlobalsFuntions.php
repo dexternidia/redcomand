@@ -117,7 +117,7 @@ function baseUrlRole()
     else
     {
         $usuario = (object) \System\tools\session\Session::get('current_user');
-        $baseUrlRole = baseUrl.''.$usuario->role;
+        $baseUrlRole = baseUrl.''.$usuario->role.'/';
         return $baseUrlRole;
     }
 }

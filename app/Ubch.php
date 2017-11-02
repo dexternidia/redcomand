@@ -24,4 +24,9 @@ class Ubch extends Model {
 	{
 		return $this->hasOne(UbchResponsable::class, 'id_ubch','id_ubch');
 	}
+
+	public function mesas()
+	{
+		return $this->belongsTo(MesasCne::class, 'tipo_solicitud_id', 'id');
+	}
 }

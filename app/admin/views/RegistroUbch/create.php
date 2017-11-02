@@ -31,7 +31,7 @@ $("#MesasSelect").html(data);
 
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR UBCH</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-university fa-2x"></i> INGRESAR UBCH</h3>
   </div>
   <br>
   <div class="panel-body">

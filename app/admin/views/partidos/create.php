@@ -1,10 +1,10 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-building-o fa-2x"></i> AGREGAR PARTIDO<b></b>
-    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>/partidos/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar Partido</i></a>    </h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-handshake-o fa-2x"></i> AGREGAR PARTIDO<b></b>
+    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>partidos/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar Partido</i></a>    </h3>
   </div>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>/partidos" method="POST">
+    <form action="<?php echo baseUrlRole() ?>partidos" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
        <br>
