@@ -50,8 +50,8 @@ $("#MesasSelect").html(data);
         </div>
         <div class="col-lg-4">
           <select name="role" class="form-control" name="role" id="">
-            <option value="admin">UBCH</option>
-            <option value="aliado">ADMIN</option>
+            <option value="ubch">UBCH</option>
+            <option value="admin">ADMIN</option>
             <option value="operador">OPERADOR</option>
           </select>
         </div>
