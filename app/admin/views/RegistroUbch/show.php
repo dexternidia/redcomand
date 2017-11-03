@@ -19,7 +19,7 @@
             <table class="table table-user-information panel panel-default animated fadeIn">
               <tbody>
                 <tr>
-                  <td width="50%" class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-address-card-o"></i> Nombre:</b></td>
+                  <td width="30%" class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-address-card-o"></i> Nombre:</b></td>
                   <td class="text-uppercase"><?php echo ucwords($ubch->nombre_ubch) ?></td>
                 </tr>
                 <tr>
@@ -31,7 +31,7 @@
                   <td class="text-uppercase"><?php echo $ubch->parroquia->nombre ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa fa-map"></i> Dirección:</b></td>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-map"></i> Dirección:</b></td>
                   <td class="text-uppercase"><?php echo $ubch->direccion_ubch ?></td>
                 </tr>
                 <tr>
@@ -39,11 +39,15 @@
                   <td class="text-uppercase"><?php echo $ubch->fecha_registro ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa fa-archive"></i> Cantidad Mesas:</b></td>
-                  <td class="text-uppercase"><?php echo $ubch->fecha_registro ?></td>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-archive"></i> Cantidad Mesas:</b></td>
+                  <td class="text-uppercase"><?php echo $ubch->numero_mesas ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa fa-calendar"></i> Estatus:</b></td>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa fa-archive"></i> Cantidad Electores:</b></td>
+                  <td class="text-uppercase"><?php echo $ubch->cantidad_electores ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-calendar"></i> Estatus:</b></td>
                   <td class="text-uppercase">
                     <?php if ($ubch->estatus): ?>
                     <?php if ($ubch->estatus == 1): ?>

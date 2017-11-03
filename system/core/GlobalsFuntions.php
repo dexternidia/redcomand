@@ -109,15 +109,15 @@ function variable_name( &$var, $scope=false, $prefix='UNIQUE', $suffix='VARIABLE
 function baseUrlRole()
 {
     $test = new System\tools\session\Session;
-    
-    if($test->isExpired() == TRUE)
+    $has_session = session_status() == PHP_SESSION_ACTIVE;
+    if(!$has_session == TRUE)
     {
         \System\tools\rounting\Redirect::sendController('','info','Sesión ya expiro, porfavor vuelva a loguearse.');
     }
     else
     {
-        $usuario = (object) \System\tools\session\Session::get('current_user');
-        $baseUrlRole = baseUrl.''.$usuario->role.'/';
+        $usuario = \System\tools\session\Session::get('current_user');
+        $baseUrlRole = baseUrl.''.$usuario['role'].'/';
         return $baseUrlRole;
     }
 }
@@ -126,5 +126,20 @@ function UsuarioRole()
 {
     $usuario = (object) \System\tools\session\Session::get('current_user');
     return $usuario->role;
+}
+
+function User()
+{
+    $test = new System\tools\session\Session;
+    $has_session = session_status() == PHP_SESSION_ACTIVE;
+    if(!$has_session == TRUE)
+    {
+        \System\tools\rounting\Redirect::sendController('','info','Sesión ya expiro, porfavor vuelva a loguearse.');
+    }
+    else
+    {
+        $usuario = \System\tools\session\Session::get('current_user');
+        return $usuario;
+    }
 }
 

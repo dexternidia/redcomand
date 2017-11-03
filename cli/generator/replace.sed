@@ -1,4 +1,4 @@
 
 s/${modulo}/admin/
-s/${controller}/RegistroClp/
+s/${controller}/ProblematicasUbch/
 s/${vista}/show/

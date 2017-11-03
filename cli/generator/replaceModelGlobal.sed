@@ -1,3 +1,3 @@
 
-s/${model}/Beneficiario/
-s/${tabla}/beneficiarios/
+s/${model}/Clp/
+s/${tabla}/registro_clp/

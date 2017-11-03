@@ -105,6 +105,8 @@ class RegistroUbch
         extract($_GET);
 
         $mesa = MesasCne::where('id_mesas_cne',$id_mesa)->first();
+        $centro = MesasCne::where('codigo_cne',$mesa->codigo_cne)->get();
+
 
         $existeUbch = Ubch::where('nombre_ubch',$mesa->nombre)
         ->where('id_municipio',$mesa->id_municipio)
@@ -118,6 +120,9 @@ class RegistroUbch
             $fecha_hora_registro = Carbon::now();
             list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
             $ubch = new Ubch;
+            $ubch->codigo_cne = $mesa->codigo_cne;
+            $ubch->numero_mesas = $centro->count();
+            $ubch->cantidad_electores = $centro->sum('cant_electores');
             $ubch->nombre_ubch = $nombre_ubch;
             $ubch->id_municipio = $id_municipio;
             $ubch->id_parroquia = $id_parroquia;
