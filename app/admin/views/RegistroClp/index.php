@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($ubch as $key => $u): ?>
+          <?php foreach ($clp as $key => $u): ?>
           <tr>
             <td><?php echo $u->nombre_ubch ?></td>
             <td><?php echo $u->municipio->nombre ?></td>
@@ -30,7 +30,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <?php echo Paginator($ubch); ?>
+        <?php echo Paginator($clp); ?>
       </div>
     </div>
   </div>

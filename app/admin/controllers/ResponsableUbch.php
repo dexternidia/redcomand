@@ -62,7 +62,7 @@ class ResponsableUbch
 
     public function create()
     {
-        $id_ubch = Uri(5);
+        $id_ubch = Uri(6);
         $instituciones = Institucion::all();
         $partidos = Partido::all();   
         $estructura = Estructura::all();     

@@ -1,5 +1,6 @@
 <?php
 namespace App\admin\controllers;
+use App\Institucion;
 use App\Instituciones;
 use App\Usuario;
 use Carbon\Carbon;
@@ -19,7 +20,7 @@ class Cuentas
 
     public function create()
     {
-        $organismos = Organismo::all();
+        $organismos = Institucion::all();
         View(compact('organismos'));
     }
 
@@ -36,7 +37,10 @@ class Cuentas
         $usuario->email = $email;
         $usuario->password = $clave;
         $usuario->role = $role;
-        $usuario->organismo_id = $organismo_id;
+        $usuario->id_instituciones = $id_instituciones;
+        $usuario->id_municipio = $id_municipio;
+        $usuario->id_parroquia = $id_parroquia;
+        $usuario->id_control = 0;
         $usuario->created_at = Carbon::now();
         $usuario->updated_at = Carbon::now();
         
@@ -77,5 +81,17 @@ class Cuentas
         {
             Error('cuentas/create','Error al borrar cuenta.');
         }
+    }
+
+    public function parroquiasCne()
+    {
+        extract($_GET);
+        $parroquias = ParroquiaCne::where('id_municipio',$idMunicipio)->get();
+        //var_dump($parroquias);
+        echo "<option value=''>PARROQUIA</option>";
+        echo "<option value=''></option>";
+        foreach ($parroquias as $key => $parroquia) {
+            echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->nombre.'</option>';
+        } 
     }
 }

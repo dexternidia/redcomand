@@ -9,9 +9,10 @@ use App\Parroquia;
 use App\ParroquiaCne;
 use App\Partido;
 use App\Ubch;
+use System\core\BaseController;
 use System\tools\session\Session;
 
-class RegistroClp
+class RegistroClp extends BaseController
 {
     function __construct()
     {
@@ -20,8 +21,8 @@ class RegistroClp
 
     public function index()
     {
-        $usuario = User();
-        $clp = Clp::where('id_usuario',$usuario['id'])->get();
+
+        $clp = Clp::where('id_usuario',parent::User()->id)->get();
         View(compact('clp'));
        // $mesas = MesasCne::all();
         //Arr($clp);
