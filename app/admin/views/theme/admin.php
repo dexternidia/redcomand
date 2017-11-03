@@ -120,7 +120,7 @@
                   <li class=""><a href="<?php echo baseUrlRole() ?>instituciones"><i class="fa fa-building-o"></i> INSTITUCIONES</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>clp"><i class="fa fa-wpexplorer"></i> CLP</a></li>
+                  <li class=""><a href="<?php echo baseUrlRole() ?>RegistroClp"><i class="fa fa-wpexplorer"></i> CLP</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
                   <li class=""><a href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-university"></i> UBCH</a></li>
