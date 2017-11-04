@@ -20,9 +20,7 @@ abstract class BaseController
 	    {
 	        //$usuario = "";
 	        $usuario = \System\tools\session\Session::get('current_user');
-	        $arr = array('id'=>$usuario['id'],'name'=>$usuario['name']);
-	        $arr = (object) $arr;
-	        $GLOBALS['user'] = $arr;
+	        $arr = (object) $usuario;
 	        return $arr;
 	    }
 	}

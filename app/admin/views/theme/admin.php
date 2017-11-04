@@ -138,7 +138,6 @@
                     <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-bullseye"></i> Ver Centro</a></li>
                     <li><a class="text-danger" href="<?php echo baseUrlRole() ?>ProblematicasUbch"><i class="fa fa-exclamation-triangle"></i> Problematicas</a></li>
                     <li><a class="text-danger" href="<?php echo baseUrlRole() ?>requerimientos"><i class="fa fa-cogs"></i> Requerimientos</a></li>
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-street-view"></i> 1 x 10</a></li>
                     <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-search"></i> Consulta</a></li>
                   </ul>
                 </li>
@@ -188,7 +187,6 @@
                   <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-bullseye"></i> Ver Centro</a></li>
                   <li><a class="text-danger" href="<?php echo baseUrlRole() ?>ProblematicasUbch2"><i class="fa fa-exclamation-triangle"></i> Problematicas</a></li>
                   <li><a class="text-danger" href="<?php echo baseUrlRole() ?>requerimientos"><i class="fa fa-cogs"></i> Requerimientos</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-street-view"></i> 1 x 10</a></li>
                   <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-search"></i> Consulta</a></li>
                 </ul>
               </li>

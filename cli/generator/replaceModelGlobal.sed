@@ -1,3 +1,3 @@
 
-s/${model}/Cne/
-s/${tabla}/tabla_cne/
+s/${model}/Requerimiento/
+s/${tabla}/requerimientos/

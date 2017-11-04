@@ -59,7 +59,11 @@ class Login
 			                'name'  => $usuario->name,
 			                'email' => $usuario->email,
 			                'role'		=> $usuario->role,
-			                'organismo_id'=> $usuario->organismo_id
+			                'id_instituciones'=> $usuario->id_instituciones,
+			                'id_control' => $usuario->id_control,
+			                'id_municipio' => $usuario->id_municipio,
+			                'id_parroquia' => $usuario->id_parroquia,
+			                'estatus' => $usuario->estatus,
 			            );
 
 			           	$session->register(1000); // Register for 2 hours.
