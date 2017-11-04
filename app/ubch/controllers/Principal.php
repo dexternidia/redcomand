@@ -12,7 +12,7 @@ class Principal
 
     public function index()
     {
-        Redirect::to('ubch/RegistroUbch');
+        Redirect::to('ubch/RegistroUbch2');
     }
 
     public function create()
