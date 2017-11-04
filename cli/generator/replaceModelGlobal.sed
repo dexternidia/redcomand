@@ -1,3 +1,3 @@
 
-s/${model}/Clp/
-s/${tabla}/registro_clp/
+s/${model}/Cne/
+s/${tabla}/tabla_cne/

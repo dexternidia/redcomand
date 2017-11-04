@@ -1,23 +1,28 @@
 <?php
-namespace App\ubch\controllers;
+namespace App\admin\controllers;
 
-use System\tools\rounting\Redirect;
-
-class Principal
+class Requerimientos
 {
     function __construct()
     {
-        Role('ubch');
+        Role('admin');
+    }
+
+    public function busqueda()
+    {
+        View();
     }
 
     public function index()
     {
-        Redirect::to('admin/RegistroUbch');
+        View();
     }
 
     public function create()
     {
-        View();
+        extract($_POST);
+        Arr($_POST);
+        //View();
     }
 
     public function store()

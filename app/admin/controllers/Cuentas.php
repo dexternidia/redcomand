@@ -29,7 +29,6 @@ class Cuentas
         extract($_POST);
 
         //Arr($_POST);
-
         $clave = password_hash($password, PASSWORD_DEFAULT);
 
         $usuario = new Usuario;

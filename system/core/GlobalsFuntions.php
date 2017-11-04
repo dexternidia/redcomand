@@ -34,6 +34,11 @@ function Role($role)
 	\System\tools\security\Permission::withRole($role);
 }
 
+function ManyRoles($roles)
+{
+    \System\tools\security\Permission::WithManyRoles($roles);
+}
+
 function View($data=Null)
 {
     //motor de plantilla BLADE

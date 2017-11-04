@@ -1,4 +1,4 @@
 
-s/${modulo}/ubch/
-s/${controller}/Principal/
+s/${modulo}/admin/
+s/${controller}/Requerimientos/
 s/${vista}/show/

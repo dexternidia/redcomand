@@ -16,7 +16,8 @@ class RegistroUbch
 {
     function __construct()
     {
-        Role('admin');
+        //Role('admin');
+        ManyRoles(array('admin','ubch'));
     }
 
     public function index()
