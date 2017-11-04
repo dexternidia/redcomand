@@ -48,7 +48,7 @@ $("#MesasSelect").html(data);
         </div>
 
         <div class="col-lg-4">
-          <input class="form-control" type="number" name="telefono" type="hidden">
+          <input class="form-control" type="number" name="telefono" type="text">
         </div>
         
         
