@@ -1,5 +1,5 @@
 <?php
-namespace App\admin\controllers;
+namespace App\ubch\controllers;
 use App\Municipio;
 use App\Parroquia;
 use App\Ubch;
@@ -12,11 +12,11 @@ use App\ParroquiaCne;
 use App\MesasCne;
 use System\tools\rounting\Redirect;
 
-class RegistroUbch
+class RegistroUbch2
 {
     function __construct()
     {
-        Role('admin');
+        Role('ubch');
     }
 
     public function index()
@@ -135,16 +135,16 @@ class RegistroUbch
 
             if($ubch->save())
             {
-                Success('ResponsableUbch/create/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
+                Success('ResponsableUbch2/create/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
             }
             else
             {
-                Error('RegistroUbch/','Error al ingresar ubch.');
+                Error('RegistroUbch2/','Error al ingresar ubch.');
             }
         }
         else
         {
-            Error('RegistroUbch/','El UBCH ya existe.');
+            Error('RegistroUbch2/','El UBCH ya existe.');
         }
     }
 
