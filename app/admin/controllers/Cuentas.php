@@ -42,6 +42,7 @@ class Cuentas
         $usuario->id_control = 0;
         $usuario->created_at = Carbon::now();
         $usuario->updated_at = Carbon::now();
+        $usuario->estatus = 0;
         
         if($usuario->save())
         {

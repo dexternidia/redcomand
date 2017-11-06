@@ -1,4 +1,4 @@
 
-s/${modulo}/admin/
-s/${model}/Estadisticas/
+s/${modulo}/clp/
+s/${model}/Principal/
 s/${tabla}/index/

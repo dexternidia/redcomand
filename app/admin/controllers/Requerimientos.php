@@ -47,6 +47,8 @@ class Requerimientos extends BaseController
         $requerimientos->cedula = $cedula;
         $requerimientos->telefono = $telefono;
         $requerimientos->id_ubch =$id_ubch;
+        $requerimientos->estatus = 0;
+        $requerimientos->eliminar = 0;  
 
         if($requerimientos->save())
         {

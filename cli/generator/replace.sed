@@ -1,4 +1,4 @@
 
-s/${modulo}/admin/
-s/${controller}/Requerimientos/
+s/${modulo}/clp/
+s/${controller}/Cuentas/
 s/${vista}/show/
