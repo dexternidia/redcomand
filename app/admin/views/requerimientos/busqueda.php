@@ -36,6 +36,7 @@ $("#MesasSelect").html(data);
   <div class="panel-body">
     <form action="<?php echo baseUrlRole() ?>requerimientos/create" method="POST">
       <?php echo Token() ?>
+      <input type="hidden" name="id_ubch" value="<?php echo $id_ubch ?>">
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group">

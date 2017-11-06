@@ -1,16 +1,17 @@
 <?php
 namespace App\admin\controllers;
+use App\Estructura;
+use App\Institucion;
+use App\MesasCne;
 use App\Municipio;
+use App\MunicipioCne;
 use App\Parroquia;
+use App\ParroquiaCne;
+use App\Partido;
 use App\Ubch;
 use Carbon\Carbon;
-use App\Institucion;
-use App\Partido;
-use App\Estructura;
-use App\MunicipioCne;
-use App\ParroquiaCne;
-use App\MesasCne;
 use System\tools\rounting\Redirect;
+use System\tools\session\User;
 
 class RegistroUbch
 {
@@ -22,7 +23,9 @@ class RegistroUbch
 
     public function index()
     {
-        $ubch = Ubch::all();
+        $ubch = Ubch::where('id_municipio',User::data()->id_municipio)
+        ->where('id_parroquia',User::data()->id_parroquia)
+        ->get();
         View(compact('ubch'));
        // $mesas = MesasCne::all();
         //Arr($mesas);
@@ -153,8 +156,9 @@ class RegistroUbch
     {
         $ubch = Ubch::find($id);
         $responsable = $ubch->responsable;
-        //Arr($ubch);
-        View(compact('ubch','responsable'));
+        $requerimientos = $ubch->requerimientos;
+        $problematicas = $ubch->problematicas;
+        View(compact('ubch','responsable','requerimientos','problematicas'));
     }
 
     public function edit($id)

@@ -9,7 +9,7 @@ class Arr {
     {
         	
     }
-
+    
     public static function reduce($data)
     {
 		return	array_reduce((array) $data, 'array_merge', array());

@@ -44,11 +44,11 @@ $("#MesasSelect").html(data);
           <input class="form-control" name="nombre_apellido" type="text" value="<?php echo $cne->apellido_1.' '.$cne->nombre_1?>" required placeholder="NOMBRE">
         </div>
         <div class="col-lg-4">
-          <input class="form-control" name="id_ubch" type="hidden" value="<?php echo $id_control ?>">
+          <input class="form-control" name="id_ubch" type="hidden" value="<?php echo $id_ubch ?>">
         </div>
 
         <div class="col-lg-4">
-          <input class="form-control" type="number" name="telefono" type="text">
+          <input class="form-control" placeholder="TELEFONO CELULAR" type="number" name="telefono" type="text">
         </div>
         
         

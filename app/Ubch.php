@@ -2,6 +2,7 @@
 namespace App;
 use App\MunicipioCne;
 use App\ParroquiaCne;
+use App\Problematica;
 use \Illuminate\Database\Eloquent\Model;
  
 class Ubch extends Model {
@@ -28,5 +29,15 @@ class Ubch extends Model {
 	public function mesas()
 	{
 		return $this->belongsTo(MesasCne::class, 'tipo_solicitud_id', 'id');
+	}
+
+	public function requerimientos()
+	{
+		return $this->hasMany(Requerimiento::class,'id_ubch','id_ubch');
+	}
+
+	public function problematicas()
+	{
+		return $this->hasMany(Problematica::class,'id_ubch','id_ubch');
 	}
 }

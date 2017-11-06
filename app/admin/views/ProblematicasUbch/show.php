@@ -47,7 +47,7 @@
                   <td class="text-uppercase">
                     <?php if ($problema->estatus): ?>
                     <?php if ($problema->estatus == 1): ?>
-                    <button class="btn btn-danger"><i class="fa fa-check"></i> Solucionado</button>
+                    <button class="btn btn-success"><i class="fa fa-check"></i> Solucionado</button>
                     <?php else: ?>
                     <button class="btn btn-danger"><i class="fa fa-check"></i> En Estudio</button>
                     <?php endif ?>

@@ -14,32 +14,27 @@ class Requerimientos extends BaseController
 
     public function index()
     {
-        View();
+        extract($_GET);
+        $requerimientos = Requerimiento::where('id_ubch',$id_ubch);
+        View(compact('requerimientos'));
     }
 
     public function busqueda()
     {
-        View();
-        //Arr($id_control);
-        //View();
+        $id_ubch = Uri(5);
+        View(compact('id_ubch'));
     }
 
     public function create()
     {
         extract($_POST);
-
-        $id_control = parent::User()->id_control;
-
-        if($id_control)
+        $cne = Cne::where('id',$cedula)->first();
+        if(!$cne)
         {
-            $cne = Cne::where('id',$cedula)->first();
-            //Arr($cne);
-            View(compact('id_control','cne'));
+            $cne = "";
         }
-        else
-        {
-            echo "tiene que crear centro";
-        }
+        //Arr($cne);
+        View(compact('id_ubch','cne'));
     }
 
     public function store()
@@ -55,11 +50,11 @@ class Requerimientos extends BaseController
 
         if($requerimientos->save())
         {
-            Success('requerimientos','Inserción con exito.');
+            Success('requerimientos?id_ubch='.$id_ubch.'','Inserción con exito.');
         }
         else
         {
-            Error('requerimientos','Error en inserción');
+            Success('requerimientos?id_ubch='.$id_ubch.'','Inserción con exito.');
         }
     }
 
