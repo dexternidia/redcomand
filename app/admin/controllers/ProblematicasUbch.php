@@ -23,8 +23,7 @@ class ProblematicasUbch
 
     public function create()
     {
-       // $id_ubch = Uri(5);
-        $id_ubch = 5;
+        $id_ubch = Uri(5);
         $tipo = TipoProblematica::all();
         View(compact('id_ubch','tipo')); 
         //Arr($solicitante);
@@ -46,11 +45,11 @@ class ProblematicasUbch
 
         if($problematica->save())
         {
-            Success('ProblematicasUbch','Guardada existosamente...');
+            Success('RegistroUbch/'.$id_ubch.'','Guardada existosamente...');
         }
         else
         {
-             Error('ProblematicasUbch','Vuelva a intentarlo...');
+             Error('RegistroUbch/'.$id_ubch.'','Vuelva a intentarlo...');
         }
     }
 

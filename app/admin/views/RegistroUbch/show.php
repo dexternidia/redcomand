@@ -172,7 +172,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> REQUERIMINETOS DE COMUNICACIÓN
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>requerimientos/busqueda/<?php echo $ubch->id ?>"><i class="fa fa-plus text-primary"></i></a>
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>requerimientos/busqueda/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <br>
           </div>
@@ -230,7 +230,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> PROBLEMATICAS
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>requerimientos/busqueda/<?php echo $ubch->id ?>"><i class="fa fa-plus text-primary"></i></a>
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>ProblematicasUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <br>
           </div>
@@ -244,7 +244,7 @@ text-align: center;
                 </tr>
               </thead>
               <tbody>
-                <?php foreach (Paginator($problematicas) as $key => $u): ?>
+                <?php foreach ($problematicas as $key => $u): ?>
                 <tr>
                   <td><?php echo $u->tipo->nombre ?></td>
                   <td class="text-uppercase">

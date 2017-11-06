@@ -50,11 +50,11 @@ class Requerimientos extends BaseController
 
         if($requerimientos->save())
         {
-            Success('requerimientos?id_ubch='.$id_ubch.'','Inserción con exito.');
+            Success('RegistroUbch/'.$id_ubch.'','Inserción con exito.');
         }
         else
         {
-            Success('requerimientos?id_ubch='.$id_ubch.'','Inserción con exito.');
+            Success('RegistroUbch/'.$id_ubch.'','Error al insertar requerimiento.');
         }
     }
 
