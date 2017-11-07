@@ -12,8 +12,9 @@ class Principal extends Controller
         Role('clp');
     }
 
+
     public function index()
     {
-		View();
+		Redirect::to('clp/centros');
     }
 }

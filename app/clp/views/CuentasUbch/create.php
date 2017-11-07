@@ -34,15 +34,30 @@ $("#MesasSelect").html(data);
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>cuentas" method="POST">
+    <form action="<?php echo baseUrlRole() ?>CuentasUbch" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
         <div class="col-lg-4">
           <input class="form-control" type="text" name="name" placeholder="NOMBRE Y APELLIDO">
         </div>
+        <div class="col-lg-4">
+          <select id="" class="form-control" name="id_instituciones" required/>
+            <option value="">ORGANISMOS</option>
+            <?php foreach ($organismos as $key => $or): ?>
+            <option value="<?php echo $or->id_instituciones ?>"><?php echo $or->nombre ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
+        <div class="col-lg-4">
+          <select class="form-control" name="id_ubch" required>
+            <option value="">CENTRO</option>
+            <?php foreach ($centros as $key => $centro): ?>
+            <option value="<?php echo $centro->id_ubch ?>"><?php echo $centro->nombre_ubch ?></option>
+            <?php endforeach ?>
+          </select>
+        </div>
       </div>
       <br>
-
       <div class="row">
         <div class="col-lg-12">
           <h4 class="text-muted text-center text-uppercase">

@@ -131,7 +131,8 @@ function User()
 {
     if (array_key_exists('current_user', $_SESSION)) 
     {
-        $objecto = json_decode(json_encode($array), FALSE);
+        $usuario = \System\tools\session\Session::get('current_user');
+        $objecto = json_decode(json_encode($usuario), FALSE);
         $usuario = $_SESSION['current_user'];
         return $usuario;
     }

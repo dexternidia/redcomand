@@ -1,4 +1,4 @@
 
-s/${modulo}/clp/
-s/${controller}/CuentasUbch/
+s/${modulo}/camionero/
+s/${controller}/Camion/
 s/${vista}/show/

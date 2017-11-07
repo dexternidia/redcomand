@@ -21,7 +21,8 @@ class RegistroUbch2
 
     public function index()
     {
-        $ubch = Ubch::all();
+        $user = User();
+        $ubch = Ubch::where('id_ubch',$user['id_ubch'])->get();
         View(compact('ubch'));
        // $mesas = MesasCne::all();
         //Arr($mesas);

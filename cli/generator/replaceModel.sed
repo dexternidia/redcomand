@@ -1,4 +1,4 @@
 
-s/${modulo}/clp/
+s/${modulo}/municipal/
 s/${model}/Principal/
 s/${tabla}/index/

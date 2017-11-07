@@ -23,9 +23,7 @@ class RegistroUbch
 
     public function index()
     {
-        $ubch = Ubch::where('id_municipio',User::data()->id_municipio)
-        ->where('id_parroquia',User::data()->id_parroquia)
-        ->get();
+        $ubch = Ubch::all();
         View(compact('ubch'));
        // $mesas = MesasCne::all();
         //Arr($mesas);

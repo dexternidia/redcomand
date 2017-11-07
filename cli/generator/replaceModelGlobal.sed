@@ -1,3 +1,3 @@
 
-s/${model}/Requerimiento/
-s/${tabla}/requerimientos/
+s/${model}/UbchSolicitudComunicacion/
+s/${tabla}/solicitudes_comunicaiones_ubch/

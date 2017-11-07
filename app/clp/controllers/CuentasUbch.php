@@ -3,7 +3,9 @@ namespace App\clp\controllers;
 
 use App\Institucion;
 use App\Ubch;
+use App\Usuario;
 use App\admin\controllers\RegistroUbch;
+use Carbon\Carbon;
 use System\core\BaseController;
 use System\tools\session\User;
 
@@ -16,25 +18,57 @@ class CuentasUbch extends BaseController
 
     public function index()
     {
-        View();
+        $usuario = User();
+        $usuariosubch = Usuario::where('id_municipio',$usuario['id_municipio'])
+        ->where('id_parroquia',$usuario['id_parroquia'])
+        ->where('role','ubch')
+        ->get();
+        View(compact('usuariosubch'));
     }
 
     public function create()
     {
         //Arr($usuario);
         $usuario = User();
-        $ubch = Ubch::where('id_municipio',$usuario['id_municipio'])
+        $centros = Ubch::where('id_municipio',$usuario['id_municipio'])
         ->where('id_parroquia',$usuario['id_parroquia'])
         ->get();
 
-        Arr($ubch);
+        //Arr($ubch);
         $organismos = Institucion::all();
-        //View(compact('ubch','organismos'));
+        View(compact('centros','organismos'));
     }
 
     public function store()
     {
+        extract($_POST);
+        //Arr($_POST);
+        $clave = password_hash($password, PASSWORD_DEFAULT);
+        $user = User();
 
+        $usuario = new Usuario;
+        $usuario->name = $name;
+        $usuario->email = $email;
+        $usuario->password = $clave;
+        $usuario->role = 'ubch';
+        $usuario->id_instituciones = $id_instituciones;
+        $usuario->id_municipio = $user['id_municipio'];
+        $usuario->id_parroquia = $user['id_parroquia'];
+        $usuario->id_municipal = 0;
+        $usuario->id_clp = 0;
+        $usuario->id_ubch = $id_ubch;
+        $usuario->created_at = Carbon::now();
+        $usuario->updated_at = Carbon::now();
+        $usuario->estatus = 0;
+        
+        if($usuario->save())
+        {
+            Success('CuentasUbch','La cuenta fue creada.');
+        }
+        else
+        {
+            Error('CuentasUbch/create','Error al crear la cuenta.');
+        }
     }
 
     public function show($id)
