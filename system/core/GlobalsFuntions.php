@@ -127,9 +127,17 @@ function baseUrlRole()
     }
 }
 
-function UsuarioRole()
+function User()
 {
-    $usuario = (object) \System\tools\session\Session::get('current_user');
-    return $usuario->role;
+    if (array_key_exists('current_user', $_SESSION)) 
+    {
+        $objecto = json_decode(json_encode($array), FALSE);
+        $usuario = $_SESSION['current_user'];
+        return $usuario;
+    }
+    else
+    {
+        \System\tools\rounting\Redirect::sendController('','info','Sesión ya expiro, porfavor vuelva a loguearse.');
+    }
 }
 

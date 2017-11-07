@@ -30,7 +30,7 @@ $("#MesasSelect").html(data);
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-university fa-2x"></i> INGRESAR UBCH</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR CUENTA UBCH</h3>
   </div>
   <br>
   <div class="panel-body">
@@ -40,45 +40,9 @@ $("#MesasSelect").html(data);
         <div class="col-lg-4">
           <input class="form-control" type="text" name="name" placeholder="NOMBRE Y APELLIDO">
         </div>
-        <div class="col-lg-4">
-          <select id="" class="form-control" name="id_instituciones" required/>
-            <option value="">ORGANISMOS</option>
-            <?php foreach ($organismos as $key => $or): ?>
-            <option value="<?php echo $or->id_instituciones ?>"><?php echo $or->nombre ?></option>
-            <?php endforeach ?>
-          </select>
-        </div>
-        <div class="col-lg-4">
-          <select name="role" class="form-control" name="role" id="" required>
-            <option value="">ROLE</option>
-            <option value="admin">ADMIN</option>
-            <option value="clp">CLP</option>
-          </select>
-        </div>
       </div>
       <br>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <select id="municipioSelect" class="form-control" name="id_municipio" required/>
-              <?php
-              $municipios = \App\MunicipioCne::all();
-              ?>
-              <option>MUNICIPIOS</option>
-              <option></option>
-              <?php foreach ($municipios as $municipio): ?>
-              <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
-              <?php endforeach ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
-            </select>
-          </div>
-        </div>
-      </div>
+
       <div class="row">
         <div class="col-lg-12">
           <h4 class="text-muted text-center text-uppercase">

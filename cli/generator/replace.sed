@@ -1,4 +1,4 @@
 
 s/${modulo}/clp/
-s/${controller}/Cuentas/
+s/${controller}/CuentasUbch/
 s/${vista}/show/

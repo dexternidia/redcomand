@@ -9,6 +9,7 @@ class Principal extends Controller
     function __construct()
     {
         parent::__construct();
+        Role('clp');
     }
 
     public function index()

@@ -27,7 +27,6 @@ class Cuentas
     public function store()
     {
         extract($_POST);
-
         //Arr($_POST);
         $clave = password_hash($password, PASSWORD_DEFAULT);
 
