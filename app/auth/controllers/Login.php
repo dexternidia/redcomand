@@ -15,7 +15,7 @@ class Login
 	    if ($session->isRegistered()) {
 	        // Check to see if the session has expired.
 	        // If it has, end the session and redirect to login.
-            $usuario = (object) Session::get('current_user');
+            $usuario = (object) Session::get(sessionNameDefault);
             $url = $usuario->role.'/principal';
             Redirect::to($url);
             
@@ -28,7 +28,7 @@ class Login
 	        {
 	            // Keep renewing the session as long as they keep taking action.
 	            $session->renew();
-	            $usuario = (object) Session::get('current_user');
+	            $usuario = (object) Session::get(sessionNameDefault);
 	            $url = $usuario->role.'/principal';
 	            Redirect::to($url);
 	        }
@@ -67,7 +67,7 @@ class Login
 			            );
 
 			           	$session->register(1000); // Register for 2 hours.
-			            $session->set('current_user', $user);
+			            $session->set(sessionNameDefault, $user);
 			            $_SESSION['nombre_usuario'] = $usuario->name;
 			            //header('location: '.baseUrl.'admin/pensionados');
 			            Redirect::to('auth/login/index');
@@ -97,10 +97,11 @@ class Login
 
 	public function sesion()
 	{
-		$usuario = (object) Session::get('current_user');
+		//$usuario = (object) Session::get('current_user');
 		//echo $usuario['role'];
-		echo $usuario->role;
+		//echo $usuario->role;
 		//Arr::show(Session::get('usuario'));
+		echo sessionNameDefault;
 	}
 
 	public function logout()

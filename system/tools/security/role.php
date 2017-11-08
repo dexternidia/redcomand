@@ -20,7 +20,7 @@ class Permission {
             } 
             else 
             {
-                $usuario = (object) Session::get('current_user');
+                $usuario = (object) Session::get(sessionNameDefault);
                 if($usuario->role != $this->param)
                 {
                     Redirect::to('');
@@ -46,7 +46,7 @@ class Permission {
 	            } 
 	            else 
 	            {
-	                $usuario = (object) Session::get('current_user');
+	                $usuario = (object) Session::get(sessionNameDefault);
 	                if($usuario->role != $role)
 	                {
 	                    Redirect::to('');
@@ -72,7 +72,7 @@ class Permission {
 	            } 
 	            else 
 	            {
-	                $usuario = (object) Session::get('current_user');
+	                $usuario = (object) Session::get(sessionNameDefault);
 	                if(!in_array($usuario->role, $roles))
 	                {
 	                    Redirect::to('');

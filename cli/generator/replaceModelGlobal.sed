@@ -1,3 +1,3 @@
 
-s/${model}/UbchSolicitudComunicacion/
-s/${tabla}/solicitudes_comunicaiones_ubch/
+s/${model}/TipoSolicitud/
+s/${tabla}/tipo_solicitudes/

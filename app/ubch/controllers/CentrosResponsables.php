@@ -10,7 +10,7 @@ use App\Partido;
 use App\UbchResponsable;
 use Carbon\Carbon;
 
-class CentrosResponsables
+class CentrosResponsables2
 {
     function __construct()
     {

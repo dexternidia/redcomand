@@ -121,7 +121,7 @@ function baseUrlRole()
     }
     else
     {
-        $usuario = \System\tools\session\Session::get('current_user');
+        $usuario = \System\tools\session\Session::get(sessionNameDefault);
         $baseUrlRole = baseUrl.''.$usuario['role'].'/';
         return $baseUrlRole;
     }
@@ -129,11 +129,11 @@ function baseUrlRole()
 
 function User()
 {
-    if (array_key_exists('current_user', $_SESSION)) 
+    if (array_key_exists(sessionNameDefault, $_SESSION)) 
     {
-        $usuario = \System\tools\session\Session::get('current_user');
+        $usuario = \System\tools\session\Session::get(sessionNameDefault);
         $objecto = json_decode(json_encode($usuario), FALSE);
-        $usuario = $_SESSION['current_user'];
+        $usuario = $_SESSION[sessionNameDefault];
         return $usuario;
     }
     else

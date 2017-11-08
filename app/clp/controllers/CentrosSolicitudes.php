@@ -1,15 +1,13 @@
 <?php
 namespace App\clp\controllers;
 
-use App\Problematica;
-use App\TipoProblematica;
-use App\Ubch;
+use App\TipoSolicitud;
 
-class CentrosProblematicas2
+class CentrosSolicitudes
 {
     function __construct()
     {
-        Role('ubch');
+        Role('clp');
     }
 
     public function index()
@@ -20,11 +18,10 @@ class CentrosProblematicas2
     public function create()
     {
         $id_ubch = Uri(5);
-        $tipo = TipoProblematica::all();
+        $tipo = TipoSolicitud::all();
         View(compact('id_ubch','tipo')); 
-        //Arr($solicitante);
+        //Arr($solicitante);    
     }
-
 
     public function store()
     {
@@ -52,35 +49,17 @@ class CentrosProblematicas2
 
     public function show($id)
     {
-        $problema = Problematica::find($id);
-        View(compact('problema'));
-       // Arr($problema); 
-    }
 
+    }
 
     public function edit($id)
     {
-        $problema = Problematica::find($id);
-        View(compact('problema'));
+        View(compact('id'));
     }
 
     public function update($id)
     {
-        extract($_POST);
-       //Arr($_POST); //Array para ver que envia el formulario
-        $problematica = Problematica::find($id);
-        $problematica->id_problema = $tipo;
-        $problematica->observaciones = $observacion; 
-        $problematica->estatus = $estatus;
 
-        if($problematica->save())
-        {
-            Success('centrosProblematicas/'.$problematica->id_problematica_ubch.'','Actulizada exitosamente la problematica.');
-        }
-        else
-        {
-            Error('centrosProblematicas/'.$problematica->id_problematica_ubch.'','Error al editar problematica.');
-        }
     }
 
     public function destroy($id)

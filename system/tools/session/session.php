@@ -63,7 +63,7 @@ class Session
      */
     public function get($key)
     {
-        if (array_key_exists('current_user', $_SESSION)) 
+        if (array_key_exists(sessionNameDefault, $_SESSION)) 
         {
             return $_SESSION[$key];
         }
@@ -91,7 +91,7 @@ class Session
      */
     public function getSessionId()
     {
-        return $_SESSION['session_id'];
+        return $_SESSION[sessionNameDefault];
     }
 
     /**

@@ -5,7 +5,7 @@ use App\MesasCne;
 use App\Ubch;
 use Carbon\Carbon;
 
-class Centros
+class Centros2
 {
     function __construct()
     {

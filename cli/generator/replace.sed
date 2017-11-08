@@ -1,4 +1,4 @@
 
-s/${modulo}/camionero/
-s/${controller}/Camion/
+s/${modulo}/clp/
+s/${controller}/CentrosSolicitudes/
 s/${vista}/show/

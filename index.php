@@ -2,9 +2,9 @@
 use System\tools\security\Token;
 use System\tools\session\Session;
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/system/core/GlobalsFuntions.php';
 (new Dotenv\Dotenv(__DIR__))->overload();
 require('config/define/execute.php');
+require_once __DIR__ . '/system/core/GlobalsFuntions.php';
 session_start();
 new Eloquent();
 //Manejador de errores

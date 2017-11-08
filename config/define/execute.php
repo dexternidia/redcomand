@@ -28,6 +28,15 @@ else
 	define('metodoDefault','');
 }
 
+if($sessionNameDefault)
+{
+	define('sessionNameDefault', $sessionNameDefault);
+}
+else
+{
+	define('sessionNameDefault', '');
+}
+
 define('DB_ADAPTER_DOCTRINE', $adapter_Doctrine);
 define('DB_ADAPTER_PHINX', $adapter_Phinx);
 //ADAPTADOR UNIVERSAL

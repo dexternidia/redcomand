@@ -20,7 +20,9 @@ class CentrosResponsables
     public function busqueda()
     {
         $id_ubch = Uri(5);
-        View(compact('id_ubch'));
+        $tipo = TipoProblematica::all();
+        View(compact('id_ubch','tipo')); 
+        //Arr($solicitante);
     }
 
     public function index()

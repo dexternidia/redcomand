@@ -81,7 +81,7 @@
     </style>
   </head>
   <body>
-    <?php $usuario = Session::get('current_user'); ?>
+    <?php $usuario = User(); ?>
     <div class="container-fluid">
       <div class="row">
         <?php if ($usuario['role'] == 'clp'): ?>

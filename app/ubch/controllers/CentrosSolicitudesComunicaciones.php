@@ -9,7 +9,7 @@ use App\ParroquiaCne;
 use App\Partido;
 use App\UbchSolicitudComunicacion;
 
-class CentrosSolicitudesComunicaciones
+class CentrosSolicitudesComunicaciones2
 {
     function __construct()
     {
