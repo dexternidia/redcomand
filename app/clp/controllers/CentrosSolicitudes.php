@@ -1,7 +1,10 @@
 <?php
 namespace App\clp\controllers;
 
-use App\TipoSolicitud;
+use App\Problematica;
+use App\Solicitud;
+use App\TipoProblematica;
+use App\Ubch;
 
 class CentrosSolicitudes
 {
@@ -20,15 +23,16 @@ class CentrosSolicitudes
         $id_ubch = Uri(5);
         $tipo = TipoSolicitud::all();
         View(compact('id_ubch','tipo')); 
-        //Arr($solicitante);    
+        //Arr($solicitante);
     }
+
 
     public function store()
     {
         extract($_POST);
         $ubch = Ubch::find($id_ubch);
        //Arr($_POST); //Array para ver que envia el formulario
-        $problematica = new Problematica;
+        $problematica = new Solicitud;
         $problematica->id_ubch = $id_ubch;
         $problematica->id_municipio = $ubch->id_municipio;
         $problematica->id_parroquia = $ubch->id_parroquia;
@@ -49,17 +53,35 @@ class CentrosSolicitudes
 
     public function show($id)
     {
-
+        $problema = Solicitud::find($id);
+        View(compact('problema'));
+       // Arr($problema); 
     }
+
 
     public function edit($id)
     {
-        View(compact('id'));
+        $problema = Solicitud::find($id);
+        View(compact('problema'));
     }
 
     public function update($id)
     {
+        extract($_POST);
+       //Arr($_POST); //Array para ver que envia el formulario
+        $solicitud = Solicitud::find($id);
+        $solicitud->id_problema = $tipo;
+        $solicitud->observaciones = $observacion; 
+        $solicitud->estatus = $estatus;
 
+        if($solicitud->save())
+        {
+            Success('centrosSolicitudes/'.$solicitud->id_solicitud_ubch.'','Actulizada exitosamente la problematica.');
+        }
+        else
+        {
+            Error('centrosSolicitudes/'.$solicitud->id_solicitud_ubch.'','Error al editar problematica.');
+        }
     }
 
     public function destroy($id)

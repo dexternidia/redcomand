@@ -77,6 +77,12 @@
     color: red;
     box-shadow: 0px 0px 1px #CECECE;
     }
+
+    .rojo
+    {
+      background-color:#E51C23;
+      
+    }
     
     </style>
   </head>
@@ -88,7 +94,7 @@
         <div class="col-sm-3 col-lg-2">
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="container">
-              <div style="background-color: red" class="navbar-header text-white">
+              <div class="navbar-header text-white rojo">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>

@@ -8,7 +8,7 @@ use \Illuminate\Database\Eloquent\Model;
 class TipoProblematica extends Model {
     protected $table = 'tipo_problematicas';
 	public $timestamps = false;
-	protected $primaryKey='id_problema';
+	protected $primaryKey='id_tipo_problema';
     //Ejemplo de definir campos
     //protected $fillable = ['username','email','password'];
 	public function municipio()

@@ -17,7 +17,7 @@
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($centros as $key => $u): ?>
+          <?php foreach (Paginator($centros,7) as $key => $u): ?>
           <tr>
             <td><?php echo $u->nombre_ubch ?></td>
             <td><?php echo $u->municipio->nombre ?></td>
@@ -30,7 +30,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <?php echo Paginator($centros); ?>
+        <?php echo Paginator($centros,7); ?>
       </div>
     </div>
   </div>

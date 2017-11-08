@@ -23,7 +23,7 @@ class Problematica extends Model {
 
 	public function tipo()
 	{
-		return $this->belongsTo(TipoProblematica::class, 'id_problema','id_problema');
+		return $this->belongsTo(TipoProblematica::class, 'id_tipo_problema','id_tipo_problema');
 	}
 
 	public function ubch()

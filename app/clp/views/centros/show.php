@@ -223,6 +223,8 @@ text-align: center;
         </div>
       </div>
       <?php endif ?>
+
+
       <?php if ($problematicas): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
@@ -286,6 +288,73 @@ text-align: center;
         </div>
       </div>
       <?php endif ?>
+
+
+      <?php if ($problematicas): ?>
+      <div class="col-lg-6 animated fadeIn animated">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-file"></i> SOLICITUDES
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            </h5>
+            <br>
+          </div>
+          <div class="col-md-12 table-responsive panel panel-default">
+            <table id="myTable" class="table table-striped table-condensed animated fadeIn" data-striped="true">
+              <thead>
+                <tr class="">
+                  <th width="" class="text-uppercase">Tipo Solicitud</th>
+                  <th class="text-uppercase">Estatus</th>
+                  <th class="text-uppercase">Ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($solicitudes as $key => $u): ?>
+                <tr>
+                  <td><?php echo $u->tipo->nombre ?></td>
+                  <td class="text-uppercase">
+                    <?php if ($u->estatus): ?>
+                    <?php if ($u->estatus == 1): ?>
+                    <a class="text-success"><i class="fa fa-check"></i> Solucionado</a>
+                    <?php else: ?>
+                    <a class=""><i class="fa fa-check"></i> En Estudio</a>
+                    <?php endif ?>
+                    <?php else: ?>
+                    <a class="text-danger"><i class="fa fa-times"></i> Sin Solucion</a>
+                    <?php endif ?>
+                  </td>
+                  <td width="5%">
+                    <?php echo Token() ?>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/<?php echo $u->id_solicitud_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                  </td>
+                </tr>
+                <?php endforeach ?>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+      </div>
+      <?php else: ?>
+      <div class="col-lg-6 animated fadeIn animated">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-file"></i> DATOS RESPONSABLE
+            </h5>
+            <hr>
+          </div>
+          <div class="">
+            <h5><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+            Este UBCH no tiene responsable, ingrese con el siguiente link</h5>
+            <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>/ResponsableUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
+          </div>
+        </div>
+      </div>
+      <?php endif ?>
+
+
     </div>
   </div>
 </div>

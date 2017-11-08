@@ -66,7 +66,7 @@ class Login
 			                'estatus' => $usuario->estatus,
 			            );
 
-			           	$session->register(1000); // Register for 2 hours.
+			           	$session->register(10); // Register for 2 hours.
 			            $session->set(sessionNameDefault, $user);
 			            $_SESSION['nombre_usuario'] = $usuario->name;
 			            //header('location: '.baseUrl.'admin/pensionados');

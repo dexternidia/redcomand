@@ -3,6 +3,7 @@ namespace App;
 use App\MunicipioCne;
 use App\ParroquiaCne;
 use App\Problematica;
+use App\Solicitud;
 use App\UbchSolicitudComunicacion;
 use \Illuminate\Database\Eloquent\Model;
  
@@ -45,5 +46,10 @@ class Ubch extends Model {
 	public function problematicas()
 	{
 		return $this->hasMany(Problematica::class,'id_ubch','id_ubch');
+	}
+
+	public function solicitudes()
+	{
+		return $this->hasMany(Solicitud::class,'id_ubch','id_ubch');
 	}
 }
