@@ -15,8 +15,7 @@
         <script src="<?php echo baseUrl ?>assets/bower/sweetalert2/dist/sweetalert2.min.js"></script>
         <style>
   html { 
-  background: url(https://process.filestackapi.com/AhTgLagciQByzXpFGRI0Az/quality=value:80/compress/https://hcldr.files.wordpress.com/2014/08/a-helping-hand-cristian-bernal.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
+  background: url(<?php echo baseUrl ?>assets/img/elecciones.jpg) no-repeat center center fixed;   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;

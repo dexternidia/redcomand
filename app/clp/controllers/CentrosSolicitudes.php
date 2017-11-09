@@ -4,6 +4,7 @@ namespace App\clp\controllers;
 use App\Problematica;
 use App\Solicitud;
 use App\TipoProblematica;
+use App\TipoSolicitud;
 use App\Ubch;
 
 class CentrosSolicitudes
