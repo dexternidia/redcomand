@@ -81,10 +81,10 @@
     </style>
   </head>
   <body>
-    <?php $usuario = Session::get('current_user'); ?>
+
     <div class="container-fluid">
       <div class="row">
-        <?php if ($usuario['role'] == 'admin'): ?>
+     <?php $user = User(); ?>
         <div class="col-sm-3 col-lg-2">
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="container">
@@ -103,7 +103,7 @@
                     <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
                       <?php
                       
-                      echo $usuario['name'];
+                      echo $user['name'];
                       ?>
                     </a>
                     <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
@@ -147,59 +147,7 @@
           </div>
         </nav>
       </div>
-      <?php endif ?>
-
-      <?php if ($usuario['role']== 'ubch'): ?>
-      <div class="col-sm-3 col-lg-2">
-        <nav class="navbar navbar-default navbar-fixed-side">
-          <div class="container">
-            <div style="background-color: red" class="navbar-header text-white">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <a href="<?php echo baseUrl ?>" style="color:#fff;height: 73px;" class="navbar-brand text-white" href="#">
-                <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> --><i class="fa fa fa-users fa-2x"></i> UBCH</a>
-              </div>
-              <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
-                    <?php
-                    $usuario = Session::get('current_user');
-                    echo $usuario['name'];
-                    ?>
-                  </a>
-                  <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
-                    <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <ul class="nav navbar-nav">
-                <li class=""><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-street-view"></i> 1 x 10</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesUbch" aria-expanded="false"><i class="fa fa-university"></i>
-                  CENTROS
-                </a>
-                <ul class="nav collapse" id="opcionesUbch" role="menu" aria-labelledby="btn-1">
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-bullseye"></i> Ver Centro</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>ProblematicasUbch2"><i class="fa fa-exclamation-triangle"></i> Problematicas</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>requerimientos"><i class="fa fa-cogs"></i> Requerimientos</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-search"></i> Consulta</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav">
-              <li class=""><a href="<?php echo baseUrlRole() ?>admin/estadisticas"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
-            </ul>
-          </div>
-          <!--/.nav-collapse -->
-        </div>
-      </nav>
-    </div>
-    <?php endif ?>
+     
     <div class="col-sm-9 col-lg-10">
       <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
       <br>

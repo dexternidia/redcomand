@@ -13,6 +13,6 @@ class Principal extends Controller
 
     public function index()
     {
-		Redirect::to('admin/RegistroUbch');
+		Redirect::to('admin/cuentas');
     }
 }

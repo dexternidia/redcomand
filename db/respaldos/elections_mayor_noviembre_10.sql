@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2017 at 06:39 AM
+-- Generation Time: Nov 10, 2017 at 02:16 PM
 -- Server version: 5.7.19-0ubuntu0.16.04.1
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -1827,7 +1827,8 @@ INSERT INTO `tipo_solicitudes` (`id_tipo_solicitud`, `nombre`, `eliminar`) VALUE
 (3, 'vehiculos', 0),
 (4, 'motos', 0),
 (5, 'recarga de saldo movistar', 0),
-(6, 'recarga de saldo movilnet', 0);
+(6, 'recarga de saldo movilnet', 0),
+(7, 'recarga de saldo digitel', 0);
 
 -- --------------------------------------------------------
 
@@ -2104,7 +2105,7 @@ ALTER TABLE `tipo_problematicas`
 -- AUTO_INCREMENT for table `tipo_solicitudes`
 --
 ALTER TABLE `tipo_solicitudes`
-  MODIFY `id_tipo_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_tipo_solicitud` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --

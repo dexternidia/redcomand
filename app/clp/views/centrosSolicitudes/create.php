@@ -9,53 +9,83 @@ $("#preguntaBeneficiario option:selected").each(function () {
 //organismo_id = $(this).val();
 //id1 = $(this).val();
 var pregunta = $(this).val();
-var pregunta_beneficiario = pregunta.split('-');
-alert(pregunta_beneficiario[0]);
-
-if (pregunta_beneficiario==1)
+var pregunta_beneficiario = pregunta.split(/\s*-\s*/);
+alert(pregunta_beneficiario);
+if (pregunta_beneficiario=='1,')
 {
 //alert(organismo_id);
-$("#telefonosMovistar").prop('required',true);
-$("#telefonosMovistar").css("display", "block");
-$("#telefonosMovistar").addClass( "animated fadeIn" );
+$("#vehiculos").prop('required',true);
+$("#vehiculos").css("display", "block");
+$("#vehiculos").addClass( "animated fadeIn" );
 }
 else
 {
-$("#telefonosMovistar").prop('required',false);
-$("#telefonosMovistar").css("display", "none");
-$("#telefonosMovistar").removeClass( "animated fadeIn" );
+$("#vehiculos").prop('required',false);
+$("#vehiculos").css("display", "none");
+$("#vehiculos").removeClass( "animated fadeIn" );
 //alert('otras');
 }
 
-if (pregunta_beneficiario==2)
+if (pregunta_beneficiario=='2,')
 {
 //alert(organismo_id);
-$("#telefonoMovilnet").prop('required',true);
-$("#telefonosMovilnet").css("display", "block");
-$("#telefonosMovistar").addClass( "animated fadeIn" );
+$("#motos").prop('required',true);
+$("#motos").css("display", "block");
+$("#motos").addClass( "animated fadeIn" );
 }
 else
 {
-$("#telefonosMovistar").prop('required',false);
-$("#telefonosMovistar").css("display", "none");
-$("#telefonosMovistar").removeClass( "animated fadeIn" );
+$("#motos").prop('required',false);
+$("#motos").css("display", "none");
+$("#motos").removeClass( "animated fadeIn" );
 //alert('otras');
 }
 
-if (pregunta_beneficiario==3)
+if (pregunta_beneficiario=='3,')
 {
 //alert(organismo_id);
-$("#telefonosMovistar").prop('required',true);
-$("#telefonosMovistar").css("display", "block");
-$("#telefonosMovistar").addClass( "animated fadeIn" );
+$("#movistar").prop('required',true);
+$("#movistar").css("display", "block");
+$("#movistar").addClass( "animated fadeIn" );
 }
 else
 {
-$("#telefonosMovistar").prop('required',false);
-$("#telefonosMovistar").css("display", "none");
-$("#telefonosMovistar").removeClass( "animated fadeIn" );
+$("#movistar").prop('required',false);
+$("#movistar").css("display", "none");
+$("#movistar").removeClass( "animated fadeIn" );
 //alert('otras');
 }
+
+if (pregunta_beneficiario=='3,')
+{
+//alert(organismo_id);
+$("#movilnet").prop('required',true);
+$("#movilnet").css("display", "block");
+$("#movilnet").addClass( "animated fadeIn" );
+}
+else
+{
+$("#movilnet").prop('required',false);
+$("#movilnet").css("display", "none");
+$("#movilnet").removeClass( "animated fadeIn" );
+//alert('otras');
+}
+
+if (pregunta_beneficiario=='3,')
+{
+//alert(organismo_id);
+$("#digitel").prop('required',true);
+$("#digitel").css("display", "block");
+$("#digitel").addClass( "animated fadeIn" );
+}
+else
+{
+$("#digitel").prop('required',false);
+$("#digitel").css("display", "none");
+$("#digitel").removeClass( "animated fadeIn" );
+//alert('otras');
+}
+
 });
 });
 });
@@ -72,7 +102,7 @@ $("#telefonosMovistar").removeClass( "animated fadeIn" );
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group">
-            <select id="preguntaBeneficiario" class="form-control" name="tipo" required/>
+            <select id="preguntaBeneficiario" class="form-control text-uppercase" name="tipo" required/>
               <option>PROBLEMATICAS</option>
               <?php $n = 0; ?>
               <?php foreach ($tipo as $key => $t): ?>
@@ -83,17 +113,24 @@ $("#telefonosMovistar").removeClass( "animated fadeIn" );
           </div>
         </div>
       </div>
-      <div style="display: none" id="telefonosMovistar" class="col-lg-12" placeholder="INGRESE NUMEROS MOVISTAR">
-        <input class="form-control" type="text" value="" data-role="tagsinput"/>
+        <br>
+        <input class="col-lg-4" style="display: none" class="form-control" id="vehiculos" type="number" placeholder="INGRESE NUMEROS DE VEHICULOS"/>
+
+        <input class="col-lg-4" style="display: none" class="form-control" id="motos" type="number" placeholder="INGRESE NUMEROS DE MOTOS"/>
+
+      <div style="display: none" id="movistar" class="col-lg-12" placeholder="INGRESE NUMEROS MOVISTAR">
+        <input class="form-control" type="text" value="" data-role="tagsinput" placeholder="INGRESE NUMEROS MOVISTAR" />
       </div>
-      <br>
-      <div style="display: none" id="telefonoMovilnet" class="col-lg-12" placeholder="INGRESE NUMEROS MOVILNET">
-        <input class="form-control" type="text" value="" data-role="tagsinput"/>
+
+      <div style="display: none" id="movilnet" class="col-lg-12" placeholder="INGRESE NUMEROS MOVILNET">
+        <input class="form-control" type="text" value="" data-role="tagsinput" placeholder="INGRESE NUMEROS MOVISTAR" />
       </div>
-      <div style="display: none" id="telefonoDigitel" col-lg-12" placeholder="INGRESE NUMEROS DIGITEL">
-        <input class="form-control" type="text" value="" data-role="tagsinput"/>
+
+      <div style="display: none" id="digitel" class="col-lg-12" placeholder="INGRESE NUMEROS DIGITEL">
+        <input class="form-control" type="text" value="" data-role="tagsinput" placeholder="INGRESE NUMEROS MOVISTAR" />
       </div>
-      <div class="col-lg-12">
+     
+    
         <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
       </div>
       <br>
