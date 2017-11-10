@@ -31,7 +31,7 @@ if (pregunta_beneficiario==2)
 {
 //alert(organismo_id);
 $("#telefonoMovilnet").prop('required',true);
-$("#telefonosM").css("display", "block");
+$("#telefonosMovilnet").css("display", "block");
 $("#telefonosMovistar").addClass( "animated fadeIn" );
 }
 else
