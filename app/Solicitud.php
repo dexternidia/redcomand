@@ -1,5 +1,6 @@
 <?php 
 namespace App;
+use App\TipoSolicitud;
 use \Illuminate\Database\Eloquent\Model;
  
 class Solicitud extends Model {
@@ -12,7 +13,22 @@ class Solicitud extends Model {
 
 	public function tipo()
 	{
-		return $this->belongsTo(TipoProblematica::class, 'id_tipo_solicitud','id_tipo_solicitud');
+		return $this->belongsTo(TipoSolicitud::class, 'id_tipo_solicitud','id_tipo_solicitud');
+	}
+
+	public function municipio()
+	{
+		return $this->hasOne(MunicipioCne::class, 'id_municipio','id_municipio');
+	}
+
+	public function parroquia()
+	{
+		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
+	}
+
+	public function ubch()
+	{
+		return $this->belongsTo(Ubch::class, 'id_ubch','id_ubch');
 	}
 }
 

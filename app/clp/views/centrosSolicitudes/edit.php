@@ -7,18 +7,18 @@
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>centrosProblematicas/<?php echo $problema->id_problematica_ubch ?>" method="POST">
+    <form action="<?php echo baseUrlRole() ?>centrosSolicitudes/<?php echo $problema->id_solicitud_ubch ?>" method="POST">
       <?php echo Token() ?>
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group">
-            <select id="municipioSelect" class="form-control" name="tipo" required/>
+            <select id="municipioSelect" class="form-control" name="tipo"/>
               <?php if ($problema->tipo): ?>
-              <option value="<?php echo $problema->tipo->id_problema ?>"><?php echo $problema->tipo->nombre ?></option>
+              <option value="<?php echo $problema->tipo->id_tipo_solicitud ?>"><?php echo $problema->tipo->nombre ?></option>
               <?php else: ?>
-              <option>PROBLEMATICAS</option>
+              <option>TIPO DE SOLICITUD</option>
               <?php foreach ($tipo as $key => $t): ?>
-              <option value="<?php echo $t->id_problema ?>"><?php echo $t->nombre ?></option>
+              <option value="<?php echo $t->id_tipo_solicitud ?>"><?php echo $t->nombre ?></option>
               <?php endforeach ?>
               <?php endif ?>
             </select>

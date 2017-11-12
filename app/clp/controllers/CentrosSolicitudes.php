@@ -30,6 +30,7 @@ class CentrosSolicitudes
 
     public function store()
     {
+        extract($_GET);
         extract($_POST);
         $ubch = Ubch::find($id_ubch);
        //Arr($_POST); //Array para ver que envia el formulario
@@ -38,7 +39,7 @@ class CentrosSolicitudes
         $problematica->id_municipio = $ubch->id_municipio;
         $problematica->id_parroquia = $ubch->id_parroquia;
         $problematica->direccion = $ubch->direccion_ubch;
-        $problematica->id_problema = $tipo;
+        $problematica->id_tipo_solicitud = $tipo;
         $problematica->observaciones = $observacion; 
         $problematica->estatus = 0;
 
@@ -71,7 +72,7 @@ class CentrosSolicitudes
         extract($_POST);
        //Arr($_POST); //Array para ver que envia el formulario
         $solicitud = Solicitud::find($id);
-        $solicitud->id_problema = $tipo;
+        $solicitud->id_tipo_solicitud = $tipo;
         $solicitud->observaciones = $observacion; 
         $solicitud->estatus = $estatus;
 
