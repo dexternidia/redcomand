@@ -7,6 +7,7 @@ use App\Institucion;
 use App\MunicipioCne;
 use App\ParroquiaCne;
 use App\Partido;
+use App\TipoProblematica;
 use App\UbchResponsable;
 use Carbon\Carbon;
 
@@ -34,17 +35,38 @@ class CentrosResponsables
     {
         //$id_ubch = Uri(6);
         extract($_POST);
-        $datos_cne = Cne::where('cedula',$cedula)->first();
-        $instituciones = Institucion::all();
-        $partidos = Partido::all();   
-        $estructura = Estructura::all();     
-        $municipios = MunicipioCne::all();
-        $municipio = MunicipioCne::find($datos_cne->municipio);
-        $parroquias = ParroquiaCne::all();
-        $municipio = ParroquiaCne::find($datos_cne->parroquia);
-        View(compact('datos_cne','ubch','instituciones','partidos','estructura','id_ubch','municipio','municipios')); 
-        //Arr($datos_cne);
 
+        $responsable = CentroResponsable::where('cedula',$cedula)->get();
+
+        if($responsable)
+        {
+            Error('centros'.$id_ubch,'Esta persona ya es responsable de un centro.');
+        }
+        else
+        {
+            $datos_cne = Cne::where('cedula',$cedula)->first();
+
+            if($datos_cne)
+            {   
+                $id_municipio = $datos_cne->municipio;
+                $id_parroquia = $datos_cne->parroquia;
+            }
+            else
+            {
+                $id_municipio = "";
+                $id_parroquia = "";
+            }
+
+            $instituciones = Institucion::all();
+            $partidos = Partido::all();   
+            $estructura = Estructura::all();     
+            $municipios = MunicipioCne::all();
+            $municipio = MunicipioCne::find($id_municipio);
+            $parroquias = ParroquiaCne::all();
+            $municipio = ParroquiaCne::find($id_parroquia);
+            View(compact('datos_cne','ubch','instituciones','partidos','estructura','id_ubch','municipio','municipios')); 
+            //Arr($datos_cne);
+        }
     }
 
     public function store()
@@ -79,16 +101,16 @@ class CentrosResponsables
 
             if($ubch->save())
             {
-                Success('centrosResponsables/','Responsable de centro agregado con exito.');
+                Success('centros/'.$id_ubch,'UBCH registrado, porceda a ingresar responsable.');
             }
             else
             {
-                Error('centrosResponsables/','Error al ingresar Responsable de centro.');
+                Error('centros/'.$id_ubch,'Error al ingresar Responsable de centro.');
             }
         }
         else
         {
-            Error('centrosResponsables','Esta persona ya es responsable de un centro.');
+            Error('centros/'.$id_ubch,'Esta persona ya es responsable de un centro.');
         }
     }
 

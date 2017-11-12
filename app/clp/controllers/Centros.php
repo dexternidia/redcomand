@@ -1,6 +1,7 @@
 <?php
 namespace App\clp\controllers;
 
+use App\Mesa;
 use App\MesasCne;
 use App\Ubch;
 use Carbon\Carbon;
@@ -17,6 +18,7 @@ class Centros
         $user = User();
         $centros = Ubch::where('id_municipio',$user['id_municipio'])
         ->where('id_parroquia',$user['id_parroquia'])
+        ->orderBy('id_ubch', 'DESC')
         ->get();
 
         View(compact('centros'));
@@ -72,9 +74,63 @@ class Centros
 
             if($ubch->save())
             {
-                $mesa->estatus = 1;
-                $mesa->save();
-                Success('centros/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
+                foreach ($centro as $key => $c) 
+                {
+                    $nuevaMesa = new Mesa;
+                    $nuevaMesa->codigo_mesa = mt_rand(); 
+                    $nuevaMesa->id_ubch = $ubch->id_ubch;
+                    $nuevaMesa->id_municipio = $ubch->id_municipio;
+                    $nuevaMesa->id_parroquia = $ubch->id_parroquia;
+                    $nuevaMesa->cod_cne = $mesa->codigo_cne;
+                    $nuevaMesa->mesa = $c->mesa;
+                    $nuevaMesa->tomo = $c->tomo;
+                    $nuevaMesa->desde = $c->desde;
+                    $nuevaMesa->hasta = $c->hasta;
+                    $nuevaMesa->cant_electores = $c->cant_electores;
+                    $nuevaMesa->tecnologia = $c->tecnologia;
+                    $nuevaMesa->estatus = $c->estatus;
+                    $nuevaMesa->save();
+                }
+
+                $mesas_cne_conteo = $centro->count();
+                $mesas_ubch_conteo = Mesa::where('cod_cne',$mesa->codigo_cne)->count();
+
+                if($mesas_cne_conteo == $mesas_ubch_conteo)
+                {
+                    $mesa->estatus = 1;
+                    if($mesa->save())
+                    {
+                        Success('centros/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
+                    }
+                    else
+                    {
+                        $ubch = Ubch::where('codigo_cne',$mesa->codigo_cne)->first();
+                        $ubch->delete();
+
+                        $mesasCreadas = Mesa::where('cod_cne',$mesa->codigo_cne)->get();
+
+                        foreach ($mesasCreadas as $key => $c) 
+                        {
+                            $c->delete();
+                        }
+
+                        Error('centros/create','Error al ingresar ubch.');
+                    }
+                }
+                else
+                {
+                    $ubch = Ubch::where('codigo_cne',$mesa->codigo_cne)->first();
+                    $ubch->delete();
+
+                    $mesasCreadas = Mesa::where('cod_cne',$mesa->codigo_cne)->get();
+
+                    foreach ($mesasCreadas as $key => $c) 
+                    {
+                        $c->delete();
+                    }
+
+                    Error('centros/create','Error al ingresar ubch.');
+                }
             }
             else
             {

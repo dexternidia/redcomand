@@ -1,4 +1,4 @@
 
 s/${modulo}/clp/
-s/${controller}/CentrosSolicitudes/
+s/${controller}/CentrosMesas/
 s/${vista}/show/

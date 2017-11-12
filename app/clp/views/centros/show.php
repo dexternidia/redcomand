@@ -166,64 +166,6 @@ text-align: center;
     </div>
     <hr>
     <div class="row">
-      <?php if ($solicitudes_comunicaciones): ?>
-      <div class="col-lg-6 animated fadeIn animated">
-        <div class="col-lg-12">
-          <div class="">
-            <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> REQUERIMINETOS DE COMUNICACIÓN
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesComunicaciones/busqueda/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
-            </h5>
-            <br>
-          </div>
-          <div class="col-md-12 table-responsive panel panel-default">
-            <table id="myTable2" class="table table-striped table-condensed animated fadeIn" data-striped="true">
-              <thead>
-                <tr class="">
-                  <th width="" class="text-uppercase">Nombre y Apellido</th>
-                  <th class="text-uppercase">Cédula</th>
-                  <th class="text-uppercase">Telefono</th>
-                  <th class="text-uppercase">Opciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach (Paginator($solicitudes_comunicaciones) as $key => $u): ?>
-                <tr>
-                  <td><?php echo $u->nombre_apellido ?></td>
-                  <td><?php echo $u->cedula ?></td>
-                  <td><?php echo $u->telefono ?></td>
-                  <td width="5%">
-                      <?php echo Token() ?>
-                      <a class="text-danger fa fa-times fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesComunicaciones/<?php echo $u->id_requerimientos ?>/delete"></a>
-
-                     <!-- <a class="text-primary fa fa-pencil fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesComunicaciones/<?php echo $u->id_requerimientos ?>/edit"></a> -->
-                  </td>
-                </tr>
-                <?php endforeach ?>
-              </tbody>
-            </table>
-            <br>
-          </div>
-        </div>
-      </div>
-      <?php else: ?>
-      <div class="col-lg-6 animated fadeIn animated">
-        <div class="col-lg-12">
-          <div class="">
-            <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> DATOS RESPONSABLE
-            </h5>
-            <hr>
-          </div>
-          <div class="">
-            <h5><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
-            Este UBCH no tiene responsable, ingrese con el siguiente link</h5>
-            <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>/ResponsableUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
-          </div>
-        </div>
-      </div>
-      <?php endif ?>
-
 
       <?php if ($problematicas): ?>
       <div class="col-lg-6 animated fadeIn animated">

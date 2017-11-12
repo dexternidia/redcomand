@@ -1,3 +1,3 @@
 
-s/${model}/Solicitud/
-s/${tabla}/solicitud_ubch/
+s/${model}/Mesa/
+s/${tabla}/mesas_ubch/
