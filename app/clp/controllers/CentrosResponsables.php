@@ -12,6 +12,7 @@ use App\TipoProblematica;
 use App\UbchResponsable;
 use App\Usuario;
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 
 class CentrosResponsables
 {
@@ -173,5 +174,19 @@ class CentrosResponsables
         foreach ($parroquias as $key => $parroquia) {
             echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->nombre.'</option>';
         } 
+    }
+
+    public function certificadoPDF()
+    {
+        extract($_GET);
+        ob_start();
+        include('app/clp/views/centrosResponsables/certificadoPDF.php');
+        $dompdf = new Dompdf(array('enable_remote' => true));
+        $baseUrl = baseUrl;
+        $dompdf->setBasePath($baseUrl); // This line resolve
+        $dompdf->loadHtml(ob_get_clean());
+        $dompdf->setPaper('letter', 'portrait');
+        $dompdf->render();
+        $dompdf->stream();
     }
 }

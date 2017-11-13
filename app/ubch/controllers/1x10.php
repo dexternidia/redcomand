@@ -1,9 +1,7 @@
 <?php
 namespace App\ubch\controllers;
 
-use System\tools\rounting\Redirect;
-
-class Principal
+class 1x10
 {
     function __construct()
     {
@@ -12,7 +10,8 @@ class Principal
 
     public function index()
     {
-        Redirect::to('ubch/unoxdiez');
+        
+        View();
     }
 
     public function create()

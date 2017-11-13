@@ -100,7 +100,7 @@
 									<ul class="nav navbar-nav navbar-right">
 										<li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
 											<?php
-											$usuario = Session::get('current_user');
+											$usuario = User();
 											echo $usuario['name'];
 											?>
 										</a>
@@ -110,7 +110,7 @@
 									</li>
 								</ul>
 							<ul class="nav navbar-nav">
-								<li class=""><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-street-view"></i> 1 x 10</a></li>
+								<li class=""><a class="text-danger" href="<?php echo baseUrlRole() ?>unoxdiez"><i class="fa fa-street-view"></i> 1 x 10</a></li>
 							</ul>
 								<ul class="nav navbar-nav navbar-right">
 									<li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesUbch" aria-expanded="false"><i class="fa fa-university"></i>
@@ -120,7 +120,7 @@
 										<li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-bullseye"></i> Ver Centro</a></li>
 										<li><a class="text-danger" href="<?php echo baseUrlRole() ?>ProblematicasUbch2"><i class="fa fa-exclamation-triangle"></i> Problematicas</a></li>
 										<li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-cogs"></i> Requerimientos</a></li>
-										<li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-street-view"></i> 1 x 10</a></li>
+										<li><a class="text-danger" href="<?php echo baseUrlRole() ?>unoxdiez"><i class="fa fa-street-view"></i> 1 x 10</a></li>
 										<li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-search"></i> Consulta</a></li>
 									</ul>
 								</li>

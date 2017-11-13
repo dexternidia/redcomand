@@ -109,6 +109,9 @@ class Login
 			                'id_control' => $usuario->id_control,
 			                'id_municipio' => $usuario->id_municipio,
 			                'id_parroquia' => $usuario->id_parroquia,
+			                'id_municipal' => $usuario->id_municipal,
+			                'id_ubch' => $usuario->id_ubch,
+			                'id_clp' => $usuario->id_clp,
 			                'estatus' => $usuario->estatus,
 			            );
 

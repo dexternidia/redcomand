@@ -23,23 +23,31 @@
                   <td class="text-uppercase"><?php echo ucwords($mesa->mesa) ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-map-pin"></i> COD:</b></td>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-barcode"></i> COD:</b></td>
                   <td class="text-uppercase"><?php echo $mesa->codigo_mesa ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-map-pin"></i> Cant. Electores:</b></td>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-sort-numeric-asc"></i> Cant. Electores:</b></td>
                   <td class="text-uppercase"><?php echo $mesa->cant_electores ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa fa-calendar"></i> Tomo:</b></td>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-book"></i> Tomo:</b></td>
                   <td class="text-uppercase"><?php echo $mesa->tomo ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-archive"></i> Observaciòn:</b></td>
-                  <td class="text-uppercase"><?php echo $mesa->observaciones ?></td>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-wifi"></i> Tecnologia:</b></td>
+                  <td class="text-uppercase"><?php echo $mesa->tecnologia ?></td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-calendar"></i> Estatus:</b></td>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-id-card-o"></i> Desde:</b></td>
+                  <td class="text-uppercase"><?php echo $mesa->desde ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-id-card-o"></i> Hasta:</b></td>
+                  <td class="text-uppercase"><?php echo $mesa->hasta ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-search"></i> Estatus:</b></td>
                   <td class="text-uppercase">
                     <?php if ($mesa->estatus): ?>
                     <?php if ($mesa->estatus == 1): ?>

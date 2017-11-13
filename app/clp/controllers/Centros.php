@@ -100,7 +100,7 @@ class Centros
                     $mesa->estatus = 1;
                     if($mesa->save())
                     {
-                        Success('centros/'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
+                        Success('centrosResponsables/busqueda/2'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
                     }
                     else
                     {

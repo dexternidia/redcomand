@@ -1,4 +1,4 @@
 
-s/${modulo}/clp/
-s/${controller}/CentrosTestigos/
+s/${modulo}/ubch/
+s/${controller}/Unoxdiez/
 s/${vista}/show/

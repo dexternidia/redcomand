@@ -1,3 +1,3 @@
 
-s/${model}/MesaTestigo/
-s/${tabla}/mesas_ubch_testigos/
+s/${model}/UbchUnoxDiez/
+s/${tabla}/ubch_registro_unoxdiez/

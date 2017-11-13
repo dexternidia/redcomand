@@ -10,6 +10,8 @@ use App\MunicipioCne;
 use App\ParroquiaCne;
 use App\Partido;
 use App\TipoProblematica;
+use App\Ubch;
+use Dompdf\Dompdf;
 
 class CentrosTestigos
 {
@@ -116,6 +118,18 @@ class CentrosTestigos
 
                         if($testigo->save())
                         {
+                            $ubch = Ubch::find($testigo->id_ubch);
+                            extract($_GET);
+                            ob_start();
+                            include('app/clp/views/centrosTestigos/certificadoPDF.php');
+                            $dompdf = new Dompdf(array('enable_remote' => true));
+                            $baseUrl = baseUrl;
+                            $dompdf->setBasePath($baseUrl); // This line resolve
+                            $dompdf->loadHtml(ob_get_clean());
+                            $dompdf->setPaper('letter', 'portrait');
+                            $dompdf->render();
+                            $dompdf->stream();
+
                             Success('centrosMesas/'.$id_mesa,'Testigo de mesa agregado con exito.!');
                         }
                         else
@@ -169,5 +183,13 @@ class CentrosTestigos
         {
             Error('centrosMesas/'.$id_mesa,'No se encuentra registrado en el CNE.');
         }
+    }
+
+    public function certificadoPDF()
+    {
+        $testigo = MesaTestigo::where('cedula',19881315)->first();
+        $ubch = Ubch::find($testigo->id_ubch);
+
+        View(compact('testigo','ubch'));
     }
 }
