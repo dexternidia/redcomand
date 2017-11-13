@@ -1,5 +1,6 @@
 <?php 
 namespace App;
+use App\Mesa;
 use App\MunicipioCne;
 use App\ParroquiaCne;
 use App\Problematica;
@@ -51,5 +52,10 @@ class Ubch extends Model {
 	public function solicitudes()
 	{
 		return $this->hasMany(Solicitud::class,'id_ubch','id_ubch');
+	}
+
+	public function centro_mesas()
+	{
+		return $this->hasMany(Mesa::class,'id_ubch','id_ubch');
 	}
 }

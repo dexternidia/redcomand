@@ -1,3 +1,3 @@
 
-s/${model}/Mesa/
-s/${tabla}/mesas_ubch/
+s/${model}/MesaTestigo/
+s/${tabla}/mesas_ubch_testigos/

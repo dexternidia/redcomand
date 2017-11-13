@@ -150,7 +150,8 @@ class Centros
         $solicitudes_comunicaciones = $ubch->solicitudes_comunicaciones;
         $problematicas = $ubch->problematicas;
         $solicitudes = $ubch->solicitudes;
-        View(compact('ubch','responsable','solicitudes_comunicaciones','problematicas','solicitudes'));
+        $mesas = $ubch->centro_mesas;
+        View(compact('ubch','responsable','solicitudes_comunicaciones','problematicas','solicitudes','mesas'));
     }
 
     public function edit($id)

@@ -1,6 +1,7 @@
 <?php
 namespace App\clp\controllers;
 
+use App\CentroResponsable;
 use App\Cne;
 use App\Estructura;
 use App\Institucion;
@@ -9,6 +10,7 @@ use App\ParroquiaCne;
 use App\Partido;
 use App\TipoProblematica;
 use App\UbchResponsable;
+use App\Usuario;
 use Carbon\Carbon;
 
 class CentrosResponsables
@@ -36,11 +38,11 @@ class CentrosResponsables
         //$id_ubch = Uri(6);
         extract($_POST);
 
-        $responsable = CentroResponsable::where('cedula',$cedula)->get();
+        $responsable = CentroResponsable::where('cedula',$cedula)->first();
 
-        if($responsable)
+        if(isset($responsable->cedula))
         {
-            Error('centros'.$id_ubch,'Esta persona ya es responsable de un centro.');
+            Error('centros/'.$id_ubch,'Esta persona ya es responsable de un centro.');
         }
         else
         {
@@ -57,7 +59,7 @@ class CentrosResponsables
                 $id_parroquia = "";
             }
 
-            $instituciones = Institucion::all();
+            $instituciones = Institucion::orderBy('nombre', 'desc')->get();
             $partidos = Partido::all();   
             $estructura = Estructura::all();     
             $municipios = MunicipioCne::all();
@@ -78,7 +80,8 @@ class CentrosResponsables
 
         if(!$responsable)
         {
-            $fecha_hora_registro = Carbon::now();
+            $carbon = Carbon::now();
+            $fecha_hora_registro = $carbon;
             list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
             $ubch = new UbchResponsable;
             $ubch->id_municipio = $id_municipio;
@@ -101,7 +104,32 @@ class CentrosResponsables
 
             if($ubch->save())
             {
-                Success('centros/'.$id_ubch,'UBCH registrado, porceda a ingresar responsable.');
+                $clave = password_hash($password, PASSWORD_DEFAULT);
+                $user = User();
+
+                $usuario = new Usuario;
+                $usuario->name = $nombre_apellido;
+                $usuario->email = $username;
+                $usuario->password = $clave;
+                $usuario->role = 'ubch';
+                $usuario->id_instituciones = $id_institucion;
+                $usuario->id_municipio = $user['id_municipio'];
+                $usuario->id_parroquia = $user['id_parroquia'];
+                $usuario->id_municipal = 0;
+                $usuario->id_clp = 0;
+                $usuario->id_ubch = $id_ubch;
+                $usuario->created_at = $carbon;
+                $usuario->updated_at = $carbon;
+                $usuario->estatus = 0;
+                
+                if($usuario->save())
+                {
+                    Success('centros/'.$id_ubch,'UBCH registrado, porceda a ingresar responsable.');
+                }
+                else
+                {
+                    Error('centros/'.$id_ubch,'Error al ingresar Responsable de centro.');
+                }
             }
             else
             {

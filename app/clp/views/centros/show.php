@@ -214,7 +214,7 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-      <div class="col-lg-6 animated fadeIn animated">
+<!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -228,7 +228,7 @@ text-align: center;
             <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>/ResponsableUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
           </div>
         </div>
-      </div>
+      </div> -->
       <?php endif ?>
 
 
@@ -279,7 +279,8 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-      <div class="col-lg-6 animated fadeIn animated">
+
+<!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -293,11 +294,76 @@ text-align: center;
             <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>/ResponsableUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
           </div>
         </div>
-      </div>
+      </div> -->
       <?php endif ?>
 
 
     </div>
+    <hr>
+    <div class="row">
+      <?php if ($mesas): ?>
+      <div class="col-lg-6 animated fadeIn animated">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-file"></i> MESAS
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            </h5>
+            <br>
+          </div>
+          <div class="col-md-12 table-responsive panel panel-default">
+            <table id="myTable" class="table table-striped table-condensed animated fadeIn" data-striped="true">
+              <thead>
+                <tr class="">
+                  <th width="" class="text-uppercase">MESA</th>
+                  <th class="text-uppercase">COD MESA</th>
+                  <th class="text-uppercase">Cant. Electores</th>
+                  <th class="text-uppercase">Ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($mesas as $key => $u): ?>
+                <tr>
+                  <td><?php echo $u->mesa ?></td>
+                  <td><?php echo $u->codigo_mesa ?></td>
+                  <td class="text-uppercase">
+                   <?php echo $u->cant_electores ?>
+                  </td>
+                  <td width="5%">
+                    <?php echo Token() ?>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosMesas/<?php echo $u->id_mesas_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                  </td>
+                </tr>
+                <?php endforeach ?>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+      </div>
+      <?php else: ?>
+        
+<!--       <div class="col-lg-6 animated fadeIn animated">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-file"></i> DATOS RESPONSABLE
+            </h5>
+            <hr>
+          </div>
+          <div class="">
+            <h5><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+            Este UBCH no tiene responsable, ingrese con el siguiente link</h5>
+            <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>/ResponsableUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
+          </div>
+        </div>
+      </div> -->
+      <?php endif ?>
+
+
+    </div>
+
+
   </div>
 </div>
 <script type="text/javascript">
