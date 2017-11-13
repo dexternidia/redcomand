@@ -307,7 +307,6 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> MESAS
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <br>
           </div>
@@ -317,7 +316,7 @@ text-align: center;
                 <tr class="">
                   <th width="" class="text-uppercase">MESA</th>
                   <th class="text-uppercase">COD MESA</th>
-                  <th class="text-uppercase">Cant. Electores</th>
+                  <th class="text-uppercase">Cant. Testigos</th>
                   <th class="text-uppercase">Ver</th>
                 </tr>
               </thead>
@@ -327,7 +326,7 @@ text-align: center;
                   <td><?php echo $u->mesa ?></td>
                   <td><?php echo $u->codigo_mesa ?></td>
                   <td class="text-uppercase">
-                   <?php echo $u->cant_electores ?>
+                   <?php echo $u->testigos->count() ?>
                   </td>
                   <td width="5%">
                     <?php echo Token() ?>
