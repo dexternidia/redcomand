@@ -1,4 +1,4 @@
 
-s/${modulo}/ubch/
-s/${controller}/Unoxdiez/
+s/${modulo}/clp/
+s/${controller}/Unoxdiezintegrantes/
 s/${vista}/show/

@@ -1,3 +1,3 @@
 
-s/${model}/UbchUnoxDiez/
-s/${tabla}/ubch_registro_unoxdiez/
+s/${model}/UbchUnoxDiezIntegrantes/
+s/${tabla}/ubch_registro_unoxdiez_integrantes/

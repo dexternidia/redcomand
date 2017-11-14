@@ -6,6 +6,7 @@ use App\ParroquiaCne;
 use App\Problematica;
 use App\Solicitud;
 use App\UbchSolicitudComunicacion;
+use App\UbchUnoxDiez;
 use \Illuminate\Database\Eloquent\Model;
  
 class Ubch extends Model {
@@ -57,5 +58,10 @@ class Ubch extends Model {
 	public function centro_mesas()
 	{
 		return $this->hasMany(Mesa::class,'id_ubch','id_ubch');
+	}
+
+	public function unoxdiez_padrinos()
+	{
+		return $this->hasMany(UbchUnoxDiez::class,'id_ubch','id_ubch');
 	}
 }

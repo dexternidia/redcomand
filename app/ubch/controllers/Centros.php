@@ -93,7 +93,9 @@ class Centros2
         $responsable = $ubch->responsable;
         $solicitudes_comunicaciones = $ubch->solicitudes_comunicaciones;
         $problematicas = $ubch->problematicas;
-        View(compact('ubch','responsable','solicitudes_comunicaciones','problematicas'));
+        $unoxdiezpadrinos = $ubch->unoxdiez_padrinos;
+        Arr($unoxdiezpadrinos);
+        //View(compact('ubch','responsable','solicitudes_comunicaciones','problematicas'));
     }
 
     public function edit($id)

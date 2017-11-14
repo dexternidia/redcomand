@@ -151,7 +151,9 @@ class Centros
         $problematicas = $ubch->problematicas;
         $solicitudes = $ubch->solicitudes;
         $mesas = $ubch->centro_mesas;
-        View(compact('ubch','responsable','solicitudes_comunicaciones','problematicas','solicitudes','mesas'));
+        $unoxdiezpadrinos = $ubch->unoxdiez_padrinos;
+        //Arr($unoxdiezpadrinos);
+        View(compact('ubch','responsable','solicitudes_comunicaciones','problematicas','solicitudes','mesas','unoxdiezpadrinos'));
     }
 
     public function edit($id)
