@@ -77,18 +77,24 @@
     color: red;
     box-shadow: 0px 0px 1px #CECECE;
     }
+
+    .rojo
+    {
+      background-color:#E51C23;
+      
+    }
     
     </style>
   </head>
   <body>
-    <?php $usuario = Session::get('current_user'); ?>
+    <?php $usuario = User(); ?>
     <div class="container-fluid">
       <div class="row">
-        <?php if ($usuario['role'] == 'admin'): ?>
+        <?php if ($usuario['role'] == 'clp'): ?>
         <div class="col-sm-3 col-lg-2">
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="container">
-              <div style="background-color: red" class="navbar-header text-white">
+              <div class="navbar-header text-white rojo">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -96,51 +102,27 @@
                 <span class="icon-bar"></span>
                 </button>
                 <a href="<?php echo baseUrl ?>" style="color:#fff;height: 73px;" class="navbar-brand text-white" href="#">
-                  <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> --><i class="fa fa fa-users fa-2x"></i> Municipales</a>
+                  <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> --><i class="fa fa-wpexplorer fa-2x"></i> MUNICIPAL</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
                     <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
                       <?php
                       
-                      echo $usuario['name'];
+                       echo 'MUNICIPAL '.$usuario['name'];
                       ?>
                     </a>
                     <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
-                      <li><a class="text-danger" href="<?php echo baseUrlRole() ?>cuentas"><i class="fa fa-users"></i> Cuentas</a></li>
-                      <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
+                      <li><a class="text-danger" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal"><i class="fa fa-users"></i> CUENTAS UBCH</a></li>
+                      <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> SALIR</a></li>
                     </ul>
                   </li>
                 </ul>
                 <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>estructuras"><i class="fa fa-sitemap"></i> ESTRUCTURA</a></li>
+                  <li class=""><a href="<?php echo baseUrlRole() ?>centrosMunicipal"><i class="fa fa-university"></i> CENTRO</a></li>
                 </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>partidos"><i class="fa fa-handshake-o"></i> PARTIDOS</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>instituciones"><i class="fa fa-building-o"></i> INSTITUCIONES</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>RegistroClp"><i class="fa fa-wpexplorer"></i> CLP</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-university"></i> UBCH</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>admin/estadisticas"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesUbch" aria-expanded="false"><i class="fa fa-university"></i>
-                    CENTROS
-                  </a>
-                  <ul class="nav collapse" id="opcionesUbch" role="menu" aria-labelledby="btn-1">
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-bullseye"></i> Ver Centro</a></li>
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>ProblematicasUbch"><i class="fa fa-exclamation-triangle"></i> Problematicas</a></li>
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>requerimientos"><i class="fa fa-cogs"></i> Requerimientos</a></li>
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-search"></i> Consulta</a></li>
-                  </ul>
-                </li>
+              <ul class="nav navbar-nav">
+                <li class=""><a href="<?php echo baseUrlRole() ?>estadisticasMunicipal"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
               </ul>
             </div>
             <!--/.nav-collapse -->
@@ -148,72 +130,20 @@
         </nav>
       </div>
       <?php endif ?>
-
-      <?php if ($usuario['role']== 'ubch'): ?>
-      <div class="col-sm-3 col-lg-2">
-        <nav class="navbar navbar-default navbar-fixed-side">
-          <div class="container">
-            <div style="background-color: red" class="navbar-header text-white">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              </button>
-              <a href="<?php echo baseUrl ?>" style="color:#fff;height: 73px;" class="navbar-brand text-white" href="#">
-                <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> --><i class="fa fa fa-users fa-2x"></i> UBCH</a>
-              </div>
-              <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
-                    <?php
-                    $usuario = Session::get('current_user');
-                    echo $usuario['name'];
-                    ?>
-                  </a>
-                  <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
-                    <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> Salir</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <ul class="nav navbar-nav">
-                <li class=""><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-street-view"></i> 1 x 10</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesUbch" aria-expanded="false"><i class="fa fa-university"></i>
-                  CENTROS
-                </a>
-                <ul class="nav collapse" id="opcionesUbch" role="menu" aria-labelledby="btn-1">
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-bullseye"></i> Ver Centro</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>ProblematicasUbch2"><i class="fa fa-exclamation-triangle"></i> Problematicas</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>requerimientos"><i class="fa fa-cogs"></i> Requerimientos</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch2"><i class="fa fa-search"></i> Consulta</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav">
-              <li class=""><a href="<?php echo baseUrlRole() ?>admin/estadisticas"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
-            </ul>
-          </div>
-          <!--/.nav-collapse -->
-        </div>
-      </nav>
-    </div>
-    <?php endif ?>
-    <div class="col-sm-9 col-lg-10">
-      <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
-      <br>
-      <?php echo $content ?>
+      <div class="col-sm-9 col-lg-10">
+        <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
+        <br>
+        <?php echo $content ?>
+      </div>
     </div>
   </div>
-</div>
-<!-- /container -->
-<!-- MENSAJES FLASH SWEET ALERT 2 -->
-<?php if (Message::hasMessages()): ?>
-<?php echo Message::show() ?>
-<?php endif ?>
-<?php if (Message::hasQuestion()): ?>
-<?php echo Message::showQuestion() ?>
-<?php endif ?>
+  <!-- /container -->
+  <!-- MENSAJES FLASH SWEET ALERT 2 -->
+  <?php if (Message::hasMessages()): ?>
+  <?php echo Message::show() ?>
+  <?php endif ?>
+  <?php if (Message::hasQuestion()): ?>
+  <?php echo Message::showQuestion() ?>
+  <?php endif ?>
 </body>
 </html>
