@@ -125,7 +125,7 @@
                   <li class=""><a href="<?php echo baseUrlRole() ?>centrosAdmin"><i class="fa fa-university"></i> CENTROS</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>admin/estadisticas"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
+                  <li class=""><a href="<?php echo baseUrlRole() ?>estadisticas"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
