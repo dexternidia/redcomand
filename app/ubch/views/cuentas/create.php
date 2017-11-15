@@ -30,7 +30,7 @@ $("#MesasSelect").html(data);
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-university fa-2x"></i> INGRESAR UBCH</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-user fa-2x"></i> x <i class="fa fa-users fa-2x"></i> INGRESAR PATRULLERO</h3>
   </div>
   <br>
   <div class="panel-body">
@@ -50,10 +50,7 @@ $("#MesasSelect").html(data);
         </div>
         <div class="col-lg-4">
           <select name="role" class="form-control" name="role" id="" required>
-            <option value="">ROLE</option>
-            <option value="admin">ADMIN</option>
-            <option value="clp">CLP</option>
-            <option value="municipal">MUNICIPAL</option>
+            <option value="patrullero">patrullero</option>
           </select>
         </div>
       </div>

@@ -77,11 +77,10 @@
     color: red;
     box-shadow: 0px 0px 1px #CECECE;
     }
-
     .rojo
     {
-      background-color:#E51C23;
-      
+    background-color:#E51C23;
+    
     }
     
     </style>
@@ -108,34 +107,35 @@
                     <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
                       <?php
                       
-                       echo 'UBCH '.$usuario['name'];
+                      echo 'UBCH '.$usuario['name'];
                       ?>
                     </a>
                     <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
+                      <li><a class="text-danger" href="<?php echo baseUrlRole() ?>cuentas"><i class="fa fa-users"></i>CUENTAS PATRULLEROS</a></li>
                       <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> SALIR</a></li>
                     </ul>
                   </li>
                 </ul>
+              </div>
+              <!--/.nav-collapse -->
             </div>
-            <!--/.nav-collapse -->
-          </div>
-        </nav>
-      </div>
-    
-      <div class="col-sm-9 col-lg-10">
-        <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
-        <br>
-        <?php echo $content ?>
+          </nav>
+        </div>
+        
+        <div class="col-sm-9 col-lg-10">
+          <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
+          <br>
+          <?php echo $content ?>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- /container -->
-  <!-- MENSAJES FLASH SWEET ALERT 2 -->
-  <?php if (Message::hasMessages()): ?>
-  <?php echo Message::show() ?>
-  <?php endif ?>
-  <?php if (Message::hasQuestion()): ?>
-  <?php echo Message::showQuestion() ?>
-  <?php endif ?>
-</body>
+    <!-- /container -->
+    <!-- MENSAJES FLASH SWEET ALERT 2 -->
+    <?php if (Message::hasMessages()): ?>
+    <?php echo Message::show() ?>
+    <?php endif ?>
+    <?php if (Message::hasQuestion()): ?>
+    <?php echo Message::showQuestion() ?>
+    <?php endif ?>
+  </body>
 </html>
