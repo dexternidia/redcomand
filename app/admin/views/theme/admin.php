@@ -125,7 +125,7 @@
                   <li class=""><a href="<?php echo baseUrlRole() ?>RegistroClp"><i class="fa fa-wpexplorer"></i> CLP</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-university"></i> UBCH</a></li>
+                  <li class=""><a href="<?php echo baseUrlRole() ?>centrosAdmin"><i class="fa fa-university"></i> CENTROS</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
                   <li class=""><a href="<?php echo baseUrlRole() ?>admin/estadisticas"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
@@ -134,12 +134,6 @@
                   <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesUbch" aria-expanded="false"><i class="fa fa-university"></i>
                     CENTROS
                   </a>
-                  <ul class="nav collapse" id="opcionesUbch" role="menu" aria-labelledby="btn-1">
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-bullseye"></i> Ver Centro</a></li>
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>ProblematicasUbch"><i class="fa fa-exclamation-triangle"></i> Problematicas</a></li>
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>requerimientos"><i class="fa fa-cogs"></i> Requerimientos</a></li>
-                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>RegistroUbch"><i class="fa fa-search"></i> Consulta</a></li>
-                  </ul>
                 </li>
               </ul>
             </div>
