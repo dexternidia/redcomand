@@ -25,7 +25,6 @@ class CentrosProblematicasMunicipal
         //Arr($solicitante);
     }
 
-
     public function store()
     {
         extract($_POST);
@@ -36,7 +35,7 @@ class CentrosProblematicasMunicipal
         $problematica->id_municipio = $ubch->id_municipio;
         $problematica->id_parroquia = $ubch->id_parroquia;
         $problematica->direccion = $ubch->direccion_ubch;
-        $problematica->id_problema = $tipo;
+        $problematica->id_tipo_problema = $tipo;
         $problematica->observaciones = $observacion; 
         $problematica->estatus = 0;
 

@@ -53,6 +53,7 @@ $("#MesasSelect").html(data);
             <option value="">ROLE</option>
             <option value="admin">ADMIN</option>
             <option value="clp">CLP</option>
+            <option value="municipal">MUNICIPAL</option>
           </select>
         </div>
       </div>

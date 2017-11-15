@@ -20,7 +20,7 @@ class Cuentas
 
     public function create()
     {
-        $organismos = Institucion::all();
+        $organismos = Institucion::orderBy('nombre', 'DESC')->get();
         View(compact('organismos'));
     }
 
@@ -38,7 +38,9 @@ class Cuentas
         $usuario->id_instituciones = $id_instituciones;
         $usuario->id_municipio = $id_municipio;
         $usuario->id_parroquia = $id_parroquia;
-        $usuario->id_control = 0;
+        $usuario->id_municipal = 0;
+        $usuario->id_clp = 0;
+        $usuario->id_ubch = 0;
         $usuario->created_at = Carbon::now();
         $usuario->updated_at = Carbon::now();
         $usuario->estatus = 0;

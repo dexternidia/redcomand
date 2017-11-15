@@ -1,11 +1,11 @@
 <?php
-namespace App\clp\controllers;
+namespace App\ubch\controllers;
 
 use App\Problematica;
 use App\TipoProblematica;
 use App\Ubch;
 
-class CentrosProblematicas2
+class CentrosProblematicasUbch
 {
     function __construct()
     {
@@ -36,17 +36,17 @@ class CentrosProblematicas2
         $problematica->id_municipio = $ubch->id_municipio;
         $problematica->id_parroquia = $ubch->id_parroquia;
         $problematica->direccion = $ubch->direccion_ubch;
-        $problematica->id_problema = $tipo;
+        $problematica->id_tipo_problema = $tipo;
         $problematica->observaciones = $observacion; 
         $problematica->estatus = 0;
 
         if($problematica->save())
         {
-            Success('centros/'.$id_ubch.'','Guardada existosamente...');
+            Success('centrosUbch/'.$id_ubch.'','Guardada existosamente...');
         }
         else
         {
-             Error('centros/'.$id_ubch.'','Vuelva a intentarlo...');
+             Error('centrosUbch/'.$id_ubch.'','Vuelva a intentarlo...');
         }
     }
 
@@ -75,11 +75,11 @@ class CentrosProblematicas2
 
         if($problematica->save())
         {
-            Success('centrosProblematicas/'.$problematica->id_problematica_ubch.'','Actulizada exitosamente la problematica.');
+            Success('centrosProblematicasUbch/'.$problematica->id_problematica_ubch.'','Actulizada exitosamente la problematica.');
         }
         else
         {
-            Error('centrosProblematicas/'.$problematica->id_problematica_ubch.'','Error al editar problematica.');
+            Error('centrosProblematicasUbch/'.$problematica->id_problematica_ubch.'','Error al editar problematica.');
         }
     }
 

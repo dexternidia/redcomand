@@ -90,7 +90,6 @@
     <?php $usuario = User(); ?>
     <div class="container-fluid">
       <div class="row">
-        <?php if ($usuario['role'] == 'clp'): ?>
         <div class="col-sm-3 col-lg-2">
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="container">
@@ -129,7 +128,6 @@
           </div>
         </nav>
       </div>
-      <?php endif ?>
       <div class="col-sm-9 col-lg-10">
         <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
         <br>

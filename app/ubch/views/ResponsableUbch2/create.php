@@ -6,7 +6,7 @@ $("#municipioSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idMunicipio = $(this).val();
 //alert(idMunicipio);
-$.get("<?php echo baseUrlRole() ?>RegistroUbch2/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
+$.get("<?php echo baseUrl ?>admin/RegistroUbch/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
 $("#ParroquiaSelect").html(data);
 });
 });
@@ -21,7 +21,7 @@ $("#ParroquiaSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idParroquia = $(this).val();
 //alert(idParroquia);
-$.get("<?php echo baseUrlRole() ?>RegistroUbch2/mesasCne", { idParroquia:idParroquia }, function(data){
+$.get("<?php echo baseUrl ?>admin/RegistroUbch/mesasCne", { idParroquia:idParroquia }, function(data){
 $("#MesasSelect").html(data);
 });
 });
@@ -34,7 +34,7 @@ $("#MesasSelect").html(data);
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>ResponsableUbch2" method="POST">
+    <form action="<?php echo baseUrl ?>admin/ResponsableUbch" method="POST">
       <?php echo Token::field() ?>
       <input type="hidden" name="id_ubch" value="<?php echo $id_ubch ?>">
       <div class="row">

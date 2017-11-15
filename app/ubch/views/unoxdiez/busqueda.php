@@ -34,7 +34,7 @@ $("#MesasSelect").html(data);
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>unoxdiez/create" method="POST">
+    <form action="<?php echo baseUrlRole() ?>unoxdiez" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
         <div class="col-lg-4">

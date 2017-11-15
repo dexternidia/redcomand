@@ -9,10 +9,12 @@ class Principal extends Controller
     function __construct()
     {
         parent::__construct();
+        Role('municipal');
     }
+
 
     public function index()
     {
-		View::ver('municipal/principal/index');
+		Redirect::to('municipal/centrosMunicipal');
     }
 }

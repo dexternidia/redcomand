@@ -12,7 +12,8 @@ class Principal
 
     public function index()
     {
-        Redirect::to('ubch/unoxdiez');
+        $user = User();
+        Redirect::to('ubch/centrosUbch');
     }
 
     public function create()

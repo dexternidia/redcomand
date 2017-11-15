@@ -1,16 +1,20 @@
 <?php
-namespace App\clp\controllers;
+namespace App\ubch\controllers;
 
+use App\CentroResponsable;
 use App\Cne;
 use App\Estructura;
 use App\Institucion;
 use App\MunicipioCne;
 use App\ParroquiaCne;
 use App\Partido;
+use App\TipoProblematica;
 use App\UbchResponsable;
+use App\Usuario;
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 
-class CentrosResponsables2
+class CentrosResponsablesUbch
 {
     function __construct()
     {
@@ -20,7 +24,9 @@ class CentrosResponsables2
     public function busqueda()
     {
         $id_ubch = Uri(5);
-        View(compact('id_ubch'));
+        $tipo = TipoProblematica::all();
+        View(compact('id_ubch','tipo')); 
+        //Arr($solicitante);
     }
 
     public function index()
@@ -32,17 +38,38 @@ class CentrosResponsables2
     {
         //$id_ubch = Uri(6);
         extract($_POST);
-        $datos_cne = Cne::where('cedula',$cedula)->first();
-        $instituciones = Institucion::all();
-        $partidos = Partido::all();   
-        $estructura = Estructura::all();     
-        $municipios = MunicipioCne::all();
-        $municipio = MunicipioCne::find($datos_cne->municipio);
-        $parroquias = ParroquiaCne::all();
-        $municipio = ParroquiaCne::find($datos_cne->parroquia);
-        View(compact('datos_cne','ubch','instituciones','partidos','estructura','id_ubch','municipio','municipios')); 
-        //Arr($datos_cne);
 
+        $responsable = CentroResponsable::where('cedula',$cedula)->first();
+
+        if(isset($responsable->cedula))
+        {
+            Error('centrosUbch/'.$id_ubch,'Esta persona ya es responsable de un centro.');
+        }
+        else
+        {
+            $datos_cne = Cne::where('cedula',$cedula)->first();
+
+            if($datos_cne)
+            {   
+                $id_municipio = $datos_cne->municipio;
+                $id_parroquia = $datos_cne->parroquia;
+            }
+            else
+            {
+                $id_municipio = "";
+                $id_parroquia = "";
+            }
+
+            $instituciones = Institucion::orderBy('nombre', 'desc')->get();
+            $partidos = Partido::all();   
+            $estructura = Estructura::all();     
+            $municipios = MunicipioCne::all();
+            $municipio = MunicipioCne::find($id_municipio);
+            $parroquias = ParroquiaCne::all();
+            $municipio = ParroquiaCne::find($id_parroquia);
+            View(compact('datos_cne','ubch','instituciones','partidos','estructura','id_ubch','municipio','municipios')); 
+            //Arr($datos_cne);
+        }
     }
 
     public function store()
@@ -54,7 +81,8 @@ class CentrosResponsables2
 
         if(!$responsable)
         {
-            $fecha_hora_registro = Carbon::now();
+            $carbon = Carbon::now();
+            $fecha_hora_registro = $carbon;
             list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
             $ubch = new UbchResponsable;
             $ubch->id_municipio = $id_municipio;
@@ -77,16 +105,41 @@ class CentrosResponsables2
 
             if($ubch->save())
             {
-                Success('centrosResponsables/','Responsable de centro agregado con exito.');
+                $clave = password_hash($password, PASSWORD_DEFAULT);
+                $user = User();
+
+                $usuario = new Usuario;
+                $usuario->name = $nombre_apellido;
+                $usuario->email = $username;
+                $usuario->password = $clave;
+                $usuario->role = 'ubch';
+                $usuario->id_instituciones = $id_institucion;
+                $usuario->id_municipio = $user['id_municipio'];
+                $usuario->id_parroquia = $user['id_parroquia'];
+                $usuario->id_municipal = 0;
+                $usuario->id_clp = 0;
+                $usuario->id_ubch = $id_ubch;
+                $usuario->created_at = $carbon;
+                $usuario->updated_at = $carbon;
+                $usuario->estatus = 0;
+                
+                if($usuario->save())
+                {
+                    Success('centrosUbch/'.$id_ubch,'UBCH registrado, porceda a ingresar responsable.');
+                }
+                else
+                {
+                    Error('centrosUbch/'.$id_ubch,'Error al ingresar Responsable de centro.');
+                }
             }
             else
             {
-                Error('centrosResponsables/','Error al ingresar Responsable de centro.');
+                Error('centrosUbch/'.$id_ubch,'Error al ingresar Responsable de centro.');
             }
         }
         else
         {
-            Error('centrosResponsables','Esta persona ya es responsable de un centro.');
+            Error('centrosUbch/'.$id_ubch,'Esta persona ya es responsable de un centro.');
         }
     }
 
@@ -121,5 +174,19 @@ class CentrosResponsables2
         foreach ($parroquias as $key => $parroquia) {
             echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->nombre.'</option>';
         } 
+    }
+
+    public function certificadoPDF()
+    {
+        extract($_GET);
+        ob_start();
+        include('app/ubch/views/centrosResponsablesUbch/certificadoPDF.php');
+        $dompdf = new Dompdf(array('enable_remote' => true));
+        $baseUrl = baseUrl;
+        $dompdf->setBasePath($baseUrl); // This line resolve
+        $dompdf->loadHtml(ob_get_clean());
+        $dompdf->setPaper('letter', 'portrait');
+        $dompdf->render();
+        $dompdf->stream();
     }
 }

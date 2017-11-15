@@ -17,7 +17,6 @@ class CentrosMunicipal
     {
         $user = User();
         $centros = Ubch::where('id_municipio',$user['id_municipio'])
-        ->where('id_parroquia',$user['id_parroquia'])
         ->orderBy('id_ubch', 'DESC')
         ->get();
 

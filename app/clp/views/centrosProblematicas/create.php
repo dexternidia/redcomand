@@ -16,7 +16,7 @@
             <select id="municipioSelect" class="form-control" name="tipo" required/>
               <option>PROBLEMATICAS</option>
               <?php foreach ($tipo as $key => $t): ?>
-              <option value="<?php echo $t->id_problema ?>"><?php echo $t->nombre ?></option>                
+              <option value="<?php echo $t->id_tipo_problema ?>"><?php echo $t->nombre ?></option>                
               <?php endforeach ?>
             </select>
           </div>

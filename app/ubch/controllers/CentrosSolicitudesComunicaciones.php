@@ -1,5 +1,5 @@
 <?php
-namespace App\clp\controllers;
+namespace App\ubch\controllers;
 
 use App\Cne;
 use App\Estructura;
@@ -9,7 +9,7 @@ use App\ParroquiaCne;
 use App\Partido;
 use App\UbchSolicitudComunicacion;
 
-class CentrosSolicitudesComunicaciones2
+class CentrosSolicitudesComunicacionesUbch
 {
     function __construct()
     {
@@ -71,11 +71,11 @@ class CentrosSolicitudesComunicaciones2
 
         if($requerimientos->save())
         {
-            Success('centros/'.$id_ubch.'','Solicitud ingresada con exito.');
+            Success('centrosUbch/'.$id_ubch.'','Solicitud ingresada con exito.');
         }
         else
         {
-            Success('centros/'.$id_ubch.'','Error al insertar solicitud de comunicación.');
+            Success('centrosUbch/'.$id_ubch.'','Error al insertar solicitud de comunicación.');
         }
     }
 
@@ -100,11 +100,11 @@ class CentrosSolicitudesComunicaciones2
 
         if($requerimientos->delete())
         {
-            Success('centros/'.$requerimientos->centro->id_ubch.'','Solicitud borrada con exito.');
+            Success('centrosUbch/'.$requerimientos->centro->id_ubch.'','Solicitud borrada con exito.');
         }
         else
         {
-            Success('centros/'.$requerimientos->centro->id_ubch.'','Error al borrar la solicitud.');
+            Success('centrosUbch/'.$requerimientos->centro->id_ubch.'','Error al borrar la solicitud.');
         }
 
     }
