@@ -122,20 +122,11 @@
                   <li class=""><a href="<?php echo baseUrlRole() ?>instituciones"><i class="fa fa-building-o"></i> INSTITUCIONES</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>RegistroClp"><i class="fa fa-wpexplorer"></i> CLP</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
                   <li class=""><a href="<?php echo baseUrlRole() ?>centrosAdmin"><i class="fa fa-university"></i> CENTROS</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
                   <li class=""><a href="<?php echo baseUrlRole() ?>admin/estadisticas"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesUbch" aria-expanded="false"><i class="fa fa-university"></i>
-                    CENTROS
-                  </a>
-                </li>
-              </ul>
             </div>
             <!--/.nav-collapse -->
           </div>
