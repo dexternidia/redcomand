@@ -69,7 +69,7 @@ class CentrosProblematicasUbch
         extract($_POST);
        //Arr($_POST); //Array para ver que envia el formulario
         $problematica = Problematica::find($id);
-        $problematica->id_problema = $tipo;
+        $problematica->id_tipo_problema = $tipo;
         $problematica->observaciones = $observacion; 
         $problematica->estatus = $estatus;
 

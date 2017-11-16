@@ -167,8 +167,6 @@ class CentrosUbch
         {
             Error('centrosUbch','Operación no permitida.'); 
         }
-
-
     }
 
     public function edit($id)

@@ -7,7 +7,7 @@
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>centrosSolicitudes/<?php echo $problema->id_solicitud_ubch ?>" method="POST">
+    <form action="<?php echo baseUrlRole() ?>centrosSolicitudesUbch/<?php echo $problema->id_solicitud_ubch ?>" method="POST">
       <?php echo Token() ?>
       <div class="row">
         <div class="col-lg-4">

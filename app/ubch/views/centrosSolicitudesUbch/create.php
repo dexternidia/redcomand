@@ -7,9 +7,9 @@
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>centrosSolicitudes" method="POST">
+    <form action="<?php echo baseUrlRole() ?>centrosSolicitudesUbch" method="POST">
       <?php echo Token() ?>
-      <input type="text" name="id_ubch" value="<?php echo $id_ubch ?>">
+      <input type="hidden" name="id_ubch" value="<?php echo $id_ubch ?>">
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group">

@@ -2,6 +2,7 @@
 namespace App\admin\controllers;
 use App\Institucion;
 use App\Instituciones;
+use App\ParroquiaCne;
 use App\Usuario;
 use Carbon\Carbon;
 
@@ -86,6 +87,7 @@ class Cuentas
 
     public function parroquiasCne()
     {
+        extract($_POST);
         extract($_GET);
         $parroquias = ParroquiaCne::where('id_municipio',$idMunicipio)->get();
         //var_dump($parroquias);

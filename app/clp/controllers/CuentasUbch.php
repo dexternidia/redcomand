@@ -19,9 +19,14 @@ class CuentasUbch extends BaseController
     public function index()
     {
         $usuario = User();
-        $usuariosubch = Usuario::where('id_municipio',$usuario['id_municipio'])
-        ->where('id_parroquia',$usuario['id_parroquia'])
-        ->where('role','ubch')
+
+
+        $usuariosubch = Usuario::orderBy('id', 'DESC')
+        ->where('id_municipio',$usuario['id_municipio'])
+        ->where('role','!=','admin')
+        ->where('role','!=','ubch')
+        ->where('role','!=','clp')
+        ->where('role','!=','municipal')
         ->get();
         View(compact('usuariosubch'));
     }

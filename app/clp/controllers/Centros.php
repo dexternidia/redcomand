@@ -26,6 +26,7 @@ class Centros
 
     public function create()
     {
+
         $user = User();
         $mesas_cne = MesasCne::where('id_municipio',$user['id_municipio'])
         ->where('id_parroquia',$user['id_parroquia'])
@@ -100,7 +101,7 @@ class Centros
                     $mesa->estatus = 1;
                     if($mesa->save())
                     {
-                        Success('centrosResponsables/busqueda/2'.$ubch->id,'UBCH registrado, porceda a ingresar responsable.');
+                        Success('centrosResponsables/busqueda/'.$ubch->id_ubch,'UBCH registrado, porceda a ingresar responsable.');
                     }
                     else
                     {

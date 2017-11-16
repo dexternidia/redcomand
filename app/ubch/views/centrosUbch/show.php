@@ -83,74 +83,137 @@ text-align: center;
           </div>
         </div>
       </div>
-         <?php if ($mesas): ?>
+      <?php if ($responsable): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> MESAS
+            <i class="fa fa-file"></i> RESPONSABLE
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>ResponsableUbch/<?php echo $responsable->id_responsable_ubch ?>/delete"><i class="fa fa-times text-danger"></i></a>
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>ResponsableUbch/<?php echo $responsable->id_responsable_ubch ?>/edit" data-toggle="modal" data-target="#editarResponsable"><i class="fa fa-pencil text-primary"></i></a>
             </h5>
             <br>
           </div>
-          <div class="col-md-12 table-responsive panel panel-default">
-            <table id="myTable" class="table table-striped table-condensed animated fadeIn" data-striped="true">
-              <thead>
-                <tr class="">
-                  <th width="" class="text-uppercase">MESA</th>
-                  <th class="text-uppercase">COD MESA</th>
-                  <th class="text-uppercase">Cant. Testigos</th>
-                  <th class="text-uppercase">Ver</th>
-                </tr>
-              </thead>
+          <div class="">
+            <table class="table table-user-information panel panel-default animated fadeIn">
               <tbody>
-                <?php foreach ($mesas as $key => $u): ?>
                 <tr>
-                  <td><?php echo $u->mesa ?></td>
-                  <td><?php echo $u->codigo_mesa ?></td>
+                  <td width="30%" class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-address-card-o"></i> Nombre:</b></td>
+                  <td class="text-uppercase"><?php echo ucwords($responsable->nombre_apellido) ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-address-card"></i> Cédula:</b></td>
+                  <td class="text-uppercase"><?php echo $responsable->cedula ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-envelope"></i> Email:</b></td>
+                  <td class="text-uppercase"><?php echo $responsable->email ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-volume-control-phone"></i> Telefono n°1:</b></td>
+                  <td class="text-uppercase"><?php echo $responsable->telefono_1 ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-mobile"></i> Telefono n°2:</b></td>
+                  <td class="text-uppercase"><?php echo $responsable->telefono_2 ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-map-pin"></i> Municipio:</b></td>
+                  <td class="text-uppercase"><?php echo $responsable->municipio->nombre ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-map-marker"></i> Parroquia:</b></td>
+                  <td class="text-uppercase"><?php echo $responsable->parroquia->nombre ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-map"></i> Dirección:</b></td>
+                  <td class="text-uppercase"><?php echo $responsable->direccion ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa fa-car"></i> Vehiculo:</b></td>
                   <td class="text-uppercase">
-                   <?php echo $u->testigos->count() ?>
-                  </td>
-                  <td width="5%">
-                    <?php echo Token() ?>
-                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosMesasUbch/<?php echo $u->id_mesas_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                    <?php if ($responsable->vehiculo == true): ?>
+                    <i class="btn btn-default fa fa-check"></i>
+                    <?php else: ?>
+                    <i class="btn btn-default fa fa-times"></i>
+                    <?php endif ?>
                   </td>
                 </tr>
-                <?php endforeach ?>
               </tbody>
             </table>
-            <br>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div id="editarResponsable" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Editar Responsable</h4>
+            </div>
+            <div class="modal-body">
+              <form action="<?php echo baseUrlRole() ?>cuentas" method="POST">
+                <?php echo Token::field() ?>
+                <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono1" placeholder="Telefono n°1" required/>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text" name="telefono2" placeholder="Telefono n°2"/>
+          </div>
+        </div>
+                  <div class="col-lg-12">
+                    <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'" name="telefono_1" placeholder="TELEFONO 1" value="<?php echo $responsable->telefono_1 ?>">
+                  </div>
+                  <div class="col-lg-12">
+                    <input class="form-control" type="text" name="telefono_2" placeholder="TELEFONO 2" value="<?php echo $responsable->telefono_2 ?>">
+                  </div>
+                  <div class="col-lg-12">
+                    <input class="form-control" type="text" name="name" placeholder="EMAIL" value="<?php echo $responsable->email ?>">
+                  </div>
+                <br>
+              </div>
+            </div>
+            <div class="modal-footer">
+                  <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
+            </div>
+          </form>
           </div>
         </div>
       </div>
       <?php else: ?>
-        
-<!--       <div class="col-lg-6 animated fadeIn animated">
+      <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> DATOS RESPONSABLE
+            <i class="fa fa-file"></i> RESPONSABLE
             </h5>
             <hr>
           </div>
           <div class="">
             <h5><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
-            Este UBCH no tiene responsable, ingrese con el siguiente link</h5>
-            <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>/ResponsableUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
+            Este <i class="fa fa-university text-danger"></i>centro no tiene responsable, ingrese con el siguiente link</h5>
+            <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>centrosResponsables/busqueda/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
           </div>
         </div>
-      </div> -->
+      </div>
       <?php endif ?>
+      
     </div>
     <hr>
     <div class="row">
-
       <?php if ($problematicas): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> PROBLEMATICAS
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <br>
           </div>
@@ -180,7 +243,7 @@ text-align: center;
                   </td>
                   <td width="5%">
                     <?php echo Token() ?>
-                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/<?php echo $u->id_problematica_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasUbch/<?php echo $u->id_problematica_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
                   </td>
                 </tr>
                 <?php endforeach ?>
@@ -191,7 +254,7 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-<!--       <div class="col-lg-6 animated fadeIn animated">
+      <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -207,15 +270,13 @@ text-align: center;
         </div>
       </div> -->
       <?php endif ?>
-
-
-      <?php if ($problematicas): ?>
+      <?php if ($solicitudes): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> SOLICITUDES
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <br>
           </div>
@@ -245,7 +306,7 @@ text-align: center;
                   </td>
                   <td width="5%">
                     <?php echo Token() ?>
-                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/<?php echo $u->id_solicitud_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesUbch/<?php echo $u->id_solicitud_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
                   </td>
                 </tr>
                 <?php endforeach ?>
@@ -256,8 +317,7 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-
-<!--       <div class="col-lg-6 animated fadeIn animated">
+      <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -273,14 +333,67 @@ text-align: center;
         </div>
       </div> -->
       <?php endif ?>
-
-
     </div>
     <hr>
     <div class="row">
-   
-
       <?php if ($mesas): ?>
+      <div class="col-lg-6 animated fadeIn animated">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-file"></i> MESAS
+            </h5>
+            <br>
+          </div>
+          <div class="col-md-12 table-responsive panel panel-default">
+            <table id="myTable" class="table table-striped table-condensed animated fadeIn" data-striped="true">
+              <thead>
+                <tr class="">
+                  <th width="" class="text-uppercase">MESA</th>
+                  <th class="text-uppercase">COD MESA</th>
+                  <th class="text-uppercase">Cant. Testigos</th>
+                  <th class="text-uppercase">Ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($mesas as $key => $u): ?>
+                <tr>
+                  <td><?php echo $u->mesa ?></td>
+                  <td><?php echo $u->codigo_mesa ?></td>
+                  <td class="text-uppercase">
+                    <?php echo $u->testigos->count() ?>
+                  </td>
+                  <td width="5%">
+                    <?php echo Token() ?>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosMesasUbch/<?php echo $u->id_mesas_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                  </td>
+                </tr>
+                <?php endforeach ?>
+              </tbody>
+            </table>
+            <br>
+          </div>
+        </div>
+      </div>
+      <?php else: ?>
+      
+      <!--       <div class="col-lg-6 animated fadeIn animated">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-file"></i> DATOS RESPONSABLE
+            </h5>
+            <hr>
+          </div>
+          <div class="">
+            <h5><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
+            Este UBCH no tiene responsable, ingrese con el siguiente link</h5>
+            <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>/ResponsableUbch/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
+          </div>
+        </div>
+      </div> -->
+      <?php endif ?>
+      <?php if ($unoxdiezpadrinos): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
@@ -324,8 +437,8 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-        
-<!--       <div class="col-lg-6 animated fadeIn animated">
+      
+      <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -341,10 +454,7 @@ text-align: center;
         </div>
       </div> -->
       <?php endif ?>
-
     </div>
-
-
   </div>
 </div>
 <script type="text/javascript">

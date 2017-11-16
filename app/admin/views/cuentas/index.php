@@ -22,7 +22,11 @@
             <td class="text-uppercase"><?php echo $u->id ?></td>
             <td class="text-uppercase"><?php echo $u->name ?></td>
             <td class="text-uppercase"><?php echo $u->role ?></td>
-            <td class="text-uppercase"><?php echo $u->instituciones->nombre ?></td>
+            <td class="text-uppercase">
+              <?php if (isset($u->instituciones->nombre)): ?>
+                              <?php echo $u->instituciones->nombre ?>
+              <?php endif ?>
+              </td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
             <td class="text-uppercase">
             </td>

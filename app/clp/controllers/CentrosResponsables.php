@@ -118,7 +118,7 @@ class CentrosResponsables
                 $usuario->id_parroquia = $user['id_parroquia'];
                 $usuario->id_municipal = 0;
                 $usuario->id_clp = 0;
-                $usuario->id_ubch = $id_ubch;
+                $usuario->id_ubch = $ubch->id_ubch;
                 $usuario->created_at = $carbon;
                 $usuario->updated_at = $carbon;
                 $usuario->estatus = 0;
