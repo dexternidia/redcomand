@@ -113,6 +113,7 @@ class Login
 			                'id_ubch' => $usuario->id_ubch,
 			                'id_clp' => $usuario->id_clp,
 			                'estatus' => $usuario->estatus,
+			                'id_patrullero' => $usuario->id_patrullero,
 			            );
 
 			           	$session->register(10); // Register for 2 hours.

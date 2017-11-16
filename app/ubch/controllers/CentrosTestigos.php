@@ -118,18 +118,6 @@ class CentrosTestigosUbch
 
                         if($testigo->save())
                         {
-                            $ubch = Ubch::find($testigo->id_ubch);
-                            extract($_GET);
-                            ob_start();
-                            include('app/clp/views/centrosTestigos/certificadoPDF.php');
-                            $dompdf = new Dompdf(array('enable_remote' => true));
-                            $baseUrl = baseUrl;
-                            $dompdf->setBasePath($baseUrl); // This line resolve
-                            $dompdf->loadHtml(ob_get_clean());
-                            $dompdf->setPaper('letter', 'portrait');
-                            $dompdf->render();
-                            $dompdf->stream();
-
                             Success('centrosMesasUbch/'.$id_mesa,'Testigo de mesa agregado con exito.!');
                         }
                         else
@@ -187,9 +175,26 @@ class CentrosTestigosUbch
 
     public function certificadoPDF()
     {
-        $testigo = MesaTestigo::where('cedula',19881315)->first();
+        $id_testigo = Uri(5);
+        $testigo = MesaTestigo::where('id_mesas_ubch_testigos',$id_testigo)->first();
         $ubch = Ubch::find($testigo->id_ubch);
 
-        View(compact('testigo','ubch'));
+        if($testigo)
+        {
+            extract($_GET);
+            ob_start();
+            include('app/clp/views/centrosTestigos/certificadoPDF.php');
+            $dompdf = new Dompdf(array('enable_remote' => true));
+            $baseUrl = baseUrl;
+            $dompdf->setBasePath($baseUrl); // This line resolve
+            $dompdf->loadHtml(ob_get_clean());
+            $dompdf->setPaper('letter', 'portrait');
+            $dompdf->render();
+            $dompdf->stream();
+        }
+        else
+        {
+            Error('centrosUbch/','No se encuentra testigo de mesa.');
+        }
     }
 }

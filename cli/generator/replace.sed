@@ -1,4 +1,4 @@
 
-s/${modulo}/clp/
-s/${controller}/Unoxdiezintegrantes/
+s/${modulo}/patrullero/
+s/${controller}/Patrullados/
 s/${vista}/show/

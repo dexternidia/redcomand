@@ -30,8 +30,6 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> DATOS GENERALES
-            <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/ResponsableUbch/create/<?php echo $ubch->id ?>"><i class="fa fa-times text-danger"></i></a>
-            <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/ResponsableUbch/create/<?php echo $ubch->id ?>"><i class="fa fa-pencil text-primary"></i></a>
             </h5>
             <br>
           </div>
@@ -173,7 +171,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> PROBLEMATICAS
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
             </h5>
             <br>
           </div>
@@ -238,7 +236,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> SOLICITUDES
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
             </h5>
             <br>
           </div>
@@ -280,7 +278,7 @@ text-align: center;
       </div>
       <?php else: ?>
 
-<!--       <div class="col-lg-6 animated fadeIn animated">
+  <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">

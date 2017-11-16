@@ -40,7 +40,7 @@ class Cuentas
         $usuario->name = $name;
         $usuario->email = $email;
         $usuario->password = $clave;
-        $usuario->role = $role;
+        $usuario->role = 'patrullero';
         $usuario->id_instituciones = $id_instituciones;
         $usuario->id_municipio = $id_municipio;
         $usuario->id_parroquia = $id_parroquia;

@@ -116,6 +116,9 @@
                     </ul>
                   </li>
                 </ul>
+                <ul class="nav navbar-nav">
+                  <li class=""><a href="<?php echo baseUrlRole() ?>centrosUbch"><i class="fa fa-university"></i> CENTRO</a></li>
+                </ul>
               </div>
               <!--/.nav-collapse -->
             </div>

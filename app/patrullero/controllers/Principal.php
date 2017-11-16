@@ -1,45 +1,20 @@
 <?php
 namespace App\patrullero\controllers;
 
-class Principal
+use App\clp\models\PrincipalModel;
+use Controller,View,Token,Session,Arr,Message,Redirect;
+
+class Principal extends Controller
 {
     function __construct()
     {
+        parent::__construct();
         Role('patrullero');
     }
 
+
     public function index()
     {
-        View();
-    }
-
-    public function create()
-    {
-        View();
-    }
-
-    public function store()
-    {
-
-    }
-
-    public function show($id)
-    {
-
-    }
-
-    public function edit($id)
-    {
-        View(compact('id'));
-    }
-
-    public function update($id)
-    {
-
-    }
-
-    public function destroy($id)
-    {
-
+        Redirect::to('patrullero/patrullados');
     }
 }

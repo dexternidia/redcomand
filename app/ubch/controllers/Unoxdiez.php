@@ -3,6 +3,8 @@ namespace App\ubch\controllers;
 
 use App\Cne;
 use App\UbchUnoxDiez;
+use App\Usuario;
+use Carbon\Carbon;
 
 class UnoxdiezUbch
 {
@@ -56,13 +58,38 @@ class UnoxdiezUbch
                     $padrino->cedula = $cedula;
                     $padrino->eliminar = 0;
 
+
                     if($padrino->save())
                     {
-                        Success('centrosUbch/'.$user['id_ubch'],'Padrino de 1x10 creado con exito.!');
+                        $clave = password_hash($password, PASSWORD_DEFAULT);
+                        $usuario = new Usuario;
+                        $usuario->name = $datos_cne->nombre_1.''.$datos_cne->apellido_1;
+                        $usuario->email = $email;
+                        $usuario->password = $clave;
+                        $usuario->role = 'patrullero';
+                        $usuario->id_instituciones = 0;
+                        $usuario->id_municipio = $user['id_municipio'];
+                        $usuario->id_parroquia = $user['id_parroquia'];
+                        $usuario->id_municipal = 0;
+                        $usuario->id_clp = 0;
+                        $usuario->id_ubch = $user['id_ubch'];
+                        $usuario->id_patrullero = $padrino->id_ubch_registro_unoxdiez;
+                        $usuario->created_at = Carbon::now();
+                        $usuario->updated_at = Carbon::now();
+                        $usuario->estatus = 0;
+
+                        if($usuario->save())
+                        {
+                            Success('centrosUbch/'.$user['id_ubch'],'Patrullero de 1x10 creado con exito.!');
+                        }
+                        else
+                        {
+                            Error('centrosUbch/'.$user['id_ubch'],'Error al crear Patrullero de 1x10.');
+                        }
                     }
                     else
                     {
-                        Error('centrosUbch/'.$user['id_ubch'],'Error al crear padrino de 1x10.');
+                        Error('centrosUbch/'.$user['id_ubch'],'Error al crear Patrullero de 1x10.');
                     }
                 }
             }

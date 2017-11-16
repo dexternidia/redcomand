@@ -39,22 +39,28 @@ $("#MesasSelect").html(data);
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group">
-            <input class="form-control" type="number" name="cedula" placeholder="CEDULA" required>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" type="text" name="telefono_1" placeholder="TELEFONO 1" required>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" type="text" name="telefono_2" placeholder="TELEFONO 2">
+            <input class="form-control" type="number" name="cedula" placeholder="CEDULA">
           </div>
         </div>
       </div>
       <div class="col-lg-12">
         <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <h4 class="text-muted text-center text-uppercase">
+          Datos de acceso
+          </h4>
+        </div>
+        <div class="col-lg-4">
+          <input class="form-control" type="text" name="email" placeholder="USUARIO">
+        </div>
+        <div class="col-lg-4">
+          <input class="form-control" id="password" name="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'tiene que tener minimo 6 caracteres.' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="CLAVE" required>
+        </div>
+        <div class="col-lg-4">
+          <input class="form-control" id="password_two" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'La clave no coinciden.' : '');" placeholder="VERIFICAR CLAVE" required>
+        </div>
       </div>
     </div>
   </div>

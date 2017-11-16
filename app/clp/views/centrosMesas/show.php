@@ -70,7 +70,6 @@
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> TESTIGOS 
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosTestigos/busqueda/<?php echo $mesa->id_mesas_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <br>
           </div>
@@ -89,11 +88,21 @@
                 <tr>
                   <td><?php echo $u->cedula ?></td>
                   <td><?php echo $u->nombre ?> <?php echo $u->apellido ?></td>
-                  <td><?php echo $u->posicion ?></td>
-                  <td width="5%">
-                    <?php echo Token() ?>
-                    <a class="text-danger fa fa-times fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosTestigos/<?php echo $u->id_mesas_ubch_testigos ?>/delete?id_mesa=<?php echo $mesa->id_mesas_ubch ?>"></a>
+                  <td>
+                    <?php if ($u->posicion == 1): ?>
+                    TESTIGO PRINCIPAL
+                    <?php endif ?>
+                    <?php if ($u->posicion == 2): ?>
+                    TESTIGO SUPLENTE
+                    <?php endif ?>
+                    <?php if ($u->posicion == 2): ?>
+                    TESTIGO SEGUNDO SUPLENTE
+                    <?php endif ?>
                   </td>
+                  <td style="text-align: center;" width="5%">
+                    <a class="text-primary fa fa-print fa-2x" href="<?php echo baseUrlRole() ?>centrosTestigos/certificadoPDF/<?php echo $u->id_mesas_ubch_testigos ?>"></a>
+                    <!--                     <a class="text-danger fa fa-times fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosTestigosUbch/<?php echo $u->id_mesas_ubch_testigos ?>/delete?id_mesa=<?php echo $mesa->id_mesas_ubch ?>"></a>
+                  -->                  </td>
                 </tr>
                 <?php endforeach ?>
               </tbody>

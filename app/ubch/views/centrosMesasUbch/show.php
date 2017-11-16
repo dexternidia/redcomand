@@ -10,10 +10,8 @@
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> DATOS DE MESA
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasUbch/<?php echo $mesa->id_mesas_ubch ?>/delete"><i class="fa fa-times text-danger"></i></a>
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasUbch/<?php echo $mesa->id_mesas_ubch ?>/edit"><i class="fa fa-pencil text-primary"></i></a>
             </h5>
-            <hr>
+            <br>
           </div>
           <div class="">
             <table class="table table-user-information panel panel-default animated fadeIn">
@@ -69,7 +67,7 @@
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> TESTIGOS 
+            <i class="fa fa-file"></i> TESTIGOS
             <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosTestigosUbch/busqueda/<?php echo $mesa->id_mesas_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <br>
@@ -89,9 +87,19 @@
                 <tr>
                   <td><?php echo $u->cedula ?></td>
                   <td><?php echo $u->nombre ?> <?php echo $u->apellido ?></td>
-                  <td><?php echo $u->posicion ?></td>
-                  <td width="5%">
-                    <?php echo Token() ?>
+                  <td>
+                    <?php if ($u->posicion == 1): ?>
+                    TESTIGO PRINCIPAL
+                    <?php endif ?>
+                    <?php if ($u->posicion == 2): ?>
+                    TESTIGO SUPLENTE
+                    <?php endif ?>
+                    <?php if ($u->posicion == 2): ?>
+                    TESTIGO SEGUNDO SUPLENTE
+                    <?php endif ?>
+                  </td>
+                  <td style="text-align: center;" width="5%">
+                    <a class="text-primary fa fa-print fa-2x" href="<?php echo baseUrlRole() ?>centrosTestigosUbch/certificadoPDF/<?php echo $u->id_mesas_ubch_testigos ?>"></a>
                     <a class="text-danger fa fa-times fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosTestigosUbch/<?php echo $u->id_mesas_ubch_testigos ?>/delete?id_mesa=<?php echo $mesa->id_mesas_ubch ?>"></a>
                   </td>
                 </tr>
@@ -105,4 +113,3 @@
     </div>
   </div>
 </div>
-
