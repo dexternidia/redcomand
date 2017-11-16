@@ -43,7 +43,17 @@ $("#MesasSelect").html(data);
             <input class="form-control" type="number" name="cedula" placeholder="CEDULA">
           </div>
         </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select class="form-control" name="id_partidos">
+              <?php foreach ($partidos as $key => $p): ?>
+                <option value="<?php echo $p->id_partidos ?>"><?php echo $p->nombre ?></option>
+              <?php endforeach ?>
+            </select>
+          </div>
+        </div>
       </div>
+
       <div class="col-lg-12">
         <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
       </div>

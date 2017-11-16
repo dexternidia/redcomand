@@ -79,6 +79,7 @@
                   <th width="" class="text-uppercase">Cedula</th>
                   <th class="text-uppercase">Nombre y Apellido</th>
                   <th class="text-uppercase">Posición</th>
+                  <th class="text-uppercase">Partido</th>
                   <th class="text-uppercase">Opciones</th>
                 </tr>
               </thead>
@@ -89,15 +90,16 @@
                   <td><?php echo $u->nombre ?> <?php echo $u->apellido ?></td>
                   <td>
                     <?php if ($u->posicion == 1): ?>
-                    TESTIGO PRINCIPAL
+                    TESTIGO REGIONAL
                     <?php endif ?>
                     <?php if ($u->posicion == 2): ?>
-                    TESTIGO SUPLENTE
+                    TESTIGO MUNICIPAL
                     <?php endif ?>
-                    <?php if ($u->posicion == 2): ?>
-                    TESTIGO SEGUNDO SUPLENTE
+                    <?php if ($u->posicion == 3): ?>
+                    TESTIGO CENTRO
                     <?php endif ?>
                   </td>
+                  <td><?php echo $u->partido->nombre ?></td>
                   <td style="text-align: center;" width="5%">
                     <a class="text-primary fa fa-print fa-2x" href="<?php echo baseUrlRole() ?>centrosTestigosUbch/certificadoPDF/<?php echo $u->id_mesas_ubch_testigos ?>"></a>
                     <a class="text-danger fa fa-times fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosTestigosUbch/<?php echo $u->id_mesas_ubch_testigos ?>/delete?id_mesa=<?php echo $mesa->id_mesas_ubch ?>"></a>

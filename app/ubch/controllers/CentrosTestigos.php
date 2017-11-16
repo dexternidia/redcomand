@@ -24,7 +24,8 @@ class CentrosTestigosUbch
     {
         $id_mesa = Uri(5);
         $tipo = TipoProblematica::all();
-        View(compact('id_mesa','tipo')); 
+        $partidos = Partido::all();
+        View(compact('id_mesa','tipo','partidos')); 
         //Arr($solicitante);
     }
 
@@ -111,6 +112,7 @@ class CentrosTestigosUbch
                         $testigo->id_ubch = $mesa->id_ubch;
                         $testigo->codigo_mesa = $mesa->codigo_mesa;
                         $testigo->id_mesas_ubch = $id_mesa;
+                        $testigo->id_partidos = $id_partidos;
                         $testigo->cedula = $cedula;
                         $testigo->nombre = $datos_cne->nombre_1;
                         $testigo->apellido = $datos_cne->apellido_1;
@@ -183,7 +185,7 @@ class CentrosTestigosUbch
         {
             extract($_GET);
             ob_start();
-            include('app/clp/views/centrosTestigos/certificadoPDF.php');
+            include('app/ubch/views/centrosTestigosUbch/certificadoPDF.php');
             $dompdf = new Dompdf(array('enable_remote' => true));
             $baseUrl = baseUrl;
             $dompdf->setBasePath($baseUrl); // This line resolve
