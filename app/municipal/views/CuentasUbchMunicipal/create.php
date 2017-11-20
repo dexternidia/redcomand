@@ -30,7 +30,7 @@ $("#MesasSelect").html(data);
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR CUENTA UBCH</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR CUENTA CLP</h3>
   </div>
   <br>
   <div class="panel-body">
@@ -45,14 +45,6 @@ $("#MesasSelect").html(data);
             <option value="">ORGANISMOS</option>
             <?php foreach ($organismos as $key => $or): ?>
             <option value="<?php echo $or->id_instituciones ?>"><?php echo $or->nombre ?></option>
-            <?php endforeach ?>
-          </select>
-        </div>
-        <div class="col-lg-4">
-          <select class="form-control" name="id_ubch" required>
-            <option value="">CENTRO</option>
-            <?php foreach ($centros as $key => $centro): ?>
-            <option value="<?php echo $centro->id_ubch ?>"><?php echo $centro->nombre_ubch ?></option>
             <?php endforeach ?>
           </select>
         </div>

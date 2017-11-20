@@ -5,7 +5,7 @@ $("#municipioSelect option:selected").each(function () {
 //organismo_id = $(this).val();
 //id1 = $(this).val();
 var idMunicipio = $(this).val();
-alert(idMunicipio);
+//alert(idMunicipio);
 $.get("<?php echo baseUrlRole() ?>centrosResponsables/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
 $("#ParroquiaSelect").html(data);
 });
@@ -42,7 +42,7 @@ $("#MesasSelect").html(data);
         <div class="col-lg-1">
           <div class="form-group">
             <select class="form-control" name="nacionalidad" id="">
-              <option value="V">V</option>
+              <option value="<?php echo $datos_cne->tipo ?>"><?php echo $datos_cne->tipo ?></option>
               <option value="E">E</option>
             </select>
           </div>
@@ -57,42 +57,8 @@ $("#MesasSelect").html(data);
             <input class="form-control" type="text" name="nombre_apellido" placeholder="NOMBRE Y APELLIDO" value="<?php echo $datos_cne->nombre_1 .' '.$datos_cne->apellido_1 ?>">
           </div>
         </div>
-        <div class="col-lg-3">
-          <div class="form-group">
-            <select id="municipioSelect" class="form-control" name="id_municipio" required/>
-              <?php if ($datos_cne->municipio): ?>
-                <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
-                <?php foreach ($municipios as $municipio): ?>
-                <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
-                <?php endforeach ?>
-              <?php else: ?>
-                <option>MUNICIPIOS</option>
-                <option></option>
-                <?php foreach ($municipios as $municipio): ?>
-                <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
-                <?php endforeach ?>
-              <?php endif ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="form-group">
-            <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
-              <?php if ($datos_cne->parroquia): ?>
-                <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
-                <?php foreach ($municipios as $municipio): ?>
-                <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
-                <?php endforeach ?>
-              <?php else: ?>
-                <option>MUNICIPIOS</option>
-                <option></option>
-                <?php foreach ($municipios as $municipio): ?>
-                <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
-                <?php endforeach ?>
-              <?php endif ?>
-            </select>
-          </div>
-        </div>
+        <input type="hidden" name="id_municipio" value="<?php echo $datos_cne->municipio ?>">
+        <input type="hidden" name="id_parroquia" value="<?php echo $datos_cne->parroquia ?>">
         <div class="col-lg-4">
           <div class="form-group">
             <input class="form-control" type="email" name="email" placeholder="EMAIL">

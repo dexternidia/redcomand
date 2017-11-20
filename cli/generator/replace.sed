@@ -1,4 +1,4 @@
 
-s/${modulo}/patrullero/
-s/${controller}/Patrullados/
+s/${modulo}/municipal/
+s/${controller}/Clps/
 s/${vista}/show/

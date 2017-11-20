@@ -10,8 +10,7 @@
           <tr class="">
             <th>ID</th>
             <th width="" class="text-uppercase">Nombre</th>
-            <th width="" class="text-uppercase">INSTITUCIÓN</th>
-            <th width="" class="text-uppercase">Centro</th>
+            <th width="" class="text-uppercase">parroquia</th>
             <th width="" class="text-uppercase">Creado</th>
             <th width="" class="text-uppercase">Opciones</th>
           </tr>
@@ -22,10 +21,7 @@
           <tr>
             <td class="text-uppercase"><?php echo $u->id ?></td>
             <td class="text-uppercase"><?php echo $u->name ?></td>
-            <?php if ($u->instituciones): ?>
-            <td class="text-uppercase"><?php echo $u->instituciones->nombre ?></td>
-            <?php endif ?>
-            <td class="text-uppercase"><?php echo $u->centro->nombre_ubch ?></td>
+            <td class="text-uppercase"><?php echo $u->parroquia->nombre ?></td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
             <td class="text-uppercase">
             </td>

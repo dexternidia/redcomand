@@ -3,7 +3,7 @@ namespace App\municipal\controllers;
 
 use App\Mesa;
 
-class CentrosMesas
+class CentrosMesasMunicipal
 {
     function __construct()
     {

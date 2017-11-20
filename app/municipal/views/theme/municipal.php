@@ -93,7 +93,7 @@
         <div class="col-sm-3 col-lg-2">
           <nav class="navbar navbar-default navbar-fixed-side">
             <div class="container">
-              <div class="navbar-header text-white rojo">
+              <div style="background-color: red" class="navbar-header text-white">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -112,13 +112,16 @@
                       ?>
                     </a>
                     <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
-                      <li><a class="text-danger" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal"><i class="fa fa-users"></i> CUENTAS UBCH</a></li>
+                      <li><a class="text-danger" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal"><i class="fa fa-users"></i> CUENTAS CLP</a></li>
                       <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> SALIR</a></li>
                     </ul>
                   </li>
                 </ul>
                 <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>centrosMunicipal"><i class="fa fa-university"></i> CENTRO</a></li>
+                  <li class=""><a href="<?php echo baseUrlRole() ?>clps"><i class="fa fa-map"></i> CLP</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                <!--  <li class=""><a href="<?php echo baseUrlRole() ?>centrosMunicipal"><i class="fa fa-university"></i> CENTROS</a></li> -->
                 </ul>
               <ul class="nav navbar-nav">
                 <li class=""><a href="<?php echo baseUrlRole() ?>estadisticasMunicipal"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>

@@ -19,9 +19,12 @@ class CuentasUbchMunicipal extends BaseController
     public function index()
     {
         $usuario = User();
-        $usuariosubch = Usuario::where('id_municipio',$usuario['id_municipio'])
-        ->where('id_parroquia',$usuario['id_parroquia'])
-        ->where('role','ubch')
+        $usuariosubch = Usuario::orderBy('id', 'DESC')
+        ->where('id_municipio',$usuario['id_municipio'])
+        ->where('role','!=','admin')
+        ->where('role','!=','ubch')
+        ->where('role','!=','patrullero')
+        ->where('role','!=','municipal')
         ->get();
         View(compact('usuariosubch'));
     }
@@ -50,19 +53,22 @@ class CuentasUbchMunicipal extends BaseController
         $usuario->name = $name;
         $usuario->email = $email;
         $usuario->password = $clave;
-        $usuario->role = 'ubch';
+        $usuario->role = 'clp';
         $usuario->id_instituciones = $id_instituciones;
         $usuario->id_municipio = $user['id_municipio'];
         $usuario->id_parroquia = $user['id_parroquia'];
-        $usuario->id_municipal = 0;
+        $usuario->id_municipal = $user['id'];
         $usuario->id_clp = 0;
-        $usuario->id_ubch = $id_ubch;
+        $usuario->id_ubch = 0;
         $usuario->created_at = Carbon::now();
         $usuario->updated_at = Carbon::now();
         $usuario->estatus = 0;
         
         if($usuario->save())
         {
+            $clp = Usuario::find($usuario->id);
+            $clp->id_clp = $clp->id;
+            $clp->save();
             Success('CuentasUbchMunicipal','La cuenta fue creada.');
         }
         else

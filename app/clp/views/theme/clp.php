@@ -113,7 +113,7 @@
                       ?>
                     </a>
                     <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
-                      <li><a class="text-danger" href="<?php echo baseUrlRole() ?>CuentasUbch"><i class="fa fa-users"></i> CUENTAS UBCH</a></li>
+<!--                       <li><a class="text-danger" href="<?php echo baseUrlRole() ?>CuentasUbch"><i class="fa fa-users"></i> CUENTAS UBCH</a></li> -->
                       <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> SALIR</a></li>
                     </ul>
                   </li>

@@ -53,22 +53,22 @@ class CentrosResponsables
             {   
                 $id_municipio = $datos_cne->municipio;
                 $id_parroquia = $datos_cne->parroquia;
+                $instituciones = Institucion::orderBy('nombre', 'desc')->get();
+                $partidos = Partido::all();   
+                $estructura = Estructura::all();     
+                $municipios = MunicipioCne::all();
+                $municipio = MunicipioCne::find($id_municipio);
+                $parroquias = ParroquiaCne::all();
+                $municipio = ParroquiaCne::find($id_parroquia);
+                View(compact('datos_cne','ubch','instituciones','partidos','estructura','id_ubch','municipio','municipios')); 
+                //Arr($datos_cne);
             }
             else
             {
-                $id_municipio = "";
-                $id_parroquia = "";
+                Error('centros/'.$id_ubch,'Esta persona no esta registrada en el CNE.');
             }
 
-            $instituciones = Institucion::orderBy('nombre', 'desc')->get();
-            $partidos = Partido::all();   
-            $estructura = Estructura::all();     
-            $municipios = MunicipioCne::all();
-            $municipio = MunicipioCne::find($id_municipio);
-            $parroquias = ParroquiaCne::all();
-            $municipio = ParroquiaCne::find($id_parroquia);
-            View(compact('datos_cne','ubch','instituciones','partidos','estructura','id_ubch','municipio','municipios')); 
-            //Arr($datos_cne);
+
         }
     }
 

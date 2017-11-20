@@ -157,8 +157,7 @@ text-align: center;
           </div>
           <div class="">
             <h5><i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i>
-            Este <i class="fa fa-university text-danger"></i>centro no tiene responsable, ingrese con el siguiente link</h5>
-            <a class="btn btn-danger" href="<?php echo baseUrlRole() ?>centrosResponsablesMunicipal/busqueda/<?php echo $ubch->id_ubch ?>"><i class="fa fa-user-plus"></i> Agregar Responsable UBCH</a>
+            Este <i class="fa fa-university text-danger"></i>centro no tiene responsable.</h5>
           </div>
         </div>
       </div>
@@ -173,7 +172,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> PROBLEMATICAS
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+<!--             <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
             </h5>
             <br>
           </div>
@@ -238,7 +237,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> SOLICITUDES
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+<!--             <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
             </h5>
             <br>
           </div>
@@ -364,7 +363,7 @@ text-align: center;
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> 1X10 PADRINOS            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            <i class="fa fa-file"></i> 1X10 PATRULLEROS       <!--      <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
             </h5>
             <br>
           </div>
@@ -375,9 +374,9 @@ text-align: center;
                   <th width="" class="text-uppercase">Nombre</th>
                   <th class="text-uppercase">Apellido</th>
                   <th class="text-uppercase">Cedula</th>
-                  <th class="text-uppercase">Telefono 1</th>
-                  <th class="text-uppercase">Telefono 2</th>
-                  <th class="text-uppercase">Ahijados</th>
+                  <th class="text-uppercase">Telf. 1</th>
+                  <th class="text-uppercase">Telf. 2</th>
+                  <th class="text-uppercase">Patrullados</th>
                   <th class="text-uppercase">Ver</th>
                 </tr>
               </thead>

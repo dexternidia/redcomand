@@ -13,7 +13,7 @@ use App\TipoProblematica;
 use App\Ubch;
 use Dompdf\Dompdf;
 
-class CentrosTestigos
+class CentrosTestigosMunicipal
 {
     function __construct()
     {

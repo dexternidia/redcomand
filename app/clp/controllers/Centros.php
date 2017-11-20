@@ -16,8 +16,7 @@ class Centros
     public function index()
     {
         $user = User();
-        $centros = Ubch::where('id_municipio',$user['id_municipio'])
-        ->where('id_parroquia',$user['id_parroquia'])
+        $centros = Ubch::where('id_clp',$user['id_clp'])
         ->orderBy('id_ubch', 'DESC')
         ->get();
 
@@ -68,7 +67,7 @@ class Centros
             $ubch->id_parroquia = $user['id_parroquia'];
             $ubch->direccion_ubch = $direccion_ubch;
             $ubch->estatus = 0;
-            $ubch->id_clp = 0;
+            $ubch->id_clp = $user['id_clp'];
             $ubch->fecha_registro = $fecha_registro;
             $ubch->hora_registro = $hora_registro;  
             $ubch->eliminar = 0;
