@@ -43,13 +43,13 @@ class Patrullados
             {
                 if($unoxdiez_existe)
                 {
-                    Error('patrullados/','Esta persona ya es padrino de un 1x10.');
+                    Error('patrullados/','Esta persona ya es Patrullero de un 1x10.');
                 }
                 else
                 {
                     if($unoxdiezintegrante_existe)
                     {
-                        Error('unoxdiezintegrantesUbch/create/','Esta persona ya es ahijado de un 1x10.');
+                        Error('unoxdiezintegrantesUbch/create/','Esta persona ya es un Patrullado de un 1x10.');
                     }
                     else
                     {
@@ -66,11 +66,11 @@ class Patrullados
 
                         if($padrino->save())
                         {
-                            Success('patrullados/','Ahijado de 1x10 creado con exito.!');
+                            Success('patrullados/','Patrullado de 1x10 creado con exito.!');
                         }
                         else
                         {
-                            Error('patrullados/','Error al crear ahijado de 1x10.');
+                            Error('patrullados/','Error al crear Patrullado de 1x10.');
                         }
                     }
                 }

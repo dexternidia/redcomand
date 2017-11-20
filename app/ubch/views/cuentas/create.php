@@ -6,7 +6,7 @@ $("#municipioSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idMunicipio = $(this).val();
 //alert(idMunicipio);
-$.get("<?php echo baseUrlRole() ?>RegistroUbch/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
+$.get("<?php echo baseUrlRole() ?>cuentas/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
 $("#ParroquiaSelect").html(data);
 });
 });
@@ -21,7 +21,7 @@ $("#ParroquiaSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idParroquia = $(this).val();
 //alert(idParroquia);
-$.get("<?php echo baseUrlRole() ?>RegistroUbch/mesasCne", { idParroquia:idParroquia }, function(data){
+$.get("<?php echo baseUrlRole() ?>cuentas/mesasCne", { idParroquia:idParroquia }, function(data){
 $("#MesasSelect").html(data);
 });
 });

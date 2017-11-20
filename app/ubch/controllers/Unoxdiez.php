@@ -34,7 +34,7 @@ class UnoxdiezUbch
         //Arr($_POST);
 
         $datos_cne = Cne::where('cedula',$cedula)->first();
-        $unoxdiez_existe = UbchUnoxDiez::where('cedula',$cedula)->where('eliminar',0)->first();
+        $unoxdiez_existe = UbchUnoxDiez::where('cedula',$cedula)->first();
         $user = User();
 
         if($datos_cne)
@@ -56,7 +56,6 @@ class UnoxdiezUbch
                     $padrino->telefono_1 = $telefono_1;
                     $padrino->telefono_2 = $telefono_2;
                     $padrino->cedula = $cedula;
-                    $padrino->eliminar = 0;
 
 
                     if($padrino->save())

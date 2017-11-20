@@ -30,7 +30,7 @@ $("#MesasSelect").html(data);
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR PADRINO 1X10</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR PATRULLERO 1X10</h3>
   </div>
   <br>
   <div class="panel-body">
@@ -44,12 +44,12 @@ $("#MesasSelect").html(data);
         </div>
         <div class="col-lg-4">
           <div class="form-group">
-            <input class="form-control" type="text" name="telefono_1" placeholder="TELEFONO 1" required>
+            <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'" name="telefono_1" placeholder="TELEFONO 1" required>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="form-group">
-            <input class="form-control" type="text" name="telefono_2" placeholder="TELEFONO 2">
+            <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'"  name="telefono_2" placeholder="TELEFONO 2">
           </div>
         </div>
       </div>

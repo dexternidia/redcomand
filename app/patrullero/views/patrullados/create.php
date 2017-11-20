@@ -44,12 +44,12 @@ $("#MesasSelect").html(data);
         </div>
         <div class="col-lg-4">
           <div class="form-group">
-            <input class="form-control" type="text" name="telefono_1" placeholder="TELEFONO 1" required>
+            <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'" name="telefono_1" placeholder="TELEFONO 1" required>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="form-group">
-            <input class="form-control" type="text" name="telefono_2" placeholder="TELEFONO 2">
+            <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'"  name="telefono_2" placeholder="TELEFONO 2">
           </div>
         </div>
       </div>

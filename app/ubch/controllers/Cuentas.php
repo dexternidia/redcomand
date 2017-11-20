@@ -3,6 +3,7 @@ namespace App\ubch\controllers;
 
 use App\Institucion;
 use App\Instituciones;
+use App\ParroquiaCne;
 use App\Usuario;
 use Carbon\Carbon;
 
