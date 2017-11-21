@@ -12,6 +12,7 @@
             <th width="" class="text-uppercase">Nombre</th>
             <th width="" class="text-uppercase">Role</th>
             <th width="" class="text-uppercase">Organismo</th>
+            <th width="" class="text-uppercase">Usuario</th>
             <th width="" class="text-uppercase">Creado</th>
             <th width="" class="text-uppercase">Opciones</th>
           </tr>
@@ -27,6 +28,7 @@
                               <?php echo $u->instituciones->nombre ?>
               <?php endif ?>
               </td>
+            <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
             <td class="text-uppercase">
             </td>

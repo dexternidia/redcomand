@@ -49,31 +49,41 @@ class CuentasUbchMunicipal extends BaseController
         $clave = password_hash($password, PASSWORD_DEFAULT);
         $user = User();
 
-        $usuario = new Usuario;
-        $usuario->name = $name;
-        $usuario->email = $email;
-        $usuario->password = $clave;
-        $usuario->role = 'clp';
-        $usuario->id_instituciones = $id_instituciones;
-        $usuario->id_municipio = $user['id_municipio'];
-        $usuario->id_parroquia = $user['id_parroquia'];
-        $usuario->id_municipal = $user['id'];
-        $usuario->id_clp = 0;
-        $usuario->id_ubch = 0;
-        $usuario->created_at = Carbon::now();
-        $usuario->updated_at = Carbon::now();
-        $usuario->estatus = 0;
-        
-        if($usuario->save())
+        $usuario_existe = Usuario::where('email',$email)->first();
+
+        if(!$usuario_existe)
         {
-            $clp = Usuario::find($usuario->id);
-            $clp->id_clp = $clp->id;
-            $clp->save();
-            Success('CuentasUbchMunicipal','La cuenta fue creada.');
+            $usuario = new Usuario;
+            $usuario->name = $name;
+            $usuario->email = $email;
+            $usuario->password = $clave;
+            $usuario->role = 'clp';
+            $usuario->id_instituciones = $id_instituciones;
+            $usuario->id_municipio = $user['id_municipio'];
+            $usuario->id_parroquia = $user['id_parroquia'];
+            $usuario->id_municipal = $user['id'];
+            $usuario->id_clp = 0;
+            $usuario->id_ubch = 0;
+            $usuario->id_patrullero = 0;
+            $usuario->created_at = Carbon::now();
+            $usuario->updated_at = Carbon::now();
+            $usuario->estatus = 0;
+            
+            if($usuario->save())
+            {
+                $clp = Usuario::find($usuario->id);
+                $clp->id_clp = $clp->id;
+                $clp->save();
+                Success('CuentasUbchMunicipal','La cuenta fue creada.');
+            }
+            else
+            {
+                Error('CuentasUbchMunicipal/create','Error al crear la cuenta.');
+            }
         }
         else
         {
-            Error('CuentasUbchMunicipal/create','Error al crear la cuenta.');
+            Error('CuentasUbchMunicipal/create','Nombre de usuario ya esta en uso.!');
         }
     }
 

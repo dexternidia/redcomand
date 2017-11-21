@@ -8,23 +8,23 @@
       <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
         <thead>
           <tr class="">
-            <th>ID</th>
-            <th width="" class="text-uppercase">Nombre</th>
+            <th width="" class="text-uppercase">Responsable</th>
+            <th width="" class="text-uppercase">usuario</th>
             <th width="" class="text-uppercase">parroquia</th>
             <th width="" class="text-uppercase">Creado</th>
-            <th width="" class="text-uppercase">Opciones</th>
+           <!-- <th width="" class="text-uppercase">Opciones</th> -->
           </tr>
         </thead>
         <tbody>
           <?php if ($usuariosubch): ?>
           <?php foreach ($usuariosubch as $key => $u): ?>
           <tr>
-            <td class="text-uppercase"><?php echo $u->id ?></td>
             <td class="text-uppercase"><?php echo $u->name ?></td>
+            <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->parroquia->nombre ?></td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
-            <td class="text-uppercase">
-            </td>
+           <!-- <td class="text-uppercase">
+            </td> -->
           </tr>
           <?php endforeach ?>
           <?php else: ?>

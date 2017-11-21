@@ -89,7 +89,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> RESPONSABLE
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>ResponsableUbch/<?php echo $responsable->id_responsable_ubch ?>/delete"><i class="fa fa-times text-danger"></i></a>
+            
             <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>ResponsableUbch/<?php echo $responsable->id_responsable_ubch ?>/edit" data-toggle="modal" data-target="#editarResponsable"><i class="fa fa-pencil text-primary"></i></a>
             </h5>
             <br>
@@ -157,32 +157,28 @@ text-align: center;
               <form action="<?php echo baseUrlRole() ?>cuentas" method="POST">
                 <?php echo Token::field() ?>
                 <div class="row">
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono1" placeholder="Telefono n°1" required/>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="form-group">
-            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text" name="telefono2" placeholder="Telefono n°2"/>
-          </div>
-        </div>
-                  <div class="col-lg-12">
-                    <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'" name="telefono_1" placeholder="TELEFONO 1" value="<?php echo $responsable->telefono_1 ?>">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono_1" placeholder="Telefono n°1" value="<?php echo $responsable->telefono_1 ?>" required/>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text" name="telefono_2" placeholder="Telefono n°2" value="<?php echo $responsable->telefono_2 ?>"/>
+                    </div>
                   </div>
                   <div class="col-lg-12">
-                    <input class="form-control" type="text" name="telefono_2" placeholder="TELEFONO 2" value="<?php echo $responsable->telefono_2 ?>">
-                  </div>
-                  <div class="col-lg-12">
-                    <input class="form-control" type="text" name="name" placeholder="EMAIL" value="<?php echo $responsable->email ?>">
-                  </div>
-                <br>
+                    <div class="form-group">
+                      <input class="form-control" type="text" name="direccion" placeholder="Dirección" value="<?php echo $responsable->direccion ?>"/>
+                    </div>
+                  </div>       
+                  <br>
+                </div>
               </div>
-            </div>
-            <div class="modal-footer">
-                  <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
-            </div>
-          </form>
+              <div class="modal-footer">
+                <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
