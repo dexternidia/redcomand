@@ -154,7 +154,7 @@ text-align: center;
               <h4 class="modal-title">Editar Responsable</h4>
             </div>
             <div class="modal-body">
-              <form action="<?php echo baseUrlRole() ?>cuentas" method="POST">
+              <form action="<?php echo baseUrlRole() ?>ResponsableUbch/<?php echo $responsable->id_responsable_ubch ?>" method="POST">
                 <?php echo Token::field() ?>
                 <div class="row">
                   <div class="col-lg-6">
