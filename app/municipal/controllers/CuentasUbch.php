@@ -74,7 +74,7 @@ class CuentasUbchMunicipal extends BaseController
                 $clp = Usuario::find($usuario->id);
                 $clp->id_clp = $clp->id;
                 $clp->save();
-                Success('CuentasUbchMunicipal','La cuenta fue creada.');
+                Success('clps','La cuenta fue creada.');
             }
             else
             {

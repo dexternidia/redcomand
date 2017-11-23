@@ -10,26 +10,20 @@
         <thead>
           <tr class="">
             <!-- <th>ID</th> -->
-            <th width="" class="text-uppercase">Responsable Clp</th>
+            <th width="" class="text-uppercase">Nombre Centro</th>
             <th width="" class="text-uppercase">parroquia</th>
             <th width="" class="text-uppercase">Cant. Centros</th>
             <th width="25%" class="text-uppercase">Opciones</th>
           </tr>
         </thead>
         <tbody>
-          <?php if ($clps): ?>
-          <?php foreach ($clps as $key => $u): ?>
+          <?php if ($centros): ?>
+          <?php foreach ($centros as $key => $u): ?>
           <tr>
-            <!--  <td class="text-uppercase"><?php echo $u->id ?></td> -->
-            <td class="text-uppercase"><?php echo $u->name ?></td>
-            <td class="text-uppercase"><?php echo $u->parroquia->nombre ?></td>
-            <td class="text-uppercase">
-              <?php if ($u->centros->count() > 0): ?>
-                <a class="btn btn-default animated flash" href=""><?php echo $u->centros->count() ?></a>
-              <?php else: ?>
-                <a class="btn btn-default animated flash" href=""><?php echo $u->centros->count() ?></a>
-              <?php endif ?>
-              </td>
+            <!--  <td class="text-uppercase"><?php echo $u->nombre ?></td> -->
+            <td class="text-uppercase"><?php echo $u->nombre ?></td>
+            <td class="text-uppercase"></td>
+            <td class="text-uppercase"></td>
               <td>
                 <a href="<?php echo baseUrlRole() ?>centrosClp/create/<?php echo $u->id_clp ?>" class="btn"><i class="fa fa-university"></i> Asignar centro</a>
                 <a href="<?php echo baseUrlRole() ?>centrosClp/<?php echo $u->id_clp ?>" class="btn text-danger"><i class="text-danger fa fa-search fa-1x"></i> Ver centros</a>
@@ -42,7 +36,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <?php echo Paginator($clps); ?>
+        <?php echo Paginator($centros); ?>
       </div>
     </div>
   </div>

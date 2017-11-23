@@ -1,6 +1,7 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-users fa-2x"></i> CLP<b></b>
+    <?php $user = User(); ?>
+    <h3 class="panel-title text-muted"><i class="fa fa-users fa-2x"></i><i class="fa fa-university"></i> CENTROS DE CLP <?php echo strtoupper($centros[0]->clp->name) ?><b></b>
       <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> CREAR CLP</i></a
     </h3>
   </div>
@@ -10,26 +11,20 @@
         <thead>
           <tr class="">
             <!-- <th>ID</th> -->
-            <th width="" class="text-uppercase">Responsable Clp</th>
-            <th width="" class="text-uppercase">parroquia</th>
+            <th width="" class="text-uppercase">Nombre Centro</th>
+            <th width="" class="text-uppercase">Dirección</th>
             <th width="" class="text-uppercase">Cant. Centros</th>
             <th width="25%" class="text-uppercase">Opciones</th>
           </tr>
         </thead>
         <tbody>
-          <?php if ($clps): ?>
-          <?php foreach ($clps as $key => $u): ?>
+          <?php if ($centros): ?>
+          <?php foreach ($centros as $key => $u): ?>
           <tr>
-            <!--  <td class="text-uppercase"><?php echo $u->id ?></td> -->
-            <td class="text-uppercase"><?php echo $u->name ?></td>
-            <td class="text-uppercase"><?php echo $u->parroquia->nombre ?></td>
-            <td class="text-uppercase">
-              <?php if ($u->centros->count() > 0): ?>
-                <a class="btn btn-default animated flash" href=""><?php echo $u->centros->count() ?></a>
-              <?php else: ?>
-                <a class="btn btn-default animated flash" href=""><?php echo $u->centros->count() ?></a>
-              <?php endif ?>
-              </td>
+            <!--  <td class="text-uppercase"><?php echo $u->nombre ?></td> -->
+            <td class="text-uppercase"><?php echo $u->nombre ?></td>
+            <td class="text-uppercase"><?php echo $u->direccion ?></td>
+            <td class="text-uppercase"><?php echo $u->ubch ?></td>
               <td>
                 <a href="<?php echo baseUrlRole() ?>centrosClp/create/<?php echo $u->id_clp ?>" class="btn"><i class="fa fa-university"></i> Asignar centro</a>
                 <a href="<?php echo baseUrlRole() ?>centrosClp/<?php echo $u->id_clp ?>" class="btn text-danger"><i class="text-danger fa fa-search fa-1x"></i> Ver centros</a>
@@ -42,7 +37,7 @@
         </tbody>
       </table>
       <div class="text-center">
-        <?php echo Paginator($clps); ?>
+        <?php echo Paginator($centros); ?>
       </div>
     </div>
   </div>

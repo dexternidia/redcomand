@@ -1,7 +1,6 @@
 <?php
 namespace App\clp\controllers;
 
-use App\CentroClp;
 use App\Cne;
 use App\Estructura;
 use App\Institucion;
@@ -49,13 +48,11 @@ class Centros
         {
             if($datos_cne)
             {
-                /*$mesas_cne = MesasCne::where('id_municipio',$datos_cne->municipio)
+                $mesas_cne = MesasCne::where('id_municipio',$datos_cne->municipio)
                 ->where('id_parroquia',$datos_cne->parroquia)
                 ->where('mesa',1)
                 ->where('estatus',0)
-                ->get(); */
-
-                $mesas_cne = CentroClp::where('id_clp',$user['id_clp'])->get();
+                ->get();
                 //Arr($mesas_cne);
                 View(compact('mesas_cne','cedula','instituciones','partidos','estructura'));
             }
@@ -77,8 +74,8 @@ class Centros
 
         $user = User();
 
-        $mesa = MesasCne::where('codigo_cne',$codigo_cne)->first();
-        $centro = MesasCne::where('codigo_cne',$codigo_cne)->get();
+        $mesa = MesasCne::where('id_mesas_cne',$id_mesa)->first();
+        $centro = MesasCne::where('codigo_cne',$mesa->codigo_cne)->get();
         $datos_cne = Cne::where('cedula',$cedula)->first();
 
 

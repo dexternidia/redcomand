@@ -30,45 +30,82 @@ $("#MesasSelect").html(data);
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-university fa-2x"></i> INGRESAR CENTRO</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR RESPONSABLE UBCH</h3>
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>centros" method="POST">
+    <form action="<?php echo baseUrl ?>admin/ResponsableUbch" method="POST">
       <?php echo Token::field() ?>
-      <input type="hidden" name="cedula" value="<?php echo $cedula ?>">
+      <input type="hidden" name="id_ubch" value="<?php echo $id_ubch ?>">
       <div class="row">
-        <div id="previewBox" class="col-lg-12">
-          <div class="panel panel-default animated bounceInDown">
-            <div class="panel-body">
-              <div class="col-lg-1">
-                <i class="fa fa-exclamation-triangle fa-3x text-warning" aria-hidden="true"></i>
-              </div>
-              <div class="col-lg-11 alerta">
-                Seleccione los centros que estén a su cargo con cuidado, ya que dichos centros serán anclados al inicio de sesion de usted. Dicha aparición no es reversible.
-          <button type='button' id="closeButton" class='close' onclick="close_div()">×</button>
-              </div>
-            </div>
+        <div class="col-lg-1">
+          <div class="form-group">
+            <select class="form-control" name="nacionalidad" id="">
+              <option value="V">V</option>
+              <option value="E">E</option>
+            </select>
           </div>
         </div>
-        <br id="br">
-        <h4 class="text-muted text-center text-uppercase">Seleccione Centro</h4>
-        <div class="col-lg-12">
+        <div class="col-lg-4">
           <div class="form-group">
-            <select style="cursor:pointer" id="" class="form-control" name="codigo_cne" required/>
-              <option>CENTROS</option>
+            <input class="form-control" type="number" name="cedula" placeholder="CEDULA">
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="form-group">
+            <input class="form-control" type="text" name="nombre_apellido" placeholder="NOMBRE Y APELLIDO">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" type="email" name="email" placeholder="EMAIL">
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono1" placeholder="Telefono n°1" required/>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text" name="telefono2" placeholder="Telefono n°2"/>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select id="" class="form-control" name="vehiculo" required/>
+              <option value="">VEHICULO</option>
+              <option value="1">SI</option>
+              <option value="0">NO</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select id="municipioSelect" class="form-control" name="id_municipio" required/>
+              <?php
+              use App\MunicipioCne;
+              $municipios = MunicipioCne::all();
+              ?>
+              <option>MUNICIPIOS</option>
               <option></option>
-              <?php foreach ($mesas_cne as $m): ?>
-              <option value="<?php echo $m->codigo_cne ?>"><?php echo $m->nombre ?></option>
+              <?php foreach ($municipios as $municipio): ?>
+              <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
               <?php endforeach ?>
             </select>
           </div>
         </div>
-        <br><br><br>
-        <div class="col-lg-12">
-          <h4 class="text-muted text-center text-uppercase">
-          Datos de acceso
-          </h4>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="form-group">
+            <input class="form-control" name="direccion" type="text" placeholder="DIRECCIÓN">
+          </div>
         </div>
         <div class="col-lg-4">
           <div class="form-group">
@@ -100,22 +137,7 @@ $("#MesasSelect").html(data);
             </select>
           </div>
         </div>
-        <br><br><br>
-        <div class="col-lg-12">
-          <h4 class="text-muted text-center text-uppercase">
-          Datos de acceso
-          </h4>
-        </div>
-        <div class="col-lg-4">
-          <input class="form-control" type="text" name="email" placeholder="NOMBRE USUARIO">
-        </div>
-        <div class="col-lg-4">
-          <input class="form-control" id="password" name="password" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'tiene que tener minimo 6 caracteres.' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="CLAVE" required>
-        </div>
-        <div class="col-lg-4">
-          <input class="form-control" id="password_two" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'La clave no coinciden.' : '');" placeholder="VERIFICAR CLAVE" required>
-        </div>
-
+        
         <div class="col-lg-12">
           <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
         </div>
@@ -124,12 +146,3 @@ $("#MesasSelect").html(data);
     <br>
   </form>
 </div>
-<script>
-$(document).ready(function() {
-    $('#closeButton').on('click', function(e) { 
-        $('#previewBox').remove(); 
-        $('#br').remove(); 
-    });
-});
-</script>
-
