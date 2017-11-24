@@ -1,4 +1,4 @@
 
-s/${modulo}/municipal/
-s/${controller}/CentrosClp/
+s/${modulo}/consulta/
+s/${controller}/Consultas/
 s/${vista}/show/
