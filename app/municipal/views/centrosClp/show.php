@@ -14,7 +14,7 @@
           <th width="" class="text-uppercase">Nombre Centro</th>
           <th width="" class="text-uppercase">Dirección</th>
           <th width="" class="text-uppercase">Activo</th>
-          <th width="25%" class="text-uppercase">Opciones</th>
+          <th width="5%" class="text-uppercase">Opciones</th>
         </tr>
       </thead>
       <tbody>
@@ -24,57 +24,79 @@
           <!--  <td class="text-uppercase"><?php echo $u->nombre ?></td> -->
           <td class="text-uppercase"><?php echo $u->nombre ?></td>
           <td class="text-uppercase"><?php echo $u->direccion ?></td>
+          <?php if($u->ubch): ?>
           <td class="text-uppercase">
-            <?php if($u->ubch): ?>
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#siActivo">SI</button>
-
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#siActivo"><i class="fa fa-check"></i> SI</button>
             <!-- Modal -->
             <div id="siActivo" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">CENTRO ASIGNADO</h4>
-                  </div>
                   <div class="modal-body">
-                    <h6></h6>
-                    <p></p>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title"><i class="fa fa-user fa-2x text-danger"></i> Responsable</h5>
+                    <p>
+                      <b>Nombre:</b> <?php echo $u->ubch->responsable->nombre_apellido ?>
+                      <br>
+                      <b>C.I.:</b> <?php echo $u->ubch->responsable->cedula ?>
+                      <br>
+                      <b>Tlf 1:</b> <?php echo $u->ubch->responsable->telefono_1 ?>
+                      <br>
+                      <b>Asignado:</b> <?php echo $u->ubch->responsable->fecha_registro ?>
+                      <br>
+                    </p>
+                    <hr>
+                    <h5 class="modal-title"><i class="fa fa-university fa-2x text-danger"></i> Centro</h5>
+                    <p>
+                      <b>Número Mesas:</b> <?php echo $u->ubch->numero_mesas ?>
+                      <br>
+                      <b>Cant. Electores:</b> <?php echo $u->ubch->cantidad_electores ?>
+                      <br>
+                      <b>Codigo CNE:</b> <?php echo $u->ubch->codigo_cne ?>
+                      <br>
+                    </p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
               </div>
             </div>
-            <?php else: ?>
-            <a class="btn btn-danger" href="#"><i class="fa fa-times"></i> NO</a>
+          </td>
+          <?php else: ?>
+          <td class="text-uppercase">
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#noActivo"><i class="fa fa-times"></i> NO</button>
             <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
+            <div id="noActivo" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                  </div>
                   <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h5 class="modal-title"><i class="fa fa-exclamation-triangle fa-2x text-warning"></i> Centro no activo</h5>
+                    <p>
+                      <hr>  
+                      <i class="fa fa-info-circle text-primary fa-2x" aria-hidden="true"></i> 
+                      El centro no esta activo, ya que no tiene responsable UBCH desigando. Si desea ingresarlo ahora, por favor 
+                    </p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                   </div>
                 </div>
               </div>
             </div>
-            <?php endif ?>
           </td>
+          <?php endif ?>
+          <?php if ($u->ubch): ?>
           <td>
-            <!--<a href="<?php echo baseUrlRole() ?>centrosClp/create/<?php echo $u->id_clp ?>" class="btn"><i class="fa fa-university"></i> Asignar centro</a>
-            <a href="<?php echo baseUrlRole() ?>centrosClp/<?php echo $u->id_clp ?>" class="btn text-danger"><i class="text-danger fa fa-search fa-1x"></i> Ver centros</a>
-            -->
+            <a class="btn btn-default" href="<?php echo baseUrlRole() ?>centrosMunicipal/<?php echo $u->ubch->id_ubch ?>"><i class="fa fa-search text-danger"></i></a>
           </td>
+          <?php else: ?>
+          <td>
+            
+          </td>
+          <?php endif ?>
         </tr>
         <?php endforeach ?>
         <?php else: ?>
