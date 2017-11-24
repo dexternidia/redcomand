@@ -55,7 +55,8 @@ class Centros
                 ->where('estatus',0)
                 ->get(); */
 
-                $mesas_cne = CentroClp::where('id_clp',$user['id_clp'])->get();
+                $mesas_cne = CentroClp::where('id_clp',$user['id_clp'])
+                ->get();
                 //Arr($mesas_cne);
                 View(compact('mesas_cne','cedula','instituciones','partidos','estructura'));
             }

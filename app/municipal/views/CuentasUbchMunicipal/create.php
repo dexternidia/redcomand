@@ -37,10 +37,22 @@ $("#MesasSelect").html(data);
     <form action="<?php echo baseUrlRole() ?>CuentasUbchMunicipal" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
-        <div class="col-lg-4">
-          <input class="form-control" type="text" name="name" placeholder="NOMBRE Y APELLIDO">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <input class="form-control" type="number" name="cedula" placeholder="CEDULA" required>
+          </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
+          <div class="form-group">
+            <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'" name="telefono_1" placeholder="TELEFONO 1" required>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
+            <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'"  name="telefono_2" placeholder="TELEFONO 2">
+          </div>
+        </div>
+        <div class="col-lg-3">
           <select id="" class="form-control" name="id_instituciones" required/>
             <option value="">ORGANISMOS</option>
             <?php foreach ($organismos as $key => $or): ?>

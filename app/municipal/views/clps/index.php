@@ -12,7 +12,7 @@
             <!-- <th>ID</th> -->
             <th width="" class="text-uppercase">Responsable Clp</th>
             <th width="" class="text-uppercase">parroquia</th>
-            <th width="" class="text-uppercase">Cant. Centros</th>
+            <th width="15%" class="text-uppercase">Cant. Centros</th>
             <th width="25%" class="text-uppercase">Opciones</th>
           </tr>
         </thead>
@@ -24,15 +24,18 @@
             <td class="text-uppercase"><?php echo $u->name ?></td>
             <td class="text-uppercase"><?php echo $u->parroquia->nombre ?></td>
             <td class="text-uppercase">
-              <?php if ($u->centros->count() > 0): ?>
-                <a class="btn btn-default animated flash" href=""><?php echo $u->centros->count() ?></a>
+              <?php if ($u->centros_clp->count() > 0): ?>
+                <a class="btn btn-default animated flash text-danger" href=""><?php echo $u->centros_clp->count() ?></a>
               <?php else: ?>
-                <a class="btn btn-default animated flash" href=""><?php echo $u->centros->count() ?></a>
+                <a class="btn btn-default animated flash text-danger" href=""><?php echo $u->centros_clp->count() ?></a>
               <?php endif ?>
               </td>
               <td>
                 <a href="<?php echo baseUrlRole() ?>centrosClp/create/<?php echo $u->id_clp ?>" class="btn"><i class="fa fa-university"></i> Asignar centro</a>
+                <?php if (!$u->centro_clp): ?>
+                <?php else: ?>
                 <a href="<?php echo baseUrlRole() ?>centrosClp/<?php echo $u->id_clp ?>" class="btn text-danger"><i class="text-danger fa fa-search fa-1x"></i> Ver centros</a>
+                <?php endif ?>
               </td>
           </tr>
           <?php endforeach ?>

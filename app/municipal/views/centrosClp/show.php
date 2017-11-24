@@ -77,7 +77,7 @@
                     <p>
                       <hr>  
                       <i class="fa fa-info-circle text-primary fa-2x" aria-hidden="true"></i> 
-                      El centro no esta activo, ya que no tiene responsable UBCH desigando. Si desea ingresarlo ahora, por favor 
+                      El centro no esta activo, ya que no tiene responsable UBCH desigando. Si desea ingresarlo ahora, por favor ingrese <a style="font-size: 1.2em" class="text-danger" href="<?php echo baseUrlRole() ?>centrosMunicipal/busqueda/<?php echo $u->id_clp ?>/<?php echo $u->codigo_cne ?>">AQUI</a>
                     </p>
                   </div>
                   <div class="modal-footer">

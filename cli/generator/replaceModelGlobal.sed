@@ -1,3 +1,3 @@
 
-s/${model}/CentroClp/
-s/${tabla}/centros_clp/
+s/${model}/ClpResponsable/
+s/${tabla}/responsable_clp/

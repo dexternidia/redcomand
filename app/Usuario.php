@@ -2,6 +2,7 @@
 namespace App;
 
 use App\BancoPersonal;
+use App\CentroClp;
 use App\Institucion;
 use App\LaboratorioPersonal;
 use App\MunicipioCne;
@@ -47,6 +48,16 @@ class Usuario extends Model {
 	public function centros()
 	{
 		return $this->hasMany(Ubch::class,'id_clp','id_clp');
+	}
+
+	public function centros_clp()
+	{
+		return $this->hasMany(CentroClp::class,'id_clp','id_clp');
+	}
+
+	public function centro_clp()
+	{
+		return $this->hasOne(CentroClp::class,'id_clp','id_clp');
 	}
 }
 
