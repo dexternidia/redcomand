@@ -84,12 +84,12 @@ class CentrosClp
             }
             else
             {
-                Error('centrosClp/create'.$id_clp,'Error al asignar centro.');
+                Error('centrosClp/create/'.$id_clp,'Error al asignar centro.');
             }
         }
         else
         {
-            Error('centrosClp/create'.$id_clp,'Ya esta asignado ese centro.');
+            Error('centrosClp/create/'.$id_clp,'Ya esta asignado ese centro.');
         }
     }
 

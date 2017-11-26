@@ -45,8 +45,8 @@ $("#MesasSelect").html(data);
                 <i class="fa fa-exclamation-triangle fa-3x text-warning" aria-hidden="true"></i>
               </div>
               <div class="col-lg-11 alerta">
-                Seleccione los centros que estén a su cargo con cuidado, ya que dichos centros serán anclados al inicio de sesion de usted. Dicha aparición no es reversible.
-          <button type='button' id="closeButton" class='close' onclick="close_div()">×</button>
+                El centros sera anclado al inicio de sesion del responsable UBCH. Dicha acción no es reversible.
+                <button type='button' id="closeButton" class='close' onclick="close_div()">×</button>
               </div>
             </div>
           </div>
@@ -115,7 +115,9 @@ $("#MesasSelect").html(data);
         <div class="col-lg-4">
           <input class="form-control" id="password_two" name="password_two" type="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'La clave no coinciden.' : '');" placeholder="VERIFICAR CLAVE" required>
         </div>
-
+      </div>
+      <br>
+      <div class="row">
         <div class="col-lg-12">
           <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-save fa-2x"></i></button>
         </div>
@@ -126,10 +128,9 @@ $("#MesasSelect").html(data);
 </div>
 <script>
 $(document).ready(function() {
-    $('#closeButton').on('click', function(e) { 
-        $('#previewBox').remove(); 
-        $('#br').remove(); 
-    });
+$('#closeButton').on('click', function(e) {
+$('#previewBox').remove();
+$('#br').remove();
+});
 });
 </script>
-

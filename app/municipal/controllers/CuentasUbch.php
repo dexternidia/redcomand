@@ -111,7 +111,6 @@ class CuentasUbchMunicipal extends BaseController
                     {
                         Error('CuentasUbchMunicipal/create','Error al crear la cuenta.');
                     }
-
                     //Success('clps','La cuenta fue creada.');
                 }
                 else

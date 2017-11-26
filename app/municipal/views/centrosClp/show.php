@@ -2,8 +2,7 @@
   <div class="panel-heading" style="background-color: red">
     <?php $user = User(); ?>
     <h3 class="panel-title text-muted"><i class="fa fa-users fa-2x"></i><i class="fa fa-university"></i> CENTROS DE CLP <?php echo strtoupper($centros[0]->clp->name) ?><b></b>
-  <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> CREAR CLP</i></a
-  </h3>
+  <!--<a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> CREAR CLP</i></a> --> </h3>
 </div>
 <div class="panel-body">
   <div class="col-md-12 table-responsive">
@@ -26,9 +25,10 @@
           <td class="text-uppercase"><?php echo $u->direccion ?></td>
           <?php if($u->ubch): ?>
           <td class="text-uppercase">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#siActivo"><i class="fa fa-check"></i> SI</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#siActivo<?php echo $u->id_centros_clp ?>"><i class="fa fa-check"></i> SI</button>
+          </td>
             <!-- Modal -->
-            <div id="siActivo" class="modal fade" role="dialog">
+            <div id="siActivo<?php echo $u->id_centros_clp ?>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -65,9 +65,10 @@
           </td>
           <?php else: ?>
           <td class="text-uppercase">
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#noActivo"><i class="fa fa-times"></i> NO</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#noActivo<?php echo $u->id_centros_clp ?>"><i class="fa fa-times"></i> NO</button>
+          </td>
             <!-- Modal -->
-            <div id="noActivo" class="modal fade" role="dialog">
+            <div id="noActivo<?php echo $u->id_centros_clp ?>" class="modal fade" role="dialog">
               <div class="modal-dialog">
                 <!-- Modal content-->
                 <div class="modal-content">
@@ -111,3 +112,4 @@
 </div>
 </div>
 </div>
+

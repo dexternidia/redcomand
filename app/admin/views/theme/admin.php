@@ -102,7 +102,6 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
                       <?php
-                      
                       echo $user['name'];
                       ?>
                     </a>

@@ -61,7 +61,7 @@ class CentrosMunicipal
                 $mesas_cne = CentroClp::where('codigo_cne',$codigo_cne)
                 ->get();
                 //Arr($mesas_cne);
-                View(compact('mesas_cne','cedula','instituciones','partidos','estructura'));
+                View(compact('id_clp','mesas_cne','cedula','instituciones','partidos','estructura'));
             }
             else
             {
@@ -90,278 +90,143 @@ class CentrosMunicipal
         ->where('id_municipio',$mesa->id_municipio)
         ->where('id_parroquia',$mesa->id_parroquia)
         ->first();
-
         //Arr($existeUbch);
+        $nombre_usuario = Usuario::where('email',$email)->first();
 
-        if(!$existeUbch)
+        if($nombre_usuario)
         {
-                $nombre_ubch = $mesa->nombre;
-                $direccion_ubch = $mesa->direccion;
-                $fecha_hora_registro = Carbon::now();
-                list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
-                $ubch = new Ubch;
-                $ubch->codigo_cne = $mesa->codigo_cne;
-                $ubch->numero_mesas = $centro->count();
-                $ubch->cantidad_electores = $centro->sum('cant_electores');
-                $ubch->nombre_ubch = $nombre_ubch;
-                $ubch->id_municipio = $user['id_municipio'];
-                $ubch->id_parroquia = $user['id_parroquia'];
-                $ubch->direccion_ubch = $direccion_ubch;
-                $ubch->estatus = 0;
-                $ubch->id_clp = $user['id_clp'];
-                $ubch->fecha_registro = $fecha_registro;
-                $ubch->hora_registro = $hora_registro;  
-                $ubch->eliminar = 0;
-
-                if($ubch->save())
-                {
-                    foreach ($centro as $key => $c) 
-                    {
-                        $nuevaMesa = new Mesa;
-                        $nuevaMesa->codigo_mesa = mt_rand(); 
-                        $nuevaMesa->id_ubch = $ubch->id_ubch;
-                        $nuevaMesa->id_municipio = $ubch->id_municipio;
-                        $nuevaMesa->id_parroquia = $ubch->id_parroquia;
-                        $nuevaMesa->cod_cne = $mesa->codigo_cne;
-                        $nuevaMesa->mesa = $c->mesa;
-                        $nuevaMesa->tomo = $c->tomo;
-                        $nuevaMesa->desde = $c->desde;
-                        $nuevaMesa->hasta = $c->hasta;
-                        $nuevaMesa->cant_electores = $c->cant_electores;
-                        $nuevaMesa->tecnologia = $c->tecnologia;
-                        $nuevaMesa->estatus = $c->estatus;
-                        $nuevaMesa->save();
-                    }
-
-                    $mesas_cne_conteo = $centro->count();
-                    $mesas_ubch_conteo = Mesa::where('cod_cne',$mesa->codigo_cne)->count();
-
-                    if($mesas_cne_conteo == $mesas_ubch_conteo)
-                    {
-                        $mesa->estatus = 1;
-                        if($mesa->save())
-                        {
-                            $responsable = UbchResponsable::where('cedula',$cedula)->first();
-
-                            if(!$responsable)
-                            {
-                                $carbon = Carbon::now();
-                                $fecha_hora_registro = $carbon;
-                                list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
-                                $responsable = new UbchResponsable;
-                                $responsable->id_municipio = $datos_cne->municipio;
-                                $responsable->id_parroquia = $datos_cne->parroquia;
-                                $responsable->direccion = '';
-                                $responsable->id_ubch = $nuevaMesa->id_ubch;
-                                $responsable->nacionalidad = $datos_cne->tipo;
-                                $responsable->cedula = $cedula;
-                                $responsable->nombre_apellido = $datos_cne->nombre_1.' '.$datos_cne->apellido_1;
-                                $responsable->email = '';
-                                $responsable->telefono_1 = '';
-                                $responsable->telefono_2 = '';
-                                $responsable->vehiculo = 0;
-                                $responsable->id_instituciones = $id_institucion;
-                                $responsable->id_partidos = $id_partido;
-                                $responsable->id_estructura = $id_estructura;
-                                $responsable->fecha_registro = $fecha_registro;
-                                $responsable->hora_registro = $hora_registro;
-                                $responsable->eliminar = 0;
-
-                                if($responsable->save())
-                                {
-                                    $clave = password_hash($password, PASSWORD_DEFAULT);
-                                    $user = User();
-
-                                    $usuario = new Usuario;
-                                    $usuario->name = $datos_cne->nombre_1.' '.$datos_cne->apellido_1;
-                                    $usuario->email = $email;
-                                    $usuario->password = $clave;
-                                    $usuario->role = 'ubch';
-                                    $usuario->id_instituciones = $id_institucion;
-                                    $usuario->id_municipio = $datos_cne->municipio;
-                                    $usuario->id_parroquia = $datos_cne->parroquia;
-                                    $usuario->id_municipal = 0;
-                                    $usuario->id_clp = $user['id_clp'];
-                                    $usuario->id_ubch = $ubch->id_ubch;
-                                    $usuario->id_patrullero = 0;
-                                    $usuario->created_at = $carbon;
-                                    $usuario->updated_at = $carbon;
-                                    $usuario->estatus = 0;
-                                    
-                                    if($usuario->save())
-                                    {
-                                        Success('centros/','UBCH registrado.');
-                                    }
-                                    else
-                                    {
-                                        Error('centros/','Error al ingresar Responsable de centro.');
-                                    }
-                                }
-                                else
-                                {
-                                    Error('centros/','Error al ingresar Responsable de centro.');
-                                }
-                            }
-                            else
-                            {
-                                Error('centros/','Esta persona ya es responsable de un centro.');
-                            }
-                        }
-                        else
-                        {
-                            $ubch = Ubch::where('codigo_cne',$mesa->codigo_cne)->first();
-                            $ubch->delete();
-
-                            $mesasCreadas = Mesa::where('cod_cne',$mesa->codigo_cne)->get();
-
-                            foreach ($mesasCreadas as $key => $c) 
-                            {
-                                $c->delete();
-                            }
-
-                            Error('centros/busqueda','Error al ingresar ubch.');
-                        }
-                    }
-                    else
-                    {
-                        $ubch = Ubch::where('codigo_cne',$mesa->codigo_cne)->first();
-                        $ubch->delete();
-
-                        $mesasCreadas = Mesa::where('cod_cne',$mesa->codigo_cne)->get();
-
-                        foreach ($mesasCreadas as $key => $c) 
-                        {
-                            $c->delete();
-                        }
-
-                        Error('centros/busqueda','Error al ingresar ubch.');
-                    }
-                }
-                else
-                {
-                    Error('centros/busqueda','Error al ingresar ubch.');
-                }
+            Error('centros/busqueda','Nombre de usuario ya esta siendo usado.');
         }
         else
         {
-            Error('centros','Centro ya esta asignado.');
-        }
-
-/*
-        if(!$existeUbch)
-        {
-            if($datos_cne)
+            //Arr($existeUbch);
+            if(!$existeUbch)
             {
-                $nombre_ubch = $mesa->nombre;
-                $direccion_ubch = $mesa->direccion;
-                $fecha_hora_registro = Carbon::now();
-                list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
-                $ubch = new Ubch;
-                $ubch->codigo_cne = $mesa->codigo_cne;
-                $ubch->numero_mesas = $centro->count();
-                $ubch->cantidad_electores = $centro->sum('cant_electores');
-                $ubch->nombre_ubch = $nombre_ubch;
-                $ubch->id_municipio = $user['id_municipio'];
-                $ubch->id_parroquia = $user['id_parroquia'];
-                $ubch->direccion_ubch = $direccion_ubch;
-                $ubch->estatus = 0;
-                $ubch->id_clp = $user['id_clp'];
-                $ubch->fecha_registro = $fecha_registro;
-                $ubch->hora_registro = $hora_registro;  
-                $ubch->eliminar = 0;
+                    $nombre_ubch = $mesa->nombre;
+                    $direccion_ubch = $mesa->direccion;
+                    $fecha_hora_registro = Carbon::now();
+                    list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
+                    $ubch = new Ubch;
+                    $ubch->codigo_cne = $mesa->codigo_cne;
+                    $ubch->numero_mesas = $centro->count();
+                    $ubch->cantidad_electores = $centro->sum('cant_electores');
+                    $ubch->nombre_ubch = $nombre_ubch;
+                    $ubch->id_municipio = $user['id_municipio'];
+                    $ubch->id_parroquia = $user['id_parroquia'];
+                    $ubch->direccion_ubch = $direccion_ubch;
+                    $ubch->estatus = 0;
+                    $ubch->id_clp = $id_clp;
+                    $ubch->fecha_registro = $fecha_registro;
+                    $ubch->hora_registro = $hora_registro;  
+                    $ubch->eliminar = 0;
 
-                if($ubch->save())
-                {
-                    foreach ($centro as $key => $c) 
+                    if($ubch->save())
                     {
-                        $nuevaMesa = new Mesa;
-                        $nuevaMesa->codigo_mesa = mt_rand(); 
-                        $nuevaMesa->id_ubch = $ubch->id_ubch;
-                        $nuevaMesa->id_municipio = $ubch->id_municipio;
-                        $nuevaMesa->id_parroquia = $ubch->id_parroquia;
-                        $nuevaMesa->cod_cne = $mesa->codigo_cne;
-                        $nuevaMesa->mesa = $c->mesa;
-                        $nuevaMesa->tomo = $c->tomo;
-                        $nuevaMesa->desde = $c->desde;
-                        $nuevaMesa->hasta = $c->hasta;
-                        $nuevaMesa->cant_electores = $c->cant_electores;
-                        $nuevaMesa->tecnologia = $c->tecnologia;
-                        $nuevaMesa->estatus = $c->estatus;
-                        $nuevaMesa->save();
-                    }
-
-                    $mesas_cne_conteo = $centro->count();
-                    $mesas_ubch_conteo = Mesa::where('cod_cne',$mesa->codigo_cne)->count();
-
-                    if($mesas_cne_conteo == $mesas_ubch_conteo)
-                    {
-                        $mesa->estatus = 1;
-                        if($mesa->save())
+                        foreach ($centro as $key => $c) 
                         {
-                            $responsable = UbchResponsable::where('cedula',$cedula)->first();
+                            $nuevaMesa = new Mesa;
+                            $nuevaMesa->codigo_mesa = mt_rand(); 
+                            $nuevaMesa->id_ubch = $ubch->id_ubch;
+                            $nuevaMesa->id_municipio = $ubch->id_municipio;
+                            $nuevaMesa->id_parroquia = $ubch->id_parroquia;
+                            $nuevaMesa->cod_cne = $mesa->codigo_cne;
+                            $nuevaMesa->mesa = $c->mesa;
+                            $nuevaMesa->tomo = $c->tomo;
+                            $nuevaMesa->desde = $c->desde;
+                            $nuevaMesa->hasta = $c->hasta;
+                            $nuevaMesa->cant_electores = $c->cant_electores;
+                            $nuevaMesa->tecnologia = $c->tecnologia;
+                            $nuevaMesa->estatus = $c->estatus;
+                            $nuevaMesa->save();
+                        }
 
-                            if(!$responsable)
+                        $mesas_cne_conteo = $centro->count();
+                        $mesas_ubch_conteo = Mesa::where('cod_cne',$mesa->codigo_cne)->count();
+
+                        if($mesas_cne_conteo == $mesas_ubch_conteo)
+                        {
+                            $mesa->estatus = 1;
+                            if($mesa->save())
                             {
-                                $carbon = Carbon::now();
-                                $fecha_hora_registro = $carbon;
-                                list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
-                                $responsable = new UbchResponsable;
-                                $responsable->id_municipio = $datos_cne->municipio;
-                                $responsable->id_parroquia = $datos_cne->parroquia;
-                                $responsable->direccion = '';
-                                $responsable->id_ubch = $nuevaMesa->id_ubch;
-                                $responsable->nacionalidad = $datos_cne->tipo;
-                                $responsable->cedula = $cedula;
-                                $responsable->nombre_apellido = $datos_cne->nombre_1.' '.$datos_cne->apellido_1;
-                                $responsable->email = '';
-                                $responsable->telefono_1 = '';
-                                $responsable->telefono_2 = '';
-                                $responsable->vehiculo = 0;
-                                $responsable->id_instituciones = $id_institucion;
-                                $responsable->id_partidos = $id_partido;
-                                $responsable->id_estructura = $id_estructura;
-                                $responsable->fecha_registro = $fecha_registro;
-                                $responsable->hora_registro = $hora_registro;
-                                $responsable->eliminar = 0;
+                                $responsable = UbchResponsable::where('cedula',$cedula)->first();
 
-                                if($ubch->save())
+                                if(!$responsable)
                                 {
-                                    $clave = password_hash($password, PASSWORD_DEFAULT);
-                                    $user = User();
+                                    $carbon = Carbon::now();
+                                    $fecha_hora_registro = $carbon;
+                                    list($fecha_registro,$hora_registro) = explode(' ', $fecha_hora_registro);
+                                    $responsable = new UbchResponsable;
+                                    $responsable->id_municipio = $datos_cne->municipio;
+                                    $responsable->id_parroquia = $datos_cne->parroquia;
+                                    $responsable->direccion = '';
+                                    $responsable->id_ubch = $nuevaMesa->id_ubch;
+                                    $responsable->nacionalidad = $datos_cne->tipo;
+                                    $responsable->cedula = $cedula;
+                                    $responsable->nombre_apellido = $datos_cne->nombre_1.' '.$datos_cne->apellido_1;
+                                    $responsable->email = '';
+                                    $responsable->telefono_1 = '';
+                                    $responsable->telefono_2 = '';
+                                    $responsable->vehiculo = 0;
+                                    $responsable->id_instituciones = $id_institucion;
+                                    $responsable->id_partidos = $id_partido;
+                                    $responsable->id_estructura = $id_estructura;
+                                    $responsable->fecha_registro = $fecha_registro;
+                                    $responsable->hora_registro = $hora_registro;
+                                    $responsable->eliminar = 0;
 
-                                    $usuario = new Usuario;
-                                    $usuario->name = $datos_cne->nombre_1.' '.$datos_cne->apellido_1;
-                                    $usuario->email = $email;
-                                    $usuario->password = $clave;
-                                    $usuario->role = 'ubch';
-                                    $usuario->id_instituciones = $id_institucion;
-                                    $usuario->id_municipio = $datos_cne->municipio;
-                                    $usuario->id_parroquia = $datos_cne->parroquia;
-                                    $usuario->id_municipal = 0;
-                                    $usuario->id_clp = $user['id_clp'];
-                                    $usuario->id_ubch = $ubch->id_ubch;
-                                    $usuario->id_patrullero = 0;
-                                    $usuario->created_at = $carbon;
-                                    $usuario->updated_at = $carbon;
-                                    $usuario->estatus = 0;
-                                    
-                                    if($usuario->save())
+                                    if($responsable->save())
                                     {
-                                        Success('centros/','UBCH registrado.');
+                                        $clave = password_hash($password, PASSWORD_DEFAULT);
+                                        $user = User();
+
+                                        $usuario = new Usuario;
+                                        $usuario->name = $datos_cne->nombre_1.' '.$datos_cne->apellido_1;
+                                        $usuario->email = $email;
+                                        $usuario->password = $clave;
+                                        $usuario->role = 'ubch';
+                                        $usuario->id_instituciones = $id_institucion;
+                                        $usuario->id_municipio = $datos_cne->municipio;
+                                        $usuario->id_parroquia = $datos_cne->parroquia;
+                                        $usuario->id_municipal = 0;
+                                        $usuario->id_clp = $id_clp;
+                                        $usuario->id_ubch = $ubch->id_ubch;
+                                        $usuario->id_patrullero = 0;
+                                        $usuario->created_at = $carbon;
+                                        $usuario->updated_at = $carbon;
+                                        $usuario->estatus = 0;
+                                        
+                                        if($usuario->save())
+                                        {
+                                            Success('centrosClp/'.$id_clp,'UBCH registrado.');
+                                        }
+                                        else
+                                        {
+                                            Error('centrosMunicipal/','Error al usuario de acceso al responsable de centro.');
+                                        }
                                     }
                                     else
                                     {
-                                        Error('centros/','Error al ingresar Responsable de centro.');
+                                        Error('centrosMunicipal/','Error al ingresar Responsable de centro.');
                                     }
                                 }
                                 else
                                 {
-                                    Error('centros/','Error al ingresar Responsable de centro.');
+                                    Error('centrosMunicipal/','Esta persona ya es responsable de un centro.');
                                 }
                             }
                             else
                             {
-                                Error('centros/','Esta persona ya es responsable de un centro.');
+                                $ubch = Ubch::where('codigo_cne',$mesa->codigo_cne)->first();
+                                $ubch->delete();
+
+                                $mesasCreadas = Mesa::where('cod_cne',$mesa->codigo_cne)->get();
+
+                                foreach ($mesasCreadas as $key => $c) 
+                                {
+                                    $c->delete();
+                                }
+
+                                Error('centrosMunicipal/busqueda/'.$id_clp.'/'.$codigo_cne,'Error al ingresar mesas de centro.');
                             }
                         }
                         else
@@ -376,38 +241,19 @@ class CentrosMunicipal
                                 $c->delete();
                             }
 
-                            Error('centros/busqueda','Error al ingresar ubch.');
+                            Error('centrosMunicipal/busqueda/'.$id_clp.'/'.$codigo_cne,'Error al ingresar ubch.');
                         }
                     }
                     else
                     {
-                        $ubch = Ubch::where('codigo_cne',$mesa->codigo_cne)->first();
-                        $ubch->delete();
-
-                        $mesasCreadas = Mesa::where('cod_cne',$mesa->codigo_cne)->get();
-
-                        foreach ($mesasCreadas as $key => $c) 
-                        {
-                            $c->delete();
-                        }
-
-                        Error('centros/busqueda','Error al ingresar ubch.');
+                        Error('centrosMunicipal/busqueda/'.$id_clp.'/'.$codigo_cne,'Error al ingresar ubch.');
                     }
-                }
-                else
-                {
-                    Error('centros/busqueda','Error al ingresar ubch.');
-                }
             }
             else
             {
-                Error('centros/busqueda','No encontrado en el cne.');
+                Error('centrosMunicipal','Centro ya esta asignado.');
             }
         }
-        else
-        {
-            Error('centros/busqueda','El Centro ya existe.');
-        } */
     }
 
     public function show($id)
