@@ -1,5 +1,7 @@
 <?php 
 namespace App;
+use App\MunicipioCne;
+use App\ParroquiaCne;
 use App\Ubch;
 use App\Usuario;
 use \Illuminate\Database\Eloquent\Model;
@@ -18,6 +20,16 @@ class CentroClp extends Model {
 	public function ubch()
 	{
 		return $this->hasOne(Ubch::class, 'codigo_cne','codigo_cne');
+	}
+
+	public function municipio()
+	{
+		return $this->hasOne(MunicipioCne::class, 'id_municipio','id_municipio');
+	}
+
+	public function parroquia()
+	{
+		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
 	}
 }
 

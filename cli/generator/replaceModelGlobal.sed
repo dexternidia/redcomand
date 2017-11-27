@@ -1,3 +1,3 @@
 
-s/${model}/ClpResponsable/
-s/${tabla}/responsable_clp/
+s/${model}/MunicipalResponsable/
+s/${tabla}/responsable_municipal/

@@ -9,6 +9,7 @@ use App\Usuario;
 use App\admin\controllers\RegistroUbch;
 use Carbon\Carbon;
 use System\core\BaseController;
+use System\tools\rounting\Redirect;
 use System\tools\session\User;
 
 class CuentasUbchMunicipal extends BaseController
@@ -20,15 +21,7 @@ class CuentasUbchMunicipal extends BaseController
 
     public function index()
     {
-        $usuario = User();
-        $usuariosubch = Usuario::orderBy('id', 'DESC')
-        ->where('id_municipio',$usuario['id_municipio'])
-        ->where('role','!=','admin')
-        ->where('role','!=','ubch')
-        ->where('role','!=','patrullero')
-        ->where('role','!=','municipal')
-        ->get();
-        View(compact('usuariosubch'));
+        Redirect::to('municipal/clps');
     }
 
     public function create()
@@ -70,7 +63,7 @@ class CuentasUbchMunicipal extends BaseController
                 $usuario->id_instituciones = $id_instituciones;
                 $usuario->id_municipio = $datos_cne->municipio;
                 $usuario->id_parroquia = $datos_cne->parroquia;
-                $usuario->id_municipal = $user['id'];
+                $usuario->id_municipal = $user['id_municipal'];
                 $usuario->id_clp = 0;
                 $usuario->id_ubch = 0;
                 $usuario->id_patrullero = 0;
@@ -88,6 +81,7 @@ class CuentasUbchMunicipal extends BaseController
                         $responsable = new ClpResponsable;
                         $responsable->id_clp = $clp->id_clp;
                         $responsable->id_usuario = $clp->id;
+                        $responsable->id_municipal = $user['id_municipal'];
                         $responsable->id_municipio = $datos_cne->municipio;
                         $responsable->id_parroquia = $datos_cne->parroquia;
                         $responsable->nombre_apellido = $datos_cne->nombre_1.' '.$datos_cne->apellido_1;
@@ -100,7 +94,7 @@ class CuentasUbchMunicipal extends BaseController
 
                         if($responsable->save())
                         {
-                            Success('CuentasUbchMunicipal','Agregado Clp con exito!');
+                            Success('clps','Agregado Clp con exito!');
                         }
                         else
                         {

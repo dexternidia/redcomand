@@ -1,4 +1,4 @@
 
-s/${modulo}/consulta/
-s/${controller}/Consultas/
+s/${modulo}/admin/
+s/${controller}/CuentasMunicipales/
 s/${vista}/show/

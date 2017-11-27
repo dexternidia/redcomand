@@ -13,13 +13,10 @@ class Clps
     public function index()
     {
         $user = User();
-        $clps = Usuario::orderBy('id', 'DESC')
-        ->where('id_municipio',$user['id_municipio'])
-        ->where('role','!=','admin')
-        ->where('role','!=','ubch')
-        ->where('role','!=','municipal')
-        ->where('role','!=','patrullero')
+        $clps = Usuario::where('id_municipal',$user['id_municipal'])
+        ->where('role','clp')
         ->get();
+        //Arr($clps);
         View(compact('clps'));
     }
 

@@ -112,6 +112,9 @@
                   </li>
                 </ul>
                 <ul class="nav navbar-nav">
+                  <li class=""><a href="<?php echo baseUrlRole() ?>estructuras"><i class="fa fa-sitemap"></i> Municipales</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
                   <li class=""><a href="<?php echo baseUrlRole() ?>estructuras"><i class="fa fa-sitemap"></i> ESTRUCTURA</a></li>
                 </ul>
                 <ul class="nav navbar-nav">
