@@ -32,7 +32,8 @@ class CuentasMunicipales
 
     public function index()
     {
-        View();
+        $usuariosmunicipal = Usuario::where('role','municipal')->get();
+        View(compact('usuariosmunicipal'));
     }
 
     public function create()

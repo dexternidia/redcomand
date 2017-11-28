@@ -3,6 +3,7 @@ namespace App;
 
 use App\BancoPersonal;
 use App\CentroClp;
+use App\ClpResponsable;
 use App\Institucion;
 use App\LaboratorioPersonal;
 use App\MunicipioCne;
@@ -58,6 +59,11 @@ class Usuario extends Model {
 	public function centro_clp()
 	{
 		return $this->hasOne(CentroClp::class,'id_clp','id_clp');
+	}
+
+	public function responsables_clp()
+	{
+		return $this->hasMany(ClpResponsable::class,'id_municipal','id_municipal');
 	}
 }
 
