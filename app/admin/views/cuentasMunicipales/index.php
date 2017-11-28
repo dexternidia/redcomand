@@ -14,7 +14,6 @@
             <th width="" class="text-uppercase">Usuario</th>
             <th width="" class="text-uppercase">Municipio</th>
             <th width="" class="text-uppercase">Cant. Clp</th>
-            <th width="25%" class="text-uppercase">Opciones</th>
           </tr>
         </thead>
         <tbody>
@@ -26,10 +25,6 @@
             <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->municipio->nombre ?></td>
             <td class="text-uppercase"><?php echo $u->responsables_clp->count() ?></td>
-              <td>
-                <a href="<?php echo baseUrlRole() ?>centrosClp/create/<?php echo $u->id_clp ?>" class="btn"><i class="fa fa-university"></i> Asignar centro</a>
-                <a href="<?php echo baseUrlRole() ?>centrosClp/<?php echo $u->id_clp ?>" class="btn text-danger"><i class="text-danger fa fa-search fa-1x"></i> Ver centros</a>
-              </td>
           </tr>
           <?php endforeach ?>
           <?php else: ?>
