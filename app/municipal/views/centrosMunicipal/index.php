@@ -21,7 +21,7 @@
           <tr>
             <td><?php echo $u->nombre_ubch ?></td>
             <td><?php echo $u->municipio->nombre ?></td>
-            <td><?php echo $u->parroquia->nombre ?></td>
+            <td></td>
             <td><?php echo $u->direccion_ubch ?></td>
             <td><?php echo $u->parroquia->estatus ?></td>
             <td><a class="text-danger fa fa-search fa-2x" href="<?php echo baseUrlRole() ?>centros/<?php echo $u->id_ubch ?>"></a></td>

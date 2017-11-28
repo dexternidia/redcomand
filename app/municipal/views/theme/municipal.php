@@ -123,6 +123,15 @@
                 <ul class="nav navbar-nav">
                 <!--  <li class=""><a href="<?php echo baseUrlRole() ?>centrosMunicipal"><i class="fa fa-university"></i> CENTROS</a></li> -->
                 </ul>
+                <ul class="nav navbar-nav">
+                  <li class=""><a href="<?php echo baseUrlRole() ?>estructurasMuni"><i class="fa fa-sitemap"></i> ESTRUCTURA</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                  <li class=""><a href="<?php echo baseUrlRole() ?>partidosMuni"><i class="fa fa-handshake-o"></i> PARTIDOS</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                  <li class=""><a href="<?php echo baseUrlRole() ?>institucionesMuni"><i class="fa fa-building-o"></i> INSTITUCIONES</a></li>
+                </ul>
               <ul class="nav navbar-nav">
                 <li class=""><a href="<?php echo baseUrlRole() ?>estadisticasMunicipal"><i class="fa fa-area-chart"></i> ESTADISTICAS</a></li>
               </ul>

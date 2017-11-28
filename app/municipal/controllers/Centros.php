@@ -95,7 +95,7 @@ class CentrosMunicipal
 
         if($nombre_usuario)
         {
-            Error('centros/busqueda','Nombre de usuario ya esta siendo usado.');
+            Error('centrosMunicipal/busqueda','Nombre de usuario ya esta siendo usado.');
         }
         else
         {
@@ -111,8 +111,8 @@ class CentrosMunicipal
                     $ubch->numero_mesas = $centro->count();
                     $ubch->cantidad_electores = $centro->sum('cant_electores');
                     $ubch->nombre_ubch = $nombre_ubch;
-                    $ubch->id_municipio = $user['id_municipio'];
-                    $ubch->id_parroquia = $user['id_parroquia'];
+                    $ubch->id_municipio = $mesa->id_municipio;
+                    $ubch->id_parroquia = $mesa->id_parroquia;
                     $ubch->direccion_ubch = $direccion_ubch;
                     $ubch->estatus = 0;
                     $ubch->id_clp = $id_clp;

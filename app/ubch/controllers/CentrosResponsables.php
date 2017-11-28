@@ -156,7 +156,22 @@ class CentrosResponsablesUbch
 
     public function update($id)
     {
+        extract($_POST);
+        $responsable = UbchResponsable::find($id);
+        $responsable->telefono_1 = $telefono_1;
+        $responsable->telefono_2 = $telefono_2;
+        $responsable->direccion = $direccion;
+        $responsable->email = $email;
+        $responsable->vehiculo = $vehiculo;
 
+        if($responsable->save())
+        {
+            Success('centrosUbch','Datos Actualizados.');
+        }
+        else
+        {
+            Error('centrosUbch','Error al actualizar los datos.');
+        }
     }
 
     public function destroy($id)

@@ -151,15 +151,15 @@ text-align: center;
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Editar Responsable</h4>
+              <h4 class="modal-title"><i class="fa fa-edit text-danger fa-2x"></i> DATOS RESPONSABLE</h4>
             </div>
             <div class="modal-body">
-              <form action="<?php echo baseUrlRole() ?>ResponsableUbch/<?php echo $responsable->id_responsable_ubch ?>" method="POST">
+              <form action="<?php echo baseUrlRole() ?>CentrosResponsablesUbch/<?php echo $responsable->id_responsable_ubch ?>" method="POST">
                 <?php echo Token::field() ?>
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="form-group">
-                      <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono_1" placeholder="Telefono n°1" value="<?php echo $responsable->telefono_1 ?>" required/>
+                      <input class="form-control" data-inputmask="'mask': '(9999) 999-9999'" type="text"  name="telefono_1" placeholder="Telefono n°1" value="<?php echo $responsable->telefono_1 ?>"/>
                     </div>
                   </div>
                   <div class="col-lg-6">
@@ -169,9 +169,27 @@ text-align: center;
                   </div>
                   <div class="col-lg-12">
                     <div class="form-group">
+                      <input class="form-control" type="email" name="email" placeholder="Email" value="<?php echo $responsable->email ?>"/>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group">
                       <input class="form-control" type="text" name="direccion" placeholder="Dirección" value="<?php echo $responsable->direccion ?>"/>
                     </div>
-                  </div>       
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <select class="form-control" name="vehiculo">
+                        <?php if ($responsable->vehiculo == TRUE): ?>
+                        <option value="1">TIENE VEHICULO</option>
+                        <option value="0">NO TIENE VEHICULO</option>
+                        <?php else: ?>
+                        <option value="0">NO TIENE VEHICULO</option>
+                        <option value="1">TIENE VEHICULO</option>
+                        <?php endif ?>
+                      </select>
+                    </div>
+                  </div>
                   <br>
                 </div>
               </div>
@@ -182,6 +200,15 @@ text-align: center;
           </div>
         </div>
       </div>
+      <?php if (!$responsable->telefono_1 OR !$responsable->direccion): ?>
+      <script>
+      swal(
+      'Atención!',
+      'En la sección responsable, edite sus datos personales completos, telefono 1 (principal), telefono 2 (opcional), dirección, email y si tiene en su posee vehiculo!',
+      'warning'
+      )
+      </script>
+      <?php endif ?>
       <?php else: ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
