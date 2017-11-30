@@ -14,11 +14,11 @@
           <div class="form-group">
             <select id="municipioSelect" class="form-control" name="tipo" required/>
               <?php if ($problema->tipo): ?>
-              <option value="<?php echo $problema->tipo->id_problema ?>"><?php echo $problema->tipo->nombre ?></option>
+              <option value="<?php echo $problema->tipo->id_tipo_problema ?>"><?php echo $problema->tipo->nombre ?></option>
               <?php else: ?>
               <option>PROBLEMATICAS</option>
               <?php foreach ($tipo as $key => $t): ?>
-              <option value="<?php echo $t->id_problema ?>"><?php echo $t->nombre ?></option>
+              <option value="<?php echo $t->id_tipo_problema ?>"><?php echo $t->nombre ?></option>
               <?php endforeach ?>
               <?php endif ?>
             </select>

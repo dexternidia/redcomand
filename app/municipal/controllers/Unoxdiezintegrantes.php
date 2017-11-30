@@ -41,19 +41,19 @@ class UnoxdiezintegrantesMunicipal
             {
                 if($unoxdiez_existe)
                 {
-                    Error('centrosMunicipal/'.$user['id_ubch'],'Esta persona ya es padrino de un 1x10.');
+                    Error('centrosUbch/'.$user['id_ubch'],'Esta persona ya es padrino de un 1x10.');
                 }
                 else
                 {
                     if($unoxdiezintegrante_existe)
                     {
-                        Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es ahijado de un 1x10.');
+                        Error('unoxdiezintegrantesUbch/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es ahijado de un 1x10.');
                     }
                     else
                     {
                         if($conteoUnoxdiez->count() > 1)
                         {
-                            Error('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Error al crear ahijado de 1x10.');
+                            Error('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Error al crear ahijado de 1x10.');
                         }
                         else
                         {
@@ -70,11 +70,11 @@ class UnoxdiezintegrantesMunicipal
 
                             if($padrino->save())
                             {
-                                Success('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Ahijado de 1x10 creado con exito.!');
+                                Success('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Ahijado de 1x10 creado con exito.!');
                             }
                             else
                             {
-                                Error('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Error al crear ahijado de 1x10.');
+                                Error('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Error al crear ahijado de 1x10.');
                             }
                         }
                     }
@@ -82,12 +82,12 @@ class UnoxdiezintegrantesMunicipal
             }
             else
             {
-                Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'No Pertenece a la misma zona del centro de votación.');
+                Error('unoxdiezintegrantesUbch/create/'.$id_ubch_registro_unoxdiez,'No Pertenece a la misma zona del centro de votación.');
             }
         }
         else
         {
-            Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'No se encuentra en el registro CNE.');
+            Error('unoxdiezintegrantesUbch/create/'.$id_ubch_registro_unoxdiez,'No se encuentra en el registro CNE.');
         }
         //View();
     }
@@ -114,11 +114,11 @@ class UnoxdiezintegrantesMunicipal
 
         if($ahijado->delete())
         {
-            Success('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Ahijado borrado con exito.');
+            Success('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Ahijado borrado con exito.');
         }
         else
         {
-            Success('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Erroral borrar ahijado.');
+            Success('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Erroral borrar ahijado.');
         }
     }
 }

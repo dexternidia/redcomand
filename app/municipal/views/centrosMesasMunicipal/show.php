@@ -10,10 +10,8 @@
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> DATOS DE MESA
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/<?php echo $mesa->id_mesas_ubch ?>/delete"><i class="fa fa-times text-danger"></i></a>
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/<?php echo $mesa->id_mesas_ubch ?>/edit"><i class="fa fa-pencil text-primary"></i></a>
             </h5>
-            <hr>
+            <br>  
           </div>
           <div class="">
             <table class="table table-user-information panel panel-default animated fadeIn">

@@ -3,6 +3,8 @@ namespace App\municipal\controllers;
 
 use App\Cne;
 use App\UbchUnoxDiez;
+use App\Usuario;
+use Carbon\Carbon;
 
 class UnoxdiezMunicipal
 {
@@ -18,7 +20,8 @@ class UnoxdiezMunicipal
 
     public function create()
     {
-        View();
+        $id_ubch = Uri(5);
+        View(compact('id_ubch'));
     }
 
     public function busqueda()
@@ -35,45 +38,81 @@ class UnoxdiezMunicipal
         $unoxdiez_existe = UbchUnoxDiez::where('cedula',$cedula)->first();
         $user = User();
 
-        if($datos_cne)
-        {
-            if($datos_cne->municipio == $user['id_municipio'] AND $datos_cne->parroquia == $user['id_parroquia'])
-            {
-                if($unoxdiez_existe)
-                {
-                    Error('centros/'.$user['id_ubch'],'Esta persona ya es padrino de un 1x10.');
-                }
-                else
-                {
-                    $padrino = new UbchUnoxDiez;
-                    $padrino->id_municipio = $user['id_municipio'];
-                    $padrino->id_parroquia = $user['id_parroquia'];
-                    $padrino->id_ubch = $user['id_ubch'];
-                    $padrino->nombre = $datos_cne->nombre_1;
-                    $padrino->apellido = $datos_cne->apellido_1;
-                    $padrino->telefono_1 = $telefono_1;
-                    $padrino->telefono_2 = $telefono_2;
-                    $padrino->cedula = $cedula;
+        $usuario_existe = Usuario::where('email',$email)->first();
 
-                    if($padrino->save())
+        if(!$usuario_existe)
+        {
+            if($datos_cne)
+            {
+                if($datos_cne->municipio == $user['id_municipio'] AND $datos_cne->parroquia == $user['id_parroquia'])
+                {
+                    if($unoxdiez_existe)
                     {
-                        Success('centrosMunicipal/'.$user['id_ubch'],'Padrino de 1x10 creado con exito.!');
+                        Error('centrosMunicipal/'.$id_ubch,'Esta persona ya es padrino de un 1x10.');
                     }
                     else
                     {
-                        Error('centrosMunicipal/'.$user['id_ubch'],'Error al crear padrino de 1x10.');
+                        $padrino = new UbchUnoxDiez;
+                        $padrino->id_municipio = $user['id_municipio'];
+                        $padrino->id_parroquia = $user['id_parroquia'];
+                        $padrino->id_ubch = $id_ubch;
+                        $padrino->nombre = $datos_cne->nombre_1;
+                        $padrino->apellido = $datos_cne->apellido_1;
+                        $padrino->telefono_1 = $telefono_1;
+                        $padrino->telefono_2 = $telefono_2;
+                        $padrino->cedula = $cedula;
+
+
+                        if($padrino->save())
+                        {
+                            $clave = password_hash($password, PASSWORD_DEFAULT);
+                            $usuario = new Usuario;
+                            $usuario->name = $datos_cne->nombre_1.''.$datos_cne->apellido_1;
+                            $usuario->email = $email;
+                            $usuario->password = $clave;
+                            $usuario->role = 'patrullero';
+                            $usuario->id_instituciones = 0;
+                            $usuario->id_municipio = $user['id_municipio'];
+                            $usuario->id_parroquia = $user['id_parroquia'];
+                            $usuario->id_municipal = 0;
+                            $usuario->id_clp = 0;
+                            $usuario->id_ubch = $user['id_ubch'];
+                            $usuario->id_patrullero = $padrino->id_ubch_registro_unoxdiez;
+                            $usuario->created_at = Carbon::now();
+                            $usuario->updated_at = Carbon::now();
+                            $usuario->estatus = 0;
+
+                            if($usuario->save())
+                            {
+                                Success('centrosMunicipal/'.$id_ubch,'Patrullero de 1x10 creado con exito.!');
+                            }
+                            else
+                            {
+                                Error('centrosMunicipal/'.$id_ubch,'Error al crear Patrullero de 1x10.');
+                            }
+                        }
+                        else
+                        {
+                            Error('centrosMunicipal/'.$id_ubch,'Error al crear Patrullero de 1x10.');
+                        }
                     }
+                }
+                else
+                {
+                    Error('unoxdiezMunicipal/creatre','No Pertenece a la misma zona del centro de votación.');
                 }
             }
             else
             {
-                Error('unoxdiezMunicipal/busqueda','No Pertenece a la misma zona del centro de votación.');
+                Error('unoxdiezMunicipal/create','No se encuentra en el registro CNE.');
             }
         }
         else
         {
-            Error('unoxdiezMunicipal/busqueda','No se encuentra en el registro CNE.');
+            Error('unoxdiezMunicipal/create','Nombre de usuario ya en uso.!');
         }
+
+
         //View();
     }
 

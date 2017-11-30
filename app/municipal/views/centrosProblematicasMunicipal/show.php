@@ -10,7 +10,7 @@
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> DATOS PROBLEMAS DEL CENTRO
-            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/<?php echo $problema->id_problematica_ubch ?>/delete"><i class="fa fa-times text-danger"></i></a>
+           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/<?php echo $problema->id_problematica_ubch ?>/delete"><i class="fa fa-times text-danger"></i></a> -->
             <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/<?php echo $problema->id_problematica_ubch ?>/edit"><i class="fa fa-pencil text-primary"></i></a>
             </h5>
             <hr>

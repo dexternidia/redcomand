@@ -1,3 +1,3 @@
 
-s/${model}/MunicipalResponsable/
-s/${tabla}/responsable_municipal/
+s/${model}/Profesionales/
+s/${tabla}/profesionales/

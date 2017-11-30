@@ -7,7 +7,7 @@ use App\TipoProblematica;
 use App\TipoSolicitud;
 use App\Ubch;
 
-class CentrosSolicitudes
+class CentrosSolicitudesMunicipal
 {
     function __construct()
     {

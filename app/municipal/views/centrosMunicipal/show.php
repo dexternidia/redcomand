@@ -171,7 +171,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> PROBLEMATICAS
-           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
+           <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> 
             </h5>
             <br>
           </div>
@@ -201,7 +201,7 @@ text-align: center;
                   </td>
                   <td width="5%">
                     <?php echo Token() ?>
-                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/<?php echo $u->id_problematica_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicasMunicipal/<?php echo $u->id_problematica_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
                   </td>
                 </tr>
                 <?php endforeach ?>
@@ -236,7 +236,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> SOLICITUDES
-           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
+            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> 
             </h5>
             <br>
           </div>
@@ -266,7 +266,7 @@ text-align: center;
                   </td>
                   <td width="5%">
                     <?php echo Token() ?>
-                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/<?php echo $u->id_solicitud_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudesMunicipal/<?php echo $u->id_solicitud_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
                   </td>
                 </tr>
                 <?php endforeach ?>
@@ -328,7 +328,7 @@ text-align: center;
                   </td>
                   <td width="5%">
                     <?php echo Token() ?>
-                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosMesas/<?php echo $u->id_mesas_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>centrosMesasMunicipal/<?php echo $u->id_mesas_ubch ?>" onclick="this.parentNode.submit(); return false;"></a>
                   </td>
                 </tr>
                 <?php endforeach ?>
@@ -361,9 +361,16 @@ text-align: center;
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
+            <?php $patrullados = \App\UbchUnoxDiezIntegrantes::where('id_ubch',Uri(5))->get(); ?>
+            <?php if ($unoxdiezpadrinos->count() > 1): ?>
             <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> 1X10 PADRINOS            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiez/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            <i class="fa fa-file"></i> <?php echo $unoxdiezpadrinos->count() ?> PATRULLEROS -> <label class="text-danger"><?php echo $patrullados->count() ?> PATRULLADOS</label>            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
+            <?php else: ?>
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-file"></i> <?php echo $unoxdiezpadrinos->count() ?> PATRULLERO -> <label class="text-danger"><?php echo $patrullados->count() ?> PATRULLADOS</label>             <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            </h5>
+            <?php endif ?>
             <br>
           </div>
           <div class="col-md-12 table-responsive panel panel-default">
@@ -375,7 +382,7 @@ text-align: center;
                   <th class="text-uppercase">Cedula</th>
                   <th class="text-uppercase">Telefono 1</th>
                   <th class="text-uppercase">Telefono 2</th>
-                  <th class="text-uppercase">Ahijados</th>
+                  <th class="text-uppercase">Patrullados</th>
                   <th class="text-uppercase">Ver</th>
                 </tr>
               </thead>
@@ -390,7 +397,7 @@ text-align: center;
                   <td style="text-align: center"><?php echo $u->unoxdiez_ahijados->count(); ?></td>
                   <td width="5%">
                     <?php echo Token() ?>
-                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>unoxdiez/<?php echo $u->id_ubch_registro_unoxdiez ?>" onclick="this.parentNode.submit(); return false;"></a>
+                    <a class="text-danger fa fa-search fa-1x pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/<?php echo $u->id_ubch_registro_unoxdiez ?>" onclick="this.parentNode.submit(); return false;"></a>
                   </td>
                 </tr>
                 <?php endforeach ?>
