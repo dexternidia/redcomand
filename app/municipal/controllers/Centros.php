@@ -11,6 +11,7 @@ use App\Partido;
 use App\Ubch;
 use App\UbchResponsable;
 use App\Usuario;
+use App\clp\controllers\Unoxdiezintegrantes;
 use Carbon\Carbon;
 
 class CentrosMunicipal
@@ -266,6 +267,8 @@ class CentrosMunicipal
         $mesas = $ubch->centro_mesas;
         $unoxdiezpadrinos = $ubch->unoxdiez_padrinos;
         //Arr($unoxdiezpadrinos);
+
+
         View(compact('ubch','responsable','solicitudes_comunicaciones','problematicas','solicitudes','mesas','unoxdiezpadrinos'));
     }
 

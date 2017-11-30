@@ -61,7 +61,7 @@ class UnoxdiezMunicipal
                         $padrino->telefono_1 = $telefono_1;
                         $padrino->telefono_2 = $telefono_2;
                         $padrino->cedula = $cedula;
-
+                        $padrino->direccion = $direccion;
 
                         if($padrino->save())
                         {
@@ -119,9 +119,10 @@ class UnoxdiezMunicipal
     public function show($id)
     {
         $padrino = UbchUnoxDiez::find($id);
+        $id_ubch_registro_unoxdiez = $id;
         //Arr($padrino->unoxdiez_ahijados);
         $ahijados = $padrino->unoxdiez_ahijados;
-        View(compact('ahijados','padrino'));
+        View(compact('ahijados','padrino','id_ubch_registro_unoxdiez'));
     }
 
     public function edit($id)

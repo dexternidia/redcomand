@@ -31,6 +31,7 @@ class UnoxdiezintegrantesMunicipal
         $datos_cne = Cne::where('cedula',$cedula)->first();
         $unoxdiezintegrante_existe = UbchUnoxDiezIntegrantes::where('cedula',$cedula)->first();
         $unoxdiez_existe = UbchUnoxDiez::where('cedula',$cedula)->first();
+        $unoxdiez_datos = UbchUnoxDiez::find($id_ubch_registro_unoxdiez);
 
         $conteoUnoxdiez = UbchUnoxDiezIntegrantes::all();
         $user = User();
@@ -41,53 +42,48 @@ class UnoxdiezintegrantesMunicipal
             {
                 if($unoxdiez_existe)
                 {
-                    Error('centrosUbch/'.$user['id_ubch'],'Esta persona ya es padrino de un 1x10.');
+                        Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es un Patrullero de un 1x10.');
                 }
                 else
                 {
                     if($unoxdiezintegrante_existe)
                     {
-                        Error('unoxdiezintegrantesUbch/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es ahijado de un 1x10.');
+                        Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es un Patrullado de un 1x10.');
                     }
                     else
                     {
-                        if($conteoUnoxdiez->count() > 1)
+                        $padrino = new UbchUnoxDiezIntegrantes;
+                        $padrino->id_ubch_registro_unoxdiez = $id_ubch_registro_unoxdiez;
+                        $padrino->id_municipio = $datos_cne->municipio;
+                        $padrino->id_parroquia = $datos_cne->parroquia;
+                        $padrino->id_ubch = $unoxdiez_datos->id_ubch;
+                        $padrino->nombre = $datos_cne->nombre_1;
+                        $padrino->apellido = $datos_cne->apellido_1;
+                        $padrino->telefono_1 = $telefono_1;
+                        $padrino->telefono_2 = $telefono_2;
+                        $padrino->cedula = $cedula;
+                        $padrino->direccion = $direccion;
+
+                        if($padrino->save())
                         {
-                            Error('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Error al crear ahijado de 1x10.');
+                            Success('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Patrullado de 1x10 creado con exito.!');
+
                         }
                         else
                         {
-                            $padrino = new UbchUnoxDiezIntegrantes;
-                            $padrino->id_ubch_registro_unoxdiez = $id_ubch_registro_unoxdiez;
-                            $padrino->id_municipio = $user['id_municipio'];
-                            $padrino->id_parroquia = $user['id_parroquia'];
-                            $padrino->id_ubch = $user['id_ubch'];
-                            $padrino->nombre = $datos_cne->nombre_1;
-                            $padrino->apellido = $datos_cne->apellido_1;
-                            $padrino->telefono_1 = $telefono_1;
-                            $padrino->telefono_2 = $telefono_2;
-                            $padrino->cedula = $cedula;
-
-                            if($padrino->save())
-                            {
-                                Success('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Ahijado de 1x10 creado con exito.!');
-                            }
-                            else
-                            {
-                                Error('unoxdiezUbch/'.$id_ubch_registro_unoxdiez,'Error al crear ahijado de 1x10.');
-                            }
+                            Error('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Error al crear Patrullado de 1x10.');
                         }
                     }
                 }
             }
             else
             {
-                Error('unoxdiezintegrantesUbch/create/'.$id_ubch_registro_unoxdiez,'No Pertenece a la misma zona del centro de votación.');
+                Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'No Pertenece a la misma zona del centro de votación.');
             }
         }
         else
         {
-            Error('unoxdiezintegrantesUbch/create/'.$id_ubch_registro_unoxdiez,'No se encuentra en el registro CNE.');
+            Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'No se encuentra en el registro CNE.');
         }
         //View();
     }

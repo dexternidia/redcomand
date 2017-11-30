@@ -36,7 +36,7 @@ $("#MesasSelect").html(data);
   <div class="panel-body">
     <form action="<?php echo baseUrlRole() ?>unoxdiezMunicipal" method="POST">
       <?php echo Token::field() ?>
-      <input type="text" name="id_ubch" value="<?php echo $id_ubch ?>">
+      <input type="hidden" name="id_ubch" value="<?php echo $id_ubch ?>">
       <div class="row">
         <div class="col-lg-4">
           <div class="form-group">
@@ -51,6 +51,14 @@ $("#MesasSelect").html(data);
         <div class="col-lg-4">
           <div class="form-group">
             <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'"  name="telefono_2" placeholder="TELEFONO 2">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <input class="form-control" type="text"  name="direccion" placeholder="DIRECCION">
           </div>
         </div>
       </div>

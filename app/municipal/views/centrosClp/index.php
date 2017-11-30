@@ -1,7 +1,7 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
     <h3 class="panel-title text-muted"><i class="fa fa-users fa-2x"></i> CLP<b></b>
-      <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> CREAR CLP</i></a
+      <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> CREAR CLP</i></a>
     </h3>
   </div>
   <div class="panel-body">

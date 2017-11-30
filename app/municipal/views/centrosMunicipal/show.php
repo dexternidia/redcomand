@@ -361,14 +361,25 @@ text-align: center;
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
-            <?php $patrullados = \App\UbchUnoxDiezIntegrantes::where('id_ubch',Uri(5))->get(); ?>
+            <?php $patrullados = \App\UbchUnoxDiezIntegrantes::where('id_ubch',$ubch->id_ubch)->get(); ?>
             <?php if ($unoxdiezpadrinos->count() > 1): ?>
             <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> <?php echo $unoxdiezpadrinos->count() ?> PATRULLEROS -> <label class="text-danger"><?php echo $patrullados->count() ?> PATRULLADOS</label>            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            <i class="fa fa-file"></i> <?php echo $unoxdiezpadrinos->count() ?> PATRULLEROS -> <label class="text-danger">              
+              <?php if ($patrullados->count() > 1): ?>
+                <?php echo $patrullados->count() ?> Patrullados</label> 
+              <?php else: ?>
+                <?php echo $patrullados->count() ?> Patrullado</label> 
+              <?php endif ?>            <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <?php else: ?>
             <h5 class="text-muted text-muted">
-            <i class="fa fa-file"></i> <?php echo $unoxdiezpadrinos->count() ?> PATRULLERO -> <label class="text-danger"><?php echo $patrullados->count() ?> PATRULLADOS</label>             <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
+            <i class="fa fa-file"></i> <?php echo $unoxdiezpadrinos->count() ?> PATRULLERO -> <label class="text-danger">
+              <?php if ($patrullados->count() > 1): ?>
+                <?php echo $patrullados->count() ?> Patrullados</label> 
+              <?php else: ?>
+                <?php echo $patrullados->count() ?> Patrullado</label> 
+              <?php endif ?> 
+              <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezMunicipal/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a>
             </h5>
             <?php endif ?>
             <br>

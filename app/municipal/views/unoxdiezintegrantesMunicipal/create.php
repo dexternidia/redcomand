@@ -30,11 +30,11 @@ $("#MesasSelect").html(data);
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR PADRINO 1X10</h3>
+    <h3 class="panel-title text-muted"><i class="fa fa-user-plus fa-2x"></i> INGRESAR PATRULLADO</h3>
   </div>
   <br>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>unoxdiezintegrantes" method="POST">
+    <form action="<?php echo baseUrlRole() ?>unoxdiezintegrantesMunicipal" method="POST">
       <?php echo Token::field() ?>
       <input type="hidden" name="id_ubch_registro_unoxdiez" value="<?php echo $id_ubch_registro_unoxdiez ?>">
       <div class="row">
@@ -51,6 +51,14 @@ $("#MesasSelect").html(data);
         <div class="col-lg-4">
           <div class="form-group">
             <input class="form-control" type="text" data-inputmask="'mask': '(9999) 999-9999'"  name="telefono_2" placeholder="TELEFONO 2">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <input class="form-control" type="text"  name="direccion" placeholder="DIRECCION">
           </div>
         </div>
       </div>
