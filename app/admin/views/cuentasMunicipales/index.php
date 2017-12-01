@@ -11,6 +11,7 @@
           <tr class="">
             <!-- <th>ID</th> -->
             <th width="" class="text-uppercase">Responsable</th>
+            <th width="" class="text-uppercase">Cedula</th>
             <th width="" class="text-uppercase">Usuario</th>
             <th width="" class="text-uppercase">Municipio</th>
             <th width="" class="text-uppercase">Telefono</th>
@@ -28,6 +29,7 @@
 
             <!--  <td class="text-uppercase"><?php echo $u->name ?></td> -->
             <td class="text-uppercase"><?php echo $u->name ?></td>
+            <td class="text-uppercase"><?php echo $datos_municipal->cedula ?></td>
             <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->municipio->nombre ?></td>
             <td class="text-uppercase"><?php echo $datos_municipal->telefono_1 ?></td>
