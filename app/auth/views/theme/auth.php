@@ -56,8 +56,6 @@
                 <a href="#" class="brand-logo">Municipales 2017</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="<?php echo baseUrl ?>home/principal"><i class="fa fa-home"></i> Inicio</a></li>
-                    <li><a href="<?php echo baseUrl ?>home/principal/solicitud"><i class="fa fa-file-text-o"></i> Solicitud</a></li>
-                    <li><a href="<?php echo baseUrl ?>home/principal/consulta"><i class="fa fa-search"></i> Consulta</a></li>
                     <li><a href="<?php echo baseUrl ?>auth/login"><i class="fa fa-external-link-square" aria-hidden="true"></i>
                     Login</a></li>
                 </ul>

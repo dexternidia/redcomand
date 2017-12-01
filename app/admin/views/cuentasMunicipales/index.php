@@ -13,6 +13,8 @@
             <th width="" class="text-uppercase">Responsable</th>
             <th width="" class="text-uppercase">Usuario</th>
             <th width="" class="text-uppercase">Municipio</th>
+            <th width="" class="text-uppercase">Telefono</th>
+            <th width="" class="text-uppercase">Email</th>
             <th width="" class="text-uppercase">Cant. Clp</th>
           </tr>
         </thead>
@@ -20,10 +22,16 @@
           <?php if ($usuariosmunicipal): ?>
           <?php foreach ($usuariosmunicipal as $key => $u): ?>
           <tr>
+              <?php 
+              $datos_municipal = \App\MunicipalResponsable::find($u->id_municipal);
+              ?>
+
             <!--  <td class="text-uppercase"><?php echo $u->name ?></td> -->
             <td class="text-uppercase"><?php echo $u->name ?></td>
             <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->municipio->nombre ?></td>
+            <td class="text-uppercase"><?php echo $datos_municipal->telefono_1 ?></td>
+            <td class="text-uppercase"><?php echo $datos_municipal->email ?></td>
             <td class="text-uppercase"><?php echo $u->responsables_clp->count() ?></td>
           </tr>
           <?php endforeach ?>

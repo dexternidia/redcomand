@@ -6,6 +6,7 @@ use App\CentroClp;
 use App\ClpResponsable;
 use App\Institucion;
 use App\LaboratorioPersonal;
+use App\MunicipalResponsable;
 use App\MunicipioCne;
 use App\ParroquiaCne;
 use App\Ubch;
@@ -64,6 +65,11 @@ class Usuario extends Model {
 	public function responsables_clp()
 	{
 		return $this->hasMany(ClpResponsable::class,'id_municipal','id_municipal');
+	}
+
+	public function datos_municipal()
+	{
+		return $this->hasOne(MunicipalResponsable::class,'id_responasble_municipal','id_municipal');
 	}
 }
 
