@@ -53,6 +53,15 @@ $("#MesasSelect").html(data);
           </div>
         </div>
       </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <input class="form-control" type="text"  name="direccion" placeholder="DIRECCION">
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-lg-12">
           <h4 class="text-muted text-center text-uppercase">

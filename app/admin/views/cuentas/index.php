@@ -11,6 +11,8 @@
             <th>ID</th>
             <th width="" class="text-uppercase">Nombre</th>
             <th width="" class="text-uppercase">Role</th>
+            <th width="" class="text-uppercase">Municipio</th>
+            <th width="" class="text-uppercase">Parroquia</th>
             <th width="" class="text-uppercase">Organismo</th>
             <th width="" class="text-uppercase">Usuario</th>
             <th width="" class="text-uppercase">Creado</th>
@@ -23,11 +25,23 @@
             <td class="text-uppercase"><?php echo $u->id ?></td>
             <td class="text-uppercase"><?php echo $u->name ?></td>
             <td class="text-uppercase"><?php echo $u->role ?></td>
+            <td class="text-uppercase"><?php echo $u->municipio->nombre ?></td>
+            <td class="text-uppercase">
+              <?php if (isset($u->id_parroquia)): ?>
+                <?php if ($u->id_parroquia > 0): ?>
+                  <?php echo $u->parroquia->nombre ?>
+                <?php else: ?>
+                  
+                <?php endif ?>
+              <?php else: ?>
+              
+              <?php endif ?>
+            </td>
             <td class="text-uppercase">
               <?php if (isset($u->instituciones->nombre)): ?>
-                              <?php echo $u->instituciones->nombre ?>
+              <?php echo $u->instituciones->nombre ?>
               <?php endif ?>
-              </td>
+            </td>
             <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
             <td class="text-uppercase">

@@ -13,6 +13,7 @@
             <th class="text-uppercase">Cedula</th>
             <th class="text-uppercase">Telefono 1</th>
             <th class="text-uppercase">Telefono 2</th>
+            <th class="text-uppercase">Dirección</th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
             <td><?php echo $u->cedula ?></td>
             <td><?php echo $u->telefono_1 ?></td>
             <td><?php echo $u->telefono_2 ?></td>
+            <td><?php echo $u->direccion ?></td>
           </tr>
           <?php endforeach ?>
         </tbody>

@@ -67,6 +67,7 @@ class UnoxdiezintegrantesUbch
                             $padrino->telefono_1 = $telefono_1;
                             $padrino->telefono_2 = $telefono_2;
                             $padrino->cedula = $cedula;
+                            $padrino->direccion = $direccion;
 
                             if($padrino->save())
                             {

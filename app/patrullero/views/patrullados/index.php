@@ -13,6 +13,7 @@
             <th width="" class="text-uppercase">Apellido</th>
             <th width="" class="text-uppercase">telefono 1</th>
             <th width="" class="text-uppercase">telefono 2</th>
+            <th width="" class="text-uppercase">Dirección</th>
             <th width="" class="text-uppercase">Opciones</th>
           </tr>
         </thead>
@@ -25,6 +26,7 @@
             <td class="text-uppercase"><?php echo $u->apellido ?></td>
             <td class="text-uppercase"><?php echo $u->telefono_1 ?></td>
             <td class="text-uppercase"><?php echo $u->telefono_2 ?></td>
+            <td class="text-uppercase"><?php echo $u->direccion ?></td>
             <td style="text-align: center" class="text-uppercase">
               <a class="fa fa-times text-danger" href="<?php echo baseUrlRole() ?>patrullados/<?php echo $u->id_ubch_registro_unoxdiez_integrantes ?>/delete"></a>
             </td>

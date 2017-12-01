@@ -36,7 +36,6 @@ class Consultas
                 $responsable_municipal = MunicipalResponsable::where('cedula',$cedula)->first();
 
                 //Arr($responsable_municipal);
-
                 View(compact('firmo_contra','hogares_asignados','hogares_por_asignar','por_pensionar','ya_pensionados','profesionales','cedula','responsable_municipal'));
             }
             else
@@ -56,7 +55,6 @@ class Consultas
 
             View(compact('firmo_contra','hogares_asignados','hogares_por_asignar','por_pensionar','ya_pensionados','profesionales','cedula','responsable_municipal'));
         }
-
     }
 
     public function create()
