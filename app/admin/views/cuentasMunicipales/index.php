@@ -26,7 +26,6 @@
               <?php 
               $datos_municipal = \App\MunicipalResponsable::find($u->id_municipal);
               ?>
-
             <!--  <td class="text-uppercase"><?php echo $u->name ?></td> -->
             <td class="text-uppercase"><?php echo $u->name ?></td>
             <td class="text-uppercase"><?php echo $datos_municipal->cedula ?></td>
@@ -38,7 +37,6 @@
           </tr>
           <?php endforeach ?>
           <?php else: ?>
-          
           <?php endif ?>
         </tbody>
       </table>
