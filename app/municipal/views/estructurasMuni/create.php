@@ -1,10 +1,10 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
     <h3 class="panel-title text-muted"><i class="fa fa-sitemap fa-2x"></i> AGREGAR ESTRUCTURAS<b></b>
-    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>estructuras/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar ESTRUCTURAS</i></a>    </h3>
+    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>estructurasMuni/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Agregar ESTRUCTURAS</i></a>    </h3>
   </div>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>estructuras" method="POST">
+    <form action="<?php echo baseUrlRole() ?>estructurasMuni" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
        <br>

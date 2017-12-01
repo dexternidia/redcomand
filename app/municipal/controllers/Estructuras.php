@@ -31,11 +31,11 @@ class EstructurasMuni
 
         if($Estructura->save())
         {
-            Success('estructuras','Institución ingresada con exito.');
+            Success('estructurasMuni','Institución ingresada con exito.');
         }
         else
         {
-            Error('estructuras','Error al ingresar Institución.');
+            Error('estructurasMuni','Error al ingresar Institución.');
         }
     }
 
@@ -46,8 +46,8 @@ class EstructurasMuni
 
     public function edit($id)
     {
-        $Estructura = Estructura::find($id);
-        View(compact('Estructura'));
+        $estructura = Estructura::find($id);
+        View(compact('estructura'));
     }
 
     public function update($id)
@@ -59,11 +59,11 @@ class EstructurasMuni
 
         if($Estructura->save())
         {
-            Success('estructuras','Institución actualizada con exito.');
+            Success('estructurasMuni','Institución actualizada con exito.');
         }
         else
         {
-            Error('estructuras','Error al actualizar institución.');
+            Error('estructurasMuni','Error al actualizar institución.');
         }
     }
 
@@ -75,11 +75,11 @@ class EstructurasMuni
         
         if($partido->save())
         {
-            Success('estructuras','Partido eliminado.');
+            Success('estructurasMuni','Partido eliminado.');
         }
         else
         {
-            Error('estructuras','Error al borrar partido.');
+            Error('estructurasMuni','Error al borrar partido.');
         }
     }
 }

@@ -31,11 +31,11 @@ class PartidosMuni
 
         if($institucion->save())
         {
-            Success('partidos','Institución ingresada con exito.');
+            Success('partidosMuni','Institución ingresada con exito.');
         }
         else
         {
-            Error('partidos','Error al ingresar Institución.');
+            Error('partidosMuni','Error al ingresar Institución.');
         }
     }
 
@@ -59,11 +59,11 @@ class PartidosMuni
 
         if($institucion->save())
         {
-            Success('partidos','Institución actualizada con exito.');
+            Success('partidosMuni','Institución actualizada con exito.');
         }
         else
         {
-            Error('partidos','Error al actualizar institución.');
+            Error('partidosMuni','Error al actualizar institución.');
         }
     }
 
@@ -75,11 +75,11 @@ class PartidosMuni
         
         if($partido->save())
         {
-            Success('partidos','Partido eliminado.');
+            Success('partidosMuni','Partido eliminado.');
         }
         else
         {
-            Error('partidos','Error al borrar partido.');
+            Error('partidosMuni','Error al borrar partido.');
         }
     }
 }

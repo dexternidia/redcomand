@@ -31,11 +31,11 @@ class InstitucionesMuni
 
         if($institucion->save())
         {
-            Success('instituciones','Institución ingresada con exito.');
+            Success('institucionesMuni','Institución ingresada con exito.');
         }
         else
         {
-            Error('instituciones','Error al ingresar Institución.');
+            Error('institucionesMuni','Error al ingresar Institución.');
         }
     }
 
@@ -59,11 +59,11 @@ class InstitucionesMuni
 
         if($institucion->save())
         {
-            Success('instituciones','Institución actualizada con exito.');
+            Success('institucionesMuni','Institución actualizada con exito.');
         }
         else
         {
-            Error('instituciones','Error al actualizar institución.');
+            Error('institucionesMuni','Error al actualizar institución.');
         }
     }
 
@@ -75,11 +75,11 @@ class InstitucionesMuni
         
         if($partido->save())
         {
-            Success('instituciones','Partido eliminado.');
+            Success('institucionesMuni','Partido eliminado.');
         }
         else
         {
-            Error('instituciones','Error al borrar partido.');
+            Error('institucionesMuni','Error al borrar partido.');
         }
     }
 }

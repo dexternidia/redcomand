@@ -1,10 +1,10 @@
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
     <h3 class="panel-title text-muted"><i class="fa fa-building-o fa-2x"></i> AGREGAR INSTITUCIÓN<b></b>
-    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>/instituciones/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Editar Institución</i></a>    </h3>
+    <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>/institucionesMuni/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> Editar Institución</i></a>    </h3>
   </div>
   <div class="panel-body">
-    <form action="<?php echo baseUrlRole() ?>/instituciones/<?php echo $institucion->id_instituciones ?>" method="POST">
+    <form action="<?php echo baseUrlRole() ?>/institucionesMuni/<?php echo $institucion->id_instituciones ?>" method="POST">
       <?php echo Token::field() ?>
       <div class="row">
        <br>
