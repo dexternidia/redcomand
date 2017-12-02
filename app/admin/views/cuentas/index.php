@@ -28,11 +28,12 @@
             <td class="text-uppercase"><?php echo $u->municipio->nombre ?></td>
             <td class="text-uppercase">
               <?php if (isset($u->id_parroquia)): ?>
-                <?php if ($u->id_parroquia > 0): ?>
-                  <?php echo $u->parroquia->nombre ?>
-                <?php else: ?>
-                  
-                <?php endif ?>
+              <?php if ($u->id_parroquia > 0): ?>
+              <?php $parroquia = \App\ParroquiaCne::all(); ?>
+              <?php echo $parroquia->where('id_municipio',$u->municipio->id_municipio)->where('id_parroquia',$u->parroquia->id_parroquia)->first()->nombre; ?>
+              <?php else: ?>
+              
+              <?php endif ?>
               <?php else: ?>
               
               <?php endif ?>

@@ -46,7 +46,12 @@ text-align: center;
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-map-marker"></i> Parroquia:</b></td>
-                  <td class="text-uppercase"><?php echo $ubch->parroquia->nombre ?></td>
+                  <td class="text-uppercase">
+                    <?php
+                    $parroquia = \App\ParroquiaCne::all();
+                    ?>
+                    <?php echo $parroquia->where('id_municipio',$ubch->municipio->id_municipio)->where('id_parroquia',$ubch->parroquia->id_parroquia)->first()->nombre; ?>
+                  </td>
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-map"></i> Dirección:</b></td>
@@ -89,7 +94,7 @@ text-align: center;
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> RESPONSABLE
-           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/ResponsableUbch/create/<?php echo $ubch->id ?>"><i class="fa fa-times text-danger"></i></a>
+            <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/ResponsableUbch/create/<?php echo $ubch->id ?>"><i class="fa fa-times text-danger"></i></a>
             <a class="btn btn-default pull-right" href="<?php echo baseUrl ?>admin/ResponsableUbch/create/<?php echo $ubch->id ?>"><i class="fa fa-pencil text-primary"></i></a> -->
             </h5>
             <br>
@@ -123,7 +128,12 @@ text-align: center;
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-map-marker"></i> Parroquia:</b></td>
-                  <td class="text-uppercase"><?php echo $responsable->parroquia->nombre ?></td>
+                  <td class="text-uppercase">
+                    <?php
+                    $parroquia = \App\ParroquiaCne::all();
+                    ?>
+                    <?php echo $parroquia->where('id_municipio',$responsable->municipio->id_municipio)->where('id_parroquia',$responsable->parroquia->id_parroquia)->first()->nombre; ?>
+                  </td>
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-map"></i> Dirección:</b></td>
@@ -164,14 +174,13 @@ text-align: center;
     </div>
     <hr>
     <div class="row">
-
       <?php if ($problematicas): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> PROBLEMATICAS
-           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
+            <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosProblematicas/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
             </h5>
             <br>
           </div>
@@ -212,7 +221,7 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-<!--       <div class="col-lg-6 animated fadeIn animated">
+      <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -228,15 +237,13 @@ text-align: center;
         </div>
       </div> -->
       <?php endif ?>
-
-
       <?php if ($problematicas): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
             <i class="fa fa-file"></i> SOLICITUDES
-           <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
+            <!-- <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>centrosSolicitudes/create/<?php echo $ubch->id_ubch ?>"><i class="fa fa-plus text-primary"></i></a> -->
             </h5>
             <br>
           </div>
@@ -277,8 +284,7 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-
-  <!--       <div class="col-lg-6 animated fadeIn animated">
+      <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -294,8 +300,6 @@ text-align: center;
         </div>
       </div> -->
       <?php endif ?>
-
-
     </div>
     <hr>
     <div class="row">
@@ -324,7 +328,7 @@ text-align: center;
                   <td><?php echo $u->mesa ?></td>
                   <td><?php echo $u->codigo_mesa ?></td>
                   <td class="text-uppercase">
-                   <?php echo $u->testigos->count() ?>
+                    <?php echo $u->testigos->count() ?>
                   </td>
                   <td width="5%">
                     <?php echo Token() ?>
@@ -339,8 +343,8 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-        
-<!--       <div class="col-lg-6 animated fadeIn animated">
+      
+      <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -356,7 +360,6 @@ text-align: center;
         </div>
       </div> -->
       <?php endif ?>
-
       <?php if ($mesas): ?>
       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
@@ -401,8 +404,8 @@ text-align: center;
         </div>
       </div>
       <?php else: ?>
-        
-<!--       <div class="col-lg-6 animated fadeIn animated">
+      
+      <!--       <div class="col-lg-6 animated fadeIn animated">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
@@ -418,10 +421,7 @@ text-align: center;
         </div>
       </div> -->
       <?php endif ?>
-
     </div>
-
-
   </div>
 </div>
 <script type="text/javascript">

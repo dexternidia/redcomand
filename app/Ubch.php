@@ -21,7 +21,7 @@ class Ubch extends Model {
 	}
 
 	public function parroquia()
-	{
+	{	
 		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
 	}
 

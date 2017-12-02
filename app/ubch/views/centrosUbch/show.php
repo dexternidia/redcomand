@@ -46,7 +46,12 @@ text-align: center;
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-map-marker"></i> Parroquia:</b></td>
-                  <td class="text-uppercase"><?php echo $ubch->parroquia->nombre ?></td>
+                  <td class="text-uppercase">
+                    <?php
+                    $parroquia = \App\ParroquiaCne::all();
+                    ?>
+                    <?php echo $parroquia->where('id_municipio',$ubch->municipio->id_municipio)->where('id_parroquia',$ubch->parroquia->id_parroquia)->first()->nombre; ?>
+                  </td>
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-map"></i> Dirección:</b></td>
@@ -123,7 +128,12 @@ text-align: center;
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-map-marker"></i> Parroquia:</b></td>
-                  <td class="text-uppercase"><?php echo $responsable->parroquia->nombre ?></td>
+                  <td class="text-uppercase">
+                    <?php
+                    $parroquia = \App\ParroquiaCne::all();
+                    ?>
+                    <?php echo $parroquia->where('id_municipio',$responsable->municipio->id_municipio)->where('id_parroquia',$responsable->parroquia->id_parroquia)->first()->nombre; ?>
+                  </td>
                 </tr>
                 <tr>
                   <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa fa-map"></i> Dirección:</b></td>

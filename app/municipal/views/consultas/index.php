@@ -51,7 +51,7 @@
     </div>
     <?php else: ?>
     <?php endif ?>
-    <?php if (isset($profesionales) and $profesionales): ?>
+    <?php if (isset($cedula) and $cedula): ?>
     <div class="row">
       <div class="col-lg-6 animated fadeInUp">
         <div class="col-lg-12">

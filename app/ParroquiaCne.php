@@ -8,6 +8,5 @@ class ParroquiaCne extends Model {
 	protected $primaryKey='id_parroquia';
     //Ejemplo de definir campos
     //protected $fillable = ['username','email','password'];
-
 }
 
