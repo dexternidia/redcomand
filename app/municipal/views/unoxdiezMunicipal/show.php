@@ -1,7 +1,7 @@
 -<div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
     <h3 class="panel-title text-muted"><i class="fa fa-user fa-2x"></i>x<i class="fa fa-users fa-2x"></i> PATRULLADOS
-      <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezintegrantesMunicipal/create/<?php echo $id_ubch_registro_unoxdiez ?>/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> INGRESAR PATRULLADO</i></a>
+      <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>unoxdiezintegrantesMunicipal/create/<?php echo $id_ubch_registro_unoxdiez ?>"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> INGRESAR PATRULLADO</i></a>
       <b></b>  
   </h3>
   </div>

@@ -2,6 +2,7 @@
 namespace App\municipal\controllers;
 
 use App\Cne;
+use App\Ubch;
 use App\UbchUnoxDiez;
 use App\Usuario;
 use Carbon\Carbon;
@@ -38,13 +39,17 @@ class UnoxdiezMunicipal
         $unoxdiez_existe = UbchUnoxDiez::where('cedula',$cedula)->first();
         $user = User();
 
+        $ubch = Ubch::find($id_ubch);
+
+        //Arr($ubch);
+
         $usuario_existe = Usuario::where('email',$email)->first();
 
         if(!$usuario_existe)
         {
             if($datos_cne)
             {
-                if($datos_cne->municipio == $user['id_municipio'] AND $datos_cne->parroquia == $user['id_parroquia'])
+                if($datos_cne->municipio == $ubch->id_municipio AND $datos_cne->parroquia == $ubch->id_parroquia)
                 {
                     if($unoxdiez_existe)
                     {
@@ -99,7 +104,7 @@ class UnoxdiezMunicipal
                 }
                 else
                 {
-                    Error('unoxdiezMunicipal/creatre/'.$id_ubch,'No Pertenece a la misma zona del centro de votación.');
+                    Error('unoxdiezMunicipal/create/'.$id_ubch,'No Pertenece a la misma zona del centro de votación.');
                 }
             }
             else

@@ -59,8 +59,8 @@ $("#MesasSelect").html(data);
         <div class="col-lg-3">
           <div class="form-group">
             <select id="municipioSelect" class="form-control" name="id_municipio" required/>
-                <option>MUNICIPIOS</option>
-                <option></option>
+                <option value="">MUNICIPIOS</option>
+                <option value=""></option>
                 <?php foreach ($municipios as $municipio): ?>
                 <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
                 <?php endforeach ?>

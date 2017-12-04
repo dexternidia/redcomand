@@ -41,38 +41,31 @@ class Patrullados
         {
             if($datos_cne->municipio == $user['id_municipio'] AND $datos_cne->parroquia == $user['id_parroquia'])
             {
-                if($unoxdiez_existe)
+                if($unoxdiezintegrante_existe)
                 {
-                    Error('patrullados/','Esta persona ya es Patrullero de un 1x10.');
+                    Error('unoxdiezintegrantesUbch/create/','Esta persona ya es un Patrullado de un 1x10.');
                 }
                 else
                 {
-                    if($unoxdiezintegrante_existe)
+                    $padrino = new UbchUnoxDiezIntegrantes;
+                    $padrino->id_ubch_registro_unoxdiez = $user['id_patrullero'];
+                    $padrino->id_municipio = $user['id_municipio'];
+                    $padrino->id_parroquia = $user['id_parroquia'];
+                    $padrino->id_ubch = $user['id_ubch'];
+                    $padrino->nombre = $datos_cne->nombre_1;
+                    $padrino->apellido = $datos_cne->apellido_1;
+                    $padrino->telefono_1 = $telefono_1;
+                    $padrino->telefono_2 = $telefono_2;
+                    $padrino->cedula = $cedula;
+                    $padrino->direccion = $direccion;
+
+                    if($padrino->save())
                     {
-                        Error('unoxdiezintegrantesUbch/create/','Esta persona ya es un Patrullado de un 1x10.');
+                        Success('patrullados/','Patrullado de 1x10 creado con exito.!');
                     }
                     else
                     {
-                        $padrino = new UbchUnoxDiezIntegrantes;
-                        $padrino->id_ubch_registro_unoxdiez = $user['id_patrullero'];
-                        $padrino->id_municipio = $user['id_municipio'];
-                        $padrino->id_parroquia = $user['id_parroquia'];
-                        $padrino->id_ubch = $user['id_ubch'];
-                        $padrino->nombre = $datos_cne->nombre_1;
-                        $padrino->apellido = $datos_cne->apellido_1;
-                        $padrino->telefono_1 = $telefono_1;
-                        $padrino->telefono_2 = $telefono_2;
-                        $padrino->cedula = $cedula;
-                        $padrino->direccion = $direccion;
-
-                        if($padrino->save())
-                        {
-                            Success('patrullados/','Patrullado de 1x10 creado con exito.!');
-                        }
-                        else
-                        {
-                            Error('patrullados/','Error al crear Patrullado de 1x10.');
-                        }
+                        Error('patrullados/','Error al crear Patrullado de 1x10.');
                     }
                 }
             }

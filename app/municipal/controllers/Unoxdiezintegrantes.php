@@ -2,6 +2,7 @@
 namespace App\municipal\controllers;
 
 use App\Cne;
+use App\Ubch;
 use App\UbchUnoxDiez;
 use App\UbchUnoxDiezIntegrantes;
 
@@ -34,45 +35,40 @@ class UnoxdiezintegrantesMunicipal
         $unoxdiez_datos = UbchUnoxDiez::find($id_ubch_registro_unoxdiez);
 
         $conteoUnoxdiez = UbchUnoxDiezIntegrantes::all();
+        $ubch = Ubch::find($unoxdiez_datos->id_ubch);
+
         $user = User();
 
         if($datos_cne)
         {
-            if($datos_cne->municipio == $user['id_municipio'] AND $datos_cne->parroquia == $user['id_parroquia'])
+            if($datos_cne->municipio == $ubch->id_municipio AND $datos_cne->parroquia == $ubch->id_parroquia)
             {
-                if($unoxdiez_existe)
+                if($unoxdiezintegrante_existe)
                 {
-                        Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es un Patrullero de un 1x10.');
+                    Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es un Patrullado de un 1x10.');
                 }
                 else
                 {
-                    if($unoxdiezintegrante_existe)
+                    $padrino = new UbchUnoxDiezIntegrantes;
+                    $padrino->id_ubch_registro_unoxdiez = $id_ubch_registro_unoxdiez;
+                    $padrino->id_municipio = $datos_cne->municipio;
+                    $padrino->id_parroquia = $datos_cne->parroquia;
+                    $padrino->id_ubch = $unoxdiez_datos->id_ubch;
+                    $padrino->nombre = $datos_cne->nombre_1;
+                    $padrino->apellido = $datos_cne->apellido_1;
+                    $padrino->telefono_1 = $telefono_1;
+                    $padrino->telefono_2 = $telefono_2;
+                    $padrino->cedula = $cedula;
+                    $padrino->direccion = $direccion;
+
+                    if($padrino->save())
                     {
-                        Error('unoxdiezintegrantesMunicipal/create/'.$id_ubch_registro_unoxdiez,'Esta persona ya es un Patrullado de un 1x10.');
+                        Success('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Patrullado de 1x10 creado con exito.!');
+
                     }
                     else
                     {
-                        $padrino = new UbchUnoxDiezIntegrantes;
-                        $padrino->id_ubch_registro_unoxdiez = $id_ubch_registro_unoxdiez;
-                        $padrino->id_municipio = $datos_cne->municipio;
-                        $padrino->id_parroquia = $datos_cne->parroquia;
-                        $padrino->id_ubch = $unoxdiez_datos->id_ubch;
-                        $padrino->nombre = $datos_cne->nombre_1;
-                        $padrino->apellido = $datos_cne->apellido_1;
-                        $padrino->telefono_1 = $telefono_1;
-                        $padrino->telefono_2 = $telefono_2;
-                        $padrino->cedula = $cedula;
-                        $padrino->direccion = $direccion;
-
-                        if($padrino->save())
-                        {
-                            Success('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Patrullado de 1x10 creado con exito.!');
-
-                        }
-                        else
-                        {
-                            Error('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Error al crear Patrullado de 1x10.');
-                        }
+                        Error('unoxdiezMunicipal/'.$id_ubch_registro_unoxdiez,'Error al crear Patrullado de 1x10.');
                     }
                 }
             }
