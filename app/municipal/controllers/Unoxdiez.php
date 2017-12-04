@@ -48,7 +48,7 @@ class UnoxdiezMunicipal
                 {
                     if($unoxdiez_existe)
                     {
-                        Error('centrosMunicipal/'.$id_ubch,'Esta persona ya es padrino de un 1x10.');
+                        Error('centrosMunicipal/'.$id_ubch,'Esta persona ya es patrullero de un 1x10.');
                     }
                     else
                     {
@@ -99,7 +99,7 @@ class UnoxdiezMunicipal
                 }
                 else
                 {
-                    Error('unoxdiezMunicipal/creatre','No Pertenece a la misma zona del centro de votación.');
+                    Error('unoxdiezMunicipal/creatre/'.$id_ubch,'No Pertenece a la misma zona del centro de votación.');
                 }
             }
             else
@@ -111,7 +111,6 @@ class UnoxdiezMunicipal
         {
             Error('unoxdiezMunicipal/create','Nombre de usuario ya en uso.!');
         }
-
 
         //View();
     }
