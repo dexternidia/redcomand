@@ -1,6 +1,8 @@
 <?php
 namespace App\municipal\controllers;
 
+use App\CentroResponsable;
+use App\ClpResponsable;
 use App\Cne;
 use App\FirmaContraMaduro;
 use App\HogaresAsignados;
@@ -33,10 +35,15 @@ class Consultas
                 $por_pensionar = PorPensionar::where('cedula',$cedula)->first();
                 $ya_pensionados = YaPensionados::where('cedula',$cedula)->first();
                 $profesionales = Profesionales::where('cedula',$cedula)->first();
+
+                //EXISTENCIA COMO RESPONSABLE
                 $responsable_municipal = MunicipalResponsable::where('cedula',$cedula)->first();
+                $responsable_clp = ClpResponsable::where('cedula',$cedula)->first();
+                $responsable_ubch = CentroResponsable::where('cedula',$cedula)->first();
 
                 //Arr($responsable_municipal);
-                View(compact('firmo_contra','hogares_asignados','hogares_por_asignar','por_pensionar','ya_pensionados','profesionales','cedula','responsable_municipal'));
+
+                View(compact('firmo_contra','hogares_asignados','hogares_por_asignar','por_pensionar','ya_pensionados','profesionales','cedula','responsable_municipal','responsable_ubch','responsable_municipal','responsable_clp'));
             }
             else
             {

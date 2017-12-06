@@ -11,6 +11,7 @@
         <tr class="">
           <!-- <th>ID</th> -->
           <th width="" class="text-uppercase">Responsable Clp</th>
+          <th width="" class="text-uppercase">Parroquia</th>
           <th width="15%" class="text-uppercase">Cant. Centros</th>
           <th width="40%" class="text-uppercase">Opciones</th>
         </tr>
@@ -21,7 +22,7 @@
         <tr>
           <!--  <td class="text-uppercase"><?php echo $u->id ?></td> -->
           <td class="text-uppercase"><?php echo $u->name ?></td>
-         
+          <td class="text-uppercase"><?php echo $u->parroquia->nombre ?></td>
           <td class="text-uppercase">
             <?php if ($u->centros_clp->count() > 0): ?>
             <a class="btn btn-default animated flash text-danger" href=""><?php echo $u->centros_clp->count() ?></a>
