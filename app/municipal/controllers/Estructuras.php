@@ -12,7 +12,7 @@ class EstructurasMuni
 
     public function index()
     {
-        $estructuras = Estructura::where('eliminar',0)->get();
+        $estructuras = Estructura::orderBy('nombre')->where('eliminar',0)->get();
         View(compact('estructuras'));
     }
 

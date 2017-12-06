@@ -12,7 +12,7 @@ class InstitucionesMuni
 
     public function index()
     {
-        $instituciones = Institucion::where('eliminar',0)->get();
+        $instituciones = Institucion::orderBy('nombre')->where('eliminar',0)->get();
         View(compact('instituciones'));
     }
 

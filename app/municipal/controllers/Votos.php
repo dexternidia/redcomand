@@ -1,9 +1,7 @@
 <?php
 namespace App\municipal\controllers;
 
-use App\Usuario;
-
-class Clps
+class Votos
 {
     function __construct()
     {
@@ -12,12 +10,7 @@ class Clps
 
     public function index()
     {
-        $user = User();
-        $clps = Usuario::orderBy('name')->where('id_municipal',$user['id_municipal'])
-        ->where('role','clp')
-        ->get();
-        //Arr($clps);
-        View(compact('clps'));
+        View();
     }
 
     public function create()
@@ -32,9 +25,7 @@ class Clps
 
     public function show($id)
     {
-        $usuario = Usuario::find($id);
-        $centros = $usuario->centros->sortBy("name");;
-        View(compact('centros'));
+
     }
 
     public function edit($id)

@@ -12,7 +12,7 @@ class PartidosMuni
 
     public function index()
     {
-        $partidos = Partido::where('eliminar',0)->get();
+        $partidos = Partido::orderBy('nombre')->where('eliminar',0)->get();
         View(compact('partidos'));
     }
 

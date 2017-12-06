@@ -33,7 +33,7 @@ class CuentasUbchMunicipal extends BaseController
         ->get();
 
         //Arr($ubch);
-        $organismos = Institucion::all();
+        $organismos = Institucion::orderBy('nombre', 'desc')->get();
         View(compact('centros','organismos'));
     }
 
