@@ -26,11 +26,11 @@
 
       <div class="row">
       <div class="col s8">
-          <div class="g-recaptcha" data-sitekey="6Lf0ETMUAAAAAG37bxcuFp19Ut5n2Uowmv0Zp2bP"></div>
+      
       </div>
       <div class="col s4">
         <button type='submit' name='btn_login' class='col s12 m12 btn btn-large waves-effect red'><i class="fa fa-external-link-square" aria-hidden="true"></i>
-        Login</button>
+        ENTRAR</button>
       </div>
 
 

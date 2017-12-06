@@ -14,6 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
         <script src="<?php echo baseUrl ?>assets/bower/sweetalert2/dist/sweetalert2.min.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
+        <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet"> 
         <style>
   html { 
 
@@ -52,8 +53,8 @@
     <body>
         <nav class="z-depth-2">
             <div class="nav-wrapper red darken-2 z-depth-2">
-                <img style="margin-top: -10px; box-shadow: 0px 0px 4px #444;" width="80px;" src="<?php echo baseUrl ?>assets/img/gobarinas.png" alt="">
-                <a href="#" class="brand-logo">Municipales 2017</a>
+                <img class="circle responsive-img" style="margin-top: -10px; box-shadow: 0px 0px 4px #444;" width="80px;" src="<?php echo baseUrl ?>assets/img/gobarinas.png" alt="">
+                <a style="font-family: 'Bungee', cursive;font-size: 3em;text-shadow: 0px 1px 1px #444;" href="#" class="brand-logo">Municipales 2017</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="<?php echo baseUrl ?>home/principal"><i class="fa fa-home"></i> Inicio</a></li>
                     <li><a href="<?php echo baseUrl ?>auth/login"><i class="fa fa-external-link-square" aria-hidden="true"></i>

@@ -136,7 +136,7 @@ class Login
 
     public function clave()
     {
-		$password = password_hash('nidia', PASSWORD_DEFAULT);
+		$password = password_hash('oda*18', PASSWORD_DEFAULT);
 		echo $password;
 	}
 

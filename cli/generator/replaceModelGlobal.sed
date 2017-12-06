@@ -1,3 +1,3 @@
 
-s/${model}/Profesionales/
-s/${tabla}/profesionales/
+s/${model}/Voto/
+s/${tabla}/votos/

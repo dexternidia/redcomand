@@ -1,4 +1,4 @@
 
-s/${modulo}/municipal/
-s/${controller}/Consultas/
+s/${modulo}/ubch/
+s/${controller}/Votos/
 s/${vista}/show/
