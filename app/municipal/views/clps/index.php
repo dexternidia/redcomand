@@ -12,7 +12,7 @@
           <!-- <th>ID</th> -->
           <th width="" class="text-uppercase">Responsable Clp</th>
           <th width="15%" class="text-uppercase">Cant. Centros</th>
-          <th width="25%" class="text-uppercase">Opciones</th>
+          <th width="40%" class="text-uppercase">Opciones</th>
         </tr>
       </thead>
       <tbody>
