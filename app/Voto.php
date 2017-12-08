@@ -2,6 +2,7 @@
 namespace App;
 use App\Candidato;
 use App\MesasCne;
+use App\VotoDetalle;
 use \Illuminate\Database\Eloquent\Model;
  
 class Voto extends Model {
@@ -31,6 +32,11 @@ class Voto extends Model {
 	public function candidato()
 	{
 		return $this->hasOne(Candidato::class, 'id_candidatos','id_candidatos');
+	}
+
+	public function ultimo_voto()
+	{
+		return $this->hasOne(VotoDetalle::class,'id_votos','id_votos');
 	}
 
 }

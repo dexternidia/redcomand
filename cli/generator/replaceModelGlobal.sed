@@ -1,3 +1,3 @@
 
-s/${model}/Candidato/
-s/${tabla}/candidatos/
+s/${model}/VotoDetalle/
+s/${tabla}/votos_detalle/

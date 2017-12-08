@@ -66,6 +66,17 @@ $("#MesasSelect").html(data);
       <div class="row">
         <div class="col-lg-3">
           <div class="form-group">
+            <select id="" class="form-control" name="id_parroquia" required/>
+              <?php
+              $user = User();
+              $municipio = \App\MunicipioCne::where('id_municipio',$user['id_municipio'])->first();
+              ?>
+              <option>MUNICIPIO <?php echo $municipio->nombre ?></option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="form-group">
             <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
               <?php
               $user = User();
@@ -92,16 +103,22 @@ $("#MesasSelect").html(data);
     </form>
     <br><br>
     <div class="row">
+      <?php if (isset($centro_nombre)): ?>
+      <div class="col-lg-12">
+        <h4 class="text-danger text-left"><?php echo $centro_nombre ?></h4>
+        <hr>
+      </div>
+      <?php else: ?>
+      
+      <?php endif ?>
       <div class="col-lg-12">
         <table class="table table-striped table-condensed animated fadeIn" data-striped="true">
           <thead>
             <tr class="">
               <!-- <th>ID</th> -->
               <th width="" class="text-uppercase"> Candidato</th>
-              <th width="" class="text-uppercase">Municipio</th>
-              <th width="" class="text-uppercase">Parroquia</th>
-              <th width="15%" class="text-uppercase">Centro </th>
-              <th width="25%" class="text-uppercase">Opciones</th>
+              <th width="15%" class="text-uppercase">Ultimo votos </th>
+              <th width="25%" class="text-uppercase">Votos Actuales</th>
             </tr>
           </thead>
           <tbody>
@@ -109,57 +126,23 @@ $("#MesasSelect").html(data);
             <?php foreach ($candidatos as $key => $u): ?>
             <tr>
               <td class="text-uppercase"><?php echo $u->candidato->nombre ?></td>
-              <td class="text-uppercase"><?php echo $u->municipio->nombre ?></td>
-              <td class="text-uppercase">
+              <td>
                 <?php
-                $parroquia = \App\ParroquiaCne::all();
+                $ultimos_votos = \App\VotoDetalle::where('id_votos',$u->id_votos)->orderBy('id_votos_detalle','DESC')->first();
                 ?>
-                <?php echo $parroquia->where('id_municipio',$u->municipio->id_municipio)->where('id_parroquia',$u->parroquia->id_parroquia)->first()->nombre; ?>
+                <?php if ($ultimos_votos): ?>
+                <?php echo $ultimos_votos->cantidad ?>
+                <?php else: ?>
+                
+                <?php endif ?>
               </td>
-              <td><?php echo $u->centros_clp->nombre ?></td>
               <td class="text-uppercase">
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i> CARGAR VOTOS</button>
+                <form action="<?php echo baseUrlRole() ?>votos/<?php echo $u->id_votos ?>" method="POST">
+                  <?php echo Token::field() ?>
+                  <input type="number" name="cantidad" placeholder="Num. Votos" required>
+                  <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i></button>
+                </form>
               </td>
-              <!-- Modal -->
-              <div id="cargarVotos<?php echo $u->id_votos ?>" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h5 class="modal-title"><i class="fa fa-database fa-2x text-danger"></i> VOTOS/HORA</h5>
-                    </div>
-                    <form action="<?php echo baseUrlRole() ?>votos/<?php echo $u->id_votos ?>" method="POST">
-                      <?php echo Token::field() ?>
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="7am" name="h7am" value="<?php echo $u->h7am ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="8am" name="h8am" value="<?php echo $u->h8am ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="9am" name="h9am" value="<?php echo $u->h9am ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="10am" name="h10am" value="<?php echo $u->h10am ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="11am" name="h11am" value="<?php echo $u->h11am ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="12pm" name="h12pm" value="<?php echo $u->h12pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="1pm" name="h1pm" value="<?php echo $u->h1pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="2pm" name="h2pm" value="<?php echo $u->h2pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="3pm" name="h3pm" value="<?php echo $u->h3pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="4pm" name="h4pm" value="<?php echo $u->h4pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="5pm" name="h5pm" value="<?php echo $u->h5pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="6pm" name="h6pm" value="<?php echo $u->h6pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="7pm" name="h7pm" value="<?php echo $u->h7pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="8pm" name="h8pm" value="<?php echo $u->h8pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="9pm" name="h9pm" value="<?php echo $u->h9pm ?>"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" placeholder="10pm" name="h10pm" value="<?php echo $u->h10pm ?>"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger fa fa-save fa-3x"></button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
             </tr>
             <?php endforeach ?>
             <?php else: ?>

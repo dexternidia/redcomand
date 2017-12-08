@@ -5,6 +5,7 @@ use App\Candidato;
 use App\MesasCne;
 use App\ParroquiaCne;
 use App\Voto;
+use App\VotoDetalle;
 
 class Votos
 {
@@ -27,6 +28,8 @@ class Votos
                 ->where('id_parroquia',$id_parroquia)
                 ->where('id_mesa',$id_mesa)
                 ->get();
+                
+                $centro_nombre = $candidatos[0]->centros_clp->nombre;
             }
             else
             {
@@ -52,7 +55,7 @@ class Votos
         }
 
 
-        View(compact('candidatos','id_parroquia','id_mesa','id_candidatos'));
+        View(compact('candidatos','id_parroquia','id_mesa','id_candidatos','centro_nombre'));
     }
 
     public function create()
@@ -80,24 +83,16 @@ class Votos
         extract($_POST);
 
         $voto = Voto::find($id);
-        $voto->h7am = $h7am;
-        $voto->h8am = $h8am;
-        $voto->h9am = $h9am;
-        $voto->h10am= $h10am;
-        $voto->h11am= $h11am;
-        $voto->h12pm= $h12pm;
-        $voto->h1pm = $h1pm;
-        $voto->h2pm = $h2pm;
-        $voto->h3pm = $h3pm;
-        $voto->h4pm = $h4pm;
-        $voto->h5pm = $h5pm;
-        $voto->h6pm = $h6pm;
-        $voto->h7pm = $h7pm;
-        $voto->h8pm = $h8pm;
-        $voto->h9pm = $h9pm;
-        $voto->h10pm =$h10pm;
 
-        if($voto->save())
+        $voto_detalle = new VotoDetalle;
+        $voto_detalle->id_votos = $voto->id_votos;
+        $voto_detalle->id_municipio = $voto->id_municipio;
+        $voto_detalle->id_parroquia = $voto->id_parroquia;
+        $voto_detalle->id_mesa = $voto->id_mesa;
+        $voto_detalle->cantidad = $cantidad;
+        $voto_detalle->hora = date('H:i');
+
+        if($voto_detalle->save())
         {
             Success('votos?id_parroquia='.$voto->id_parroquia.'&id_mesa='.$voto->id_mesa,'Votos de '.$voto->candidato->nombre.' han sido actualizados!');
         }
