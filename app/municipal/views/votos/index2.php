@@ -53,43 +53,43 @@ $("#MesasSelect").html(data);
             </div>
           </div>
         </div>
-        <script>
-        $(document).ready(function() {
-        $('#closeButton').on('click', function(e) {
-        $('#previewBox').remove();
-        $('#br').remove();
-        });
-        });
-        </script>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="form-group">
-            <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
-              <?php
-              $user = User();
-              $parroquias = \App\ParroquiaCne::where('id_municipio',$user['id_municipio'])->get();
-              ?>
-              <option>PARROQUIAS</option>
-              <option></option>
-              <?php foreach ($parroquias as $parroquia): ?>
-              <option value="<?php echo $parroquia->id_parroquia ?>"><?php echo $parroquia->nombre ?></option>
-              <?php endforeach ?>
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="form-group">
-            <select id="MesasSelect" class="form-control" name="id_mesa" required/>
-            </select>
-          </div>
-        </div>
-        <div class="col-lg-1">
-          <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-search fa-1x"></i></button>
+     
+      <script>
+      $(document).ready(function() {
+      $('#closeButton').on('click', function(e) {
+      $('#previewBox').remove();
+      $('#br').remove();
+      });
+      });
+      </script>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="form-group">
+          <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
+            <?php
+            $user = User();
+            $parroquias = \App\ParroquiaCne::where('id_municipio',$user['id_municipio'])->get();
+            ?>
+            <option>PARROQUIAS</option>
+            <option></option>
+            <?php foreach ($parroquias as $parroquia): ?>
+            <option value="<?php echo $parroquia->id_parroquia ?>"><?php echo $parroquia->nombre ?></option>
+            <?php endforeach ?>
+          </select>
         </div>
       </div>
-    </form>
+      <div class="col-lg-3">
+        <div class="form-group">
+          <select id="MesasSelect" class="form-control" name="id_mesa" required/>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-1">
+        <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-search fa-1x"></i></button>
+      </div>
+    </div>
     <br><br>
     <div class="row">
       <div class="col-lg-12">
@@ -131,6 +131,8 @@ $("#MesasSelect").html(data);
                     </div>
                     <form action="<?php echo baseUrlRole() ?>votos/<?php echo $u->id_votos ?>" method="POST">
                       <?php echo Token::field() ?>
+                      <input type="hidden" name="id_parroquia" value="<?php echo $u->id_parroquia ?>">
+                      <input type="hidden" name="id_mesa" value="<?php echo $u->id_mesa ?>">
                       <div class="modal-body">
                         <div class="row">
                           <div class="col-lg-12">
@@ -153,8 +155,9 @@ $("#MesasSelect").html(data);
                           </div>
                         </div>
                       </div>
+                      
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-danger fa fa-save fa-3x"></button>
+                        <button type="submit" class="btn btn-default">Actualizar</button>
                       </div>
                     </form>
                   </div>
