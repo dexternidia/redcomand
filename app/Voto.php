@@ -38,6 +38,5 @@ class Voto extends Model {
 	{
 		return $this->hasOne(VotoDetalle::class,'id_votos','id_votos');
 	}
-
 }
 
