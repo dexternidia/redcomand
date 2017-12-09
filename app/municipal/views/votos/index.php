@@ -148,7 +148,7 @@ $("#MesasSelect").html(data);
                 </td>
                 <td class="text-uppercase">
                   <?php echo Token::field() ?>
-                  <input type="number" name="cantidad[]" placeholder="Num. Votos" required>
+                  <input type="number" min="0" name="cantidad[]" placeholder="Num. Votos" required>
                   <!-- <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i></button> -->
                 </td>
               </tr>
