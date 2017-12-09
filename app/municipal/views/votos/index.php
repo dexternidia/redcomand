@@ -118,7 +118,7 @@ $("#MesasSelect").html(data);
               <!-- <th>ID</th> -->
               <th width="40%" class="text-uppercase"> Partido</th>
               <th width="" class="text-uppercase"> Candidato</th>
-              <th width="15%" class="text-uppercase">Ultimo votos </th>
+              <th width="15%" class="text-uppercase">Ultimos votos </th>
               <th width="25%" class="text-uppercase">Votos Actuales</th>
             </tr>
           </thead>
@@ -136,6 +136,7 @@ $("#MesasSelect").html(data);
                   ->where('id_municipio',$id_municipio)
                   ->where('id_parroquia',$id_parroquia)
                   ->where('id_mesa',$id_mesa)
+                  ->where('estatus',1)
                   ->orderBy('id_votos_detalle','DESC')->first();
                   //Arr($ultimos_votos);
                   ?>
@@ -154,26 +155,18 @@ $("#MesasSelect").html(data);
               <?php endforeach ?>
               <?php else: ?>
               <?php endif ?>
-              <tr>
-                <td class="text-uppercase">VOTOS POR CENTROS</td>
-                <td class="text-uppercase">VOTOS POR CENTROS</td>
-                <td>0</td>
-                <td class="text-uppercase">
-                    <input type="hidden" name="id_municipio" value="<?php echo $id_municipio ?>">
-                    <input type="hidden" name="id_parroquia" value="<?php echo $id_parroquia ?>">
-                    <input type="hidden" name="id_mesa" value="<?php echo $id_mesa ?>">
-                    <!-- <button type="submit" class="btn btn-danger" data-toggle="modal" ><i class="fa fa-upload"></i></button>-->
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <button type="submit" class="btn btn-danger pull-right fa-1x" data-toggle="modal" data-target="#cargarVotos"><i class="fa fa-upload"></i> Subir votos</button>
-          </form>
-        </div>
+            </tbody>
+          </table>
+          <input type="hidden" name="id_municipio" value="<?php echo $id_municipio ?>">
+          <input type="hidden" name="id_parroquia" value="<?php echo $id_parroquia ?>">
+          <input type="hidden" name="id_mesa" value="<?php echo $id_mesa ?>">
+          <button type="submit" class="btn btn-danger pull-right fa-1x" data-toggle="modal" data-target="#cargarVotos"><i class="fa fa-upload"></i> Subir votos</button>
+        </form>
       </div>
     </div>
-    <br><br>
   </div>
+  <br><br>
+</div>
 </div>
 </div>
 </div>

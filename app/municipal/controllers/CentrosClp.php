@@ -52,7 +52,7 @@ class CentrosClp
         extract($_GET);
         $user = User();
         $id_clp = Uri(5);
-        $mesas_cne = MesasCne::orderBy('nombre', 'DESC')->where('id_municipio',$user['id_municipio'])
+        $mesas_cne = MesasCne::where('id_municipio',$user['id_municipio'])
         ->where('mesa',1)
         ->get();
         $id_municipio = $user['id_municipio'];

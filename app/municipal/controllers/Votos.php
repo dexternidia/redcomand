@@ -5,6 +5,7 @@ use App\Candidato;
 use App\MesasCne;
 use App\ParroquiaCne;
 use App\Voto;
+use App\VotoDetalle;
 
 class Votos
 {
@@ -62,6 +63,7 @@ class Votos
             $candidatos = "";
             $centro = "";
             $id_parroquia = "";
+            $id_mesa="";
         }
 
         $id_municipio = $user['id_municipio'];
@@ -73,25 +75,40 @@ class Votos
     public function subida()
     {
         extract($_POST);
-        Arr($_POST);
+        //Arr($_POST);
 
         $candidatos = Candidato::where('id_municipio',$id_municipio)->get();
 
-        Arr($candidatos);
+        //Arr($candidatos);
 
         //conteo
         $num = 0;
 
-        foreach ($candidatos as $key => $candidato) 
-        {
-            echo $cantidad[$num];
-            echo "<hr>";
+        $candidato_votos = VotoDetalle::where('id_municipio',$id_municipio)
+        ->where('id_parroquia',$id_parroquia)
+        ->where('id_mesa',$id_mesa)
+        ->update(['estatus' => 0]); 
 
+        //Arr($candidato_votos);
+
+        foreach ($candidatos as $key => $candidato) 
+        {   
             $voto_detalle = new VotoDetalle;
-            $voto_detalle->
-            
+            $voto_detalle->id_municipio = $id_municipio;
+            $voto_detalle->id_parroquia = $id_parroquia;
+            $voto_detalle->id_candidatos = $candidato->id_candidatos;
+            $voto_detalle->id_mesa = $id_mesa;
+            $voto_detalle->cantidad = $cantidad[$num];
+            $voto_detalle->hora = date('H');
+            $voto_detalle->minutos = date('i');
+            $voto_detalle->hora_completa = date('H:m:s');
+            $voto_detalle->estatus = 1;
+            $voto_detalle->save();
+
             $num = $num + 1;
         }
+
+        Success('votos?id_municipio='.$id_municipio.'&id_parroquia='.$id_parroquia.'&id_mesa='.$id_mesa,'Votos han sido actualizados!');
     }
 
     public function create()
