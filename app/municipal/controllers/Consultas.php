@@ -7,9 +7,11 @@ use App\Cne;
 use App\FirmaContraMaduro;
 use App\HogaresAsignados;
 use App\HogaresPorAsignar;
+use App\MesasCne;
 use App\MunicipalResponsable;
 use App\PorPensionar;
 use App\Profesionales;
+use App\UbchUnoxDiez;
 use App\YaPensionados;
 
 class Consultas
@@ -35,6 +37,8 @@ class Consultas
                 $por_pensionar = PorPensionar::where('cedula',$cedula)->first();
                 $ya_pensionados = YaPensionados::where('cedula',$cedula)->first();
                 $profesionales = Profesionales::where('cedula',$cedula)->first();
+                $mesas_cne = MesasCne::where('codigo_cne',$datos_cne->campo_4)->first();
+                $patrullero = UbchUnoxDiez::where('cedula',$cedula)->first();
 
                 //EXISTENCIA COMO RESPONSABLE
                 $responsable_municipal = MunicipalResponsable::where('cedula',$cedula)->first();
@@ -43,7 +47,7 @@ class Consultas
 
                 //Arr($responsable_municipal);
 
-                View(compact('firmo_contra','hogares_asignados','hogares_por_asignar','por_pensionar','ya_pensionados','profesionales','cedula','responsable_municipal','responsable_ubch','responsable_municipal','responsable_clp'));
+                View(compact('firmo_contra','hogares_asignados','hogares_por_asignar','por_pensionar','ya_pensionados','profesionales','cedula','responsable_municipal','responsable_ubch','responsable_municipal','responsable_clp','datos_cne','mesas_cne','patrullero'));
             }
             else
             {
@@ -59,7 +63,6 @@ class Consultas
             $ya_pensionados = YaPensionados::where('cedula',0)->first();
             $profesionales = Profesionales::where('cedula',0)->first();
             $responsable_municipal = MunicipalResponsable::where('cedula',0)->first();
-
             View(compact('firmo_contra','hogares_asignados','hogares_por_asignar','por_pensionar','ya_pensionados','profesionales','cedula','responsable_municipal'));
         }
     }

@@ -17,14 +17,65 @@
       </form>
     </div>
     <br><br><br>
-
+        <?php if (isset($datos_cne) and $datos_cne): ?>
+    <div class="row">      
+      <div class="col-lg-6 animated fadeInRight">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted">
+            <i class="fa fa-cubes text-danger"></i> DATOS DEL REP
+            </h5>
+            <hr>
+          </div>
+          <div class="">
+            <table class="table table-user-information panel panel-default animated fadeIn">
+              <tbody>
+                <tr>
+                  <td width="30%" class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-user"></i> NOMBRE Y APELLIDO:</b></td>
+                  <td class="text-uppercase"><?php echo ucwords($datos_cne->nombre_1) ?> <?php echo ucwords($datos_cne->nombre_2) ?> <?php echo ucwords($datos_cne->apellido_1) ?> <?php echo ucwords($datos_cne->apellido_2) ?> </td>
+                </tr>
+                <tr>
+                  <td width="30%" class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-id-card-o"></i> CÉDULA:</b></td>
+                  <td class="text-uppercase"><?php echo ucwords($datos_cne->cedula) ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-circle"></i> MUNICIPIO:</b></td>
+                  <td class="text-uppercase"><?php echo $datos_cne->nombre_municipio ?></td>
+                </tr>
+                  <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-dot-circle-o"></i> PARROQUIA:</b></td>
+                  <td class="text-uppercase"><?php echo $datos_cne->nombre_parroquia ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-dot-circle-o"></i> CÓDIGO CENTRO:</b></td>
+                  <td class="text-uppercase"><?php echo $datos_cne->campo_4 ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-university"></i> CENTRO:</b></td>
+                  <td class="text-uppercase"><?php echo $mesas_cne->nombre ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-trello"></i> MESA:</b></td>
+                  <td class="text-uppercase"><?php echo $mesas_cne->mesa ?></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-map-marker"></i> DIRECCIÓN:</b></td>
+                  <td class="text-uppercase"><?php echo $mesas_cne->direccion ?></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    
+    <?php else: ?>
+    <?php endif ?>
     <?php if (isset($responsable_municipal) and $responsable_municipal): ?>
-    <div class="row">
       <div class="col-lg-6 animated fadeInLeft">
         <div class="col-lg-12">
           <div class="">
             <h5 class="text-muted text-muted">
-            <i class="fa fa-map-marker text-danger"></i> RESPONSABLE MUNICIPAL
+            <i class="fa fa-university text-danger"></i> RESPONSABLE MUNICIPAL
             </h5>
             <hr>
           </div>
@@ -78,14 +129,11 @@
           </div>
         </div>
       </div>
-    </div>
+
     <?php else: ?>
     <?php endif ?>
-
-   
-
     <?php if (isset($responsable_clp) and $responsable_clp): ?>
-    <div class="row">
+ 
       <div class="col-lg-6 animated fadeInLeft">
         <div class="col-lg-12">
           <div class="">
@@ -132,12 +180,38 @@
           </div>
         </div>
       </div>
+    
+    <?php else: ?>
+    <?php endif ?>
+         <?php if (isset($patrullero) and $patrullero): ?>
+   
+      <div class="col-lg-6 animated fadeInUp">
+        <div class="col-lg-12">
+          <div class="">
+            <h5 class="text-muted text-muted">
+            <i class="fa fa-users text-danger"></i> PATRULLADOS
+            </h5>
+            <hr>
+          </div>
+          <div class="">
+            <table class="table table-user-information panel panel-default animated fadeIn">
+              <tbody>
+                <tr>
+                   <td width="30%" class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-pie-chart"></i> CANTIDAD:</b></td>
+                   <td>
+                    <?php echo $patrullero->unoxdiez_ahijados->count() ?>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
     <?php else: ?>
     <?php endif ?>
-
     <?php if (isset($responsable_ubch) and $responsable_ubch): ?>
-    <div class="row">
+   
       <div class="col-lg-6 animated fadeInLeft">
         <div class="col-lg-12">
           <div class="">
@@ -202,14 +276,11 @@
           </div>
         </div>
       </div>
-    </div>
+    
     <?php else: ?>
     <?php endif ?>
-
-
     <?php if (isset($profesionales) and $profesionales): ?>
-    <div class="row">
-      
+         
       <div class="col-lg-6 animated fadeInRight">
         <div class="col-lg-12">
           <div class="">
@@ -230,6 +301,10 @@
                   <td class="text-uppercase"><?php echo $profesionales->profesion ?></td>
                 </tr>
                 <tr>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-building"></i> TRABAJA EN:</b></td>
+                  <td class="text-uppercase"><?php echo $profesionales->dependencia ?></td>
+                </tr>
+                <tr>
                   <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-briefcase"></i> CARGO:</b></td>
                   <td class="text-uppercase"><?php echo $profesionales->cargo ?></td>
                 </tr>
@@ -238,11 +313,10 @@
           </div>
         </div>
       </div>
-    </div>
+
     <?php else: ?>
     <?php endif ?>
-    <?php if (isset($cedula) and $cedula): ?>
-    <div class="row">
+    <?php if (isset($cedula) and $cedula): ?>   
       <div class="col-lg-6 animated fadeInUp">
         <div class="col-lg-12">
           <div class="">
@@ -265,7 +339,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-home"></i> HOGARES ASIGNADOS:</b></td>
+                  <td class="text-uppercase" style="background: #E9E9E9;"><b><i class="fa fa-home"></i> ASIGNADOS:</b></td>
                   <td class="text-uppercase">
                     <?php if ($hogares_asignados): ?>
                     <td>Si</td>
@@ -275,7 +349,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-home"></i> HOGARES POR ASIGNAR:</b></td>
+                  <td class="text-uppercase" style="background: #E0E0E0;"><b><i class="fa fa-home"></i> POR ASIGNAR:</b></td>
                   <td class="text-uppercase">
                     <?php if ($hogares_por_asignar): ?>
                     <td>Si</td>
@@ -312,9 +386,7 @@
     </div>
     <?php else: ?>
     <?php endif ?>
-
-
-  </div>
+    </div>
 </div>
 </div>
 </div>
