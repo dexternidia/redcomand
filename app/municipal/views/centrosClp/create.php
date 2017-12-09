@@ -5,7 +5,7 @@ $("#municipioSelect option:selected").each(function () {
 //organismo_id = $(this).val();
 //id1 = $(this).val();
 var idMunicipio = $(this).val();
-alert(idMunicipio);
+//alert(idMunicipio);
 $.get("<?php echo baseUrlRole() ?>centrosClp/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
 $("#ParroquiaSelect").html(data);
 });
@@ -20,7 +20,7 @@ $("#ParroquiaSelect option:selected").each(function () {
 //organismo_id = $(this).val();
 //id1 = $(this).val();
 var idParroquia = $(this).val();
-alert(idParroquia);
+//alert(idParroquia);
 //alert(idParroquia);
 $.get("<?php echo baseUrlRole() ?>centrosClp/centrosBusqueda", { idParroquia:idParroquia }, function(data){
 $("#MesasSelect").html(data);
