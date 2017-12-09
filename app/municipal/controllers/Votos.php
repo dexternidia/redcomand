@@ -5,7 +5,6 @@ use App\Candidato;
 use App\MesasCne;
 use App\ParroquiaCne;
 use App\Voto;
-use App\VotoDetalle;
 
 class Votos
 {
@@ -24,12 +23,21 @@ class Votos
         {
             if(isset($id_mesa) and $id_mesa)
             {
-                $candidatos = Voto::where('id_municipio',$user['id_municipio'])
-                ->where('id_parroquia',$id_parroquia)
-                ->where('id_mesa',$id_mesa)
-                ->get();
-                
-                $centro_nombre = $candidatos[0]->centros_clp->nombre;
+                $candidatos = Candidato::where('id_municipio',$user['id_municipio'])->get();
+                $centro = MesasCne::find($id_mesa);
+
+                if($candidatos and $centro)
+                {
+
+                }
+                else
+                {
+                    $candidatos = "";
+                    $centro = "";
+                }
+
+                //Arr($centro);
+                //$centro_nombre = $candidatos[0]->centros_clp->nombre;
             }
             else
             {
@@ -51,11 +59,39 @@ class Votos
         }
         else
         {
-            $candidatos = Voto::where('id_municipio',$user['id_municipio'])->get();
+            $candidatos = "";
+            $centro = "";
+            $id_parroquia = "";
         }
 
+        $id_municipio = $user['id_municipio'];
 
-        View(compact('candidatos','id_parroquia','id_mesa','id_candidatos','centro_nombre'));
+
+        View(compact('candidatos','id_municipio','id_parroquia','id_mesa','id_candidatos','centro_nombre','centro'));
+    }
+
+    public function subida()
+    {
+        extract($_POST);
+        Arr($_POST);
+
+        $candidatos = Candidato::where('id_municipio',$id_municipio)->get();
+
+        Arr($candidatos);
+
+        //conteo
+        $num = 0;
+
+        foreach ($candidatos as $key => $candidato) 
+        {
+            echo $cantidad[$num];
+            echo "<hr>";
+
+            $voto_detalle = new VotoDetalle;
+            $voto_detalle->
+            
+            $num = $num + 1;
+        }
     }
 
     public function create()

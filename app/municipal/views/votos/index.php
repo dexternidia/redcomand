@@ -116,48 +116,64 @@ $("#MesasSelect").html(data);
           <thead>
             <tr class="">
               <!-- <th>ID</th> -->
+              <th width="40%" class="text-uppercase"> Partido</th>
               <th width="" class="text-uppercase"> Candidato</th>
               <th width="15%" class="text-uppercase">Ultimo votos </th>
               <th width="25%" class="text-uppercase">Votos Actuales</th>
             </tr>
           </thead>
           <tbody>
-            <?php if ($candidatos): ?>
-            <?php foreach ($candidatos as $key => $u): ?>
-            <tr>
-              <td class="text-uppercase"><?php echo $u->candidato->nombre ?></td>
-              <td>
-                <?php
-                $ultimos_votos = \App\VotoDetalle::where('id_votos',$u->id_votos)->orderBy('id_votos_detalle','DESC')->first();
-                ?>
-                <?php if ($ultimos_votos): ?>
-                <?php echo $ultimos_votos->cantidad ?>
-                <?php else: ?>
-                
-                <?php endif ?>
-              </td>
-              <td class="text-uppercase">
-                <form action="<?php echo baseUrlRole() ?>votos/<?php echo $u->id_votos ?>" method="POST">
+            <form action="<?php echo baseUrlRole() ?>votos/subida" method="POST">
+              <?php if (isset($candidatos) and $candidatos): ?>
+              <?php foreach ($candidatos as $key => $u): ?>
+              <tr>
+                <td class="text-uppercase"><?php echo $u->organizaciones ?></td>
+                <td class="text-uppercase">
+                <?php echo $u->nombre_apellido ?></td>
+                <td>
+                  <?php
+                  $ultimos_votos = \App\VotoDetalle::where('id_candidatos',$u->id_candidatos)
+                  ->where('id_municipio',$id_municipio)
+                  ->where('id_parroquia',$id_parroquia)
+                  ->where('id_mesa',$id_mesa)
+                  ->orderBy('id_votos_detalle','DESC')->first();
+                  //Arr($ultimos_votos);
+                  ?>
+                  <?php if ($ultimos_votos): ?>
+                  <?php echo $ultimos_votos->cantidad ?>
+                  <?php else: ?>
+                  
+                  <?php endif ?>
+                </td>
+                <td class="text-uppercase">
                   <?php echo Token::field() ?>
-                  <input type="number" name="cantidad" placeholder="Num. Votos" required>
-                  <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i></button>
-                </form>
-              </td>
-            </tr>
-            <?php endforeach ?>
-            <?php else: ?>
-            <?php endif ?>
-          </tbody>
-        </table>
+                  <input type="number" name="cantidad[]" placeholder="Num. Votos" required>
+                  <!-- <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i></button> -->
+                </td>
+              </tr>
+              <?php endforeach ?>
+              <?php else: ?>
+              <?php endif ?>
+              <tr>
+                <td class="text-uppercase">VOTOS POR CENTROS</td>
+                <td class="text-uppercase">VOTOS POR CENTROS</td>
+                <td>0</td>
+                <td class="text-uppercase">
+                    <input type="hidden" name="id_municipio" value="<?php echo $id_municipio ?>">
+                    <input type="hidden" name="id_parroquia" value="<?php echo $id_parroquia ?>">
+                    <input type="hidden" name="id_mesa" value="<?php echo $id_mesa ?>">
+                    <!-- <button type="submit" class="btn btn-danger" data-toggle="modal" ><i class="fa fa-upload"></i></button>-->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="submit" class="btn btn-danger pull-right fa-1x" data-toggle="modal" data-target="#cargarVotos"><i class="fa fa-upload"></i> Subir votos</button>
+          </form>
+        </div>
       </div>
     </div>
+    <br><br>
   </div>
-  <br><br>
-  
-  <div class="text-center">
-    <?php echo Paginator($candidatos); ?>
-  </div>
-</div>
 </div>
 </div>
 </div>
