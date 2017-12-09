@@ -37,7 +37,7 @@ $("#MesasSelect").html(data);
   <div class="panel-body">
     <div class="col-md-12 table-responsive">
    <br>
- <form action="<?php echo baseUrlRole() ?>reportes/busqueda" method="GET">
+ <form action="http://201.249.75.155/reportes_recomand/index.php" method="GET">
       <?php echo Token::field() ?>
       <div class="row">
         <div id="previewBox" class="col-lg-12">
@@ -66,12 +66,12 @@ $("#MesasSelect").html(data);
       <div class="row">
         <div class="col-lg-3">
           <div class="form-group">
-            <select id="" class="form-control" name="id_municipio" required/>
+            <select id="" class="form-control" name="id_municipio"/>
               <?php
               $user = User();
               $municipio = \App\MunicipioCne::where('id_municipio',$user['id_municipio'])->first();
               ?>
-              <option>MUNICIPIO <?php echo $municipio->nombre ?></option>
+              <option value="<?php echo $municipio->id_municipio ?>">MUNICIPIO <?php echo $municipio->nombre ?></option>
             </select>
           </div>
         </div>
@@ -92,7 +92,7 @@ $("#MesasSelect").html(data);
         </div>
         <div class="col-lg-3">
           <div class="form-group">
-            <select id="MesasSelect" class="form-control" name="id_mesa" required/>
+            <select id="MesasSelect" class="form-control" name="id_mesa"/>
             </select>
           </div>
         </div>

@@ -118,7 +118,7 @@ $("#MesasSelect").html(data);
               <!-- <th>ID</th> -->
               <th width="40%" class="text-uppercase"> Partido</th>
               <th width="" class="text-uppercase"> Candidato</th>
-              <th width="15%" class="text-uppercase">Ultimo votos </th>
+              <th width="15%" class="text-uppercase">Ultimos votos </th>
               <th width="25%" class="text-uppercase">Votos Actuales</th>
             </tr>
           </thead>
@@ -136,6 +136,7 @@ $("#MesasSelect").html(data);
                   ->where('id_municipio',$id_municipio)
                   ->where('id_parroquia',$id_parroquia)
                   ->where('id_mesa',$id_mesa)
+                  ->where('estatus',1)
                   ->orderBy('id_votos_detalle','DESC')->first();
                   //Arr($ultimos_votos);
                   ?>

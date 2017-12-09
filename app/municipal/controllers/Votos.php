@@ -84,6 +84,13 @@ class Votos
         //conteo
         $num = 0;
 
+        $candidato_votos = VotoDetalle::where('id_municipio',$id_municipio)
+        ->where('id_parroquia',$id_parroquia)
+        ->where('id_mesa',$id_mesa)
+        ->update(['estatus' => 0]); 
+
+        //Arr($candidato_votos);
+
         foreach ($candidatos as $key => $candidato) 
         {   
             $voto_detalle = new VotoDetalle;
@@ -95,7 +102,9 @@ class Votos
             $voto_detalle->hora = date('H');
             $voto_detalle->minutos = date('i');
             $voto_detalle->hora_completa = date('H:m:s');
+            $voto_detalle->estatus = 1;
             $voto_detalle->save();
+
             $num = $num + 1;
         }
 
