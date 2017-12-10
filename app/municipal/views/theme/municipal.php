@@ -135,9 +135,14 @@
               <ul class="nav navbar-nav">
                 <li class=""><a href="<?php echo baseUrlRole() ?>consultas/index"><i class="fa fa-search"></i> CONSULTAR PERSONA</a></li>
               </ul>
-              <ul class="nav navbar-nav">
-                <li class=""><a href="<?php echo baseUrlRole() ?>votos"><i class="fa fa-upload"></i> CARGA DE VOTOS</a></li>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenuCarga" aria-expanded="false"><i class="fa fa-upload"></i> CARGA DE VOTOS</a>
+              <ul class="nav collapse" id="opcionesMenuCarga" role="menu" aria-labelledby="btn-1">
+                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votos"><i class="fa fa-clock-o"></i>  VOTOS * HORA</a></li>
+                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votosMesa"><i class="fa fa-area-chart"></i> TOTALIZACIÓN</a></li>
               </ul>
+            </li>
+          </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenuReportes" aria-expanded="false"><i class="fa fa-file-pdf-o"></i> REPORTES</a>
                 <ul class="nav collapse" id="opcionesMenuReportes" role="menu" aria-labelledby="btn-1">
@@ -147,17 +152,17 @@
                 </ul>
               </li>
             </ul>
-          </div>
-          <!--/.nav-collapse -->
         </div>
-      </nav>
-    </div>
-    <div class="col-sm-9 col-lg-10">
-      <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
-      <br>
-      <?php echo $content ?>
-    </div>
+        <!--/.nav-collapse -->
+      </div>
+    </nav>
   </div>
+  <div class="col-sm-9 col-lg-10">
+    <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
+    <br>
+    <?php echo $content ?>
+  </div>
+</div>
 </div>
 <!-- /container -->
 <!-- MENSAJES FLASH SWEET ALERT 2 -->
