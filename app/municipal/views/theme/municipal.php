@@ -77,11 +77,10 @@
     color: red;
     box-shadow: 0px 0px 1px #CECECE;
     }
-
     .rojo
     {
-      background-color:#E51C23;
-      
+    background-color:#E51C23;
+    
     }
     
     </style>
@@ -101,65 +100,72 @@
                 <span class="icon-bar"></span>
                 </button>
                 <a href="<?php echo baseUrl ?>" style="color:#fff;height: 73px;" class="navbar-brand text-white" href="#">
-                  <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> --><i class="fa fa-wpexplorer fa-2x"></i> MUNICIPAL</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
-                      <?php
-                      
-                       echo 'MUNICIPAL '.$usuario['name'];
-                      ?>
-                    </a>
-                    <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
-                      <li><a class="text-danger" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal"><i class="fa fa-users"></i> CUENTAS CLP</a></li>
-                      <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> SALIR</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>clps"><i class="fa fa-map"></i> CLP</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
+                  <!-- <img style="width: 47px;" id="profile-img" class="profile-img-card" src="" /> -->
+                <i class="fa fa-wpexplorer fa-2x"></i> MUNICIPAL</a>
+              </div>
+              <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenu" aria-expanded="false"><i class="fa fa-user-circle"></i>
+                    <?php
+                    
+                    echo 'MUNICIPAL '.$usuario['name'];
+                    ?>
+                  </a>
+                  <ul class="nav collapse" id="opcionesMenu" role="menu" aria-labelledby="btn-1">
+                    <li><a class="text-danger" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal"><i class="fa fa-users"></i> CUENTAS CLP</a></li>
+                    <li><a class="text-danger" href="<?php echo baseUrl ?>auth/login/logout"><i class="fa fa-power-off"></i> SALIR</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav">
+                <li class=""><a href="<?php echo baseUrlRole() ?>clps"><i class="fa fa-map"></i> CLP</a></li>
+              </ul>
+              <ul class="nav navbar-nav">
                 <!--  <li class=""><a href="<?php echo baseUrlRole() ?>centrosMunicipal"><i class="fa fa-university"></i> CENTROS</a></li> -->
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>estructurasMuni"><i class="fa fa-sitemap"></i> ESTRUCTURA</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>partidosMuni"><i class="fa fa-handshake-o"></i> PARTIDOS</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>institucionesMuni"><i class="fa fa-building-o"></i> INSTITUCIONES</a></li>
-                </ul>
+              </ul>
+              <ul class="nav navbar-nav">
+                <li class=""><a href="<?php echo baseUrlRole() ?>estructurasMuni"><i class="fa fa-sitemap"></i> ESTRUCTURA</a></li>
+              </ul>
+              <ul class="nav navbar-nav">
+                <li class=""><a href="<?php echo baseUrlRole() ?>partidosMuni"><i class="fa fa-handshake-o"></i> PARTIDOS</a></li>
+              </ul>
+              <ul class="nav navbar-nav">
+                <li class=""><a href="<?php echo baseUrlRole() ?>institucionesMuni"><i class="fa fa-building-o"></i> INSTITUCIONES</a></li>
+              </ul>
               <ul class="nav navbar-nav">
                 <li class=""><a href="<?php echo baseUrlRole() ?>consultas/index"><i class="fa fa-search"></i> CONSULTAR PERSONA</a></li>
               </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>reportes"><i class="fa fa-file"></i> REPORTES</a></li>
+              <ul class="nav navbar-nav">
+                <li class=""><a href="<?php echo baseUrlRole() ?>votos"><i class="fa fa-upload"></i> CARGA DE VOTOS</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenuReportes" aria-expanded="false"><i class="fa fa-file-pdf-o"></i> REPORTES</a>
+                <ul class="nav collapse" id="opcionesMenuReportes" role="menu" aria-labelledby="btn-1">
+                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>reportes"><i class="fa fa-university"></i> CLP</a></li>
+                  <li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-users"></i> UBCH</a></li>
+                  <li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-address-book"></i> PATRULLEROS</a></li>
                 </ul>
-                <ul class="nav navbar-nav">
-                  <li class=""><a href="<?php echo baseUrlRole() ?>votos"><i class="fa fa-upload"></i> CARGA DE VOTOS</a></li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
+              </li>
+            </ul>
           </div>
-        </nav>
-      </div>
-      <div class="col-sm-9 col-lg-10">
-        <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
-        <br>
-        <?php echo $content ?>
-      </div>
+          <!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+    <div class="col-sm-9 col-lg-10">
+      <!-- <img width="100%" height="130px;" src="<?php echo baseUrl ?>/assets/img/banner.jpg" alt=""> -->
+      <br>
+      <?php echo $content ?>
     </div>
   </div>
-  <!-- /container -->
-  <!-- MENSAJES FLASH SWEET ALERT 2 -->
-  <?php if (Message::hasMessages()): ?>
-  <?php echo Message::show() ?>
-  <?php endif ?>
-  <?php if (Message::hasQuestion()): ?>
-  <?php echo Message::showQuestion() ?>
-  <?php endif ?>
+</div>
+<!-- /container -->
+<!-- MENSAJES FLASH SWEET ALERT 2 -->
+<?php if (Message::hasMessages()): ?>
+<?php echo Message::show() ?>
+<?php endif ?>
+<?php if (Message::hasQuestion()): ?>
+<?php echo Message::showQuestion() ?>
+<?php endif ?>
 </body>
 </html>
