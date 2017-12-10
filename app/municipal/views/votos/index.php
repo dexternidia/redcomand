@@ -103,9 +103,9 @@ $("#MesasSelect").html(data);
     </form>
     <br><br>
     <div class="row">
-      <?php if (isset($centro_nombre)): ?>
+      <?php if (isset($centro->nombre)): ?>
       <div class="col-lg-12">
-        <h4 class="text-danger text-left"><?php echo $centro_nombre ?></h4>
+        <h4 class="text-danger text-left"><?php echo $centro->nombre ?></h4>
         <hr>
       </div>
       <?php else: ?>
@@ -116,7 +116,6 @@ $("#MesasSelect").html(data);
           <thead>
             <tr class="">
               <!-- <th>ID</th> -->
-              <th width="40%" class="text-uppercase"> Partido</th>
               <th width="" class="text-uppercase"> Candidato</th>
               <th width="15%" class="text-uppercase">Ultimos votos </th>
               <th width="25%" class="text-uppercase">Votos Actuales</th>
@@ -127,7 +126,6 @@ $("#MesasSelect").html(data);
               <?php if (isset($candidatos) and $candidatos): ?>
               <?php foreach ($candidatos as $key => $u): ?>
               <tr>
-                <td class="text-uppercase"><?php echo $u->organizaciones ?></td>
                 <td class="text-uppercase">
                 <?php echo $u->nombre_apellido ?></td>
                 <td>
@@ -160,7 +158,12 @@ $("#MesasSelect").html(data);
           <input type="hidden" name="id_municipio" value="<?php echo $id_municipio ?>">
           <input type="hidden" name="id_parroquia" value="<?php echo $id_parroquia ?>">
           <input type="hidden" name="id_mesa" value="<?php echo $id_mesa ?>">
-          <button type="submit" class="btn btn-danger pull-right fa-1x" data-toggle="modal" data-target="#cargarVotos"><i class="fa fa-upload"></i> Subir votos</button>
+          <div class="col-lg-12">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-3">
+              <button type="submit" class="btn btn-danger btn-lg btn pull-center fa-1x" data-toggle="modal" data-target="#cargarVotos"><i class="fa fa-upload"></i> Subir votos</button>
+            </div>
+          </div>
         </form>
       </div>
     </div>

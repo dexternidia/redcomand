@@ -6,7 +6,7 @@ $("#municipioSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idMunicipio = $(this).val();
 alert(idMunicipio);
-$.get("<?php echo baseUrlRole() ?>votos/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
+$.get("<?php echo baseUrlRole() ?>votosMesa/parroquiasCne", { idMunicipio:idMunicipio }, function(data){
 $("#ParroquiaSelect").html(data);
 });
 });
@@ -21,7 +21,7 @@ $("#ParroquiaSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idParroquia = $(this).val();
 //alert(idParroquia);
-$.get("<?php echo baseUrlRole() ?>votos/centrosBusqueda", { idParroquia:idParroquia }, function(data){
+$.get("<?php echo baseUrlRole() ?>votosMesa/centrosBusqueda", { idParroquia:idParroquia }, function(data){
 $("#MesasSelect").html(data);
 });
 });
@@ -30,14 +30,14 @@ $("#MesasSelect").html(data);
 </script>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-archive fa-2x"></i> VOTOS<b></b>
+    <h3 class="panel-title text-muted"><i class="fa fa-archive fa-2x"></i> VOTOS CARGA<b></b>
   <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> ENLAZAR CANDIDATO</i></a
   </h3>
 </div>
 <div class="panel-body">
   <div class="col-md-12 table-responsive">
     <br>
-    <form action="<?php echo baseUrlRole() ?>votos/index" method="GET">
+    <form action="<?php echo baseUrlRole() ?>votosMesa/index" method="GET">
       <?php echo Token::field() ?>
       <div class="row">
         <div id="previewBox" class="col-lg-12">
@@ -103,9 +103,9 @@ $("#MesasSelect").html(data);
     </form>
     <br><br>
     <div class="row">
-      <?php if (isset($centro_nombre)): ?>
+      <?php if (isset($centro->nombre)): ?>
       <div class="col-lg-12">
-        <h4 class="text-danger text-left"><?php echo $centro_nombre ?></h4>
+        <h4 class="text-danger text-left"><?php echo $centro->nombre ?></h4>
         <hr>
       </div>
       <?php else: ?>
@@ -117,46 +117,58 @@ $("#MesasSelect").html(data);
             <tr class="">
               <!-- <th>ID</th> -->
               <th width="" class="text-uppercase"> Candidato</th>
-              <th width="15%" class="text-uppercase">Ultimo votos </th>
+              <th width="15%" class="text-uppercase">Ultimos votos </th>
               <th width="25%" class="text-uppercase">Votos Actuales</th>
             </tr>
           </thead>
           <tbody>
-            <?php if ($candidatos): ?>
-            <?php foreach ($candidatos as $key => $u): ?>
-            <tr>
-              <td class="text-uppercase"><?php echo $u->candidato->nombre ?></td>
-              <td>
-                <?php
-                $ultimos_votos = \App\VotoDetalle::where('id_votos',$u->id_votos)->orderBy('id_votos_detalle','DESC')->first();
-                ?>
-                <?php if ($ultimos_votos): ?>
-                <?php echo $ultimos_votos->cantidad ?>
-                <?php else: ?>
-                
-                <?php endif ?>
-              </td>
-              <td class="text-uppercase">
-                <form action="<?php echo baseUrlRole() ?>votos/<?php echo $u->id_votos ?>" method="POST">
+            <form action="<?php echo baseUrlRole() ?>votosMesa/subida" method="POST">
+              <?php if (isset($candidatos) and $candidatos): ?>
+              <?php foreach ($candidatos as $key => $u): ?>
+              <tr>
+                <td class="text-uppercase">
+                <?php echo $u->nombre_apellido ?></td>
+                <td>
+                  <?php
+                  $ultimos_votos = \App\VotoDetalle::where('id_candidatos',$u->id_candidatos)
+                  ->where('id_municipio',$id_municipio)
+                  ->where('id_parroquia',$id_parroquia)
+                  ->where('id_mesa',$id_mesa)
+                  ->where('estatus','>',0)
+                  ->orderBy('id_votos_detalle','DESC')->first();
+                  //Arr($ultimos_votos);
+                  ?>
+                  <?php if ($ultimos_votos): ?>
+                  <?php echo $ultimos_votos->cantidad ?>
+                  <?php else: ?>
+                  
+                  <?php endif ?>
+                </td>
+                <td class="text-uppercase">
                   <?php echo Token::field() ?>
-                  <input type="number" name="cantidad" placeholder="Num. Votos" required>
-                  <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i></button>
-                </form>
-              </td>
-            </tr>
-            <?php endforeach ?>
-            <?php else: ?>
-            <?php endif ?>
-          </tbody>
-        </table>
+                  <input type="number" min="0" name="cantidad[]" placeholder="Num. Votos" required>
+                  <!-- <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i></button> -->
+                </td>
+              </tr>
+              <?php endforeach ?>
+              <?php else: ?>
+              <?php endif ?>
+            </tbody>
+          </table>
+          <input type="hidden" name="id_municipio" value="<?php echo $id_municipio ?>">
+          <input type="hidden" name="id_parroquia" value="<?php echo $id_parroquia ?>">
+          <input type="hidden" name="id_mesa" value="<?php echo $id_mesa ?>">
+          <div class="col-lg-12">
+            <div class="col-lg-9"></div>
+            <div class="col-lg-3">
+              <button type="submit" class="btn btn-danger btn-lg btn pull-center fa-1x" data-toggle="modal" data-target="#cargarVotos"><i class="fa fa-upload"></i> Subir votos</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
   <br><br>
-  
-  <div class="text-center">
-    <?php echo Paginator($candidatos); ?>
-  </div>
 </div>
 </div>
 </div>

@@ -7,7 +7,7 @@ use App\ParroquiaCne;
 use App\Voto;
 use App\VotoDetalle;
 
-class Votos
+class VotosMesa
 {
     function __construct()
     {
@@ -24,12 +24,21 @@ class Votos
         {
             if(isset($id_mesa) and $id_mesa)
             {
-                $candidatos = Voto::where('id_municipio',$user['id_municipio'])
-                ->where('id_parroquia',$id_parroquia)
-                ->where('id_mesa',$id_mesa)
-                ->get();
-                
-                $centro_nombre = $candidatos[0]->centros_clp->nombre;
+                $candidatos = Candidato::where('id_municipio',$user['id_municipio'])->get();
+                $centro = MesasCne::find($id_mesa);
+
+                if($candidatos and $centro)
+                {
+
+                }
+                else
+                {
+                    $candidatos = "";
+                    $centro = "";
+                }
+
+                //Arr($centro);
+                //$centro_nombre = $candidatos[0]->centros_clp->nombre;
             }
             else
             {
@@ -51,11 +60,64 @@ class Votos
         }
         else
         {
-            $candidatos = Voto::where('id_municipio',$user['id_municipio'])->get();
+            $candidatos = "";
+            $centro = "";
+            $id_parroquia = "";
+            $id_mesa="";
         }
 
+        $id_municipio = $user['id_municipio'];
 
-        View(compact('candidatos','id_parroquia','id_mesa','id_candidatos','centro_nombre'));
+
+        View(compact('candidatos','id_municipio','id_parroquia','id_mesa','id_candidatos','centro_nombre','centro'));
+    }
+
+    public function subida()
+    {
+        extract($_POST);
+        //Arr($_POST);
+
+        $candidatos = Candidato::where('id_municipio',$id_municipio)->get();
+
+        //Arr($candidatos);
+
+        //conteo
+        $num = 0;
+
+        $candidato_votos = VotoDetalle::where('id_municipio',$id_municipio)
+        ->where('id_parroquia',$id_parroquia)
+        ->where('id_mesa',$id_mesa)
+        ->update(['estatus' => 0]); 
+
+        //Arr($candidato_votos);
+
+        foreach ($candidatos as $key => $candidato) 
+        {   
+            if($candidato->cedula == 0)
+            {
+                $estatus = 2;
+            }
+            else
+            {
+                $estatus = 1;
+            }
+
+            $voto_detalle = new VotoDetalle;
+            $voto_detalle->id_municipio = $id_municipio;
+            $voto_detalle->id_parroquia = $id_parroquia;
+            $voto_detalle->id_candidatos = $candidato->id_candidatos;
+            $voto_detalle->id_mesa = $id_mesa;
+            $voto_detalle->cantidad = $cantidad[$num];
+            $voto_detalle->hora = date('H');
+            $voto_detalle->minutos = date('i');
+            $voto_detalle->hora_completa = date('H:m:s');
+            $voto_detalle->estatus = $estatus;
+            $voto_detalle->save();
+
+            $num = $num + 1;
+        }
+
+        Success('votosMesa?id_municipio='.$id_municipio.'&id_parroquia='.$id_parroquia.'&id_mesa='.$id_mesa,'Votos han sido actualizados!');
     }
 
     public function create()
@@ -94,7 +156,7 @@ class Votos
 
         if($voto_detalle->save())
         {
-            Success('votos?id_parroquia='.$voto->id_parroquia.'&id_mesa='.$voto->id_mesa,'Votos de '.$voto->candidato->nombre.' han sido actualizados!');
+            Success('votosMesa?id_parroquia='.$voto->id_parroquia.'&id_mesa='.$voto->id_mesa,'Votos de '.$voto->candidato->nombre.' han sido actualizados!');
         }
         else
         {
