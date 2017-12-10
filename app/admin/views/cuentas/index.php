@@ -47,6 +47,11 @@
             <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
             <td class="text-uppercase">
+              <?php if ($u->centro): ?>
+                <?php echo $u->centro->nombre_ubch ?>
+              <?php else: ?>
+                
+              <?php endif ?>
             </td>
           </tr>
           <?php endforeach ?>
