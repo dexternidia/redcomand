@@ -136,7 +136,7 @@ $("#MesasSelect").html(data);
                   ->where('id_municipio',$id_municipio)
                   ->where('id_parroquia',$id_parroquia)
                   ->where('id_mesa',$id_mesa)
-                  ->where('estatus',1)
+                  ->where('estatus','>',0)
                   ->orderBy('id_votos_detalle','DESC')->first();
                   //Arr($ultimos_votos);
                   ?>
