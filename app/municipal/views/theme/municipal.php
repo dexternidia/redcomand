@@ -147,9 +147,9 @@
               <ul class="nav navbar-nav navbar-right">
                 <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenuReportes" aria-expanded="false"><i class="fa fa-file-pdf-o"></i> REPORTES</a>
                 <ul class="nav collapse" id="opcionesMenuReportes" role="menu" aria-labelledby="btn-1">
-                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>reportes"><i class="fa fa-university"></i> CLP</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-users"></i> UBCH</a></li>
-                  <li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-address-book"></i> PATRULLEROS</a></li>
+                  <li><a class="text-danger" href="<?php echo baseUrlRole() ?>reportes"><i class="fa fa-university"></i> TOTALES</a></li>
+                  <!--<li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-users"></i> UBCH</a></li>
+                  <li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-address-book"></i> PATRULLEROS</a></li> -->
                 </ul>
               </li>
             </ul>
