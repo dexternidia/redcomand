@@ -31,38 +31,14 @@ $("#MesasSelect").html(data);
 
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
-    <h3 class="panel-title text-muted"><i class="fa fa-users fa-2x"></i> CUENTAS CENTROS<b></b>
+    <h3 class="panel-title text-muted"><i class="fa fa-file fa-2x"></i> REPORTES<b></b>
     <a class="btn btn-default pull-right" href="<?php echo baseUrlRole() ?>CuentasUbchMunicipal/create"><i class="fa fa-plus-square text-muted"></i><i style="color:#777;"> CREAR CUENTA</i></a>    </h3>
   </div>
   <div class="panel-body">
     <div class="col-md-12 table-responsive">
    <br>
- <form action="http://201.249.75.155/reportes_recomand/index.php" method="GET">
+ <form action="http://201.249.75.155/reportes_recomand/index.php" method="GET" target="_blank">
       <?php echo Token::field() ?>
-      <div class="row">
-        <div id="previewBox" class="col-lg-12">
-          <div class="panel panel-default animated bounceInDown">
-            <div class="panel-body">
-              <div class="col-lg-1">
-                <i class="fa fa-info fa-3x text-primary" aria-hidden="true"></i>
-              </div>
-              <div class="col-lg-11 alerta">
-                Seleccione Municipio, paroquia y centro, y luego cargue o actualice los votos de candidatos hora por hora.
-                <button type='button' id="closeButton" class='close' onclick="close_div()">×</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <script>
-        $(document).ready(function() {
-        $('#closeButton').on('click', function(e) {
-        $('#previewBox').remove();
-        $('#br').remove();
-        });
-        });
-        </script>
-      </div>
-      <br>
       <div class="row">
         <div class="col-lg-3">
           <div class="form-group">

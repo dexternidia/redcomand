@@ -93,6 +93,15 @@ class Votos
 
         foreach ($candidatos as $key => $candidato) 
         {   
+            if($candidato->cedula == 0)
+            {
+                $estatus = 2;
+            }
+            else
+            {
+                $estatus = 1;
+            }
+
             $voto_detalle = new VotoDetalle;
             $voto_detalle->id_municipio = $id_municipio;
             $voto_detalle->id_parroquia = $id_parroquia;
@@ -102,7 +111,7 @@ class Votos
             $voto_detalle->hora = date('H');
             $voto_detalle->minutos = date('i');
             $voto_detalle->hora_completa = date('H:m:s');
-            $voto_detalle->estatus = 1;
+            $voto_detalle->estatus = $estatus;
             $voto_detalle->save();
 
             $num = $num + 1;
