@@ -16,7 +16,7 @@
             <th width="" class="text-uppercase">Organismo</th>
             <th width="" class="text-uppercase">Usuario</th>
             <th width="" class="text-uppercase">Creado</th>
-            <th width="" class="text-uppercase">Opciones</th>
+            <th width="" class="text-uppercase">Centro</th>
           </tr>
         </thead>
         <tbody>
@@ -46,6 +46,11 @@
             <td class="text-uppercase"><?php echo $u->email ?></td>
             <td class="text-uppercase"><?php echo $u->created_at ?></td>
             <td class="text-uppercase">
+              <?php if ($u->centro): ?>
+                <?php echo $u->centro->nombre_ubch ?>
+              <?php else: ?>
+                
+              <?php endif ?>
             </td>
           </tr>
           <?php endforeach ?>

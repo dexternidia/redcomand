@@ -19,4 +19,9 @@ class UbchResponsable extends Model {
 	{
 		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
 	}
+
+	public function centro()
+	{
+		return $this->hasOne(ParroquiaCne::class, 'id_ubch','id_ubch');
+	}
 }

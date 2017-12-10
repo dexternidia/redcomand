@@ -37,5 +37,10 @@ class ClpResponsable extends Model {
 	{
 		return $this->belongsTo(Estructura::class, 'id_estructura','id_estructura');
 	}
+
+	public function centro()
+	{
+		return $this->hasOne(ParroquiaCne::class, 'id_clp','id_clp');
+	}
 }
 
