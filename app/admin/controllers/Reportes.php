@@ -1,8 +1,10 @@
 <?php
 namespace App\admin\controllers;
 
-use App\Solicitud;
+use App\CentroClp;
 use App\Tipo;
+use App\Ubch;
+use App\UbchUnoxDiez;
 use Dompdf\Dompdf;
 
 class Reportes
@@ -47,10 +49,25 @@ class Reportes
 
     }
 
-    public function abiertas()
+    public function clp()
     {
-        $solicitudes = Solicitud::orderBy('id', 'DESC')->where('estatus',1)->get();
-        View(compact('solicitudes'));
+        $clps = CentroClp::orderBy('nombre', 'DESC')->get();
+        View(compact('clps'));
+        //Arr($clps);
+    }
+
+     public function ubch()
+    {
+        $ubchs = Ubch::orderBy('nombre_ubch', 'DESC')->get();
+        View(compact('ubchs'));
+        //Arr($ubchs);
+    }
+
+     public function patrullero()
+    {
+        $unox10 = UbchUnoxDiez::orderBy('id_ubch', 'DESC')->get();
+        View(compact('unox10'));
+        //Arr($unox10);
     }
 
     public function abiertasPDF2()
@@ -58,7 +75,7 @@ class Reportes
         // reference the Dompdf namespace
         // instantiate and use the dompdf class
         $dompdf = new Dompdf();
-        $solicitudes = Solicitud::orderBy('id', 'DESC')->where('estatus',1)->get();
+       // $solicitudes = Solicitud::orderBy('id', 'DESC')->where('estatus',1)->get();
         ob_start();
         include('app/admin/views/reportes/abiertas.php');
 

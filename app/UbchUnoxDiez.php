@@ -14,5 +14,20 @@ class UbchUnoxDiez extends Model {
 	{
 		return $this->hasMany(UbchUnoxDiezIntegrantes::class,'id_ubch_registro_unoxdiez','id_ubch_registro_unoxdiez');
 	}
+
+	public function patrullados()
+	{
+		return $this->hasMany(UbchUnoxDiezIntegrantes::class,'id_ubch_registro_unoxdiez','id_ubch_registro_unoxdiez');
+	}
+
+	public function municipio()
+	{
+		return $this->hasOne(MunicipioCne::class, 'id_municipio','id_municipio');
+	}
+
+	public function parroquia()
+	{	
+		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
+	}
 }
 

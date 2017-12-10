@@ -16,7 +16,7 @@
             <th width="" class="text-uppercase">Organismo</th>
             <th width="" class="text-uppercase">Usuario</th>
             <th width="" class="text-uppercase">Creado</th>
-            <th width="" class="text-uppercase">Opciones</th>
+            <th width="" class="text-uppercase">Centro</th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +26,7 @@
             <td class="text-uppercase"><?php echo $u->name ?></td>
             <td class="text-uppercase"><?php echo $u->role ?></td>
             <td class="text-uppercase"><?php echo $u->municipio->nombre ?></td>
+            
             <td class="text-uppercase">
               <?php if (isset($u->id_parroquia)): ?>
               <?php if ($u->id_parroquia > 0): ?>

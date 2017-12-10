@@ -64,4 +64,9 @@ class Ubch extends Model {
 	{
 		return $this->hasMany(UbchUnoxDiez::class,'id_ubch','id_ubch');
 	}
+
+	public function patrulleros()
+	{
+		return $this->hasMany(UbchUnoxDiez::class,'id_ubch','id_ubch');
+	}
 }

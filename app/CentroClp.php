@@ -1,5 +1,6 @@
 <?php 
 namespace App;
+use App\ClpResponsable;
 use App\MunicipioCne;
 use App\ParroquiaCne;
 use App\Ubch;
@@ -30,6 +31,16 @@ class CentroClp extends Model {
 	public function parroquia()
 	{
 		return $this->hasOne(ParroquiaCne::class, 'id_parroquia','id_parroquia');
+	}
+
+	public function responsable()
+	{
+		return $this->hasOne(ClpResponsable::class, 'id_clp','id_clp');
+	}
+
+	public function centros()
+	{
+		return $this->hasMany(Ubch::class, 'id_clp','id_clp');
 	}
 }
 
