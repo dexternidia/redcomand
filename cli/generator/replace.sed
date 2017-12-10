@@ -1,4 +1,4 @@
 
 s/${modulo}/municipal/
-s/${controller}/Reportes/
+s/${controller}/VotosCentroMesa/
 s/${vista}/show/
