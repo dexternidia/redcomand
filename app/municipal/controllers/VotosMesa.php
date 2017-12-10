@@ -107,9 +107,9 @@ class VotosMesa
             $voto_detalle->id_candidatos = $candidato->id_candidatos;
             $voto_detalle->id_mesa = $id_mesa;
             $voto_detalle->cantidad = $cantidad[$num];
-            $voto_detalle->hora = date('H');
+            $voto_detalle->hora = $hora;
             $voto_detalle->minutos = date('i');
-            $voto_detalle->hora_completa = date('H:m:s');
+            $voto_detalle->hora_completa = date('H:i:s');
             $voto_detalle->estatus = $estatus;
             $voto_detalle->save();
             $num = $num + 1;

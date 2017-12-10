@@ -148,6 +148,9 @@ $("#MesasSelect").html(data);
                   <input type="number" min="0" name="cantidad[]" placeholder="Num. Votos" required>
                   <!-- <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#cargarVotos<?php echo $u->id_votos ?>"><i class="fa fa-upload"></i></button> -->
                 </td>
+                <td class="text-uppercase">
+                  
+                </td>
               </tr>
               <?php endforeach ?>
               <?php else: ?>
@@ -158,8 +161,31 @@ $("#MesasSelect").html(data);
           <input type="hidden" name="id_parroquia" value="<?php echo $id_parroquia ?>">
           <input type="hidden" name="id_mesa" value="<?php echo $id_mesa ?>">
           <div class="col-lg-12">
-            <div class="col-lg-9"></div>
-            <div class="col-lg-3">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-2">
+            <?php 
+                  $ultimos_votos = \App\VotoDetalleMesa::where('id_candidatos',$candidatos[0]->id_candidatos)
+                  ->where('id_municipio',$id_municipio)
+                  ->where('id_parroquia',$id_parroquia)
+                  ->where('id_mesa',$id_mesa)
+                  ->where('estatus','>',0)
+                  ->orderBy('id_votos_detalle','DESC')->first(); ?>
+              <?php $ultima_hora = $ultimos_votos->hora + 1 ; ?>
+                  <?php //echo $ultima_hora; ?>
+                   <select class="form-control" name="hora" required>
+                    <option value="">HORA DE SUBIDA</option>
+                    <?php  
+                    for ($i=$ultima_hora; $i <=  24; $i++) { 
+                        if($i<10){
+                          echo $i='0'.$i;
+                        }
+                     ?>
+                      <option value="<?php echo $i; ?>"> <?php echo $i; ?></option>
+
+                   <?php } ?>
+                  </select>
+            </div>
+            <div class="col-lg-4">
               <button type="submit" class="btn btn-danger btn-lg btn pull-center fa-1x" data-toggle="modal" data-target="#cargarVotos"><i class="fa fa-upload"></i> Subir votos</button>
             </div>
           </div>
