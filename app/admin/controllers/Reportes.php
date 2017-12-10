@@ -2,6 +2,8 @@
 namespace App\admin\controllers;
 
 use App\CentroClp;
+use App\MesasCne;
+use App\ParroquiaCne;
 use App\Tipo;
 use App\Ubch;
 use App\UbchUnoxDiez;
@@ -149,5 +151,34 @@ class Reportes
         $mpdf->WriteHTML(ob_get_clean(),2);
         $nombre = "Pensionados.pdf";
         $mpdf->Output($nombre,'D');
+    }
+
+        public function parroquiasCne()
+    {
+        extract($_GET);
+        $parroquias = ParroquiaCne::where('id_municipio',$idMunicipio)->get();
+        //var_dump($parroquias);
+        echo "<option value=''>PARROQUIA</option>";
+        echo "<option value=''></option>";
+        foreach ($parroquias as $key => $parroquia) {
+            echo '<option value="'.$parroquia->id_parroquia.'">'.$parroquia->nombre.'</option>';
+        } 
+    }
+
+    public function centrosBusqueda()
+    {
+        extract($_GET);
+        $user= User();
+        $parroquias = MesasCne::orderBy('nombre', 'DESC')->where('id_municipio',$user['id_municipio'])
+        ->where('id_parroquia',$idParroquia)
+        ->where('mesa',1)
+        ->get();
+
+        //var_dump($parroquias);
+        echo "<option value=''>CENTROS</option>";
+        echo "<option value=''></option>";
+        foreach ($parroquias as $key => $parroquia) {
+            echo '<option value="'.$parroquia->id_mesas_cne.'">'.$parroquia->nombre.'</option>';
+        } 
     }
 }
