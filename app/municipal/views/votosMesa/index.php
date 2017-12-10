@@ -116,7 +116,7 @@ $("#MesasSelect").html(data);
           <thead>
             <tr class="">
               <!-- <th>ID</th> -->
-              <th width="" class="text-uppercase"> Candidato</th>
+              <th width="" class="text-uppercase"> Comparación</th>
               <th width="15%" class="text-uppercase">Ultimos votos </th>
               <th width="25%" class="text-uppercase">Votos Actuales</th>
             </tr>
@@ -130,11 +130,11 @@ $("#MesasSelect").html(data);
                 <?php echo $u->nombre_apellido ?></td>
                 <td>
                   <?php
-                  $ultimos_votos = \App\VotoDetalle::where('id_candidatos',$u->id_candidatos)
+                  $ultimos_votos = \App\VotoDetalleMesa::where('id_candidatos',$u->id_candidatos)
                   ->where('id_municipio',$id_municipio)
                   ->where('id_parroquia',$id_parroquia)
                   ->where('id_mesa',$id_mesa)
-                  ->where('estatus','>',0)
+                  ->where('estatus',1)
                   ->orderBy('id_votos_detalle','DESC')->first();
                   //Arr($ultimos_votos);
                   ?>

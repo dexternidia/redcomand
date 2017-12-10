@@ -1,11 +1,11 @@
 <?php
 namespace App\municipal\controllers;
 
-use App\Candidato;
+use App\CandidatoMesa;
 use App\MesasCne;
 use App\ParroquiaCne;
 use App\Voto;
-use App\VotoDetalle;
+use App\VotoDetalleMesa;
 
 class VotosMesa
 {
@@ -24,7 +24,7 @@ class VotosMesa
         {
             if(isset($id_mesa) and $id_mesa)
             {
-                $candidatos = Candidato::where('id_municipio',$user['id_municipio'])->get();
+                $candidatos = CandidatoMesa::where('id_municipio',$user['id_municipio'])->get();
                 $centro = MesasCne::find($id_mesa);
 
                 if($candidatos and $centro)
@@ -35,8 +35,7 @@ class VotosMesa
                 {
                     $candidatos = "";
                     $centro = "";
-                }
-
+                }   
                 //Arr($centro);
                 //$centro_nombre = $candidatos[0]->centros_clp->nombre;
             }
@@ -44,7 +43,7 @@ class VotosMesa
             {
                 if(isset($id_candidatos) and $id_candidatos)
                 {
-                    $candidatos = Voto::where('id_municipio',$user['id_municipio'])
+                    $candidatos = CandidatoMesa::where('id_municipio',$user['id_municipio'])
                     ->where('id_parroquia',$id_parroquia)
                     ->where('id_centros_clp',$id_centros_clp)
                     ->where('id_candidatos',$id_candidatos)
@@ -52,7 +51,7 @@ class VotosMesa
                 }
                 else
                 {
-                    $candidatos = Voto::where('id_municipio',$user['id_municipio'])
+                    $candidatos = CandidatoMesa::where('id_municipio',$user['id_municipio'])
                     ->where('id_parroquia',$id_parroquia)
                     ->get();
                 }
@@ -77,14 +76,14 @@ class VotosMesa
         extract($_POST);
         //Arr($_POST);
 
-        $candidatos = Candidato::where('id_municipio',$id_municipio)->get();
+        $candidatos = CandidatoMesa::where('id_municipio',$id_municipio)->get();
 
         //Arr($candidatos);
 
         //conteo
         $num = 0;
 
-        $candidato_votos = VotoDetalle::where('id_municipio',$id_municipio)
+        $candidato_votos = VotoDetalleMesa::where('id_municipio',$id_municipio)
         ->where('id_parroquia',$id_parroquia)
         ->where('id_mesa',$id_mesa)
         ->update(['estatus' => 0]); 
@@ -93,16 +92,7 @@ class VotosMesa
 
         foreach ($candidatos as $key => $candidato) 
         {   
-            if($candidato->cedula == 0)
-            {
-                $estatus = 2;
-            }
-            else
-            {
-                $estatus = 1;
-            }
-
-            $voto_detalle = new VotoDetalle;
+            $voto_detalle = new VotoDetalleMesa;
             $voto_detalle->id_municipio = $id_municipio;
             $voto_detalle->id_parroquia = $id_parroquia;
             $voto_detalle->id_candidatos = $candidato->id_candidatos;
@@ -111,9 +101,8 @@ class VotosMesa
             $voto_detalle->hora = date('H');
             $voto_detalle->minutos = date('i');
             $voto_detalle->hora_completa = date('H:m:s');
-            $voto_detalle->estatus = $estatus;
+            $voto_detalle->estatus = 1;
             $voto_detalle->save();
-
             $num = $num + 1;
         }
 
@@ -146,7 +135,7 @@ class VotosMesa
 
         $voto = Voto::find($id);
 
-        $voto_detalle = new VotoDetalle;
+        $voto_detalle = new VotoDetalleMesa;
         $voto_detalle->id_votos = $voto->id_votos;
         $voto_detalle->id_municipio = $voto->id_municipio;
         $voto_detalle->id_parroquia = $voto->id_parroquia;
