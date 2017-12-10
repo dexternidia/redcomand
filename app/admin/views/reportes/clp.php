@@ -35,7 +35,7 @@
             <td><?php echo $c->municipio->nombre ?></td>
             <td>
               <?php 
-              $parroquia = \App\ParroquiaCne::where('id_municipio',$u->id_municipio)->where('id_parroquia',$u->id_parroquia)->first();
+              $parroquia = \App\ParroquiaCne::where('id_municipio',$c->id_municipio)->where('id_parroquia',$c->id_parroquia)->first();
               echo $parroquia->nombre;
                ?>
             </td>
