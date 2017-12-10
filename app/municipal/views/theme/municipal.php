@@ -138,8 +138,9 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a class="text-uppercase" href="#" id="" data-toggle="collapse" data-target="#opcionesMenuCarga" aria-expanded="false"><i class="fa fa-upload"></i> CARGA DE VOTOS</a>
               <ul class="nav collapse" id="opcionesMenuCarga" role="menu" aria-labelledby="btn-1">
-                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votos"><i class="fa fa-clock-o"></i>  VOTOS * HORA</a></li>
-                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votosMesa"><i class="fa fa-area-chart"></i> TOTALIZACIÓN</a></li>
+
+                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votosMesa"><i class="fa fa-clock-o"></i> VOTOS * HORA</a></li>
+                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votos"><i class="fa fa-area-chart"></i>  TOTALIZACION</a></li>
               </ul>
             </li>
           </ul>
