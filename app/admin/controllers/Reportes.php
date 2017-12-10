@@ -53,14 +53,83 @@ class Reportes
 
     public function clp()
     {
-        $clps = CentroClp::orderBy('nombre', 'DESC')->get();
+        extract($_GET);
+        
+        if(isset($id_municipio) and $id_municipio)
+        {
+            if(isset($id_parroquia) and $id_parroquia)
+            {
+                if(isset($id_mesa) and $id_mesa)
+                {
+                    $clps = CentroClp::orderBy('nombre', 'DESC')
+                    ->where('id_municipio',$id_municipio)
+                    ->where('id_parroquia',$id_parroquia)
+                    ->where('id_mesa',$id_mesa)
+                    ->get();
+                }
+                else
+                {
+                    $clps = CentroClp::orderBy('nombre', 'DESC')
+                    ->where('id_municipio',$id_municipio)
+                    ->where('id_parroquia',$id_parroquia)
+                    ->get();
+                }
+            }
+            else
+            {
+
+                $clps = CentroClp::orderBy('nombre', 'DESC')
+                ->where('id_municipio',$id_municipio)
+                ->get();
+            }
+        }
+        else
+        {
+            $clps = CentroClp::orderBy('nombre', 'DESC')->get();
+        }
+
+
         View(compact('clps'));
         //Arr($clps);
     }
 
-     public function ubch()
+    public function ubch()
     {
-        $ubchs = Ubch::orderBy('nombre_ubch', 'DESC')->get();
+        extract($_GET);
+        
+        if(isset($id_municipio) and $id_municipio)
+        {
+            if(isset($id_parroquia) and $id_parroquia)
+            {
+                if(isset($id_mesa) and $id_mesa)
+                {
+                    $ubchs = Ubch::orderBy('nombre_ubch', 'DESC')
+                    ->where('id_municipio',$id_municipio)
+                    ->where('id_parroquia',$id_parroquia)
+                    ->where('id_mesa',$id_mesa)
+                    ->get();
+                }
+                else
+                {
+                    $ubchs = Ubch::orderBy('nombre_ubch', 'DESC')
+                    ->where('id_municipio',$id_municipio)
+                    ->where('id_parroquia',$id_parroquia)
+                    ->get();
+                }
+            }
+            else
+            {
+
+                $ubchs = Ubch::orderBy('nombre_ubch', 'DESC')
+                ->where('id_municipio',$id_municipio)
+                ->get();
+            }
+        }
+        else
+        {
+            $ubchs = Ubch::orderBy('nombre_ubch', 'DESC')->get();
+        }
+
         View(compact('ubchs'));
         //Arr($ubchs);
     }

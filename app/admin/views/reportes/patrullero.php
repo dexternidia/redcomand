@@ -47,35 +47,35 @@ $("#MesasSelect").html(data);
       </div>
       <div class="panel-body">
         <div class="col-md-12 table-responsive">
-          <form action="<?php echo baseUrlRole() ?>votosMesa/index" method="GET">
+          <form action="<?php echo baseUrlRole() ?>reportes/patrullero" method="GET">
             <?php echo Token::field() ?>
-            <div class="row">
-              <div id="previewBox" class="col-lg-12">
-                <div class="panel panel-default animated bounceInDown">
-                  <div class="panel-body">
-                    <div class="col-lg-1">
-                      <i class="fa fa-warning fa-3x text-warning" aria-hidden="true"></i>
-                    </div>
-                    <div class="col-lg-11 alerta">
-                      <button type='button' id="closeButton" class='close' onclick="close_div()">×</button>
-                      <h5>
-                      Seleccione Municipio, Parroquia y Centro, y luego cargue o actualice los votos de candidatos de acuerdo a la ultima hora la cual esta en formato militar.
-                      </h5>
-                    </div>
-                  </div>
+        <div class="row">
+          <div id="previewBox" class="col-lg-12">
+            <div class="panel panel-default animated bounceInDown">
+              <div class="panel-body">
+                <div class="col-lg-1">
+                  <i class="fa fa-info fa-3x text-primary" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-11 alerta">
+                  <button type='button' id="closeButton" class='close' onclick="close_div()">×</button>
+                  <h6>
+                  Seleccione Municipio y Parroquia.
+                  </h6>
                 </div>
               </div>
-              <script>
-              $(document).ready(function() {
-              $('#closeButton').on('click', function(e) {
-              $('#previewBox').remove();
-              $('#br').remove();
-              });
-              });
-              </script>
             </div>
-            <br>
-            <form action="<?php echo baseUrlRole() ?>reportes/index" method="GET">
+          </div>
+          <script>
+          $(document).ready(function() {
+          $('#closeButton').on('click', function(e) {
+          $('#previewBox').remove();
+          $('#br').remove();
+          });
+          });
+          </script>
+        </div>
+        <br>
+            <form action="<?php echo baseUrlRole() ?>reportes/patrullero" method="GET">
               <?php echo Token::field() ?>
               <div class="row">
                 <div class="col-lg-3">
@@ -93,12 +93,6 @@ $("#MesasSelect").html(data);
                 <div class="col-lg-3">
                   <div class="form-group">
                     <select id="ParroquiaSelect" class="form-control" name="id_parroquia"/>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div class="form-group">
-                    <select id="MesasSelect" class="form-control" name="id_mesa"/>
                     </select>
                   </div>
                 </div>

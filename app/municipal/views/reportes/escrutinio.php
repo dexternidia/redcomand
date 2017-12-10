@@ -108,7 +108,7 @@ overflow-y: scroll
       <div class="row">
         <div class="col-lg-12">
           <div class="responsive-video">
-            <iframe frameborder=0 src="http://201.249.75.155/reportes_recomand/escrutinio.php?id_municipio=<?php echo $id_municipio ?>&id_parroquia=<?php echo $id_parroquia ?>&id_mesa=<?php echo $id_mesa ?>"></iframe>
+            <iframe frameborder=0 src="http://201.249.75.155/reportes_recomand/escrutinio.php?id_municipio=<?php echo $id_municipio ?>&id_parroquia=<?php echo $id_parroquia ?>&id_mesas=<?php echo $id_mesa ?>"></iframe>
           </div>
         </div>
       </div>
