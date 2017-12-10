@@ -62,7 +62,6 @@ overflow-y: scroll
             <div class="form-group">
               <select id="municipioSelect" class="form-control" name="id_municipio"/>
                 <?php
-                $user = User();
                 $municipios = \App\MunicipioCne::all();
                 ?>
                 <option value="">MUNICIPIOS</option>
