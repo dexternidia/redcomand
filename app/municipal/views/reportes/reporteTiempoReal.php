@@ -28,25 +28,6 @@ $("#MesasSelect").html(data);
 })
 });
 </script>
-<style>
-.responsive-video {
-position: relative;
-padding-bottom: 56.25%;
-padding-top: 60px; overflow: hidden;
-}
-.responsive-video iframe,
-.responsive-video object,
-.responsive-video embed {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-overflow-y: scroll
-}
-
-
-</style>
 <div id="panel" class="panel panel-primary">
   <div class="panel-heading" style="background-color: red">
     <h3 class="panel-title text-muted"><i class="fa fa-file fa-2x"></i> REPORTES<b></b>
@@ -55,7 +36,7 @@ overflow-y: scroll
   <div class="panel-body">
     <div class="col-md-12 table-responsive">
       <br>
-      <form action="<?php echo baseUrlRole() ?>reportes/index" method="GET">
+      <form action="http://201.249.75.155/reportes_recomand/index.php" method="GET" target="_blank">
         <?php echo Token::field() ?>
         <div class="row">
           <div class="col-lg-3">
@@ -71,7 +52,7 @@ overflow-y: scroll
           </div>
           <div class="col-lg-3">
             <div class="form-group">
-              <select id="ParroquiaSelect" class="form-control" name="id_parroquia"/>
+              <select id="ParroquiaSelect" class="form-control" name="id_parroquia" required/>
                 <?php
                 $user = User();
                 $parroquias = \App\ParroquiaCne::where('id_municipio',$user['id_municipio'])->get();
@@ -93,16 +74,9 @@ overflow-y: scroll
           <div class="col-lg-1">
             <button onclick="enviar()" id="botonSubmit" type="submit" class="btn btn-lg btn-danger pull-right"><i class="fa fa-search fa-1x"></i></button>
           </div>
-        </form>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="responsive-video">
-            <iframe frameborder=0 src="http://201.249.75.155/reportes_recomand/index.php?id_municipio=<?php echo $id_municipio ?>&id_parroquia=<?php echo $id_parroquia ?>&id_mesa=<?php echo $id_mesa ?>"></iframe>
-          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
+</div>
 </div>
