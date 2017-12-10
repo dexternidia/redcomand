@@ -141,6 +141,7 @@
 
                 <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votosMesa"><i class="fa fa-clock-o"></i> VOTOS * HORA</a></li>
                 <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votos"><i class="fa fa-area-chart"></i>  TOTALIZACION</a></li>
+                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>votosCentroMesa"><i class="fa fa-archive"></i>  ESCRUTINIO</a></li>
               </ul>
             </li>
           </ul>
@@ -150,6 +151,7 @@
                   <li><a class="text-danger" href="<?php echo baseUrlRole() ?>reportes"><i class="fa fa-university"></i> TOTALES</a></li>
                   <!--<li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-users"></i> UBCH</a></li>
                   <li><a class="text-danger" href="<?php echo baseUrl ?>reportes"><i class="fa fa-address-book"></i> PATRULLEROS</a></li> -->
+                <li><a class="text-danger" href="<?php echo baseUrlRole() ?>reportes/escrutinio"><i class="fa fa-archive"></i>  ESCRUTINIO</a></li>
                 </ul>
               </li>
             </ul>

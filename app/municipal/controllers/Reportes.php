@@ -17,6 +17,12 @@ class Reportes
         View(compact('id_municipio','id_parroquia','id_mesa'));
     }
 
+    public function escrutinio()
+    {
+        extract($_GET);
+        View(compact('id_municipio','id_parroquia','id_mesa'));
+    }
+
     public function reporteTiempoReal()
     {
         extract($_GET);
