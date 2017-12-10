@@ -21,7 +21,7 @@ $("#ParroquiaSelect option:selected").each(function () {
 //id1 = $(this).val();
 var idParroquia = $(this).val();
 //alert(idParroquia);
-$.get("<?php echo baseUrlRole() ?>reportes/centrosBusqueda", { idParroquia:idParroquia }, function(data){
+$.get("<?php echo baseUrlRole() ?>reportes/centrosBusquedaCodigo", { idParroquia:idParroquia }, function(data){
 $("#MesasSelect").html(data);
 });
 });

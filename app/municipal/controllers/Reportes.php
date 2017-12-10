@@ -92,4 +92,21 @@ class Reportes
             echo '<option value="'.$parroquia->id_mesas_cne.'">'.$parroquia->nombre.'</option>';
         } 
     }
+
+    public function centrosBusquedaCodigo()
+    {
+        extract($_GET);
+        $user= User();
+        $parroquias = MesasCne::orderBy('nombre', 'DESC')->where('id_municipio',$user['id_municipio'])
+        ->where('id_parroquia',$idParroquia)
+        ->where('mesa',1)
+        ->get();
+
+        //var_dump($parroquias);
+        echo "<option value=''>CENTROS</option>";
+        echo "<option value=''></option>";
+        foreach ($parroquias as $key => $parroquia) {
+            echo '<option value="'.$parroquia->codigo_cne.'">'.$parroquia->nombre.'</option>';
+        } 
+    }
 }
