@@ -60,27 +60,21 @@ overflow-y: scroll
         <div class="row">
           <div class="col-lg-3">
             <div class="form-group">
-              <select id="" class="form-control" name="id_municipio"/>
+              <select id="municipioSelect" class="form-control" name="id_municipio"/>
                 <?php
                 $user = User();
-                $municipio = \App\MunicipioCne::where('id_municipio',$user['id_municipio'])->first();
+                $municipios = \App\MunicipioCne::all();
                 ?>
-                <option value="<?php echo $municipio->id_municipio ?>">MUNICIPIO <?php echo $municipio->nombre ?></option>
+                <option value="">MUNICIPIOS</option>
+                <?php foreach ($municipios as $key => $municipio): ?>
+                    <option value="<?php echo $municipio->id_municipio ?>"><?php echo $municipio->nombre ?></option>
+                <?php endforeach ?>
               </select>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="form-group">
               <select id="ParroquiaSelect" class="form-control" name="id_parroquia"/>
-                <?php
-                $user = User();
-                $parroquias = \App\ParroquiaCne::where('id_municipio',$user['id_municipio'])->get();
-                ?>
-                <option>PARROQUIAS</option>
-                <option></option>
-                <?php foreach ($parroquias as $parroquia): ?>
-                <option value="<?php echo $parroquia->id_parroquia ?>"><?php echo $parroquia->nombre ?></option>
-                <?php endforeach ?>
               </select>
             </div>
           </div>
